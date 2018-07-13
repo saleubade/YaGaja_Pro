@@ -1,0 +1,22 @@
+.main{
+  position:relative;
+  display:inline-table;
+  width: 1000px;
+  height:500px;
+  text-align: left;
+}
+
+#section{
+  margin-top:30px;
+  text-align: center;
+}
+
+
+#write_button{
+  text-align: center;
+  margin-top: 15px;	
+}
+
+#table_good{
+  margin: 0 auto;
+}

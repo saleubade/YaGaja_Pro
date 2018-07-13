@@ -1,0 +1,181 @@
+#left_menu{
+	text-align: center;
+	width: 10%;
+	display:inline-block;
+	line-height: 30px;
+	vertical-align: top;
+	margin-top: 110px;
+}
+#left_menu a{
+color: black;
+text-decoration: none;
+}
+
+.main{
+  display:inline-block;
+  width: 1000px;
+  min-height:500px;
+  text-align: left;
+/*   border: 1px solid blue; */
+
+}
+section{
+	width : 100%;
+  	margin-top:30px;
+  	text-align: center;
+  	min-width: 1280px;
+/* 	border: 1px solid black; */
+}
+
+
+#nav_form {
+	border: 1px solid black;
+	margin:
+}
+
+#header_form {
+	border: 1px solid black;
+	height: 70px;
+}
+
+
+#header1 {
+	font-size: 15px;
+	width: 786px;
+	padding: 0px;
+	border-top: 1.5px solid black;
+	border-bottom: 1px solid gray;
+}
+
+#header1_id1 {
+	padding-top: 2px;
+	margin: 0px;
+	float: left;
+}
+
+#header1_id2 {
+	text-align: center;
+	font-size: 13px;
+	margin: 0px;
+	float: right;
+}
+
+#head {
+	margin-top: 30px;
+}
+
+#head h1 {
+	display: inline;
+}
+
+#header1_img1 {
+	padding-top: 4px;
+	margin-right: 4px;
+}
+
+#header1_img2 {
+	padding-top: 4px;
+	margin-right: 4px;
+}
+
+#header1_img3 {
+	padding-top: 4px;
+	margin-right: 4px;
+}
+
+#header1_table1 {
+	margin: 10px;
+	margin-left: 0px;
+	text-align: center;
+}
+
+#header1_table1 td:hover {
+	text-decoration: underline;
+}
+
+#form_1 {
+	border-bottom: 2px solid gray;
+	height: 40px;
+}
+
+#form_2 {
+	margin: 40px 0 0 0;
+}
+
+#form_total1 {
+	float: left;
+}
+
+#form_select {
+	margin-right: 4px;
+	float: right;
+}
+
+#form_search2 {
+	float: right;
+}
+
+#form_search1 {
+	margin-right: 4px;
+	float: right;
+}
+
+.clear2 {
+	clear: both;
+}
+
+#page_num {
+	margin: 10px 0 0 400px;
+}
+
+#menu3 li {
+	display: inline;
+}
+
+#menu_1 {
+	margin-left: 15px;
+}
+
+#menu_2 {
+	margin-left: 200px;
+}
+
+#menu_3 {
+	margin-left: 200px;
+}
+
+#menu_5 {
+	margin-left: 30px;
+}
+
+#list0 {
+	margin-top: 20px;
+}
+
+#list0 #list0_1 {
+	float: left;
+	color: #800080;
+	margin: 0 20px 0 0;
+	text-align: center;
+}
+
+#list0 #list1 {
+	float: left;
+	width: 125px;
+	text-align: center;
+}
+
+#list0 #list2 {
+	float: left;
+	width: 800px;
+}
+
+#list0 #list_item4 {
+	font-size: 13px;
+}
+
+#list_id {
+	margin: 50px 0 0 700px;
+	float: right;
+}
+
