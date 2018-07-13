@@ -1,0 +1,49 @@
+@charset "UTF-8";
+#wish_list_section{
+	width: 1200px;
+	border: 1px solid red;
+	height: 180px;
+	margin: auto;
+	font-size: 22px;
+	text-align: center;
+	padding-top: 100px; 
+}
+#wish_list_section2{
+	width: 1200px;
+	border: 1px solid blue;
+	height: 50px;
+	margin: auto;
+	font-size: 13px;
+	text-align: center;
+	padding-top: 5px; 
+	color: lightgray;
+}
+#cart_section{
+	width: 1200px;
+	border: 1px solid black;
+	height: 400px;
+	margin: auto;
+}
+table{
+	border-top: 1px solid gray;
+	border-bottop: 1px solid gray;
+	width: 1200px;
+}
+td{
+	border-top: 1px solid gray;
+	border-bottop: 1px solid gray;
+	text-align: center;
+}
+.prod_check_box{
+	width: 40px;
+}
+.prod_image{
+	width: 120px;
+}
+
+
+
+
+
+
+

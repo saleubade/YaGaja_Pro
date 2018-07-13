@@ -1,0 +1,23 @@
+.main{
+  position:relative;
+  left:100px;
+  display:table-cell;
+  width: 1000px;
+  height:500px;
+  /*border: 1px solid blue;*/
+}
+section{
+  margin-top:30px;
+}
+
+.label{
+  text-align: center;
+  width:150px;
+  background-color: pink;
+}
+.content{
+  width:200px;
+}
+#main_a{
+	color: black;
+}

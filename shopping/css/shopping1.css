@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+#shop_aside{
+	width: 1200px;
+	height:160px;
+	border: 1px solid black;
+	margin: 10px auto 0px auto;
+}
+
+#shop_section{
+	padding-bottom:5px;
+	width: 1200px;
+	height: 3000px;
+	margin: 0px auto;
+	border: 1px solid black;
+	padding-left: 10px;
+}
+
+.clear{
+	clear: both;
+}
+
+#shop_ul{
+	list-style: none;
+	text-align: left;
+}
+#shop_name{
+	font-size: 60px;
+	text-align: center;
+	height: 120px;
+}
+#shop_name_div{
+	height: 40px;
+	width: 1200px;
+	padding-top: 8px;
+}
+#shop_ul li{ 
+	width: 180px;
+	margin: 50px 5px 5px 5px;
+	display: inline;
+	margin: 15px;
+	font-size: 13px; 
+}
+li{
+	text-decoration: none;
+}
+li a:hover {
+	color: rgba(171, 171, 171,0.5); 
+}
+#list_menu a{
+	font-size: 15px;
+}
+#shop_input_goods{
+
+	padding-bottom:5px;
+	width: 1200px;
+	height:700px;
+	margin: 5px auto;
+	border: 1px solid black;
+}
+#weekly_item{
+	padding-left: 30px;
+	padding-top: 20px;
+	width: 600px;
+}
+#weekly_item_list_ul{
+	display: inline;
+	list-style: none;
+}
+#weekly_item_list_ul li{
+	display: inline;
+}
+#article1{
+	border: 1px solid black;
+	width: 200px;
+	height: 300px;
+	margin: 10px;
+	float: left;
+}
