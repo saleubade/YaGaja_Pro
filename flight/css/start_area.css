@@ -1,0 +1,16 @@
+#box{
+	border: 1px solid gray;	
+	width:500px;
+	height:500px;
+}
+
+#table1{
+	
+	width:500px;
+	height:500px;
+	border-collapse: collapse;
+}
+
+#table1 tr td{
+	border: 1px solid gray;	
+}
