@@ -25,25 +25,41 @@
 	margin: auto;
 }
 table{
-	border-top: 1px solid gray;
-	border-bottop: 1px solid gray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
 	width: 1200px;
 }
+tr{
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;	
+}
 td{
-	border-top: 1px solid gray;
-	border-bottop: 1px solid gray;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
 	text-align: center;
+	border-left-style:none; 
+	border-right-style:none; 
 }
 .prod_check_box{
 	width: 40px;
 }
 .prod_image{
-	width: 120px;
+	width: 160px;
 }
-
-
-
-
-
+.prod_info{
+	width: 450px;
+}
+.prod_price{
+	width: 150px;
+}
+.prod_baesong{
+	width: 150px;
+}
+.prod_total{
+	width: 100px;
+}
+.prod_choice{
+	width: 150px;
+}
 
 

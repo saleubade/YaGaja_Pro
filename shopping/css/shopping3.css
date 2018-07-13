@@ -217,14 +217,17 @@ li a:hover {
 }
 table{
 	text-align: left;
+	border-left:0px;
+	border-right:0px;	
 }
 td{
 	padding: 4px;
 	padding-left: 6px;
 	font-size: 13px;
-	border: 0.1px solid white;
 	border-top:1px solid gray;
 	border-bottom:1px solid gray;
+	border-left-style:none; 
+	border-right-style:none;
 }
 .td1{
 	width: 170px;

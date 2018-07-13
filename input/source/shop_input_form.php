@@ -123,11 +123,11 @@ if($flag !=="OK"){
   <body>
     <header style="border:1px solid black;">
         <!-- 로그인  -->
-   		<?php include_once '../../common_lib/top_login3.php';?>
+   		<?php include_once '../../shopping_lib/top_login3.php';?>
     </header>
     <!-- 메뉴 -->
     <nav id="shop_aside">
-    	<?php include_once '../../common_lib/shop_main_menu2.php';?>  	
+    	<?php include_once '../../shopping_lib/shop_main_menu2.php';?>  	
     </nav>
  <section id="shop_input_goods">
       <article class="main">

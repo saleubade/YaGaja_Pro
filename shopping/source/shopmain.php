@@ -1,49 +1,10 @@
 <?php
     session_start();
     include_once '../../common_lib/createLink_db.php';
+    include_once '../../shopping_lib/create_table_cart.php';
+    include_once '../../shopping_lib/create_table_shop_goods.php';
    
-    $flag = "NO";
-    $sql = "show tables from yagajaDB";
-    $result = mysqli_query($con, $sql) or die("실패원인:".mysqli_error($con));
-    while($row=mysqli_fetch_row($result)){
-        if($row[0]==="shop_goods"){
-            $flag = "OK";
-            break;
-        }
-    }
-    if($flag !=="OK"){
-        $sql = "create table shop_goods(
-      shop_no int not null auto_increment,
-      shop_name varchar(100) not null,
-      shop_amount varchar(50) not null,
-      shop_price varchar(50) not null,
-      shop_type char(10) not null,
-      shop_sizeS int,
-      shop_sizeM int,
-      shop_sizeL int,
-      shop_sizeXL int,
-      shop_image_name1 char(40),
-      shop_image_name2 char(40),
-      shop_image_name3 char(40),
-      shop_image_name4 char(40),
-      shop_image_change_name1 char(40),
-      shop_image_change_name2 char(40),
-      shop_image_change_name3 char(40),
-      shop_image_change_name4 char(40),
-      shop_introduce text,
-      regist_day char(20),
-      primary key(shop_no)
-    )";
-        if(mysqli_query($con, $sql)){
-            echo "<script>
-                alert('shop 테이블 생성성공!');
-              </script>";
-        }else{
-            echo "<script>
-                alert('shop 테이블 생성실패');
-              </script>";
-        }
-    }
+    
     
 ?>
 <!DOCTYPE html>
@@ -68,10 +29,10 @@
 </head>
 <body>
     <header style="border:1px solid black;">
-   		<?php include_once '../../common_lib/top_login3.php';?>
+   		<?php include_once '../../shopping_lib/top_login3.php';?>
     </header>
     <nav id="shop_aside">
-    	<?php include_once '../../common_lib/shop_main_menu.php';?>  	
+    	<?php include_once '../../shopping_lib/shop_main_menu.php';?>  	
     </nav>
 	
 	<div class="shop_section">
