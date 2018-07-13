@@ -33,7 +33,7 @@ $sizeXL = $row['sizeXL'];
   <title>야! 가자~</title>
   <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/shopping3.css?ver=11">
+  <link rel="stylesheet" href="../css/shopping3.css?ver=133">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="js/set_action.js"></script>
@@ -57,7 +57,7 @@ $sizeXL = $row['sizeXL'];
             {
                 if(confirm("장바구니에 추가 하시겠습니까??"))
                 {   
-                	location.href="../../shopping_cart/source/shopping_cart.php?no=<?=$no?>&size="+size+"&value2="+value2;                	
+                	location.href="../../shopping_cart/source/shopping_cart_input.php?no=<?=$no?>&size="+size+"&value2="+value2;                	
                 }
                 else
                 {
@@ -84,7 +84,7 @@ $sizeXL = $row['sizeXL'];
             {
                 if(confirm("장바구니에 추가 하시겠습니까??"))
                 {   
-                	location.href="../../shopping_cart/source/shopping_cart.php?no=<?=$no?>&value="+value;
+                	location.href="../../shopping_cart/source/shopping_cart_input.php?no=<?=$no?>&value="+value;
                 }
                 else
                 {
@@ -108,10 +108,10 @@ $sizeXL = $row['sizeXL'];
   </head>
 <body>
     <header style="border:1px solid red;">
-   		<?php include_once '../../common_lib/top_login3.php';?>
+   		<?php include_once '../../shopping_lib/top_login3.php';?>
     </header>
     <nav id="shop_aside">
-    	<?php include_once '../../common_lib/shop_main_menu.php';?>  	
+    	<?php include_once '../../shopping_lib/shop_main_menu.php';?>  	
     </nav>
     <div class="shop_section">
         <form id="myForm" method="post" name="input_form">
