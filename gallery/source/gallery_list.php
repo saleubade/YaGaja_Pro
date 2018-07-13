@@ -29,7 +29,7 @@ $no = $_GET['no'];
 <meta charset="utf-8">
 <link rel="stylesheet" href="../css/gallery.css?ver=2" type="text/css"
 	media="all">
-<link rel="stylesheet" href="../../common_css/index_css4.css?ver=2"
+<link rel="stylesheet" href="../../common_css/index_css3.css?ver=3"
 	type="text/css" media="all">
     <?php
     if ($mode == "search") {
