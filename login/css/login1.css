@@ -1,0 +1,15 @@
+  #main{
+    background-color: #FAFAFA;
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+  label{
+    margin-left: 30px;
+  }
+  table{
+    margin: 20px auto 0 auto;
+  }
+  a{
+	color: black;
+	text-decoration: none;
+}

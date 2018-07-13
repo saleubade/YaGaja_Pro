@@ -1,0 +1,136 @@
+#left_menu{
+	text-align: center;
+	width: 150px;
+	display:inline-block;
+	line-height: 30px;
+	vertical-align: top;
+	margin-top: 110px;
+	margin-right: 15px;
+}
+#left_menu a{
+color: black;
+text-decoration: none;
+}
+	
+
+.main{
+  position:relative;
+  display:inline-table;
+  width: 1000px;
+  height:500px;
+  text-align: left;
+}
+
+#section{
+  margin-top:30px;
+  text-align: center;
+  min-width: 1280px;
+}
+
+#head{
+  margin-top:30px;
+}
+#head h1{
+  margin-right: 410px;
+  display:inline;
+}
+
+#header1{
+	font-size:15px;
+	width: 786px;
+	padding:0px;
+ 
+}
+#header1_id1{
+	padding-top:2px;
+	margin: 0px;
+	
+}
+
+#header1_h #header1_h2{
+	margin:15px 0 10px 0;
+	color:#2F4F4F;
+}
+
+#view_title2{
+	padding-top:10px;
+	
+}
+
+
+#view_ti{
+	border: 1px solid gray;
+  	width:980px;
+	
+}
+
+#table_12{
+	padding:4px;
+	width:980px;
+}
+
+#box #box_1 textarea{
+	float:left;
+	width: 800px;
+}
+#box #box_2{
+	float:left;
+	margin-left: 7px;
+}
+
+#result3_0 li{
+	display:inline;	
+}
+
+#result3_3 table{
+	width: 980px;
+	margin-bottom: 5px;
+	
+}
+
+#table_1{
+	background-color: #dadada;
+}
+
+#rippele_r{
+	padding:5px;
+	margin-left:30px;
+	
+}
+
+#ititit{
+	margin:20px 0 0 0;
+	text-align:center;
+	font-size: 30px;
+}
+
+
+.clear{
+	clear: both;
+}
+
+#view_button{
+	float:left;
+	margin: 5px 0 5px 10px;
+}
+
+#table_11{
+	width:980px;
+	background-color: #b5ddd5;
+}
+
+#td_1{
+	width:580px;
+	height:30px;
+	
+}
+
+#td_2{
+	width:200px;
+	text-align: right;
+}
+
+#td_3{
+	width:100px;
+	text-align: center;
+}

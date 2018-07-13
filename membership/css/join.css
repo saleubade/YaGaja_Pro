@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+#wrap{
+	border : 3px solid #33dd33;
+	width : 380px;
+	height : 280px;
+	border-radius: 20px;
+	padding : 10px;
+}
+
+#id_check_title1{
+	float : left;
+	margin : 5px;
+}
+#id_check_title2{
+	float : right;
+}
+.clear{
+	clear :both;
+}
+
+#hr_line{
+	border : 1px solid #cccccc;
+}
+
+#text1{
+	color : gray;
+	font-size: 8pt;
+}
+
+#hr_line_middle{
+	border : 1px solid #cccccc;
+	width : 350px;
+	margin : 0 auto;
+}
+
+#text2{
+	color : #777777;
+	font-size: 9pt;
+}
+
+#conf_time{
+	color : red;
+}

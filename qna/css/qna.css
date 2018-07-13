@@ -1,0 +1,151 @@
+.main{
+  position:relative;
+  display:inline-block;
+  width: 1000px;
+  height:500px;
+
+}
+#head{
+  margin-top: 30px;
+}
+
+#head h1{
+  margin-right: 700px;
+  display:inline;
+}
+
+#head select{
+  height:22px;
+}
+
+#section{
+	margin-top : 30px;
+	text-align: center;
+}
+
+form{
+  display: inline;
+}
+
+.clear{
+	clear : both;
+}
+
+#qna_title{
+	margin : 5px 0;
+	font-size: 10pt;
+	width : 1100px;
+	display : table;
+	margin : 5px auto;
+}
+
+#qna_table{
+	margin : 5px 0;
+}
+
+#list{
+	float : left;
+}
+
+#write{
+	float : right;
+}
+
+#html_ok{
+	float : right;
+}
+
+#a_list{
+	float : right;
+	font-size: 12pt;
+}
+
+#a_write{
+	float : right;
+	font-size: 12pt;
+}
+
+#view_contents_title{
+	margin : 12px 0 0 0;
+	padding : 10px;
+	background-color: #d6e3ce;
+}
+#view_contents_title1{
+	float : left;
+	font-size: 10pt;
+}
+#view_contents_title2{
+	float : right;
+}
+
+#view_contents_content{
+	padding : 10px;
+	min-height : 400px;
+	max-width : 1200px;
+	border : 1px solid #ddddff;
+	font-size: 11pt;
+}
+#qna_table{
+	margin-bottom: 20px;
+	font-size: 10pt;
+	display : table;
+	margin : 10px auto;
+}
+
+#qna_link{
+	float : right;
+	margin : 5px;
+}
+#search{
+	float : right;
+}
+#page_link_table{
+	display : table;
+	margin : 10px auto;
+	font-size : 11pt;
+}
+
+#qna_img{
+	float : left;
+}
+
+#rel_article_title{
+	float : left;'
+}
+
+#rel_article_subject{
+	float : right;
+}
+
+a {
+ 	text-decoration: none;
+ 	color: black;
+}
+
+
+
+
+.main1{
+  position:relative;
+  display:inline-table;
+  width: 1000px;
+  height:500px;
+  text-align: left;
+
+}
+#section1{
+	margin-top : 30px;
+	text-align: center;
+}
+.main2{
+  position:relative;
+  display:inline-block;
+  width: 1000px;
+  height:500px;
+  text-align: left;
+
+}
+#section2{
+	margin-top : 30px;
+	text-align: center;
+}
