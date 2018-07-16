@@ -21,10 +21,9 @@
 #cart_section{
 	width: 1200px;
 	border: 1px solid black;
-	height: 400px;
 	margin: auto;
 }
-table{
+#cart_list_table{
 	border-top: 1px solid lightgray;
 	border-bottom: 1px solid lightgray;
 	width: 1200px;
@@ -61,5 +60,70 @@ td{
 .prod_choice{
 	width: 150px;
 }
-
-
+.prod_image2{
+	width: 100px;
+	height: 110px;
+}
+#cart_delete{
+	background-color: white;
+	border: 1.5px solid lightgray;
+}
+#cart_button{
+	width: 1200px;
+	height: 50px;
+	border: 1px solid red;
+	padding: 3px;
+	margin-top: 3px;
+}
+#choice_del{
+	background-color: white;
+	border: 1.5px solid lightgray;
+	width: 100px;
+	height: 30px;
+	font-size: 12px;
+	margin-left: 2px;
+}
+#all_order{
+	background-color: black;
+	border: 1.5px solid black;
+	width: 110px;
+	height: 35px;
+	color: white;
+	font-size: 12px;
+	float: right;
+	margin-right: 5px;
+}
+#all_del{
+	background-color: gray;
+	border: 1.5px solid gray;
+	width: 120px;
+	height: 35px;
+	color: white;
+	font-size: 12px;
+	float: right;
+	margin-right: 5px;
+}
+#page_link{
+	width: 1200px;
+	border: 1px solid blue;
+	height: 40px;
+}
+#page_link_table{
+	border: 1px solid lightgray;
+	font-size : 11pt;
+	margin: auto;
+}
+#page_link_table td{
+	border: 1px solid lightgray;
+	color: gray;	
+}
+#now_bluck{
+	background-color: lavender;
+	color: black;
+}
+#page_link_table td a{
+	color: gray;	
+}
+#page_link_table td a:hover{
+	text-decoration: none;
+}
