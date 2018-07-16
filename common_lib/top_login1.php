@@ -16,9 +16,16 @@
 <?php
 session_start();
 
+include_once './common_lib/createLink_db.php';
+
   if(isset($_SESSION['id'])){
     $id=$_SESSION['id'];
     $name = $_SESSION['name'];
+    
+    $sql = "select * from message where recv_id = '$id' and recv_read = 'N' ";
+    $result = mysqli_query($con, $sql) or die(mysqli_error($con));
+    $not_read_num = mysqli_num_rows($result);
+    
   }else{
     $id=null;
   }
@@ -32,13 +39,13 @@ session_start();
   <li> <a href="./modify/source/member_form_modify.php">회원관리 </a>&nbsp; |</li>
   <li> <a href="./modify/source/member_form_modify.php">회원정보수정 </a>&nbsp; |</li>
   <li><a href="./memberlist/source/memberlist.php">회원리스트 </a>&nbsp; |</li>
-  <li><a href="#" onclick="message()">쪽지(&nbsp; &nbsp;) </a>&nbsp; |</li>
+  <li><a href="#" onclick="message()">쪽지(&nbsp; <?= $not_read_num ?> &nbsp;) </a>&nbsp; |</li>
   <li>관리자 님 <a href="./login/source/logout.php">(로그아웃)</a> | </li>
 <?php }elseif($id){ ?>
   <li> <a href="./modify/source/member_form_modify.php">회원정보수정 </a>&nbsp; </li>
   <li> <a href="./cart/source/cart_list.php">장바구니 </a>&nbsp; |</li>
   <li> <a href="./cart/source/cart_list.php">구매내역 </a>&nbsp; |</li>
-  <li> <a href="#" onclick="message()">쪽지(&nbsp; &nbsp;) </a>&nbsp; |</li>
+  <li> <a href="#" onclick="message()">쪽지(&nbsp; <?= $not_read_num ?> &nbsp;) </a>&nbsp; |</li>
   <li> <?=$name?> 님<a href="./login/source/logout.php">(로그아웃)</a> | </li>
 <?php } ?>
 </ul>
