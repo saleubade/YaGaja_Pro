@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set("Asia/Seoul");
 $DBflag = "NO";
-$con =mysqli_connect("localhost","root","123025","") or die("MySQL 접속실패!");
+$con =mysqli_connect("localhost","root","123456","") or die("MySQL 접속실패!");
 $sql = "show databases";
 $result = mysqli_query($con, $sql) or die("실패원인:".mysqli_error($con));
 
@@ -17,5 +17,5 @@ if($DBflag !== "OK"){
         echo "<script>alert('libraryDB 생성완료!')</script>";
     }
 }
-$con = mysqli_connect("localhost","root","123025","yagajaDB") or die("yagajaDB 접속실패!");//yagajaDB  접속
+$con = mysqli_connect("localhost","root","123456","yagajaDB") or die("yagajaDB 접속실패!");//yagajaDB  접속
 ?>

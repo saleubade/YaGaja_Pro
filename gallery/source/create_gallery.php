@@ -14,6 +14,7 @@ if ($flag !== "OK") { // 만약 위에 반복문 구문안에 조건식이 거�
                 num int not null auto_increment,
                 id varchar(20) not null,
                 name varchar(30) not null,
+                continent char(15) not null,
                 subject varchar(100) not null,
                 content text not null,
                 regist_day char(20),

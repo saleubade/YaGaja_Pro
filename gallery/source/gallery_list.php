@@ -29,7 +29,7 @@ $no = $_GET['no'];
 <meta charset="utf-8">
 <link rel="stylesheet" href="../css/gallery.css?ver=2" type="text/css"
 	media="all">
-<link rel="stylesheet" href="../../common_css/index_css3.css?ver=3"
+<link rel="stylesheet" href="../../common_css/index_css4.css?ver=2"
 	type="text/css" media="all">
     <?php
     if ($mode == "search") {
@@ -42,10 +42,9 @@ $no = $_GET['no'];
 			");
             exit();
         }
-        $sql = "select * from $table where $find like '%$search%' order by num desc";
-        // concert 테이블에서 앞뒤 상관없이 search 대한 정보를 num 기준으로 내림차순으로 정렬해주세요.
-    } else {
-        $sql = "select * from $table order by num desc";
+        $sql = "select * from $table where $find like '%$search%' and continent = '$continent' order by num desc";
+    }else{
+        $sql = "select * from $table where continent = '$continent' order by num desc";
     }
     
     ?>
@@ -140,8 +139,8 @@ $no = $_GET['no'];
 			   
 			   ?>
 			   
-			   <div style="border: 1px solid black; width: 250px; height: 140px; float: left; margin-left: 50px; ">
-			   <a href="gallery_view.php?table=<?=$table?>&num=<?=$good_num?>&page=<?=$page?>&continent=<?=$continent?>"><img src="../img/asd.jpg" style="width: 250px; height: 140px;">
+			   <div style="border: 1px solid blue; width: 250px; height: 140px; float: left; margin-left: 50px; ">
+			   <a href="gallery_view.php?table=<?=$table?>&num=<?=$item_num ?>&page=<?=$page?>&continent=<?=$continent?>"><img src="../img/asd.jpg" style="width: 250px; height: 140px;">
 			    <?=$good_subject ?></a>
 			   </div>
 			  
@@ -198,20 +197,40 @@ $no = $_GET['no'];
                 $item_id = $row["id"];
                 $item_name = $row["name"];
         
+                $img_copy_name0 = $row['file_copy_0'];
+                $img_copy_name1 = $row['file_copy_1'];
+                $img_copy_name2 = $row['file_copy_2'];
+                
                 $item_hit = $row["hit"];
                 $item_date = $row["regist_day"];
                 $item_date = substr($item_date, 0, 10);
                 $item_subject = str_replace(" ", "&nbsp;", $row["subject"]);
         
+                
+                
+                
+                if(!empty($img_copy_name0)){ // 첫번째 이미지 파일이 있으면 1번 이미지를 보여줌
+                    $main_img = $img_copy_name0;
+                 
+                }else if(empty($img_copy_name0) && !empty($img_copy_name1)){ // 첫번째 이미지 파일이 없고 두번째 이미지 파일이 있으면 2번 이미지 보여줌
+                    $main_img = $img_copy_name1;
+                 
+                }else if(empty($img_copy_name0) && empty($img_copy_name1) && !empty($img_copy_name2)){ // 첫번째, 두번째 없고 세번째 있으면  3번 이미지 보여줌  
+                    $main_img = $img_copy_name2;
+                 
+                }
+                
+                
                 ?>
 	
 
 
 
 
-			<div style="border: 1px solid black; width: 250px; height: 140px; float: left; margin-left: 50px; margin-top: 50px;">
-			   <a href="gallery_view.php?table=<?=$table?>&num=<?=$item_num?>&page=<?=$page?>&continent=<?=$continent?>"><img src="../img/asd.jpg" style="width: 250px; height: 140px;">
-			    <div>제목 : <?=$item_subject ?></div><div>조회수 : <?=$item_hit ?></div></a>
+			<div style="border: 1px solid red; width: 250px; height: 140px; float: left; margin-left: 50px; margin-top: 50px;">
+			   <a href="gallery_view.php?table=<?=$table?>&num=<?=$item_num?>&page=<?=$page?>&continent=<?=$continent?>">
+			   <img src="../data/<?=$main_img?>" style="width: 250px; height: 140px;">
+			    <div style="font-size: 13px;">제목 : <?=$item_subject ?></div><div style="font-size: 13px;">조회수 : <?=$item_hit ?></div></a>
  	 </div> 
  			  
       <!-- <div id="list0" style="display: inline; "> -->
@@ -232,28 +251,28 @@ $no = $_GET['no'];
   #----------------이전블럭 존재시 링크------------------#
   if($start_page > $pages_scale){
       $go_page= $start_page - $pages_scale;
-      echo "<a id='before_block' href='gallery_list1.php?mode=$mode&page=$go_page&continent=$continent'> << </a>";
+      echo "<a id='before_block' href='gallery_list.php?mode=$mode&page=$go_page&continent=$continent'> << </a>";
   }
   #----------------이전페이지 존재시 링크------------------#
   if($pre_page){
-      echo "<a id='before_page' href='gallery_list1.php?mode=$mode&page=$pre_page&continent=$continent'> < </a>";
+      echo "<a id='before_page' href='gallery_list.php?mode=$mode&page=$pre_page&continent=$continent'> < </a>";
   }
   #--------------바로이동하는 페이지를 나열---------------#
   for($dest_page=$start_page;$dest_page <= $end_page;$dest_page++){
       if($dest_page == $page){
           echo( "&nbsp;<b id='present_page'>$dest_page</b>&nbsp" );
       }else{
-          echo "<a id='move_page' href='gallery_list1.php?mode=$mode&page=$dest_page&continent=$continent'>$dest_page</a>";
+          echo "<a id='move_page' href='gallery_list.php?mode=$mode&page=$dest_page&continent=$continent'> $dest_page </a>";
       }
   }
   #----------------이전페이지 존재시 링크------------------#
   if($next_page){
-      echo "<a id='next_page' href='gallery_list1.php?mode=$mode&page=$next_page&continent=$continent'> > </a>";
+      echo "<a id='next_page' href='gallery_list.php?mode=$mode&page=$next_page&continent=$continent'> > </a>";
   }
   #---------------다음페이지를 링크------------------#
   if($total_pages >= $start_page+ $pages_scale){
       $go_page= $start_page+ $pages_scale;
-      echo "<a id='next_block' href='gallery_list1.php?mode=$mode&page=$go_page&continent=$continent'> >> </a>";
+      echo "<a id='next_block' href='gallery_list.php?mode=$mode&page=$go_page&continent=$continent'> >> </a>";
   }
     ?>
      
