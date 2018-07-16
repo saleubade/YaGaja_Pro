@@ -12,7 +12,7 @@
 session_start();
   if(isset($_SESSION['id'])){
     $id=$_SESSION['id'];
-    $name = $_SESSION['name'];
+    $cname = $_SESSION['name'];
   }else{
     $id=null;
   }
@@ -21,16 +21,15 @@ session_start();
   <li> <a href="../../membership/source/join_form.php">회원가입 </a>&nbsp; </li>
   <li> <a href="#" onclick="popup()">로그인</a> &nbsp;&nbsp;&nbsp;|</li>
 <?php }elseif(isset($id)&&$id==="admin"){?>
-  <li><a href="../">회원관리 </a>&nbsp; </li>
-  <li> <a href="../">회원정보수정 </a>&nbsp; |</li>
-  <li><a href="../">회원리스트 </a>&nbsp; |</li>
+  <li><a href="../">주문리스트 </a>&nbsp; |</li>
+  <li> <a href="../">상품정보수정 </a>&nbsp; |</li>
+  <li><a href="../../input/source/shop_input_form.php">상품등록 </a>&nbsp; |</li>
   <li>관리자 님 <a href="../../login/source/logout.php">(로그아웃)</a> | </li>
 <?php }elseif($id){ ?>
   <li> <a href="../">회원정보수정 </a>&nbsp; </li>
-  <li> <a href="../">장바구니 </a>&nbsp; |</li>
-  <li> <a href="../">구매내역 </a>&nbsp; |</li>
-  <li> <a href="../">쪽지(&nbsp; &nbsp;) </a>&nbsp; |</li>
-  <li> <?=$name?> 님<a href="../../login/source/logout.php">(로그아웃)</a> | </li>
+  <li> <a href="../../">구매내역 </a>&nbsp; |</li>
+  <li> <a href="../../shopping_cart/source/shopping_cart.php">장바구니 </a>&nbsp; |</li>
+  <li> <?=$cname?> 님<a href="../../login/source/logout.php">(로그아웃)</a> | </li>
 <?php } ?>
 </ul>
 </div>
