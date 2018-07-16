@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 if(isset($_SESSION['id'])){
@@ -15,8 +16,8 @@ $result= mysqli_query($con, $sql);
 $total_record= mysqli_num_rows($result);
 
 // 페이지 당 글수, 블럭당 페이지 수
-$rows_scale=3;
-$pages_scale=3;
+$rows_scale=5;
+$pages_scale=5;
 
 // 전체 페이지 수 ($total_page) 계산
 $total_pages= ceil($total_record/$rows_scale);
@@ -54,9 +55,41 @@ $row_length=87;
   <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=5">
-  <link rel="stylesheet" href="../css/cart.css?ver=9">
+  <link rel="stylesheet" href="../css/cart.css?ver=3">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+        		function all_check(){
+        			if($("#checkall").is(':checked')){
+        			      $("input[name='cart_list_check[]']").prop("checked",true);
+        			   }else{
+        			      $("input[name='cart_list_check[]']").prop("checked",false);
+        			}
+        		}
+        		function choice_delete(){
+        			var res = confirm('삭제하시겠습니까?');
+        			   
+        			   if(res){
+        			   for(i=0 ; i<$("cart_list_check").length ; i++){
+        			      if($("cart_list_check")[i].checked == false){
+        			         $("cart_list_check")[i].disabled = true;
+        			      }
+        			      
+        			   }
+        			   document.cart_choice_delete.action="./shopping_cart_delete.php?mode=choice&id=<?=$id?>";
+        			   document.cart_choice_delete.submit();
+        // 			   location.href=;
+        			   }
+        		}
+        		function all_delete() {
+        			document.cart_choice_delete.action="shopping_cart_delete.php?mode=all&id=<?=$id?>";
+        			document.cart_choice_delete.submit();
+        		}
+        		function single_delete(s) {
+        			document.cart_choice_delete.action="shopping_cart_delete.php?mode=single&id=<?=$id?>&cart_no="+s;
+        			document.cart_choice_delete.submit();
+        		}
+          </script>
 </head>
 <body>
     <header style="border:1px solid black;">
@@ -72,64 +105,68 @@ $row_length=87;
     </section>
     <section>
     	<div id="cart_section">
-    		<table id="cart_list_table">
-    			<tr>
-    				<td class="prod_check_box"><input type="checkbox"></td>
-    				<td class="prod_image">이미지</td>
-    				<td class="prod_info">상품정보</td>
-    				<td class="prod_price">판매가</td>
-    				<td class="prod_baesong">배송비</td>
-    				<td class="prod_total">합계</td>
-    				<td class="prod)choice">선택</td>
-    			</tr>
-    			<?php 
-    			if($total_record){
-    			    $page_per_record = 5;
-    			    $total_pages = ceil($total_record/$page_per_record);
-    			    $page_per_start = $page_per_record * ($page - 1);
-    			    for($i=$page_per_start; $i<$page_per_start+$page_per_record && $i<$total_record; $i++){
-    			        mysqli_data_seek($result,$i);
-    			        $row=mysqli_fetch_array($result);
-    			        $cart_num=$row['cart_num'];
-    			        $cart_no=$row['cart_no'];
-                        $cart_image=$row['cart_image_name'];        
-                        $cart_name=$row['cart_name'];        
-                        $cart_price=$row['cart_price'];        
-                        $cart_amount=$row['cart_amount'];    
-                        $cart_type=$row['cart_type'];
-                        $cart_total=$row['cart_total'];        
-                        $cart_size=$row['cart_size'];
-                        $cart_total = $cart_total + 3;
-                        
-                ?>
-    			<tr>
-    				<td class="prod_check_box"><input type="checkbox" name="cart_list_check" value="ok"></td>
-    				<td class="prod_image"><img class="prod_image2" src="../../input/upload_image/<?=$cart_image?>"></td>
-    				<td class="prod_info"><b><?=$cart_name?></b><br>[옵션 : 
-    				<?php 
-    				if($cart_type == '의류')
-    				{
-    				?>(<?=$cart_size?>)/
-    				<?php 
-    				}
-    				?><?=$cart_amount?>개]</td>
-    				<td class="prod_price"><?=$cart_price?></td>
-    				<td class="prod_baesong">배송비<br>3000원</td>
-    				<td class="prod_total"><?=$cart_total?>,000원</td>
-    				<td class="prod_choice">
-    					<button id="cart_delete" onclick="location.href='shopping_cart_delete.php?mode=single&id=<?=$id?>&cart_num=<?=$cart_num?>'">삭제하기</button>
-    				</td>
-    			</tr>
-    			<?php 
-                    }
-    			}
-    			?>
-    		</table>
+    		<form method="post" name="cart_choice_delete">
+        		<table id="cart_list_table">
+        			<tr>
+        				<td class="prod_check_box"><input type="checkbox" onclick="all_check()" id="checkall"></td>
+        				<td class="prod_image">이미지</td>
+        				<td class="prod_info">상품정보</td>
+        				<td class="prod_price">판매가</td>
+        				<td class="prod_baesong">배송비</td>
+        				<td class="prod_total">합계</td>
+        				<td class="prod)choice">선택</td>
+        			</tr>
+        	
+        			<?php 
+        			if($total_record){
+        			    $page_per_record = 5;
+        			    $total_pages = ceil($total_record/$page_per_record);
+        			    $page_per_start = $page_per_record * ($page - 1);
+        			    for($i=$page_per_start; $i<$page_per_start+$page_per_record && $i<$total_record; $i++){
+        			        mysqli_data_seek($result,$i);
+        			        $row=mysqli_fetch_array($result);
+        			        $cart_num=$row['cart_num'];
+        			        $cart_no=$row['cart_no'];
+                            $cart_image=$row['cart_image_name'];        
+                            $cart_name=$row['cart_name'];        
+                            $cart_price=$row['cart_price'];        
+                            $cart_amount=$row['cart_amount'];    
+                            $cart_type=$row['cart_type'];
+                            $cart_total=$row['cart_total'];        
+                            $cart_size=$row['cart_size'];
+                            $cart_total = $cart_total + 3;
+                            
+                    ?>
+        			<tr>
+        				<td class="prod_check_box"><input type="checkbox" name="cart_list_check[]" id="cart_list_check[]" value="<?=$cart_num?>"></td>
+        				<td class="prod_image"><a href="../../shopping/source/view.php?no=<?=$cart_no?>"><img class="prod_image2" src="../../input/upload_image/<?=$cart_image?>"></a></td>
+        				<td class="prod_info"><a href="../../shopping/source/view.php?no=<?=$cart_no?>"><b><?=$cart_name?></b><br>[옵션 : 
+        				<?php 
+        				if($cart_type == '의류')
+        				{
+        				?>(<?=$cart_size?>)/
+        				<?php 
+        				}
+        				?><?=$cart_amount?>개]</a></td>
+        				<td class="prod_price"><?=$cart_price?></td>
+        				<td class="prod_baesong">배송비<br>3000원</td>
+        				<td class="prod_total"><?=$cart_total?>,000원</td>
+        				<td class="prod_choice">
+        					<button id="cart_delete" onclick="single_delete(<?=$cart_no?>)">삭제하기</button>
+        				</td>
+        			</tr>
+        			<?php 
+                        }
+        			}
+        			?>
+        		</table>
+    		
     		<div id="cart_button">
-    			<button id="choice_del" onclick="location.href='shopping_cart_delete.php?mode=choice&id=<?=$id?>&'">선택삭제</button>
+    			<button id="choice_del" onclick="choice_delete()">선택삭제</button>
     			<button id="all_order">전체상품주문</button>
-    			<button id="all_del" onclick="location.href='shopping_cart_delete.php?mode=all&id=<?=$id?>'">장바구니비우기</button>
+    			<button id="all_del" onclick="all_delete()">장바구니비우기</button>
     		</div>
+    	</form>	
     		<div id="page_link">
     			<table id="page_link_table">
                 	<tr>

@@ -1,4 +1,7 @@
 @charset "UTF-8";
+a:hover{
+	text-decoration: none;
+}
 #wish_list_section{
 	width: 1200px;
 	border: 1px solid red;
@@ -38,6 +41,13 @@ td{
 	text-align: center;
 	border-left-style:none; 
 	border-right-style:none; 
+}
+td a{
+	color: black;
+}
+td a:hover{
+	text-decoration: none;
+	color: rgba(1,1,1,0.7);
 }
 .prod_check_box{
 	width: 40px;
@@ -126,4 +136,8 @@ td{
 }
 #page_link_table td a:hover{
 	text-decoration: none;
+}
+#page_num{
+	border: 1px solid black;
+	display: inline;
 }
