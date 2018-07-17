@@ -17,5 +17,5 @@ if($DBflag !== "OK"){
         echo "<script>alert('yagaja_DB 생성완료!')</script>";
     }
 }
-$con = mysqli_connect("localhost","root","123456","yagaja_DB") or die("yagajaDB 접속실패!");//yagajaDB  접속
+$con = mysqli_connect("localhost","root","123456","yagaja_DB") or die("yagaja_DB 접속실패!");//yagajaDB  접속
 ?>
