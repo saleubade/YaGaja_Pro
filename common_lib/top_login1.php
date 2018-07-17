@@ -18,11 +18,12 @@ session_start();
 
 include_once './common_lib/createLink_db.php';
 
+
   if(isset($_SESSION['id'])){
     $id=$_SESSION['id'];
     $name = $_SESSION['name'];
     
-    $sql = "select * from message where recv_id = 'audgns0058' and recv_read = 'N' ";
+    $sql = "select * from message where recv_id = '$id' and recv_read = 'N' ";
     $result = mysqli_query($con, $sql) or die(mysqli_error($con));
     $not_read_num = mysqli_num_rows($result);
     

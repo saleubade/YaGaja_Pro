@@ -1,3 +1,7 @@
+<?php 
+include_once './common_lib/createLink_db.php';
+include_once './message/source/create_message.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
