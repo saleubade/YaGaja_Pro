@@ -1,6 +1,12 @@
 <?php
 session_start();
 include_once '../../common_lib/createLink_db.php';
+if(isset($_SESSION['id'])){
+    $id=$_SESSION['id'];
+    $cname = $_SESSION['name'];
+}else{
+    $id=null;
+}
 if(isset($_GET['no']))
 {
     $no=$_GET['no'];

@@ -1,3 +1,9 @@
+<script type="text/javascript">
+check_file_good(){
+	history.go(-1);
+}
+
+</script>
 <?php
 session_start();
 include "../../common_lib/createLink_db.php";
@@ -9,6 +15,7 @@ $page = $_GET["page"];
 $table = $_GET["table"];
 $subject = $_POST['subject'];
 $content = $_POST['content'];
+$continent = $_GET['continent'];
 
 
 
@@ -24,6 +31,9 @@ if(isset($_FILES["upfile"])){
     $files=$_FILES["upfile"];
     
     $count = count($files["name"]);
+    if($count == 0 ){
+        check_file_good();
+    }
     $upload_dir = '../data/';
     for($i=0;$i<$count;$i++){
         $upfile_error = null;
@@ -42,7 +52,7 @@ if(isset($_FILES["upfile"])){
                 $new_file_name=$new_file_name."_".$i;
                 $copy_file_name[$i]=$new_file_name.".".$file_ext;
                 $upload_file[$i]=$upload_dir.$copy_file_name[$i];
-                if($upfile_size[$i]>800000){
+                if($upfile_size[$i]>2000000){
                     echo ("
             <script>
             alert('업로드 파일 크기가 지정된 용량(800KB)을 초과합니다! \\n파일크기를  확인해주세요!')
@@ -118,8 +128,8 @@ if(isset($mode) && $mode === "modify"){ //글수정
     mysqli_query($con, $sql)or die("실패원인3 : ".mysqli_error($con));
     
 }else{
-    $sql="insert into gallery (id,name,subject,content,regist_day,hit,file_name_0,file_name_1,file_name_2,file_copy_0,file_copy_1,file_copy_2)";
-    $sql.="values('$id','$name','$subject','$content','$regist_day', 0, ";
+    $sql="insert into gallery (id,name,continent,subject,content,regist_day,hit,file_name_0,file_name_1,file_name_2,file_copy_0,file_copy_1,file_copy_2)";
+    $sql.="values('$id','$name','$continent','$subject','$content','$regist_day', 0, ";
     for($i=0;$i<$count;$i++){
         if($files["name"][$i]!=""){
             $sql.= "'{$upfile_name[$i]}', ";
@@ -146,7 +156,7 @@ if(isset($mode) && $mode === "modify"){ //글수정
     
     
     
-    echo $sql;
+
     mysqli_query($con, $sql) or die("실패원인4 : ".mysqli_error($con));
 }
 mysqli_close($con);

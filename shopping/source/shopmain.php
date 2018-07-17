@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if(isset($_SESSION['id'])){
+        $id=$_SESSION['id'];
+        $cname = $_SESSION['name'];
+    }else{
+        $id=null;
+    }
     include_once '../../common_lib/createLink_db.php';
     include_once '../../shopping_lib/create_table_cart.php';
     include_once '../../shopping_lib/create_table_shop_goods.php';

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once "../../common_lib/createLink_db.php";
+include "../../common_lib/createLink_db.php";
 
 if (! empty($_GET['table'])) {
     $table = $_GET['table'];
