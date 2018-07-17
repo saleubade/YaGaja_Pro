@@ -131,7 +131,7 @@ if($fly == 'round'){
     <table id='row_flight2'>
     <tr id='row_flight2_tr1'>
     <td width='370' height='40'>출 국 편</td>
-    <td width='80' height='40'>항공 번호</td>
+    <td width='100' height='40'>항공 번호</td>
     <td width='120' height='40'>날 짜</td>
     <td width='120' height='40'>시 간</td>
     <td width='100' height='40'>운행 시간</td>
@@ -193,7 +193,7 @@ if($fly == 'round'){
      <table id="row_flight2">
     <tr id="row_flight2_tr1">
     <td width="370" height="40">귀 국 편</td>
-    <td width="80" height="40">항공 번호</td>
+    <td width="100" height="40">항공 번호</td>
     <td width="120" height="40">날 짜</td>
     <td width="120" height="40">시 간</td>
     <td width="100" height="40">운행 시간</td>
@@ -266,7 +266,7 @@ $sql = "select * from flight_one_way where flight_start = '$back' and flight_bac
      <table id="row_flight2">
     <tr id="row_flight2_tr1">
     <td width="370" height="40">귀 국 편</td>
-    <td width="80" height="40">항공 번호</td>
+    <td width="100" height="40">항공 번호</td>
     <td width="120" height="40">날 짜</td>
     <td width="120" height="40">시 간</td>
     <td width="100" height="40">운행 시간</td>

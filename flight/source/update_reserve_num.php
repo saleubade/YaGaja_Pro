@@ -186,23 +186,6 @@ if($fly= "round"){
 }
 
 
-
-
-/* $sql = "update reserve_info set start_flight_ap_num = '$start_flight_ap_num', back_flight_ap_num = '$back_flight_ap_num' where id = '$id'";
-mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
-
-$sql = "select * from reserve_info f inner join membership m on f.flght_ap_num = m.start_flight_ap_num"; */
-
-/* $sql = "update reserve_info r inner join membership set start_flight_ap_num = '$start_flight_ap_num', back_flight_ap_num = '$back_flight_ap_num' where id = '$id'";
-mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
- */
-/* $sql = "update flight_one_way set seatnum = seatnum - '$rs_cnt' where flght_ap_num = '$start_flight_ap_num' ";
-mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
-
-$sql = "update flight_one_way set seatnum = seatnum - '$rs_cnt' where flght_ap_num = '$back_flight_ap_num' ";
-mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
- */
-
 echo "<script>location.href='../../index.php'</script>";
 
 
