@@ -14,7 +14,7 @@ while($row=mysqli_fetch_row($result)){
 if($DBflag !== "OK"){
     $sql = "create database yagajaDB";
     if(mysqli_query($con,$sql)){
-        echo "<script>alert('libraryDB 생성완료!')</script>";
+        echo "<script>alert('yagajaDB 생성완료!')</script>";
     }
 }
 $con = mysqli_connect("localhost","root","123456","yagajaDB") or die("yagajaDB 접속실패!");//yagajaDB  접속

@@ -29,7 +29,7 @@ $no = $_GET['no'];
 <meta charset="utf-8">
 <link rel="stylesheet" href="../css/gallery.css?ver=2" type="text/css"
 	media="all">
-<link rel="stylesheet" href="../../common_css/index_css4.css?ver=2"
+<link rel="stylesheet" href="../../common_css/index_css3.css?ver=2"
 	type="text/css" media="all">
     <?php
     if ($mode == "search") {
@@ -117,7 +117,7 @@ $no = $_GET['no'];
 			<hr>
 			<?php 
 			
-			$sql = "select * from gallery where $item_hit ordey by desc";
+			$sql = "select * from gallery order by $item_hit desc";
 			$result2 = mysqli_query($con, $sql);
 			
 			
@@ -140,7 +140,7 @@ $no = $_GET['no'];
 			   ?>
 			   
 			   <div style="border: 1px solid blue; width: 250px; height: 140px; float: left; margin-left: 50px; ">
-			   <a href="gallery_view.php?table=<?=$table?>&num=<?=$item_num ?>&page=<?=$page?>&continent=<?=$continent?>"><img src="../img/asd.jpg" style="width: 250px; height: 140px;">
+			   <a href="gallery_view.php?table=<?=$table?>&num=<?=$good_num ?>&page=<?=$page?>&continent=<?=$continent?>"><img src="../img/asd.jpg" style="width: 250px; height: 140px;">
 			    <?=$good_subject ?></a>
 			   </div>
 			  

@@ -7,7 +7,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-   <link href="../../common_css/index_css4.css" rel="stylesheet"
+   <link href="../../common_css/index_css3.css?ver=1" rel="stylesheet"
 	type="text/css" media="all">
    <link rel="stylesheet" href="../css/write_form.css?ver=1">
   <script>
