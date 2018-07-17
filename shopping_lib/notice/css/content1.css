@@ -1,0 +1,104 @@
+.main{
+  position:relative;
+  display:inline-table;
+  width: 1000px;
+  height:500px;
+  text-align: left;
+}
+
+#section{
+  margin-top:30px;
+  text-align: center;
+}
+
+#head{
+  margin-top:30px;
+}
+#head h1{
+  margin-right: 410px;
+  display:inline;
+}
+
+#write_form_p_1{
+	margin: 0px;
+	border-top: 1.5px solid black;
+	border-bottom: 1px solid gray;
+}
+
+#write_form_1{
+	margin-left: 150px;
+}
+
+#write_form_1 #write_1{
+	width:99%; 
+	height:25px; 
+	margin:2px 0 2px 0; 
+}
+
+#write_form_1 #write_2{
+	width:99%; 
+	height:25px; 
+	margin:2px 0 2px 0; 
+}
+#write_form_1 #write_3{
+	width:99%; 
+	height:25px; 
+	margin:2px 0 2px 0; 
+}
+
+.write_form{
+	
+	float:left;
+	 width:99%; 
+	 
+	border-bottom:solid 1px #cccccc;
+}
+
+#write_form_1 .write_1_1{
+float:left;
+
+	width:160px;
+	height:25px;
+	text-align:center;
+	padding:5px;
+	background-color:#eeeeee;
+}
+
+#write_form_1 #write_2 .write_1_1{
+	height:380px;
+	
+	padding-top:92px;
+}
+
+#write_form_1 .write_1_2{
+	float:left;
+	margin-left: 8px;
+	margin-top:2px;
+}
+
+ #write_1 .write_1_2 input{
+ float:left;
+	width:520px;
+	height:25px;
+	border:solid 1px #cccccc;
+}
+
+#write_2 .write_1_2 textarea{
+	float:left;
+	height:470px;
+	 margin-top:1px;
+	border:solid 1px #cccccc;
+}
+  
+.clear{
+	clear: both;
+}
+
+#write_button{
+	float:left;
+	margin: 10px 0 0 500px;
+	
+}
+
+
+        

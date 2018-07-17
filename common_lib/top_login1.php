@@ -17,6 +17,9 @@
 session_start();
 
 include_once './common_lib/createLink_db.php';
+include_once '../message/create_message.php';
+
+
 
   if(isset($_SESSION['id'])){
     $id=$_SESSION['id'];
