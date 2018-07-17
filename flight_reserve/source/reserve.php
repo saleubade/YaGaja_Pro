@@ -5,44 +5,86 @@ session_start();
 if(!empty($_SESSION['id'])){
     $id = $_SESSION['id'];
 }else{
-    $id = "?";
+    $id = "";
 }
-
-if(!empty($_GET['seat'])){
-    $seat = $_GET['seat'];
+if(!empty($_GET['num'])){
+    $num = $_GET['num'];
 }else{
-    $seat = "?";
+    $num = "?";
 }
-
-if(!empty($_POST['seat'])){
-    $seat2 = $_POST['seat'];
+if(!empty($_GET['start'])){
+    $start = $_GET['start'];
 }else{
-    $seat2 = "?";
+    $start = "?";
 }
-//B777-302
+if(!empty($_GET['back'])){
+    $back = $_GET['back'];
+}else{
+    $back = "?";
+}
 
-$seat = substr($seat,4);
-echo $seat;     //get 으로 좌석 한개값만 가져오기
-$regist_time= $current_time = date("Y-m-d H:i:s",mktime());
- $sql = "insert into seat_state (flght_ap_num, seat_no, id, seat_state, regist_time)
- values ('$flght_ap_num','$seat', '$id', 'reverse','$regist_time')";
- mysqli_query($con,$sql) or die ("실패원인:".mysqli_error($con));
+if(!empty($_GET['start_check'])){
+    $start_check = $_GET['start_check'];
+}else{
+    $start_check = "?";
+}
 
-//기본값 세팅 b777 302항공편
+if(!empty($_GET['back_check'])){
+    $back_check = $_GET['back_check'];
+}else{
+    $back_check = "?";
+}
 
-$sql = "select * from flight_one_way a inner join seat_state b on a.flght_ap_num = b.flght_ap_num";
-mysqli_query($con,$sql) or die ("실패원인:".mysqli_error($con));
+if(!empty($_GET['fly'])){
+    $fly = $_GET['fly'];
+}else{
+    $fly = "";
+} 
 
 
+if(!empty($_GET['sapnum'])){
+    $sapnum = $_GET['sapnum'];
+}else{
+    $sapnum = "";
+}
 
+if(!empty($_GET['bapnum'])){
+    $bapnum = $_GET['bapnum'];
+}else{
+    $bapnum = "";
+}
+
+if(!empty($_POST['choice_seat'])){
+    $choice_seat = $_POST['choice_seat'];
+}else{
+    $choice_seat = "";
+}
+
+
+foreach($choice_seat as $value) {
+ $seat = $seat."/".$value;
+}
+$result = substr_count($seat, "/");        // "/" 의 개수를 구하는 함수
+
+if($result != $num){   
+    echo "<script>alert('인원 수만큼 좌석을 선택해주세요')</script>";
+    echo "<script> history.go(-1);</script>";
+}else{
+    $sql= "insert into seat_state (id, flght_ap_num, choice_seat)";
+    $sql.= "values ('$id','$sapnum','$seat')";
     
+    mysqli_query($con, $sql) or die(mysqli_error($con));
     
+    mysqli_close($con);
+    
+    echo "<script>alert('좌석 예매되었습니다.')</script>";
+    echo "<script> location.href='../../index.php'; </script>";
+}
+
+
+
+
 
 ?>
-
-
-
-
-
 
 

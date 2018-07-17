@@ -12,11 +12,9 @@ while($row=mysqli_fetch_row($result)){
 if($flag!=="OK"){
     $sql = "create table seat_state(
       no int not null auto_increment,
-      flght_ap_num char(10) not null,
-      seat_no int not null,
-      id char(12) not null,
-      seat_state varchar(20) not null,
-      regist_time datetime not null,
+      id char(15) not null,
+      flght_ap_num char(15) not null,
+      choice_seat varchar(100) null,
       primary key(no)
       )";
     if(mysqli_query($con,$sql)){
