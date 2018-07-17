@@ -1,4 +1,4 @@
-
+<meta charset="UTF-8">
 <?php
 session_start();
 if(isset($_SESSION['id'])){
@@ -89,6 +89,10 @@ $row_length=87;
         			document.cart_choice_delete.action="shopping_cart_delete.php?mode=single&id=<?=$id?>&cart_no="+s;
         			document.cart_choice_delete.submit();
         		}
+        		function all_order(){
+        			document.cart_choice_delete.action="../../shopping_buy/source/shopping_buy.php?id=<?=$id?>;
+        			document.cart_choice_delete.submit();
+            	}
           </script>
 </head>
 <body>
@@ -163,7 +167,7 @@ $row_length=87;
     		
     		<div id="cart_button">
     			<button id="choice_del" onclick="choice_delete()">선택삭제</button>
-    			<button id="all_order">전체상품주문</button>
+    			<button id="all_order" onclick="all_order()">전체상품주문</button>
     			<button id="all_del" onclick="all_delete()">장바구니비우기</button>
     		</div>
     	</form>	

@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <?php
 session_start();
 include_once '../../common_lib/createLink_db.php';
@@ -30,7 +31,10 @@ $sizeS = $row['sizeS'];
 $sizeM = $row['sizeM'];
 $sizeL = $row['sizeL'];
 $sizeXL = $row['sizeXL'];
+$hit= $row['hit']+1;
 
+$sql= "update shop_goods set hit=$hit where shop_no=$no";
+mysqli_query($con, $sql) or die(mysqli_error($con));
 ?>
 <!DOCTYPE html>
 <html>
