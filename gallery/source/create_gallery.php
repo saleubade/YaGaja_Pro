@@ -1,6 +1,6 @@
 <?php
 $flag = "NO";
-$sql = "show tables from yagajadb";
+$sql = "show tables from yagaja_db";
 $result = mysqli_query($con, $sql) or die("실패원인 : " . mysqli_error($con));
 
 while ($row = mysqli_fetch_row($result)) { // mysqli_fetch_row = 쿼리문의 결과값이 들어있는 레코드셋에서 그 첫번째 레코드를 배열로 가져온다, 단 인덱스로 참조한다.

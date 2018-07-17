@@ -1,6 +1,6 @@
 <?php
 $flag1 = "NO";
-$sql = "show tables from yagajadb";
+$sql = "show tables from yagaja_db";
 $result10 = mysqli_query($con, $sql) or die("실패원인 : " . mysqli_error($con));
 
 while ($row10 = mysqli_fetch_row($result10)) {

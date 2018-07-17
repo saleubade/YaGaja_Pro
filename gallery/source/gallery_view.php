@@ -75,7 +75,7 @@ mysqli_query($con, $sql) or die("실패원인2 : " . mysqli_error($con));
   <head>
     <meta charset="utf-8">
     <title>야 ~ 가자!</title>
-    <link rel="stylesheet" href="../../common_css/index_css4.css">
+    <link rel="stylesheet" href="../../common_css/index_css3.css?ver=1">
     <link rel="stylesheet" href="../css/view4.css?ver=1">
    	<script>
    	function check_input(){

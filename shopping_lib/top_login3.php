@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <script>
   function popup(){
 	var popupX = (window.screen.width/2)-(1200/2);

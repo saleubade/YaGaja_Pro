@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <?php
 session_start();
 include "../../common_lib/createLink_db.php";

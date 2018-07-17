@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <?php
 $flag = "NO";
 $sql = "show tables from yagajaDB";
