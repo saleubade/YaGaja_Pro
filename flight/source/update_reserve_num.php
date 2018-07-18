@@ -185,25 +185,8 @@ if($fly= "round"){
     mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
 }
 
-
-
-
-/* $sql = "update reserve_info set start_flight_ap_num = '$start_flight_ap_num', back_flight_ap_num = '$back_flight_ap_num' where id = '$id'";
-mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
-
-$sql = "select * from reserve_info f inner join membership m on f.flght_ap_num = m.start_flight_ap_num"; */
-
-/* $sql = "update reserve_info r inner join membership set start_flight_ap_num = '$start_flight_ap_num', back_flight_ap_num = '$back_flight_ap_num' where id = '$id'";
-mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
- */
-/* $sql = "update flight_one_way set seatnum = seatnum - '$rs_cnt' where flght_ap_num = '$start_flight_ap_num' ";
-mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
-
-$sql = "update flight_one_way set seatnum = seatnum - '$rs_cnt' where flght_ap_num = '$back_flight_ap_num' ";
-mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
- */
-
-echo "<script>location.href='../../index.php'</script>";
+echo "<script>location.href ='../../flight_reserve/source/flight_seat.php?fly=$fly&start=$start&back=$back&start_check=$start_check&back_check=$back_check&anum=$adult_num&cnum=$child_num&bnum=$baby_num&sapnum=$start_flight_ap_num&bapnum=$back_flight_ap_num';
+</script>";
 
 
 ?>

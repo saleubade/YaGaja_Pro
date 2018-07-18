@@ -19,10 +19,7 @@ if(!empty($_POST['back_check'])){
 }
 
 $start_check = substr($start_check,6,7);
-var_dump($start_check);
 $back_check = substr($back_check,5,6);
-var_dump($back_check);
-
 
 if($start_check && $back_check){       //있냐없냐
     $sql = "delete from reserve_info where no = '$start_check' or no = '$back_check'";
@@ -36,15 +33,9 @@ if($start_check && $back_check){       //있냐없냐
     mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
 }
 
-
-
 echo "<script>
      history.go(-1);
  alert('예약취소 되었습니다.');
     </script>";
-    
-   
-    
-    
 
 ?>

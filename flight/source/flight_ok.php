@@ -48,12 +48,7 @@ if(!empty($_POST['back_check'])){
 }else{
     $back_check = "?";
 }
-
-
-echo $start_check ,$back_check, $fly, $start, $back;
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,7 +71,6 @@ function flight_back_page(){
 	history.go(-1);    	
 }
 
-
 </script>
 </head>
 <body>
@@ -85,11 +79,11 @@ function flight_back_page(){
 </header>
 <nav id="top">
 <?php include_once '../../common_lib/main_menu2.php';?>
-</nav>
+</nav><br><br><br><br>
 <h1 style="margin:0 auto; text-align: center">FLIGHT TICKETING</h1><br>
-<div id="ticket_box0">
+<div id="ticket_box6">
 <p>
-<br><hr id="hr1"><br><br>
+<br><hr id="hr3"><br><br>
 &nbsp;1. 여정 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 2. 항공편 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 3. 결과 조회  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -106,7 +100,7 @@ function flight_back_page(){
 ?>
 </tr>
 </table><br>
-<hr id="hr1">
+<hr id="hr3">
 <?php 
 /* $round_total_price = $start_flight_price + $back_flight_price; */
 ?>
@@ -266,64 +260,56 @@ if($baby_num == "없음"){
 }
 $rs_cnt = $adult_num + $child_num + $baby_num;
 ?>
-
-   
-
-
-  <div id='select_ticket'><span style='font-size:15pt;'>결제 금액<br></span></div>
-  <div id="selected_flight3">총 결제금액 : <?= $total_flight_price?>  원
+<br><div id="select_ticket" style="text-align:left;"><span style='font-size:15pt;'>결제 금액</span></div>
+  <div id="checked_flight1">총 결제금액 : <?= $total_flight_price?>  원
   <span style='font-size:12pt;'>(성인 : <?= $adult_num ?> 명 + 어린이 : <?= $child_num ?> 명 + 유아 : <?= $baby_num ?> 명)<br></span>
    </div>
 
-<div id="select_ticket"><span style='font-size:15pt;'><br><br>예약 번호</span><br></div>
-<hr id="hr1"><br>
- <div id="selected_flight3">예약번호  : <?= $reservation_number ?></div>
-<div id="select_ticket"><span style='font-size:15pt;'><br><br>예매 확인</span><br></div>
-<hr id="hr1"><br>
-<div id="flight_ok_box" >
+<div id="select_ticket" style="text-align:left;"><span style='font-size:15pt;'>예약 번호</span></div>
+<div id="selected_flight3">예약번호  : <?= $reservation_number ?></div><br><br><br>
+<div id="select_ticket" style="text-align:left;"><span style='font-size:15pt; '><br><br><br>예매 확인</span></div>
+<div id="flight_ok_box">
 
-
- <table id='row_flight'  style="margin-top:30px;">
+<table id='row_flight'>
     <tr id='row_flight_tr1'>
-    <td colspan='4'><?= $start_flight_start ?> >>>> <?= $back_flight_start ?></td>
+    <td colspan='4'><?= $start ?> &nbsp; <span style="font-size: 20pt;">→</span>  &nbsp;<?= $back ?></td>
     </tr>
     <tr id='row_flight_tr2'>
-    <td colspan='4'><?= $start_fly_start_date ?> | <?= $start_fly_start_time ?> - <?= $start_fly_back_time ?> | <?= $start_fly_time ?> | 직항편</td>
+    <td colspan='4'><?= $start_fly_start_date ?>&nbsp; | &nbsp;<?= $start_fly_start_time ?> - <?= $start_fly_back_time ?>&nbsp; | &nbsp;<?= $start_fly_time ?> &nbsp;| &nbsp;직항편</td>
     </tr>
     <tr id='row_flight_tr3'>
-    <td colspan="2" style='padding-left:30px;'><?= $start_flight_start ?><br><?= $start_fly_start_time ?></td>
-    <td>>>>></td>
-    <td><?= $back_flight_start ?><br><?= $start_fly_back_time ?></td>
+    <td><span style="font-size:15pt;"><?= $start ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $start_fly_start_time ?>)</span></div></td>
+    <td> <span style="font-size: 25pt;">→</span>  &nbsp;&nbsp;</td>
+    <td><span style="font-size:15pt;"><?= $back ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $start_fly_back_time ?>)</span><div></td>
     </tr>
     <tr id='row_flight_tr4'>
-    <td colspan='4'> 항공편 운임 : <?= $start_flight_price ?> 원</td>
+    <td colspan='4'><span class="low_price">항공편 운임 : <?= $start_flight_price ?> 원</span></td>
     </tr>
     </table>
-
-	<table id='row_flight1' style="margin-top:30px;">
+    
+    <table id='row_flight1'>
     <tr id='row_flight_tr1'>
-    <td colspan='4'><?= $back_flight_start ?> >>>> <?= $start_flight_start ?></td>
+    <td colspan='4'><?= $back ?> <span style="font-size: 20pt;">→</span>  <?= $start ?></td>
     </tr>
     <tr id='row_flight_tr2'>
-    <td colspan='4'><?= $back_fly_start_date ?> | <?= $back_fly_start_time ?> - <?= $back_fly_back_time ?> | <?= $back_fly_time ?> | 직항편</td>
+    <td colspan='4'><?= $back_fly_start_date ?>&nbsp; | &nbsp;<?= $back_fly_start_time ?> - <?= $back_fly_back_time ?>&nbsp; | &nbsp;<?= $back_fly_time ?>&nbsp; | &nbsp;직항편</td>
     </tr>
     <tr id='row_flight_tr3'>
-    <td colspan='2' style='padding-left:30px;'><?= $back_flight_start ?><br><?= $back_fly_start_time ?></td>
-    <td>>>>></td>
-    <td><?= $start_flight_start ?><br><?= $back_fly_start_time ?></td>
+    <td><span style="font-size:15pt;"><?= $back ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $back_fly_start_time ?>)</span></div></td>
+    <td><span style="font-size: 25pt;">→</span>  &nbsp;&nbsp;</td>
+    <td><span style="font-size:15pt;"><?= $start ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $back_fly_back_time ?>)</span></div></td>
     </tr>
+     </tr>
     <tr id='row_flight_tr4'>
-    <td colspan='4'>항공편 운임 : <?= $back_flight_price ?> 원</td>
+    <td colspan='4'><span class="low_price">항공편 운임 : <?= $back_flight_price ?> 원</span></td>
     </tr>
     </table><br><br><br><br>
-    
-  
+
   <div id="button_div1">
 
   <a href="#" onclick="updateReserveNum('update_reserve_num.php?rs_num=<?=$reservation_number?>&total_price=<?=$total_flight_price?>&anum=<?=$adult_num?>&cnum=<?=$child_num?>&bnum=<?=$baby_num?>&start_check=<?= $start_check?>&back_check=<?= $back_check?>&start=<?= $start?>&back=<?= $back?>&fly=<?=$fly?>')">
-  <input type="button" id="select_ok" value="완료" style=''>
-  </a>
-  <input type="button" id="select_ok" value="취소" style='' onclick="flight_back_page()">
+  <input type="button" id="select_ok" value="완료" style='width:100px; height:30px;'></a>
+  <input type="button" id="select_ok" value="취소" style='width:100px; height:30px;' onclick="flight_back_page()">
   </div>
     
 </div>
@@ -383,7 +369,6 @@ $reservation_num = mt_rand(1000, 9999);
 
 $reservation_number = $reservation_str . $reservation_num;
 
-
 if($adult_num == "없음"){
     $adult_num = "0";
 }
@@ -395,52 +380,40 @@ if($baby_num == "없음"){
 }
 $rs_cnt = $adult_num + $child_num + $baby_num;
 ?>
-
-   
-
-
-  <div id='select_ticket'><span style='font-size:15pt;'>결제 금액<br></span></div>
-  <div id="selected_flight3">총 결제금액 : <?= $total_flight_price?>  원
+<br><div id="select_ticket" style="text-align:left;"><span style='font-size:15pt;'>결제 금액</span></div>
+  <div id="checked_flight1">총 결제금액 : <?= $total_flight_price?>  원
   <span style='font-size:12pt;'>(성인 : <?= $adult_num ?> 명 + 어린이 : <?= $child_num ?> 명 + 유아 : <?= $baby_num ?> 명)<br></span>
    </div>
 
-<div id="select_ticket"><span style='font-size:15pt;'><br><br>예약 번호</span><br></div>
-<hr id="hr1"><br>
- <div id="selected_flight3">예약번호  : <?= $reservation_number ?></div>
-<div id="select_ticket"><span style='font-size:15pt;'><br><br>예매 확인</span><br></div>
-<hr id="hr1"><br>
-<div id="flight_ok_box" >
-
-
-
- <table id='row_flight'  style="margin-top:30px;">
+<div id="select_ticket" style="text-align:left;"><span style='font-size:15pt;'>예약 번호</span></div>
+<div id="selected_flight3">예약번호  : <?= $reservation_number ?></div><br><br><br>
+<div id="select_ticket" style="text-align:left;"><span style='font-size:15pt; '><br><br><br>예매 확인</span></div>
+<div id="flight_ok_box">
+ <table id='row_flight1'>
     <tr id='row_flight_tr1'>
-    <td colspan='4'><?= $start_flight_start ?> >>>> <?= $start_flight_back ?></td>
+    <td colspan='4'><?= $start_flight_start ?> <span style="font-size: 20pt;">→</span>  <?= $start_flight_back ?></td>
     </tr>
     <tr id='row_flight_tr2'>
-    <td colspan='4'><?= $start_fly_start_date ?> | <?= $start_fly_start_time ?> - <?= $start_fly_back_time ?> | <?= $start_fly_time ?> | 직항편</td>
+    <td colspan='4'><?= $start_fly_start_date ?>&nbsp; | &nbsp;<?= $start_fly_start_time ?> - <?= $start_fly_back_time ?>&nbsp; | &nbsp;<?= $start_fly_time ?>&nbsp; | &nbsp;직항편</td>
     </tr>
     <tr id='row_flight_tr3'>
-    <td colspan="2" style='padding-left:30px;'><?= $start_flight_start ?><br><?= $start_fly_start_time ?></td>
-    <td>>>>></td>
-    <td><?= $start_flight_back ?><br><?= $start_fly_back_time ?></td>
+    <td><span style="font-size:15pt;"><?= $start_flight_start ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $start_fly_start_time ?>)</span></div></td>
+    <td><span style="font-size: 25pt;">→</span>  &nbsp;&nbsp;</td>
+    <td><span style="font-size:15pt;"><?= $start_flight_back ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $start_fly_back_time ?>)</span></div></td>
     </tr>
     <tr id='row_flight_tr4'>
-    <td colspan='4'> 항공편 운임 : <?= $start_flight_price ?> 원</td>
+    <td colspan='4'><span class="low_price">항공편 운임 : <?= $start_flight_price ?> 원</span></td>
     </tr>
-    </table>
+    </table><br><br><br><br>
 
-	
-    </div>
-  
+ 	
+ 	</div>
   <div id="button_div1">
    
   <a href="#" onclick="updateReserveNum('update_reserve_num.php?rs_num=<?=$reservation_number?>&total_price=<?=$total_flight_price?>&anum=<?=$adult_num?>&cnum=<?=$child_num?>&bnum=<?=$baby_num?>&start_check=<?= $start_check?>&back_check=<?= $back_check?>&start=<?= $start?>&back=<?= $back?>&fly=<?=$fly?>')">
-  <input type="button" id="select_ok" value="완료" style=''>
-  </a>
-  <input type="button" id="select_ok" value="취소" style='' onclick="flight_back_page()">
+  <input type="button" id="select_ok" value="완료" style='width:100px; height:30px;'></a>
+  <input type="button" id="select_ok" value="취소" style='width:100px; height:30px;' onclick="flight_back_page()">
   </div>
-    
 </div>
 
     

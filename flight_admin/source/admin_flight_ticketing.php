@@ -20,28 +20,13 @@ if(!empty($_SESSION['name'])){
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css">
-<link type="text/css" rel="stylesheet" href="../css/ticket1.css?v=1">
+<link type="text/css" rel="stylesheet" href="../css/ticketing.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
 <script type="text/javascript">
-function check_input(){	
-	if($("input:radio[id='start_check']").is(":checked") || $("input:radio[id='back_check']").is(":checked")){
-	
-		document.flight_listform.submit();
-		
-	}else{
-		alert('취소할 항공권을 선택해주세요.');
-		return;
-	}
-	
 
-}
-
-function aab(a){
-	$("#totalprice1").text(a);
-	
-}
 </script>
 </head>
 <body>
@@ -53,15 +38,8 @@ function aab(a){
 <?php include_once '../../common_lib/main_menu2.php';?>
 </nav>
 <div id="ticket_box4"><br><br>
-<div id='select_ticket'><span style='font-size:15pt;'>항공권 예매내역<br></span></div><br><br>
-
-<span style="font-size:14pt;"><b>[ <?= $name ?> ]</b> 님의 항공권 예매 내역입니다.</span>
-<span style="font-size:15pt; float:right;">전 체 금 액  : <span  id="totalprice1"><?= $total ?></span> 원 &nbsp;&nbsp;&nbsp;</span>
-<br><hr id="hr1"><br><br>
-
-
-
-<form action="flight_list_cancel.php?rnum=<?= $rnum ?>" method="post" name="flight_listform">
+<div id='select_ticket'><span style='font-size:15pt;'>항공권 예매내역<br></span></div><br>
+<div id='select_ticket' style="text-align:right;"><span style='font-size:12pt;'> * 5개  출력</span></div>
 <table id='row_flight2'>
     <tr id='row_flight2_tr1'>
     <td width='370' height='40'>출 국 편</td>
@@ -70,16 +48,10 @@ function aab(a){
     <td width='120' height='40'>시 간</td>
     <td width='100' height='40'>운행 시간</td>
     <td width='150' height='40'>운 임</td>
-    <td width='70' height='40'>선 택</td>
-   
     </tr>
 <?php 
 $sql = "select * from membership m inner join reserve_info r on m.id = r.id
-  inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id'";  
-/* $sql = "select * from flight_one_way f inner join reserve_info r on f.flght_ap_num = r.start_apnum"; */
- mysqli_query($con,$sql) or die("실패원인12312: ".mysqli_error($con));
- 
-
+  inner join flight_one_way f on f.flght_ap_num = r.start_apnum LIMIT 5";  
 $result = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);
 if($total_record == 0){
@@ -111,13 +83,8 @@ while($row = mysqli_fetch_array($result)){
     <td>$fly_start_time - $fly_back_time</td>
     <td>$fly_time</td>
     <td>$flight_price 원</td>
-    <td><input type='radio' value='start_$no' name='start_check' id='start_check' style='width:20px;height:20px;'></td>
     </tr>";
-        
-    
 }
-   
-
 ?>   
  </table>
 <br>
@@ -135,7 +102,7 @@ while($row = mysqli_fetch_array($result)){
     </tr>
  <?php   
  $sql = "select * from membership m inner join reserve_info r on m.id = r.id
-  inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id'";     
+  inner join flight_one_way f on f.flght_ap_num = r.start_apnum LIMIT 5";     
 
 $result = mysqli_query($con,$sql) or die("실패원인2: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);
@@ -183,7 +150,7 @@ while($row = mysqli_fetch_array($result)){
 }
 
 ?>    
-</table><br><hr id="hr1"><br><br>
+</table><br><br><br>
 
  <table id="row_flight2">
     <tr id="row_flight2_tr1">
@@ -193,13 +160,11 @@ while($row = mysqli_fetch_array($result)){
     <td width="120" height="40">시 간</td>
     <td width="100" height="40">운행 시간</td>
     <td width="150" height="40">운 임</td>
-    <td width="70" height="40">선 택</td>
   
     </tr>
 <?php   
 $sql = "select * from membership m inner join reserve_info r on m.id = r.id
-  inner join flight_one_way f on f.flght_ap_num = r.back_apnum where m.id = '$id' ";     
-/* $sql = "select * from flight_one_way f inner join reserve_info r on f.flght_ap_num = r.back_apnum"; */
+  inner join flight_one_way f on f.flght_ap_num = r.back_apnum LIMIT 5";     
 
 $result = mysqli_query($con,$sql) or die("실패원인3: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);
@@ -233,7 +198,6 @@ while($row = mysqli_fetch_array($result)){
         <td>$fly_start_time - $fly_back_time</td>
         <td>$fly_time</td>
         <td>$flight_price 원</td>
-        <td><input type='radio' value='back_$no' name='back_check' id='back_check' style='width:20px;height:20px;'></td>
         </tr>";
    
 }
@@ -247,7 +211,7 @@ while($row = mysqli_fetch_array($result)){
     <td width='400' height='40'>귀 국 편</td>
     <td width='120' height='40'>이 름</td>
     <td width='120' height='40'>인 원</td>
-    <td width='130' height='40'>인 원</td>
+    <td width='120' height='40'>인 원</td>
     <td width='120' height='40'>인 원</td>
     <td width='150' height='40'>총 운 임</td>
     
@@ -255,7 +219,7 @@ while($row = mysqli_fetch_array($result)){
     </tr>
  <?php   
  $sql = "select * from membership m inner join reserve_info r on m.id = r.id
-  inner join flight_one_way f on f.flght_ap_num = r.back_apnum where m.id = '$id'";     
+  inner join flight_one_way f on f.flght_ap_num = r.back_apnum LIMIT 5";     
 
 $result = mysqli_query($con,$sql) or die("실패원인4: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);
@@ -304,34 +268,6 @@ while($row = mysqli_fetch_array($result)){
 
 ?>    
 </table>
-<br><hr id="hr1"><br><br>
-<?php 
-
-if(!isset($start_flight_price1)){
-    $start_flight_price1 =0;
-}
-
-if(!isset($back_flight_price1)){
-    $back_flight_price1 =0;
-}
-
-
-$total = $start_flight_price +  $back_flight_price;
-
-?>
-<script>
-
-aab('<?=$total?>');
-</script>
-
-
- </form>
-<div id="btn_cancel">
-
-<input type="button" onclick="check_input()" value="예약취소">
-
-</div>
-
 
 </div>
 <footer>

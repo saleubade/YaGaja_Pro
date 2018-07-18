@@ -26,7 +26,6 @@
 	padding-left:15px;
 	width: 1000px;
 	height: 1000px;
-	border: 1px solid black;
 	margin: 0 auto;
 	margin-top: 50px;
 }
@@ -399,7 +398,6 @@ s
 }
 #seat_info{
 	margin-top:20px;
-	border:1px solid black;
 	width:980px;
 	height:185px;
 }
@@ -454,3 +452,16 @@ s
 	  z-index:10000;
 }
 
+.seat{
+	width:30px;
+	height:30px;
+}
+
+#no{
+	padding: 5px 0px 5px 5px;
+    margin-bottom: 5px;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+    font-size: 15pt;
+	
+}
