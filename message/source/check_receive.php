@@ -25,7 +25,7 @@ if(mysqli_num_rows($result) == 0){
             window.history.go(-1);
           </script>";
 }else{
-    $sql = "insert into message (recv_id,send_id,send_name,message,regist_day)";
+    $sql = "insert into message (recv_id,send_id,name,message,regist_day)";
     $sql .= "values('$receive_id', '$id', '$name', '$message_content', '$regist_day')";    
     mysqli_query($con, $sql) or die(mysqli_error($con));
    

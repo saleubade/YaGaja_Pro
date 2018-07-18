@@ -4,7 +4,12 @@ $id = $_SESSION['id'];
 
 include_once "../../common_lib/createLink_db.php";
 include_once "./create_message.php";
-include_once "./create_ripple.php";
+
+$mode = "receive";
+
+if(isset($_GET['mode'])){
+    $mode = $_GET['mode']; 
+}
 
 ?>
 <!DOCTYPE html>
@@ -14,12 +19,19 @@ include_once "./create_ripple.php";
 <title>Ya! GaJa~</title>
 <?php 
 
-$sql = "select * from message where recv_id = '$id' order by num desc";
-$result = mysqli_query($con, $sql) or die(mysqli_error($con));
-$total_record = mysqli_num_rows($result); //전체 레코드 수 
+if($mode == "receive"){
+    $sql = "select * from message where recv_id = '$id' order by num desc";
+    $result = mysqli_query($con, $sql) or die(mysqli_error($con));
+    $total_record = mysqli_num_rows($result); //전체 레코드 수     
+}else{
+    $sql = "select * from message where send_id = '$id' order by num desc";
+    $result = mysqli_query($con, $sql) or die(mysqli_error($con));
+    $total_record = mysqli_num_rows($result); //전체 레코드 수  
+}
+
 
 // 페이지 당 글수, 블럭당 페이지 수
-$rows_scale=5;
+$rows_scale=3;
 $pages_scale=5;
 
 // 전체 페이지 수 ($total_page) 계산
@@ -56,10 +68,10 @@ $number=$total_record- $start_row;
 	    var popupY = (window.screen.height/2)-(400/2);
 	    window.open('./message_form.php','','left='+popupX+',top='+popupY+', width=500, height=400, status=no, scrollbars=no');
 	  }
- function chat_view(){
+ function chat_view(url){
 	    var popupX = (window.screen.width/2)-(600/2);
 	    var popupY = (window.screen.height/2)-(400/2);
-	    window.open('./view.php','','left='+popupX+',top='+popupY+', width=500, height=400, status=no, scrollbars=no');
+	    window.open(url,'','left='+popupX+',top='+popupY+', width=500, height=400, status=no, scrollbars=no');
 	  }
  </script>
 </head>
@@ -67,9 +79,9 @@ $number=$total_record- $start_row;
   <article class="main">
         <div id="head">
 
-          <h1 style="display: inline;">Message</h1><div style="display: inline; float: right; margin-top: 10px;"><a href="./#">받은 메세지 </a>&nbsp; | &nbsp;<a href="./member_form_modify.php">보낸 메세지 </a></div>
+          <h1 style="display: inline;">Message</h1><div style="display: inline; float: right; margin-top: 10px;"><a href="./message.php?mode=receive">받은 메세지 </a>&nbsp; | &nbsp;<a href="./message.php?mode=send">보낸 메세지 </a></div>
         </div>
-        <hr>
+        <hr style="border: 1px solid black;">
    
          <div class="clear2"></div>
       
@@ -85,7 +97,7 @@ $number=$total_record- $start_row;
         $item_num=$row["num"];
         $recv_id=$row["recv_id"];
         $send_id=$row["send_id"];
-        $send_name=$row["send_name"];
+        $send_name=$row["name"];
 
         $message_cont=$row["message"];
         $recv_read=$row["recv_read"];
@@ -98,11 +110,43 @@ $number=$total_record- $start_row;
         ?>
       
    <div id="list0" style="display: inline;">
-   		<div id="list2" style="margin-top: 10px;"><a id="messageLink" href="#" onclick="chat_view()" style="text-decoration: none; color: black;"><?=$send_name."님"?>&nbsp<?="( ".$send_id." ) 이 보낸 메세지 "?>&nbsp</a></div>
-   		<div id="list2" style="margin-top: 10px;"><a id="messageLink" href="#" onclick="chat_view()" style="text-decoration: none; color: black;"><?=$message_cont?></a></div>
-   		<div id="list_item4" style="margin-top: 10px;" ><?=$item_date?></div>
+   <?php 
+   if($mode == "receive"){
+       if($recv_read == "N"){
+           ?>
+   		<div id="list2" style="margin-top: 10px;"><b><?=$send_name."님"?></b>&nbsp<b><?="( ".$send_id." ) 에게 받은 메세지 "?></b>&nbsp</a></div>
+   		<div id="list2" style="margin-top: 10px;"><a id="messageLink" href="#" onclick="chat_view('view.php?item_num=<?=$item_num ?>')" style="text-decoration: none; color: black;"><b><?=$message_cont?></b></a></div>   	    
+   		<div id="list_item4" style="margin-top: 10px;" ><b><?=$item_date?> 안읽음</b></div>
+   		<?php 
+   	    }else{
+   	    ?>
+   		<div id="list2" style="margin-top: 10px;"><?=$send_name."님"?>&nbsp<?="( ".$send_id." ) 에게 받은  메세지 "?>&nbsp</a></div>
+   		<div id="list2" style="margin-top: 10px;"><a id="messageLink" href="#" onclick="chat_view('view.php?item_num=<?=$item_num ?>')" style="text-decoration: none; color: black;"><?=$message_cont?></a></div>   	    
+   		<div id="list_item4" style="margin-top: 10px;" ><?=$item_date?> 읽음 </div>   
+  		<?php 
+        }
+    }else{
+       if($recv_read == "N"){
+           ?>
+   		<div id="list2" style="margin-top: 10px;"><?=$recv_id."님"?>에게 보낸 메세지&nbsp</a></div>
+   		<div id="list2" style="margin-top: 10px;"><?=$message_cont?></div>   	    
+   		<div id="list_item4" style="margin-top: 10px;"><?=$item_date?> <b>안읽음</b></div>
+   		<?php 
+   	    }else{
+   	    ?>
+   		<div id="list2" style="margin-top: 10px;"><?=$recv_id."님"?>에게 보낸 메세지 &nbsp</a></div>
+   		<div id="list2" style="margin-top: 10px;"><?=$message_cont?></div>   	    
+   		<div id="list_item4" style="margin-top: 10px;" ><?=$item_date?> 읽음</div>   
+  		<?php 
+        }
+   
+   
+}?>
+   	
+   	
    </div>
    
+   <hr>
    
    <div class="clear2"></div>
      <?php
@@ -151,14 +195,6 @@ $number=$total_record- $start_row;
       ?>
      
    </article>
-       
-
-
-
-
-
-
-
 
 </body>
 </html>

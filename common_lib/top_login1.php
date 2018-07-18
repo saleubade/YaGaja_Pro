@@ -7,7 +7,8 @@
   function message(){
     var popupX = (window.screen.width/2)-(800/2);
     var popupY = (window.screen.height/2)-(500/2);
-    window.open('./message/source/receive_message.php','','left='+popupX+',top='+popupY+', width=700, height=500, status=no, scrollbars=no');
+    window.open('./message/source/message.php','','left='+popupX+',top='+popupY+', width=700, height=500, status=no, scrollbars=no');
+ 
   }
 </script>
 <div id="topmenu">
