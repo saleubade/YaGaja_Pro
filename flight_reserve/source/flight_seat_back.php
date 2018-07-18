@@ -35,8 +35,6 @@ if(!empty($_GET['bapnum'])){
     $bapnum = "?";
 }
 
-
-
 ?>
 
 
@@ -105,7 +103,6 @@ function input_check(url){
     reserve_form.submit();  
 	
 }
-
 </script>
 
 </head>
@@ -198,10 +195,8 @@ echo "<div id='no'></div>";
 
 <div style="text-align:center; float:left;">
 
-
-<input type="button" id="select_ok"  style="width:100px; height:36px;" value="좌석 예약하기"
-onclick="input_check('reserve.php?num=<?=$num?>&fly=<?=$fly?>&sapnum=<?=$sapnum?>&bapnum=<?=$bapnum?>')">
-
+    <input type="button" id="select_ok"  style="width:100px; height:36px;" value="좌석 예약하기"
+    onclick="input_check('reserve_back.php?num=<?=$num?>&fly=<?=$fly?>&sapnum=<?=$sapnum?>&bapnum=<?=$bapnum?>')">
 
 </div>
 </div>

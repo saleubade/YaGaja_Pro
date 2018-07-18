@@ -47,24 +47,15 @@ if($result != $num){
     echo "<script> history.go(-1);</script>";
 }else{
     $sql= "insert into seat_state (id, flght_ap_num, choice_seat)";
-    $sql.= "values ('$id','$sapnum','$seat')";
+    $sql.= "values ('$id','$bapnum','$seat')";
     
     mysqli_query($con, $sql) or die(mysqli_error($con));
     
     mysqli_close($con);
     
     echo "<script>alert('좌석 예매되었습니다.')</script>";
-    if($fly == "round"){
-        echo "<script> location.href='flight_seat_back.php?fly=$fly&num=$num&sapnum=$sapnum&bapnum=$bapnum'; </script>";
-    }else{
-        echo "<script> location.href='../../index.php'; </script>";
-    }
-   
+    echo "<script> location.href='../../index.php'; </script>";
 }
-
-
-
-
 
 ?>
 

@@ -184,8 +184,8 @@ if($fly= "round"){
     
     mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
 }
-
-echo "<script>location.href ='../../flight_reserve/source/flight_seat.php?fly=$fly&start=$start&back=$back&start_check=$start_check&back_check=$back_check&anum=$adult_num&cnum=$child_num&bnum=$baby_num&sapnum=$start_flight_ap_num&bapnum=$back_flight_ap_num';
+$num = $adult_num+$child_num+$baby_num;
+echo "<script>location.href ='../../flight_reserve/source/flight_seat.php?fly=$fly&num=$num&sapnum=$start_flight_ap_num&bapnum=$back_flight_ap_num';
 </script>";
 
 
