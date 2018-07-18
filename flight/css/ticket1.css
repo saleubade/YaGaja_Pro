@@ -35,40 +35,53 @@
 	
 	padding-left:15px;
 	width: 1000px;
-	height: 900px;
-	border: 1px solid black;
+	height: 1200px;
 	margin: 0 auto;
 	margin-top: 50px;
 }
 
+#ticket_box5{
+	padding-left:15px;
+	width: 1000px;
+	height: 1900px;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+#ticket_box6{
+	padding-left:15px;
+	width: 1000px;
+	height: 1100px;
+	margin: 0 auto;
+	margin-top: 50px;
+}
 .div_none{
 	margin-left:7px;
-	size:30px;
+	width:300px;
 	height:30px; 
 	border:none;
-	font-size:15pt;
-	font-weight: bolder; 
+	font-size:13pt;
+	font-weight: 600; 
 	font-style: normal;
-	letter-spacing: 3px;
-	
+	letter-spacing: 2px;
 }
 input::-ms-input-placeholder { 
 	color: black; 
-	font-size:12pt;
-	font-weight: bolder; 
+	font-size:14pt;
+	font-weight: 600; 
 	font-style: normal;
 }
 input::-webkit-input-placeholder { 
 	color: black; 
-	font-size:15pt;
-	font-weight: bolder; 
+	font-size:14pt;
+	font-weight: 600; 
 	font-style: normal;
 } 
 
 input::-moz-placeholder { 
 	color: black; 
-	font-size:12pt;
-	font-weight: bolder; 
+	font-size:14pt;
+	font-weight: 600; 
 	font-style: normal;
 }
 
@@ -86,6 +99,13 @@ input::-moz-placeholder {
 	height:60px;
 	width:330px;
 }
+#select_ticket1{
+	
+	font-size: 17pt;
+	font-weight: bold; 
+	border:0px;
+	clear:both;
+}
 
 #select_ticket{
 	
@@ -99,21 +119,17 @@ input::-moz-placeholder {
 	font-weight: bold; 
 	border:0px;
 	float:left;
-	
 }
-
 
 #seat_class{
 	display: inline-block;
 	font-size: 17pt;
 	font-weight: bold; 
 }
-
-#hr1{
+#hr2{
 	float:left;
-	margin-left:10px;
 	border:thin solid gray;
-	width:960px;
+	width:200px;
 	
 }
 .count_box1{
@@ -125,8 +141,8 @@ input::-moz-placeholder {
 }
 
 .count_box2{
-font-size: 14pt;
-font-weight: bold; 
+font-size: 12pt;
+font-weight: 600; 
 height:100px;
 }
 
@@ -167,14 +183,30 @@ s
 #checked_flight{
 	width:480px;
 	height:67px;
-	margin-right:15px;
+	margin:0 15px 50px 0;
 	background-color: #FFFFFF;
 	text-align: center;
 	padding-top: 33px;
-	font-size:18pt;
-	font-weight: bolder;
+	font-size:17pt;
+	font-weight: 500;
 	float:left;
-	border:1px solid black;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	
+}
+#checked_flight1{
+	width:970px;
+	height:67px;
+	margin:0 15px 50px 0;
+	background-color: #FFFFFF;
+	text-align: center;
+	padding-top: 33px;
+	font-size:17pt;
+	font-weight: 500;
+	float:left;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	
 }
 #checked_flight2{
 	width:480px;
@@ -186,8 +218,8 @@ s
 	font-size:18pt;
 	font-weight: bolder;
 	float:left;
-	
 }
+
 
 #selected_flight{
 	width:980px;
@@ -226,62 +258,82 @@ s
 	border-collapse: collapse;
 	float:left;
 }
-
 #row_flight tr td{
 	color:black;
-	font-weight: bold;	
+	font-weight: 500;	
 }
-
-
 #row_flight1{
 	width:450px;
 	border-collapse: collapse;
-	font-weight: bold;	
+	font-weight: 500;
 }
-
-
 #row_flight_tr1{
-	
-	border:1px solid black;
+	border-top: 3px solid gray;
+	border-bottom: 3px solid gray;
 	height:50px;
+	font-size :15pt;
+	font-weight: 500;
 }
 #row_flight_tr2{
-	border:1px solid black;
-	height:30px;
+	text-align : center;
+	border-top: 3px solid gray;
+	border-bottom: 3px solid gray;
+	height:40px;
+	font-size :13pt;
+	font-weight: 500;
 }
 #row_flight_tr3{
-	
-	border:1px solid black;
+	border-top: 3px solid gray;
+	border-bottom: 3px solid gray;
 	height:120px;
-	
 }
 
 #row_flight_tr4{
-	
-	border:1px solid black;
-	height:30px;
+	border-top: 3px solid gray;
+	border-bottom: 3px solid gray;
+	font-size:14pt;
+	height:50px;
 	text-align: right;
 }
 
 #low_price{
-	font-size: 16pt;
-	color:red;
+	font-size: 15.5pt;
+	color:#880000;
 	text-align: right;
+}
+
+.table1 tr td{
+	border-collapse:collapse;
+	border: 2px solid gray;
+	border-left : none;	
+	border-right : none;	
+	width:30px;
+	height:40px;
+	padding-top: 10px;
+	padding-bottom:10px;
+	padding-left:25px;
 }
 
 
 #row_flight2{
 	text-align:center;
-	margin-left:15px;
-	width:950px;
+	margin-left:-40px;
+	width:1050px;
 	height:50px;
 	border-collapse: collapse;
 }
 #row_flight2 td{
-	border:1px solid black;
+	border-collapse:collapse;
+	border: 2px solid gray;
+	border-left : none;	
+	border-right : none;
+	
+	padding-top: 10px;
+	padding-bottom:10px;
+	padding-left:25px;
 }
 #row_flight2 tr{
-	border:1px solid black;
+	
 	height:30px;
 }
 #row_flight2_tr1{
@@ -292,17 +344,24 @@ s
 	font-size: 13pt;
 	font-weight: bolder;
 }
+#right{
+	text-align: right;	
+	margin-right:15px;
+}
+
 
 #selected_flight3{
 	width:980px;
 	height:60px;
 	background-color: #FFFFFF;
-	border:1px solid black;
+	border: 1px solid gray;
+	border-left : none;	
+	border-right : none;
 	margin-top:10px;
 	text-align: center;
 	padding-top: 33px;
 	font-size:18pt;
-	font-weight: bolder;
+	font-weight: 500;
 	float:left;
 }
 #button_div{
@@ -378,5 +437,20 @@ s
 .bt_down{
 	margin-right:-5px;
 	
+}
+#mask {  
+  position:absolute;  
+  left:0;
+  top:0;
+  z-index:9000;  
+  background-color:#000;  
+  display:none;  
+}
+.window{
+	  display: none;
+	  position:absolute;  
+	  left:100px;
+	  top:100px;
+	  z-index:10000;
 }
 

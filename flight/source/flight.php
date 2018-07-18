@@ -12,8 +12,8 @@
 <meta charset="UTF-8">
 <title>TICKETING</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css?var=1">
-<link type="text/css" rel="stylesheet" href="../css/ticket1.css?var=2">
+<link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css?v=1">
+<link type="text/css" rel="stylesheet" href="../css/ticket1.css?v=4">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -28,20 +28,6 @@ function checkround(){
     }
 }
  
-function flight_lookup(){	//유효성 검사	
-	var fly = $(':input[name=fly]:radio:checked').val();
-	var a = document.ticket_form.datepicker1.value;
-	var b = document.ticket_form.datepicker2.value;
-	
-	if(a >= b || a == "" || b==""){
-		alert('올바른 날짜를 선택해주세요.');
-		return;
-	}else{
-		location.href="./flight_select.php";
-	}
-	
-}
-
 function check_search(){		
 	if(!document.ticket_form.search.value){
 		alert("검색어를 입력하세요");
@@ -52,12 +38,16 @@ function check_search(){
 	document.ticket_form.submit();
 }
 
-function start_area(){		
-	window.open("start_area.php", "", "left=50, top=50, width=800, height=500, status=no, scrollbars=no");
+function start_area(){	
+	var popupX = (window.screen.width / 2) - (800 / 2);
+	var popupY= (window.screen.height /2) - (500 / 2);
+	window.open('start_area.php', '', 'status=no, width=800, height=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 }
 
-function back_area(){		
-	window.open("back_area.php", "", "left=50, top=50, width=800, height=500, status=no, scrollbars=no");
+function back_area(){
+	var popupX = (window.screen.width / 2) - (800 / 2);
+	var popupY= (window.screen.height /2) - (500 / 2);
+	window.open('back_area.php', '', 'status=no, width=800, height=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 }
 
 $.datepicker.setDefaults({
@@ -98,14 +88,50 @@ $.datepicker.setDefaults({
 		 	num = $(".num:eq("+n+")").val(num*1-1); 
 		}
 	  });
-	}) 
+	}) ;
+	
+/*   function wrapWindowByMask(){
+      //화면의 높이와 너비를 구한다.
+      var maskHeight = $(document).height();  
+      var maskWidth = $(window).width();  
 
- 
+      //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+      $('#mask').css({'width':maskWidth,'height':maskHeight});  
+
+      //애니메이션 효과
+      $('#mask').fadeIn(1000);      
+      $('#mask').fadeTo("slow",0.8);    
+}	
+
+  $(document).ready(function(){
+		//검은 막 띄우기
+		$('.div_none').click(function(e){
+			e.preventDefault();
+			wrapWindowByMask();
+		});
+
+		//닫기 버튼을 눌렀을 때
+		$('.window .close').click(function (e) {  
+		    //링크 기본동작은 작동하지 않도록 한다.
+		    e.preventDefault();  
+		    $('#mask, .window').hide();  
+		});       
+
+		//검은 막을 눌렀을 때
+		$('#mask').click(function () {  
+		    $(this).hide();  
+		    $('.window').hide();  
+		});      
+	});
+  */
 
 </script>
 </head>
 <body>
-
+<!-- <div id="mask"></div>
+	<div class="window">
+		<a href="#" class="close"></a>
+	</div> -->
 <header>
 <?php include_once '../../common_lib/top_login2.php';?>
 </header>
@@ -127,7 +153,7 @@ $.datepicker.setDefaults({
 <?php
    echo "
         <td width='25%' bgcolor=gray></td>
-        <td width='25%' bgcolor='#dddddd' height=5></td>
+        <td width='25%' bgcolor= '#dddddd' height=5></td>
         <td width='25%' bgcolor='#dddddd' height=5></td>
         <td width='25%' bgcolor='#dddddd' height=5></td>";
 ?>
@@ -143,13 +169,12 @@ $.datepicker.setDefaults({
 <table class="table2">
 	<tr>
 		<td>
-    	<input type="text" name="start" class="div_none" id="asearch"  placeholder="출발지"  autofocus autocomplete="off" >
-        <a href="#"><img src="../image/gps_black.jpg" alt=" " width="30" height="30" id="gps1" onclick=start_area()></a>
+    	<input type="text" name="start" class="div_none" id="asearch"  placeholder="출발지"  autofocus autocomplete="off" onclick="start_area()">
+        
         
 		</td>
 		<td>
-    	<input type="text" name="back" class="div_none" placeholder="목적지" autocomplete="off">
-        <a href="#"><img src="../image/gps_black.jpg" alt=" " width="30" height="30" id="gps1"  onclick=back_area()></a>	
+    	<input type="text" name="back" class="div_none" placeholder="목적지" autocomplete="off" onclick="back_area()">
         </td>
 	</tr>
 </table><br><br>
@@ -196,6 +221,7 @@ $.datepicker.setDefaults({
 	<tr><td colspan="3" id="count_btn">
 	
 	<hr id="hr1"><br><br><br>
+
 	<input type='submit' id='select_ok' value='항공편 조회'  onclick='flight_lookup()'></td>
 	</tr> 
 	</table>

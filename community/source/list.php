@@ -29,7 +29,7 @@ $table = "community";
     <meta charset="utf-8">
     <title>야 ~ 가자!</title>
     <link rel="stylesheet" href="../../common_css/index_css3.css">
-    <link rel="stylesheet" href="../css/community2.css">
+    <link rel="stylesheet" href="../css/community2.css?ver=1">
     <?php 
     if(isset($mode) && ($mode == "search")){
         if(empty($search)){
@@ -47,10 +47,11 @@ $table = "community";
         $sql = "select * from $table where continent = '$continent' order by num desc";
     }
     
-    $result =mysqli_query($con, $sql);
-    $total_record = mysqli_num_rows($result); //전체 레코드 수 
+    $result3 =mysqli_query($con, $sql);
+    $total_record = mysqli_num_rows($result3); //전체 레코드 수 
     
-    $rows_scale=10;
+    
+    $rows_scale=3;
     $pages_scale=5;
     
     // 전체 페이지 수 ($total_page) 계산
@@ -88,12 +89,12 @@ $table = "community";
       <?php include_once "../../common_lib/top_login2.php"; ?>
     </header>
     <nav id="top">
-      <?php include "../../common_lib/main_menu2.php"; ?>
+      <?php include_once "../../common_lib/main_menu2.php"; ?>
     </nav>
   	
     <section>
 	    <aside id="left_menu">
-      	<?php include "../../common_lib/left_menu.php"; ?>
+      	<?php include_once "../../common_lib/left_menu.php"; ?>
 		</aside>
       <article class="main">
         <div id="head">
@@ -121,20 +122,24 @@ $table = "community";
          </div>
             
          </div>
+         </form>
       </div>
       
-         </form>
          <div class="clear2"></div>
       
       <?php 
  
-      
-      for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
+    
+      for($i=$start_row; ($i<($start_row+$rows_scale)) && ($i< $total_record); $i++){
         //가져올 레코드 위치 이동
-        mysqli_data_seek($result, $i);
+        mysqli_data_seek($result3, $i); 
         
         //하나 레코드 가져오기
-        $row=mysqli_fetch_array($result);
+        $row=mysqli_fetch_array($result3);
+        
+//         var_dump($result3);
+//         exit;
+        
         
         $item_num=$row["num"];
         $item_id=$row["id"];
@@ -147,17 +152,18 @@ $table = "community";
       
         $sql="select * from view_ripple where parent=$item_num";
         $result2=mysqli_query($con, $sql);
-        $num_table=mysqli_num_rows($result2);
+        $num_table=mysqli_num_rows($result2); 
         
         if($number < 10){
             $number = "0".$number;
         }
         
+       
         ?>
       
       <div id="list0" style="display: inline;">
 
-   <div id="list0_1" style="margin-top: 10px;"><?=$number ?>&nbsp;&nbsp;&nbsp;|</div>
+   <div id="list0_1" style="margin-top: 10px;"><?=$number ?>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<?=$item_id ?>&nbsp;&nbsp;&nbsp;|</div>
    
    <div id="list2" style="margin-top: 10px;"><a href="view.php?table=<?=$table?>&num=<?=$item_num?>&page=<?=$page?>&continent=<?=$continent ?>" style="text-decoration: none; color: black;"><?=$item_subject?></a>
     <?php 
@@ -166,7 +172,7 @@ $table = "community";
     } 
     ?> 
     </div>  
-    <div id="list_item4" style="margin-top: 10px;" ><?=$item_date?>&nbsp;&nbsp;조회&nbsp;<?=$item_hit?></div>
+    <div id="list_item4" style="margin-top: 10px; margin-left: 187px;" ><?=$item_date?>&nbsp;&nbsp;조회&nbsp;<?=$item_hit?></div>
    </div>
    
    
@@ -191,7 +197,7 @@ $table = "community";
                    if($dest_page == $page){
                         echo( "&nbsp;<b id='present_page'>$dest_page</b>&nbsp" );
                     }else{
-                        echo "<a id='move_page' href='list.php?mode=$mode&page=$dest_page&continent=$continent'>$dest_page</a>";
+                        echo "<a id='move_page' href='list.php?mode=$mode&page=$dest_page&continent=$continent'>[$dest_page]</a>";
                     }
                  }
                  #----------------이전페이지 존재시 링크------------------#

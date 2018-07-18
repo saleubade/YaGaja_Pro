@@ -20,7 +20,7 @@
   <title>야! 몰</title>
   <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/shopping3.css?ver=1">
+  <link rel="stylesheet" href="../css/shopping3.css?ver=3">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
@@ -84,39 +84,39 @@
     	</section>
 	
 	<!-- 베스트아이템  -->
-<!-- 	<section id="weekly_item"> -->
-<!-- 		<div id="weekly_item1">weekly best item -->
-<!-- 			<ul id="weekly_item_ul"> -->
-<!-- 				<li><a id="travel">&nbsp;&nbsp;TRAVEL&nbsp;&nbsp;</a></li> -->
-<!-- 				<li><a id="acc">&nbsp;&nbsp;ACC&nbsp;&nbsp;</a></li> -->
-<!-- 				<li><a id="tb">&nbsp;&nbsp;TOP/BOTTOM&nbsp;&nbsp;</a></li> -->
-<!-- 				<li><a id="cosmetics">&nbsp;&nbsp;COSMETICS&nbsp;&nbsp;</a></li> -->
-<!-- 			</ul> -->
-<!-- 			<div id="weekly_item_list"> -->
-<!-- 				<div class="weekly_img"> -->
-<!-- 					<img src=""> -->
-<!-- 				</div> -->
-<!-- 				<div class="weekly_img"></div> -->
-<!-- 				<div class="weekly_img"></div> -->
-<!-- 				<div class="weekly_img"></div> -->
-<!-- 				<div class="weekly_img"></div> -->
-<!-- 				<div class="weekly_img"></div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</section>	 -->
+ 	<section id="weekly_item">
+ 		<div id="weekly_item1">weekly best item
+ 			<ul id="weekly_item_ul">
+ 				<li><a id="travel">&nbsp;&nbsp;TRAVEL&nbsp;&nbsp;</a></li>
+ 				<li><a id="acc">&nbsp;&nbsp;ACC&nbsp;&nbsp;</a></li>
+ 				<li><a id="tb">&nbsp;&nbsp;TOP/BOTTOM&nbsp;&nbsp;</a></li>
+ 				<li><a id="cosmetics">&nbsp;&nbsp;COSMETICS&nbsp;&nbsp;</a></li>
+ 			</ul>
+ 			<div id="weekly_item_list">
+ 				<div class="weekly_img">
+ 					<img src="">
+ 				</div>
+ 				<div class="weekly_img"></div>
+ 				<div class="weekly_img"></div>
+ 				<div class="weekly_img"></div>
+ 				<div class="weekly_img"></div>
+ 				<div class="weekly_img"></div>
+ 			</div>
+ 		</div>
+ 	</section>
 	
 	<!-- 보드판  -->
-<!-- 	<section id="board_item"> -->
-<!-- 		<div id="board_item1">BOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-<!-- 			<ul id="board_item_ul"> -->
-<!-- 				<li><a>&nbsp;&nbsp;QNA&nbsp;&nbsp;</a></li> -->
-<!-- 				<li><a>&nbsp;&nbsp;REVIEW&nbsp;&nbsp;</a></li> -->
-<!-- 				<li><a>&nbsp;&nbsp;NOTICE&nbsp;&nbsp;</a></li> -->
-<!-- 			</ul> -->
-<!-- 		</div> -->
-<!-- 		<div id="board_table"></div> -->
-<!-- 	</section> -->
-<!--     <br><br> -->
+ 	<section id="board_item"> 
+ 		<div id="board_item1">BOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 			<ul id="board_item_ul">
+ 				<li><a>&nbsp;&nbsp;QNA&nbsp;&nbsp;</a></li>
+ 				<li><a>&nbsp;&nbsp;REVIEW&nbsp;&nbsp;</a></li> 
+ 				<li><a>&nbsp;&nbsp;NOTICE&nbsp;&nbsp;</a></li> 
+ 			</ul> 
+ 		</div> 
+ 		<div id="board_table"></div> 
+ 	</section> 
+    <br><br> 
     <!-- 신상품 목록 -->
     
         <section>

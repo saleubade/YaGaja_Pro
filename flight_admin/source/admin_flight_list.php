@@ -18,19 +18,34 @@
  }else{
      $back = "목적지";
  }
- if(!empty($_GET['apnum'])){
-     $apnum = $_GET['apnum'];
+ if(!empty($_GET['start_flight_ap_num'])){
+     $start_flight_ap_num = $_GET['start_flight_ap_num'];
  }else{
-     $apnum = "목적지";
+     $start_flight_ap_num = "1";
  }
-
- if(isset($start_flight_ap_num)){       
-     $modi_number = $start_flight_ap_num; 
+ 
+if(!empty($_POST['start_flight_ap_num2'])){
+     $start_flight_ap_num2 = $_POST['start_flight_ap_num2'];
+ }else{
+     $start_flight_ap_num2 = "1";
+ }
+ if(!empty($_POST['flight_start'])){
+     $flight_start = $_POST['flight_start'];
+ }else{
+     $flight_start = "목적지";
+ }
+ 
+ if(!empty($_POST['flight_start'])){
+     $flight_back = $_POST['flight_start'];
+ }else{
+     $flight_back = "목적지";
+ }
+ 
+ if(isset($start_flight_ap_num2)){       
+     $modi_number = $start_flight_ap_num2; 
  }else{
      $modi_number = null;
  }
- 
- 
 
 
  ?>
@@ -39,7 +54,7 @@
 <title>TICKETING</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css?var=1">
-<link type="text/css" rel="stylesheet" href="../css/admin_ticket.css?v=4">
+<link type="text/css" rel="stylesheet" href="../css/admin_ticket.css?v=5">
 <link type="text/css" rel="stylesheet" href="../css/start_area1.css?v=4">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -54,24 +69,18 @@ function check_input(){
 	}
 
 }
-
-
-
-function start_area(){		
-	window.open("./list_start_area.php", "", "left=50, top=50, width=800, height=500, status=no, scrollbars=yes");
+function start_area(){	
+	var popupX = (window.screen.width / 2) - (800 / 2);
+	var popupY= (window.screen.height /2) - (500 / 2);
+	window.open('list_start_area.php', '', 'status=no, width=800, height=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 }
 
-function back_area(){		
-	window.open("./list_back_area.php", "", "left=50, top=50, width=800, height=500, status=no, scrollbars=yes");
+function back_area(){
+	var popupX = (window.screen.width / 2) - (800 / 2);
+	var popupY= (window.screen.height /2) - (500 / 2);
+	window.open('list_back_area.php', '', 'status=no, width=800, height=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 }
 
-function modify_flight(){	
-	
-}
-
-function modify_flight(){	
-	
-}
 </script>
 
 </head>
@@ -98,7 +107,7 @@ if($ten == 1){ //10, 11, 12
 
 ?>
 
-<form action="flight_list.php" method="post" name="select_form">
+<form action="admin_flight_list.php" method="post" name="select_form">
 
 <hr id="hr1"><br>
 <div id="form_select">
@@ -109,8 +118,9 @@ if($ten == 1){ //10, 11, 12
         <td><div id="form_search2"><input type="image" src="../image/list_search_button.gif" id="button_search"  onclick="check_input()"></div></td>
 	</tr>
 </table>
-</div>  
 
+</div>  
+</form>
     
     <hr id="hr1"><br>    <br><br>
    <hr id="hr1">
@@ -127,10 +137,14 @@ if($ten == 1){ //10, 11, 12
 	<td style="width:40;">도착시간</td>
 	<td style="width:55;">운행 시간</td>
 	<td style="width:55;">운 임</td>
-	<td style="width:70;"></td>
+	<td style="width:110;">수정/삭제</td>
 	</tr>
 	<?php 
-	$sql = "select * from flight_one_way where flight_start='$start' and flight_back = '$back'";
+	if($modi_number =="1"){
+	    $sql = "select * from flight_one_way where flight_start='$start' and flight_back = '$back'";
+	}else{
+	    $sql = "select * from flight_one_way where flght_ap_num='$modi_number'";
+	}
 	
 	$result = mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
 	$total_record = mysqli_num_rows($result);
@@ -166,13 +180,11 @@ if($ten == 1){ //10, 11, 12
 if($total_record == 0){
 ?>
     <tr>
-    <td colspan="8" style="text-align: center;"><br>[항목없음]<br><br></td>
+    <td colspan="9" style="text-align: center;"><br>[항목없음]<br><br></td>
     </tr>
-    
     </table>
 <?php 
 }
-
 for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
     //가져올 레코드 위치 이동
     mysqli_data_seek($result, $i);
@@ -187,12 +199,16 @@ for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
     $fly_time = $row[fly_time];
     $start_flight_ap_num = $row[flght_ap_num];
   
-    
     $j = $i+2;  //form번호 지정
-    if(!($start_flight_ap_num == $modi_number)){      
     
+    if(!($start_flight_ap_num == $modi_number)){      //같지 않음
+       
         echo "<tr>
-        <form id='form$j' method='post' action='flight_list.php?apnum=$start_flight_ap_num'>        
+        <form id='form$j' method='post' action='admin_flight_list.php?start_flight_ap_num=$start_flight_ap_num'>   
+        <input type='hidden' name='start_flight_ap_num2' value='$start_flight_ap_num'>
+        <input type='hidden' name='flight_start' value='$flight_start'>
+        <input type='hidden' name='flight_back' value='$flight_back'>
+
         <td>$flight_start</td>
         <td>$flight_back</td>
         <td>$start_flight_ap_num</td>
@@ -202,36 +218,33 @@ for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
         <td>$fly_time</td>
         <td>$flight_price 원</td>
         <td>
-        <button type='submit' class='button' id='form$j' >수정 </button>
-
-        <a href='delete_flight_list.php?apnum=\"$start_flight_ap_num\"'>
-        <button class='button'>삭제 </button>
-        </a>
-
+        <button type='submit' class='button' id='form$j'>수정 </button>
+        <a href='admin_delete_flight_list.php?start_flight_ap_num=\"$start_flight_ap_num\"'>
+        <button class='button'>삭제 </button></a>
         </form>
         </td>
         </tr>";
-        
     }else{
+       
         echo "<tr>
-        <form id='form$j' method='post' action='update_flight_list.php'>
-        <td>
-        <td><input size='21.4' type='text' name='start' value='$start'></td>
-        <td><input size='18.92' type='text' name='back' value='$back'></td>
-        <td><input size='15.12' type='text' name='start_flight_ap_num' value='$start_flight_ap_num'></td>
-        <td><input size='17.76' type='text' name='book_number' value='$fly_start_date'> </td>
-        <td><input size='17.76' type='text' name='fly_start_time' value='$fly_start_time'> </td>
-        <td><input size='17.76' type='text' name='fly_back_time' value='$fly_back_time'> </td>
-        <td><input size='17.76' type='text' name='fly_time' value='$fly_time'> </td>
-        <td><input size='5.36' type='text' name='flight_price' value='$flight_price'></td>
+        <form id='form$j' method='post' action='admin_update_flight_list.php'>
+        <td><input size='16' type='text' name='start' value='$flight_start'></td>
+        <td><input size='16' type='text' name='back' value='$flight_back'></td>
+        <td><input size='9' type='text' name='start_flight_ap_num' value='$start_flight_ap_num'></td>
+        <td><input size='8' type='text' name='fly_start_date' value='$fly_start_date'> </td>
+        <td><input size='5' type='text' name='fly_start_time' value='$fly_start_time'> </td>
+        <td><input size='5' type='text' name='fly_back_time' value='$fly_back_time'> </td>
+        <td><input size='7' type='text' name='fly_time' value='$fly_time'> </td>
+        <td><input size='8' type='text' name='flight_price' value='$flight_price'></td>
         <td>
         <button type='submit' class='button' id='form$j' >완료</button>
-        <a href='delete_flight_list.php?apnum=\"$start_flight_ap_num\"'><button type='button' class='button'>삭제</button></a>
+        <a href='admin_delete_flight_list.php?start_flight_ap_num=$start_flight_ap_num'><button type='button'>삭제</button></a>
         </td>
         </form>
         </tr>";
     }
-    
+    /* <form id='form$j' method='post' action='admin_update_flight_list.php'> */
+    /* &start=$flight_start&back=$flight_back&fly_start_date=$fly_start_date&fly_start_time=$fly_start_time&fly_back_time=$fly_back_time&fly_time=$fly_time&flight_price=$flight_price' */
 }
 ?>   
 </table>
@@ -241,28 +254,28 @@ for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
         #----------------이전블럭 존재시 링크------------------#
         if($start_page > $pages_scale){
            $go_page= $start_page - $pages_scale;
-           echo "<a id='before_block' href='flight_list.php?page=$go_page&start2=$start&back2=$back'> << </a>";   
+           echo "<a id='before_block' href='admin_flight_list.php?page=$go_page&start2=$start&back2=$back'> << </a>";   
         }
         #----------------이전페이지 존재시 링크------------------#
         if($pre_page){
-            echo "<a id='before_page' href='flight_list.php?page=$pre_page&start2=$start&back2=$back'> < </a>";
+            echo "<a id='before_page' href='admin_flight_list.php?page=$pre_page&start2=$start&back2=$back'> < </a>";
         }
          #--------------바로이동하는 페이지를 나열---------------#
         for($dest_page=$start_page;$dest_page <= $end_page;$dest_page++){
            if($dest_page == $page){
                 echo( "&nbsp;<b id='present_page'>$dest_page</b>&nbsp" );
             }else{
-                echo "<a id='move_page' href='flight_list.php?page=$dest_page&start2=$start&back2=$back'> $dest_page </a>";
+                echo "<a id='move_page' href='admin_flight_list.php?page=$dest_page&start2=$start&back2=$back'> $dest_page </a>";
             }
          }
          #----------------이전페이지 존재시 링크------------------#
          if($next_page){  
-             echo "<a id='next_page' href='flight_list.php?page=$next_page&start2=$start&back2=$back'> > </a>";
+             echo "<a id='next_page' href='admin_flight_list.php?page=$next_page&start2=$start&back2=$back'> > </a>";
          }
          #---------------다음페이지를 링크------------------#
         if($total_pages >= $start_page+ $pages_scale){
           $go_page= $start_page+ $pages_scale;
-          echo "<a id='next_block' href='flight_list.php?page=$go_page&start2=$start&back2=$back'> >> </a>";
+          echo "<a id='next_block' href='admin_flight_list.php?page=$go_page&start2=$start&back2=$back'> >> </a>";
          }
 ?>      
    </div>

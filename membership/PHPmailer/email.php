@@ -35,8 +35,8 @@ $code=$_SESSION['code'];
 $count=1;
 $to=$email;
 $from="관리자";
-$subject="[MR_Library] 회원 가입 인증번호입니다.";
-$body="[MR_Library] 회원가입 인증번호 입니다.\n인증번호 : ".$code."\n정확히 입력해주세요.";
+$subject="[Ya! Gaja] 회원 가입 인증번호입니다.";
+$body="[Ya! Gaja] 회원가입 인증번호 입니다.\n인증번호 : ".$code."\n정확히 입력해주세요.";
 $cc_mail="";
 $bcc_mail=""; /* 메일 보내기*/
 

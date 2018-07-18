@@ -33,24 +33,26 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript">
 function check_input(){
-	if(!document.select_form.start.value || !document.select_form.back.value){
+	if(!document.user_form.start.value || !document.user_form.back.value){
 		alert('출발지와 목적지를 설정하세요');
 		return;
 	}else{
-		document.select_form.submit();		
+		document.user_form.submit();		
 	}
 
 }
-
-
-
-function start_area(){		
-	window.open("../../flight/source/start_area.php", "", "left=400, top=50, width=600, height=650, status=no, scrollbars=yes");
+function start_area(){	
+	var popupX = (window.screen.width / 2) - (800 / 2);
+	var popupY= (window.screen.height /2) - (500 / 2);
+	window.open('user_start_area.php', '', 'status=no, width=800, height=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 }
 
-function back_area(){		
-	window.open("../../flight/source/back_area.php", "", "left=400, top=50, width=600, height=650, status=no, scrollbars=yes");
+function back_area(){
+	var popupX = (window.screen.width / 2) - (800 / 2);
+	var popupY= (window.screen.height /2) - (500 / 2);
+	window.open('user_back_area.php', '', 'status=no, width=800, height=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 }
+
 
 </script>
 
@@ -78,7 +80,7 @@ if($ten == 1){ //10, 11, 12
 
 ?>
 
-<form action="flight_read.php" method="post" name="select_form">
+<form action="flight_read.php" method="post" name="user_form">
 
 <hr id="hr1"><br>
 <div id="form_select">

@@ -13,7 +13,6 @@ if($flag!=="OK"){
       num int not null auto_increment primary key,
       gno int,
       depth char(10) default 'A',
-      ord int not null,
       id char(12) not null,
       name char(5) not null,
       subject char(50) not null,

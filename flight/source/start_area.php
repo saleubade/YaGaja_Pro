@@ -36,14 +36,15 @@ function select_area(city){
 	window.opener.ticket_form.start.value=city;
 	window.close();
 } 
-
 function trs(url){
 	
 	location.href=url;
 }
+
 </script>
 </head>
 <body>
+
 <div style="margin-left:100px;"><h2>지역과 도시를 선택해주세요</h2>
 </div>
 <div id="box">
@@ -64,7 +65,7 @@ $i=0;
 while($row = mysqli_fetch_array($result)){
 $city[$i] = $row[city];
 ?>
-<a  href='#' onclick="select_area('<?=$city[$i] ?>')" class="a2"><?=$city[$i]?></a><br><div>
+<a  href='#' class="a2" onclick="select_area('<?=$city[$i] ?>')"><?=$city[$i]?></a><br><div>
 <?php 
 $i++;
 }

@@ -20,14 +20,11 @@ if(!empty($_SESSION['name'])){
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css">
-<link type="text/css" rel="stylesheet" href="../css/ticket1.css">
+<link type="text/css" rel="stylesheet" href="../css/ticket1.css?v=1">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
 <script type="text/javascript">
-
-
 function check_input(){	
 	if($("input:radio[id='start_check']").is(":checked") || $("input:radio[id='back_check']").is(":checked")){
 	
@@ -77,12 +74,13 @@ function aab(a){
    
     </tr>
 <?php 
-
-$sql = "select * from flight_one_way f inner join reserve_info r on f.flght_ap_num = r.start_apnum";
- mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
+$sql = "select * from membership m inner join reserve_info r on m.id = r.id
+  inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id'";  
+/* $sql = "select * from flight_one_way f inner join reserve_info r on f.flght_ap_num = r.start_apnum"; */
+ mysqli_query($con,$sql) or die("실패원인12312: ".mysqli_error($con));
  
 
-$result = mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
+$result = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);
 if($total_record == 0){
 ?>
@@ -137,9 +135,9 @@ while($row = mysqli_fetch_array($result)){
     </tr>
  <?php   
  $sql = "select * from membership m inner join reserve_info r on m.id = r.id
-  inner join flight_one_way f on f.flght_ap_num = r.start_apnum";     
+  inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id'";     
 
-$result = mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
+$result = mysqli_query($con,$sql) or die("실패원인2: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);
 if($total_record == 0){
 ?>
@@ -199,10 +197,11 @@ while($row = mysqli_fetch_array($result)){
   
     </tr>
 <?php   
+$sql = "select * from membership m inner join reserve_info r on m.id = r.id
+  inner join flight_one_way f on f.flght_ap_num = r.back_apnum where m.id = '$id' ";     
+/* $sql = "select * from flight_one_way f inner join reserve_info r on f.flght_ap_num = r.back_apnum"; */
 
-$sql = "select * from flight_one_way f inner join reserve_info r on f.flght_ap_num = r.back_apnum";
-
-$result = mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
+$result = mysqli_query($con,$sql) or die("실패원인3: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);
 if($total_record == 0){
 ?>
@@ -248,7 +247,7 @@ while($row = mysqli_fetch_array($result)){
     <td width='400' height='40'>귀 국 편</td>
     <td width='120' height='40'>이 름</td>
     <td width='120' height='40'>인 원</td>
-    <td width='120' height='40'>인 원</td>
+    <td width='130' height='40'>인 원</td>
     <td width='120' height='40'>인 원</td>
     <td width='150' height='40'>총 운 임</td>
     
@@ -256,9 +255,9 @@ while($row = mysqli_fetch_array($result)){
     </tr>
  <?php   
  $sql = "select * from membership m inner join reserve_info r on m.id = r.id
-  inner join flight_one_way f on f.flght_ap_num = r.back_apnum";     
+  inner join flight_one_way f on f.flght_ap_num = r.back_apnum where m.id = '$id'";     
 
-$result = mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
+$result = mysqli_query($con,$sql) or die("실패원인4: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);
 if($total_record == 0){
 ?>

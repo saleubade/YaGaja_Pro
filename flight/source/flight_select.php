@@ -13,6 +13,7 @@ if(!empty($_SESSION['id'])){
 if(!empty($_GET['fly'])){
     $fly = $_GET['fly'];
 }else{
+    
     $fly = "";
 }
 if(!empty($_GET['start'])){
@@ -60,7 +61,7 @@ if(!empty($_GET['num3'])){
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<link type="text/css" rel="stylesheet" href="../css/ticket1.css?var=1">
+<link type="text/css" rel="stylesheet" href="../css/ticket1.css?var=3">
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css?var=1">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -87,19 +88,18 @@ function flight_next_page(href2){	//항공권 선택 유효성 검사 && 선택�
 </head>
 <body>
 
-<?= $fly ,$start, $back ,$start_day ,$back_day, $seat_class , $adult_num, $child_num ,$baby_num ?>
 <header>
 <?php include_once '../../common_lib/top_login2.php';?>
 </header>
 <nav id="top">
 <?php include_once '../../common_lib/main_menu2.php';?>
 </nav>
-
+<br><br><br><br>
 <h1 style="margin:0 auto; text-align: center">FLIGHT TICKETING
 </h1><br>
-<div id="ticket_box1">
+<div id="ticket_box5">
 <p>
-<br><hr id="hr1"><br><br>
+<br><hr id="hr3"><br><br>
 &nbsp;1. 여정 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 2. 항공편 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 3. 결과 조회  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -110,7 +110,7 @@ function flight_next_page(href2){	//항공권 선택 유효성 검사 && 선택�
 <?php
    echo "
         <td width='25%' bgcolor='#dddddd'></td>
-        <td width='25%' bgcolor=gray height=5></td>
+        <td width='25%' bgcolor= gray height=5></td>
         <td width='25%' bgcolor='#dddddd' height=5></td>
         <td width='25%' bgcolor='#dddddd' height=5></td>";
 ?>
@@ -159,59 +159,68 @@ if($fly == 'round'){        //왕복
     $round_low_price = $start_flight_price_min + $back_flight_price_min;
     
     ?>
-<hr id="hr1"><br>
-<div id="select_ticket"><span style='font-size:17pt;'>여정선택</span></div>
-<div id='checked_flight'><?= $start ?>  >>>> <?= $back ?></div><div id='checked_flight'><?= $start ?>  >>>> <?= $back ?></div>
-<hr id='hr1'><br>
-<div id='select_ticket'>항공권 선택</div>
-
+<hr id="hr3"><br><br><br>
+<hr id='hr2'><br>
+<div id="select_ticket" style="text-align:left;"><span style='font-size:16pt; margin-left:45px;'>선택 여정</span></div>
+<hr id='hr2'><br><br><br><br><span style="font-size: 13pt;">출 국 편</span><span style="font-size: 13pt; margin-left:430px;">귀 국 편</span><br>
+<div id='checked_flight'><?= $start ?>  → <?= $back ?></div><div id='checked_flight'><?= $back ?>  → <?= $start ?></div>
+<hr id='hr2'><br>
+<div id='select_ticket1' style="text-align:left;"><span style='font-size:16pt;  margin-left:40px;'>항공권 선택</span></div>
+<hr id="hr2"><br><br><br>
 <div id='selected_flight1'><br>
-<div id='select_ticket'><span style='font-size:15pt;'>[최저가 항공]</span>
-<div id="low_price">최저운임 : <?= $round_low_price ?> 원</div></div><br>
+<div id='select_ticket'><span style='font-size:15pt;'>최저가 항공</span><hr id='hr3' style="width:980px; margin-left:0px;">
+ <?php $round_low_price = number_format($round_low_price);?>
+<div id="low_price">최저 운임 : <?= $round_low_price ?> 원</div></div>
+<hr id='hr3' style="width:980px; margin-left:0px;"><br>
 
     <table id='row_flight'>
     <tr id='row_flight_tr1'>
-    <td colspan='4'><?= $start ?>  >>>> <?= $back ?></td>
+    <td colspan='4'><?= $start ?> &nbsp; <span style="font-size: 20pt;">→</span>  &nbsp;<?= $back ?></td>
     </tr>
     <tr id='row_flight_tr2'>
-    <td colspan='4'><?= $start_fly_start_date ?> | <?= $start_fly_start_time ?> - <?= $start_fly_back_time ?> | <?= $start_fly_time ?> | 직항편</td>
+    <td colspan='4'><?= $start_fly_start_date ?>&nbsp; | &nbsp;<?= $start_fly_start_time ?> - <?= $start_fly_back_time ?>&nbsp; | &nbsp;<?= $start_fly_time ?> &nbsp;| &nbsp;직항편</td>
     </tr>
     <tr id='row_flight_tr3'>
     <form name="select_ticket" method="post" action="flight_ok.php?fly=<?= $fly ?>&start=<?= $start ?>&back=<?= $back ?>
     &adult_num=<?= $adult_num ?>&child_num=<?= $child_num ?>&baby_num=<?= $baby_num ?>">
-    <td><input type='radio' name="start_check" value='low_price_start' style="width:30px; height:30px; margin:0 -15px 0 15px"></td>
-    <td><?= $start ?><br><?= $start_fly_start_time ?></td>
-    <td>>>>></td>
-    <td><?= $back ?><br><?= $start_fly_back_time ?></td>
+    <td><input type='radio' name="start_check" value='low_price_start' style="width:30px; height:30px; margin:0 0 0 15px"></td>
+    <td><span style="font-size:15pt;"><?= $start ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $start_fly_start_time ?>)</span></div></td>
+    <td> <span style="font-size: 25pt;">→</span>  &nbsp;&nbsp;</td>
+    <td><span style="font-size:15pt;"><?= $back ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $start_fly_back_time ?>)</span><div></td>
     </tr>
     <tr id='row_flight_tr4'>
+    <?php $start_flight_price_min = number_format($start_flight_price_min);?>
     <td colspan='4'><span class="low_price"> 최저가 운임 : <?= $start_flight_price_min ?> 원</span></td>
     </tr>
     </table>
     
     <table id='row_flight1'>
     <tr id='row_flight_tr1'>
-    <td colspan='4'><?= $back ?>  >>>> <?= $start ?></td>
+    <td colspan='4'><?= $back ?> <span style="font-size: 20pt;">→</span>  <?= $start ?></td>
     </tr>
     <tr id='row_flight_tr2'>
-    <td colspan='4'><?= $back_fly_start_date ?> | <?= $back_fly_start_time ?> - <?= $back_fly_back_time ?> | <?= $back_fly_time ?> | 직항편</td>
+    <td colspan='4'><?= $back_fly_start_date ?>&nbsp; | &nbsp;<?= $back_fly_start_time ?> - <?= $back_fly_back_time ?>&nbsp; | &nbsp;<?= $back_fly_time ?>&nbsp; | &nbsp;직항편</td>
     </tr>
     <tr id='row_flight_tr3'>
-    <td><input type='radio'name="back_check" value='low_price_back'  style="width:30px;height:30px; margin:0 -15px 0 15px"></td>
-    <td><?= $back ?><br><?= $back_fly_start_time ?></td>
-    <td>>>>></td>
-    <td><?= $start ?><br><?= $back_fly_back_time ?></td>
+    <td><input type='radio'name="back_check" value='low_price_back'  style="width:30px;height:30px; margin:0 0 0 15px"></td>
+    <td><span style="font-size:15pt;"><?= $back ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $back_fly_start_time ?>)</span></div></td>
+    <td><span style="font-size: 25pt;">→</span>  &nbsp;&nbsp;</td>
+    <td><span style="font-size:15pt;"><?= $start ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $back_fly_back_time ?>)</span></div></td>
     </tr>
      </tr>
     <tr id='row_flight_tr4'>
+    <?php $back_flight_price_min = number_format($back_flight_price_min);?>
     <td colspan='4'><span class="low_price"> 최저가 운임 : <?= $back_flight_price_min ?> 원</span></td>
     </tr>
     </table>
     </div>
    
-    <br><br><hr id='hr1'><br><br>
+   <br><br> <br><br><hr id='hr3'><br><br>
     <div id="selected_flight2">
-    <div id='select_ticket'><span style='font-size:15pt;'>운임별 선택<br></span><br></div>
+   <br><br>
+<div id="select_ticket" style="text-align:left;"><span style='font-size:16pt; margin-left:-15px;'>운임별 선택</span></div>
+
+
     
     <table id='row_flight2'>
     <tr id='row_flight2_tr1'>
@@ -241,7 +250,7 @@ if($fly == 'round'){        //왕복
         $fly_time = $row[fly_time];
         $flight_ap_num = $row[flght_ap_num];
         $record_num = $row[recordNum];
-  
+        $flight_price =number_format($flight_price);
     ?>
     <?php 
         
@@ -290,7 +299,7 @@ while($row = mysqli_fetch_array($result)){
     $fly_time = $row[fly_time];
     $flight_ap_num = $row[flght_ap_num];
     $record_num = $row[recordNum];
-   
+    $flight_price =number_format($flight_price);
     $i=0;
     $select_back = 'back'.$record_num;
         echo "<tr>
@@ -310,10 +319,10 @@ while($row = mysqli_fetch_array($result)){
   
   </table>
   <br><br><br>
-  <div id='select_ticket'><span style='font-size:15pt;'>예상운임<br></span></div>
-  <!-- <div id="selected_flight3">예상 총 운임 : 원 </div>
-  <div id="button_div"> -->
-  <input type="submit" id="select_ok" value="항공권 예매"  >
+
+<div style="text-align:center;">
+  <input type="submit"  value="다 음" style="width:100px; height:40px;">
+  </div>
   </td>
   </div>
        
@@ -321,11 +330,7 @@ while($row = mysqli_fetch_array($result)){
 </div>
 </form>
  <?php 
- 
- 
 }else{ //편도
-    
-    
     
     
     $sql = "select * from flight_one_way where flight_price =
@@ -344,48 +349,55 @@ while($row = mysqli_fetch_array($result)){
         $start_fly_time = $row[fly_time];
         $start_flight_ap_num = $row[flght_ap_num];
     }
-    
-   
-    
     ?>
-<hr id="hr1"><br>
-<div id="select_ticket"><span style='font-size:17pt;'>여정선택</span></div>
-<div id='checked_flight'><?= $start ?>  >>>> <?= $back ?></div><div id='checked_flight2'></div>
-<hr id='hr1'><br>
-<div id='select_ticket2'>항공권 선택</div>
+    
+    
+    
+<hr id="hr3"><br><br><br>
 
+<div id="select_ticket" style="text-align:left;"><span style='font-size:16pt; margin-left:45px;'>선택 여정</span></div>
+<hr id='hr2'><br><br><br><br><span style="font-size: 13pt; margin-left:25px;">출 국 편</span><br>
+<div id='checked_flight' style="margin-left:25px;"><?= $start ?>  - <?= $back ?></div>
+<div id='select_ticket1' style="text-align:left;"><span style='font-size:16pt;  margin-left:40px;'>항공권 선택</span></div>
+<hr id="hr2"><br><br><br>
 <div id='selected_flight1'><br>
-<div id='select_ticket'><span style='font-size:15pt;'>[최저가 항공]</span>
-<div id="low_price">최저운임 : <?= $start_flight_price_min ?> 원</div></div><br>
+<div id='select_ticket'><span style='font-size:15pt;'>[최저가 항공]</span><hr id='hr3' style="width:980px; margin-left:0px;">
+ <?php $start_flight_price_min = number_format($start_flight_price_min);?>
+<div id="low_price">최저 운임 : <?= $start_flight_price_min ?> 원</div></div>
+<hr id='hr3' style="width:980px; margin-left:0px;"><br><br>
 
     <table id='row_flight'>
     <tr id='row_flight_tr1'>
-    <td colspan='4'><?= $start ?>  >>>> <?= $back ?></td>
+    <td colspan='4'><?= $start ?> &nbsp; <span style="font-size: 20pt;"> → </span>  &nbsp;<?= $back ?></td>
     </tr>
     <tr id='row_flight_tr2'>
-    <td colspan='4'><?= $start_fly_start_date ?> | <?= $start_fly_start_time ?> - <?= $start_fly_back_time ?> | <?= $start_fly_time ?> | 직항편</td>
+    <td colspan='4'><?= $start_fly_start_date ?>&nbsp; | &nbsp;<?= $start_fly_start_time ?> - <?= $start_fly_back_time ?>&nbsp; | &nbsp;<?= $start_fly_time ?> &nbsp;| &nbsp;직항편</td>
     </tr>
-    <tr id='row_flight_tr3'>
     <form name="select_ticket" method="post" action="flight_ok.php?fly=<?= $fly ?>&start=<?= $start ?>&back=<?= $back ?>
     &adult_num=<?= $adult_num ?>&child_num=<?= $child_num ?>&baby_num=<?= $baby_num ?>">
-    <td><input type='radio' name="start_check" value='low_price_start' style="width:30px; height:30px; margin:0 -15px 0 15px"></td>
-    <td><?= $start ?><br><?= $start_fly_start_time ?></td>
-    <td>>>>></td>
-    <td><?= $back ?><br><?= $start_fly_back_time ?></td>
+    <tr id='row_flight_tr3'>
+    <td><input type='radio' name="start_check" value='low_price_start' style="width:30px; height:30px; margin:0 0 0 15px"></td>
+    <td><span style="font-size:15pt;"><?= $start ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $start_fly_start_time ?>)</span></div></td>
+    <td> <span style="font-size: 25pt;">→</span>  &nbsp;&nbsp;</td>
+    <td><span style="font-size:15pt;"><?= $back ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $start_fly_back_time ?>)</span></div></td>
     </tr>
     <tr id='row_flight_tr4'>
     <td colspan='4'><span class="low_price"> 최저가 운임 : <?= $start_flight_price_min ?> 원</span></td>
     </tr>
     </table>
+   
     </div>
-    <br><br><hr id='hr1'><br><br>
+    <br><br><br><br>
     <div id="selected_flight2">
-    <div id='select_ticket'><span style='font-size:15pt;'>운임별 선택<br></span><br></div>
+   	<br><br><br>
+    <div id="select_ticket" style="text-align:left;"><span style='font-size:16pt; margin-left:45px;'>운임별 선택</span></div>
+    <hr id='hr2'><br><br>
+
     
     <table id='row_flight2'>
     <tr id='row_flight2_tr1'>
     <td width='370' height='40'>출 국 편</td>
-    <td width='80' height='40'>항공 번호</td>
+    <td width='100' height='40'>항공 번호</td>
     <td width='120' height='40'>날 짜</td>
     <td width='120' height='40'>시 간</td>
     <td width='100' height='40'>운행 시간</td>
@@ -408,9 +420,11 @@ while($row = mysqli_fetch_array($result)){
         $fly_time = $row[fly_time];
         $flight_ap_num = $row[flght_ap_num];
         $record_num = $row[recordNum];
+        
+        
     ?>
     <?php 
-        
+    $flight_price =number_format($flight_price);
      $i=0;
      $select_start = 'start'.$record_num;
         echo "<tr>
@@ -429,7 +443,7 @@ while($row = mysqli_fetch_array($result)){
  
   <br><br><br>
   <div id="button_div">
-  <input type="submit" id="select_ok" value="항공권 예매" >
+  <input type="submit"  value="다 음" style="width:100px; height:40px;">
  
   </div>
 </div>
