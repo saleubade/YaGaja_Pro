@@ -4,7 +4,7 @@ include '../../common_lib/createLink_db.php';
 include './create_gallery.php';
 include './create_gallery_ripple.php';
 
-$continent = "Asia";
+$continent = "Total";
 $table = "gallery";
 
 
@@ -19,7 +19,7 @@ if (isset($_GET['mode'])) {
     $search = $_POST['search'];
     $find = $_POST['find'];
 }
-$no = $_GET['no'];
+
 
 ?>
 
@@ -51,10 +51,17 @@ $no = $_GET['no'];
     
     <?php
      
+    if($continent == "Total"){
+        $sql = "select * from gallery order by num desc";
+        $result3 = mysqli_query($con, $sql) or die(mysqli_error($con));
+        $total_record = mysqli_num_rows($result3);
+    }else{
+        $sql = "select * from gallery where continent = '$continent' order by num desc";
+        $result3 = mysqli_query($con, $sql) or die(mysqli_error($con));
+        $total_record = mysqli_num_rows($result3);
+    }
+    
       
-      $sql = "select * from gallery order by num desc";
-      $result3 = mysqli_query($con, $sql) or die(mysqli_error($con));
-      $total_record = mysqli_num_rows($result3);
       
 
       $rows_scale=9;
@@ -117,11 +124,12 @@ $no = $_GET['no'];
 			<hr>
 			<?php 
 			
-			$sql = "select * from gallery order by $item_hit desc";
-			$result2 = mysqli_query($con, $sql);
+			$sql = "select * from gallery order by hit desc";
+			$result2 = mysqli_query($con, $sql) or die("실패원인 : ".mysqli_error($con));
+			$top_img3_good = mysqli_num_rows($result2);
+			if($top_img3_good != 0){
 			
-			
-			for($j = 0; $j < 3; $j++){
+			for($j = 0; $j < $top_img3_good && $j < 3 ; $j++){
 			   // 가져올 레코드 위치 이동
 			   mysqli_data_seek($result2, $j);
 			   
@@ -137,15 +145,42 @@ $no = $_GET['no'];
 			   $good_date = substr($item_date, 0, 10);
 			   $good_subject = str_replace(" ", "&nbsp;", $row["subject"]);
 			   
+			   $img_copy_name0 = $row['file_copy_0'];
+			   $img_copy_name1 = $row['file_copy_1'];
+			   $img_copy_name2 = $row['file_copy_2'];
+			   
+			    if(!empty($img_copy_name0)){ // 첫번째 이미지 파일이 있으면 1번 이미지를 보여줌
+			    $main_img = $img_copy_name0;
+			    
+			    }else if(empty($img_copy_name0) && !empty($img_copy_name1)){ // 첫번째 이미지 파일이 없고 두번째 이미지 파일이 있으면 2번 이미지 보여줌
+			    $main_img = $img_copy_name1;
+			    
+			    }else if(empty($img_copy_name0) && empty($img_copy_name1) && !empty($img_copy_name2)){ // 첫번째, 두번째 없고 세번째 있으면  3번 이미지 보여줌
+			    $main_img = $img_copy_name2;
+			    
+			    } 
+			   
+			   /* for($i=0; $i<=2;$i++ ){
+			       if(!empty($img_copy_name[$i])){ // 첫번째 이미지 파일이 있으면 1번 이미지를 보여줌
+			           $main_img = $img_copy_name[$i];
+			           break;
+			       }
+			   } */
+			   
+			   
+			   
+			   
 			   ?>
 			   
-			   <div style="border: 1px solid blue; width: 250px; height: 140px; float: left; margin-left: 50px; ">
-			   <a href="gallery_view.php?table=<?=$table?>&num=<?=$good_num ?>&page=<?=$page?>&continent=<?=$continent?>"><img src="../img/asd.jpg" style="width: 250px; height: 140px;">
-			    <?=$good_subject ?></a>
+			   <div style=" width: 250px; height: 140px; float: left; margin-left: 50px; ">
+			   <a href="gallery_view.php?table=<?=$table?>&num=<?=$good_num ?>&page=<?=$page?>&continent=<?=$continent?>">
+			   <img alt="" src="../data/<?=$main_img ?>" style="width: 250px; height: 140px;">
+			   <div style="font-size: 13px;">제목 : <?=$good_subject ?></div><div style="font-size: 13px;">조회수 : <?=$good_hit ?></div></a>
 			   </div>
 			  
 			  <?php  
-			     }
+			     }//end of for
+			}//end of if
 			  ?>
 		
 			

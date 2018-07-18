@@ -300,8 +300,8 @@ class Sendmail {
 
 $config=array(
     'host'=>'ssl://smtp.naver.com',
-    'smtp_id'=>'she3188@naver.com',
-    'smtp_pw'=>'@ehdeoqnrh0@',
+    'smtp_id'=>'ren1175@naver.com',
+    'smtp_pw'=>'gkfajsl4261',
     'debug'=>1,
     'charset'=>'utf-8',
     'ctype'=>'text/plain'

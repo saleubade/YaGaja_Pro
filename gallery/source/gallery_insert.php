@@ -1,9 +1,3 @@
-<script type="text/javascript">
-check_file_good(){
-	history.go(-1);
-}
-
-</script>
 <?php
 session_start();
 include "../../common_lib/createLink_db.php";
@@ -15,9 +9,7 @@ $page = $_GET["page"];
 $table = $_GET["table"];
 $subject = $_POST['subject'];
 $content = $_POST['content'];
-$continent = $_GET['continent'];
-
-
+$continent = $_POST['radio_from'];
 
 
 if(isset($_SESSION['id'])){
@@ -52,7 +44,7 @@ if(isset($_FILES["upfile"])){
                 $new_file_name=$new_file_name."_".$i;
                 $copy_file_name[$i]=$new_file_name.".".$file_ext;
                 $upload_file[$i]=$upload_dir.$copy_file_name[$i];
-                if($upfile_size[$i]>2000000){
+                if($upfile_size[$i]>800000){
                     echo ("
             <script>
             alert('업로드 파일 크기가 지정된 용량(800KB)을 초과합니다! \\n파일크기를  확인해주세요!')
