@@ -18,19 +18,20 @@ if(isset($_GET['mode']) && $_GET['mode']=="search"){
     $sql= "select * from qna order by gno desc, depth asc";
 }
 
-$result= mysqli_query($con, $sql) or die(mysqli_error($con));
-
-$total_record=mysqli_num_rows($result);
+$result3= mysqli_query($con, $sql) or die(mysqli_error($con));
+$total_record=mysqli_num_rows($result3);
 
 // 페이지 당 글수, 블럭당 페이지 수
 $rows_scale=3;
-$pages_scale=3;
+$pages_scale=5;
 
 // 전체 페이지 수 ($total_page) 계산
 $total_pages= ceil($total_record/$rows_scale);
 
-if(empty($page)){
+if(empty($_GET['page'])){
     $page=1;
+}else{
+    $page = $_GET['page'];
 }
 
 // 현재 페이지 시작 위치 = (페이지 당 글 수 * (현재페이지 -1))  [[ EX) 현재 페이지 2일 때 => 3*(2-1) = 3 ]]
@@ -51,7 +52,7 @@ $end_page= ($total_pages >= ($start_page + $pages_scale)) ? $start_page + $pages
 $number=$total_record- $start_row;
 
 //제목 길이를 줌.
-$row_length=84;
+$row_length=30;
 
 ?>
 
@@ -113,8 +114,9 @@ $row_length=84;
                             ";
     				}else{
         				for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
-        				    mysqli_data_seek($result, $i);
-        				    $row= mysqli_fetch_array($result);
+        				    mysqli_data_seek($result3, $i);
+        				    
+        				    $row= mysqli_fetch_array($result3);
         				    
         				    $num= $row['num'];
         				    $subject= $row['subject'];
@@ -162,7 +164,7 @@ $row_length=84;
     				?>
 				</table>
 				<form name="page_form" method="get" action="qna_list.php">
-				<table id="page_link_table" border="0">
+								<table id="page_link_table" border="0">
 					<tr>
 						<td width="30">
 					<?PHP 
@@ -230,7 +232,6 @@ $row_length=84;
                     ?>
                     	</td>
                     </tr>
-                                        
 				</table>
 				</form>
 				<div id="buttons">

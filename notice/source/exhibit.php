@@ -31,8 +31,8 @@ $table = "notice";
         $sql = "select * from $table order by num desc";
     }
     
-    $result =mysqli_query($con, $sql);
-    $total_record = mysqli_num_rows($result); //전체 레코드 수 
+    $result3 =mysqli_query($con, $sql);
+    $total_record = mysqli_num_rows($result3); //전체 레코드 수 
     
     // 페이지 당 글수, 블럭당 페이지 수
     $rows_scale=3;
@@ -110,10 +110,10 @@ $table = "notice";
       
       for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
         //가져올 레코드 위치 이동
-        mysqli_data_seek($result, $i);
+        mysqli_data_seek($result3, $i);
         
         //하나 레코드 가져오기
-        $row=mysqli_fetch_array($result);
+        $row=mysqli_fetch_array($result3);
         
         $item_num=$row["num"];
         $item_id=$row["id"];
