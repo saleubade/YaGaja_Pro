@@ -26,3 +26,13 @@ include_once '../../common_lib/createLink_db.php';
     <nav id="shop_aside">
     	<?php include_once '../../shopping_lib/shop_main_menu.php';?>  	
     </nav>
+    <section>
+    	<div></div>
+    </section>
+    
+	<div class="clear"></div><div class="clear"></div><div class="clear"></div>
+	<footer style="border:1px solid black;">
+ 		<?php include_once '../../common_lib/footer2.php';?>
+  	</footer>
+</body>
+</html>    
