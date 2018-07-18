@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <?php
 session_start();
 include "../../common_lib/createLink_db.php";
@@ -127,7 +128,7 @@ if($flag !=="OK"){
     </header>
     <!-- 메뉴 -->
     <nav id="shop_aside">
-    	<?php include_once '../../shopping_lib/shop_main_menu2.php';?>  	
+    	<?php include_once '../../shopping_lib/shop_main_menu.php';?>  	
     </nav>
  <section id="shop_input_goods">
       <article class="main">

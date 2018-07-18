@@ -11,7 +11,7 @@ include_once '../../common_lib/createLink_db.php';
 include_once '../../shopping_lib/create_table_cart.php';
 include_once '../../shopping_lib/create_table_shop_goods.php';
 
-$sql= "select * from shop_goods order by regist_day desc";
+$sql= "select * from shop_goods where shop_type='여행용품' order by regist_day desc";
 $result= mysqli_query($con, $sql);
 $total_record= mysqli_num_rows($result);
 
@@ -69,7 +69,7 @@ $number=$total_record- $start_row;
     	</section>
     	<section>    
             <?php 
-                $sql = "select * from shop_goods order by hit desc";
+                $sql = "select * from shop_goods where shop_type='여행용품' order by hit desc";
                 $result = mysqli_query($con, $sql) or die(mysqli_error($con));
         
         
@@ -104,7 +104,7 @@ $number=$total_record- $start_row;
 			<hr style="border: 2px solid lightgray; width: 1160px;">
   	    	<div style="height: 70px;"></div> 
             <?php 
-                $sql = "select * from shop_goods order by regist_day desc";
+                $sql = "select * from shop_goods where shop_type='여행용품' order by regist_day desc";
                 $result = mysqli_query($con, $sql) or die(mysqli_error($con));
                 $total_record=mysqli_num_rows($result);
                 if($total_record){
@@ -204,3 +204,4 @@ $number=$total_record- $start_row;
   	</footer>
 </body>
 </html>	
+
