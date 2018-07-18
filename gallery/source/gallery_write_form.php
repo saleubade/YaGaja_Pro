@@ -1,6 +1,35 @@
 <?php
     session_start();
     
+    if(isset($_SESSION['id'])){
+        $id=$_SESSION['id'];
+    }
+    if(isset($_GET['mode'])){
+        $mode = $_GET['mode'];
+        $num = $_GET['num'];
+        $page = $_GET['page'];
+        $table = $_GET['table'];
+    }
+
+    
+    if (isset($mode) && $mode == "modify"){
+        $sql = "select * from $table where num=$num";
+        $result = mysqli_query($con,$sql);
+        $row = mysqli_fetch_array($result);
+        
+        $item_subject = $row['subject'];
+        $item_content = $row['content'];
+        $item_continent = $row['continent'];
+        
+        $item_file_name_0 = $row['file_name_0'];
+        $item_file_name_1 = $row['file_name_1'];
+        $item_file_name_2 = $row['file_name_2'];
+        
+        $item_copy_file_0 = $row['file_copy_0'];
+        $item_copy_file_1 = $row['file_copy_1'];
+        $item_copy_file_2 = $row['file_copy_2'];
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -61,17 +90,18 @@
   <?php 
   if(isset($mode) && $mode === "modify"){
       
-  ?>
+  ?> 
   <form name="board_form" action="gallery_insert.php?mode=modify&num=<?=$num?>&page=<?=$page?>&table=<?=$table?>" method="post" enctype="multipart/form-data">
-  
+  <!-- 모드가 수정일때 -->
   <?php 
   }else{
   
   ?>
-      <form name="board_form" action="gallery_insert.php?page=<?=$page?>" method="post" enctype="multipart/form-data">
- <?php 
+  <form name="board_form" action="gallery_insert.php?page=<?=$page?>" method="post" enctype="multipart/form-data">
+  <!-- 모드가 수정이 아닌 일반 글쓰기일때 -->     
+  <?php 
   }
- ?>
+  ?>
 
   <div id="write_form_1">
   
@@ -80,71 +110,64 @@
   <tr>
 	<th style="background-color: gray; text-align: center;">유 형</th>
 	<td style="text-align: center;">
-	<input type="radio" id="select_from" name="radio_from" class="1"/>Asia
-	<input type="radio" id="select_from" name="radio_from" class="1"/>Europe
-	<input type="radio" id="select_from" name="radio_from" class="2"/>America
-	<input type="radio" id="select_from" name="radio_from" class="3"/>Afreeca
-	<input type="radio" id="select_from" name="radio_from" class="4"/>Oceania
+	<input type="radio" id="select_from" name="radio_from" value="Asia"/>Asia
+	<input type="radio" id="select_from" name="radio_from" value="Europe"/>Europe
+	<input type="radio" id="select_from" name="radio_from" value="America"/>America
+	<input type="radio" id="select_from" name="radio_from" value="Afreeca"/>Afreeca
+	<input type="radio" id="select_from" name="radio_from" value="Oceania"/>Oceania
 	</td>
   </tr>
   <tr>
   	<th style="background-color: gray; text-align: center;">제 목</th>
-  	<td><input type="text" name="subject"  size="100"></td>
+  	<td><input type="text" name="subject" value="<?=$item_subject ?>" size="100" ></td>
   </tr>
   <tr>
 	<th style="background-color: gray; text-align: center;">내용</th>  
-  	<td><textarea name="content" rows="25" cols="100"></textarea></td>
+  	<td><textarea name="content" value="<?=$item_content ?>" rows="25" cols="100"></textarea></td>
   </tr>
   <tr>
 	<th style="background-color: gray; text-align: center;">이미지 파일 1</th>  
-  	<td><input id="fil1_0" type="file" name="upfile[]"></td>
+  	<td><input id="fil1_0" type="file" name="upfile[]" ></td>
   </tr>
   <tr>
 	<th style="background-color: gray; text-align: center;">이미지 파일 2</th>  
-  	<td><input id="fil1_1" type="file" name="upfile[]"></td>
+  	<td><input id="fil1_1" type="file" name="upfile[]" ></td>
   </tr>
   <tr>
 	<th style="background-color: gray; text-align: center;">이미지 파일 3</th>  
-  	<td><input id="fil1_2" type="file" name="upfile[]"></td>
+  	<td><input id="fil1_2" type="file" name="upfile[]" ></td>
   </tr>
   </table>  
 
-  
-  
+
+
    
-<!--  <div class="write_form"></div> -->
-<!--   <div id="write_1"> -->
-<!--   <div class="write_1_1">제목</div> -->
-  <!--<div class="write_1_2"><input type="text" name="subject" value="<?=$item_subject?>"></div> -->
-<!--   </div> -->
-  
-<!--   <div class="write_form"></div> -->
-<!--   <div id="write_2"> -->
-<!--   <div class="write_1_1">내용</div> -->
-  <!-- <div class="write_1_2"><textarea name="content" rows="14" cols="75"><?=$item_content?></textarea></div> --> 
-<!--   </div> -->
-  
-  <div class="write_form"></div>
-  <div id="write_3">
- <!--  <div class="write_1_1">이미지파일1</div>
-  <div class="write_1_2"> -->
+
   
     <?php 
-   if((isset($mode) && $mode==="modify")){    // 글쓰기 수정시1SS
+    if($mode == "modify" && isset($item_file_name_0)) {    // 글쓰기 수정시1
    ?>
-   <table>
-   <tr>
+   <table border="1" id="table_good" >
+  <tr>
+	<th style="background-color: gray; text-align: center;">유 형</th>
+	<td style="text-align: center;">
+	<input type="radio" id="select_from" name="radio_from" >
+	</td>
+  </tr>
+  <tr>
+  	<th style="background-color: gray; text-align: center;">제 목</th>
+  	<td><input type="text" name="subject" value=<?=$item_subject ?> size="100" ></td>
+  </tr>
+  <tr>
+	<th style="background-color: gray; text-align: center;">내용</th>  
+  	<td><textarea name="content"  rows="25" cols="100" value=<?=$item_content ?>></textarea></td>
+  </tr>
+  <tr>
 	<th style="background-color: gray;">이미지 파일 1</th>  
-  	<td><input type="file" name="upfile[]" ></td>
-    <td><input type="checkbox" name="del_file[]" value="0">삭제 </td>  
+  	<td><input type="file" name="upfile[]" value="0"><?=$item_file_name_0?>파일이 등록되어 있습니다.<input type="checkbox" name="del_file[]" value="0">삭제 </td>  
   </tr>
    </table>
-<!--    <div class="delete_ok">  -->
-    
-<!--    <input type="checkbox" name="del_file[]" value="0">삭제</div>  -->
-<!--  <div id="hide_file1"><input type='file' name='upfile[]'></div>  -->
-<!--      <div class="clear"></div>  -->
-<!--      </div>  -->
+
   <?php 
    }else{
 
@@ -157,36 +180,51 @@
   
 
   
-  <div class="write_form"></div>
-  <div id="write_4">
-  <!-- <div class="write_1_1"> 이미지파일2 </div>
-  <div class="write_1_2"> -->
-  
+ 
   
   
   
   <?php 
-//   if((isset($mode) && $mode==="modify") && $item_file1){    // 글쓰기 수정시2
-//   ?>
-<!--   <div class="delete_ok"> -->
-<!-- <?=$item_file1?>파일이 등록되어 있습니다. -->  
-<!--   <input type="checkbox" name="del_file[]" value="1">삭제</div> -->
-<!--   <div id="hide_file2"><input type='file' name='upfile[]'></div> -->
-<!--   <div class="clear"></div> -->
+  if((isset($mode) && $mode==="modify") && $item_file_name_1){    // 글쓰기 수정시2
+   ?>
+   <div class="delete_ok"> 
+ <?=$item_file_name_1?>파일이 등록되어 있습니다.  
+   <input type="checkbox" name="del_file[]" value="1">삭제</div> 
+   <div id="hide_file2"><input type='file' name='upfile[]'></div> 
+   <div class="clear"></div> -->
   
   <?php 
-//   } else{
-//       echo "<input type='file' name='upfile[]'></div>";
-//   } 
-//   ?>
+   } else{
+      /*  echo "<input type='file' name='upfile[]'></div>"; */
+   } 
+   ?>
   </div>
-  <div class="write_form"></div>
-  <div class="clear"></div>
-</div>
+  
+  
+  
+  
+  
+  
+  
+  <?php 
+  if((isset($mode) && $mode==="modify") && $item_file_name_2){    // 글쓰기 수정시3
+   ?>
+   <div class="delete_ok"> -->
+ <?=$item_file_name_2?>파일이 등록되어 있습니다. -->  
+   <input type="checkbox" name="del_file[]" value="1">삭제</div> -->
+   <div id="hide_file2"><input type='file' name='upfile[]'></div> -->
+   <div class="clear"></div> -->
+  
+  <?php 
+   } else{
+       /* echo "<input type='file' name='upfile[]'></div>"; */
+   } 
+   ?>
+ 
+ 
 <div id="write_button"><a href="#"><img src="../img/ok.png" onclick="check_insert()"></a>
-
-<a href="gallery_list.php?table=<?=$table?>&page=<?=$page?>"><img src="../img/list.png"></a></div>
-<!--     </div> -->
+<a href="gallery_list.php?table=<?=$table?>&page=<?=$page?>&continent=<?=$continent ?>"><img src="../img/list.png"></a></div>
+ 
     </form>
       </article>
     </section>

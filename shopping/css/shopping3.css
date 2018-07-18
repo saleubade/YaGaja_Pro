@@ -14,6 +14,7 @@ img:hover{
 	height:160px;
 	border: 1px solid black;
 	margin: 10px auto 0px auto;
+	
 }
 
 .shop_section{
@@ -21,6 +22,7 @@ img:hover{
 	width: 1200px;
 	margin: 0px auto;
 	padding-left: 10px;
+	border: 1px solid red;
 }
 
 .clear{
@@ -154,15 +156,25 @@ li a:hover {
 	font-size: 18px;
 	text-align: center;
 	float: left;
-	margin-left: -10px;
 	padding-top: 50px;
+	border: 1px solid black;
+	margin: 5px auto auto -10px;
 }
-
+.new_arrivals1{
+	width: 1200px;
+	height: 100px;
+	font-size: 18px;
+	text-align: center;
+	float: left;
+	padding-top: 50px;
+	border: 1px solid black;
+	margin-left: -10px;
+}
 .product{
 	width: 350px;
 	height: 500px;
 	margin: 0 12px 15px 30px;
-	float: left;
+	display: inline-block;
 }
 .product_a:hover{
 	

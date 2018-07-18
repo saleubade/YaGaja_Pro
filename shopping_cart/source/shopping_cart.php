@@ -100,7 +100,7 @@ $row_length=87;
    		<?php include_once '../../shopping_lib/top_login3.php';?>
     </header>
     <nav id="shop_aside">
-    	<?php include_once '../../shopping_lib/shop_main_menu2.php';?>  	
+    	<?php include_once '../../shopping_lib/shop_main_menu.php';?>  	
     </nav>
     <section>
     	<div id="wish_list_section">WISH LIST
@@ -237,7 +237,7 @@ $row_length=87;
     
     
     
-	<div class="clear"></div>
+	<div class="clear"></div><div class="clear"></div><div class="clear"></div>
 	<footer style="border:1px solid black;">
  		<?php include_once '../../common_lib/footer2.php';?>
   	</footer>
