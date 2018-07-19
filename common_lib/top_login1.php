@@ -48,9 +48,7 @@ include_once './common_lib/createLink_db.php';
   <li><a href="#" onclick="message()">쪽지(&nbsp; <?= $not_read_num ?> &nbsp;) </a>&nbsp; |</li>
   <li>관리자 님 <a href="./login/source/logout.php">(로그아웃)</a> | </li>
 <?php }elseif($id){ ?>
-  <li> <a href="./modify/source/member_form_modify.php">회원정보수정 </a>&nbsp; </li>
-  <li> <a href="./cart/source/cart_list.php">장바구니 </a>&nbsp; |</li>
-  <li> <a href="./cart/source/cart_list.php">구매내역 </a>&nbsp; |</li>
+  <li> <a href="./modify/source/member_form_modify.php">내 정보 수정 </a>&nbsp; </li>
   <li> <a href="#" onclick="message()">쪽지(&nbsp; <?= $not_read_num ?> &nbsp;) </a>&nbsp; |</li>
   <li> <?=$name?> 님<a href="./login/source/logout.php">(로그아웃)</a> | </li>
 <?php } ?>

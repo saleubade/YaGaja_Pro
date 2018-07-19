@@ -73,6 +73,10 @@ $number=$total_record- $start_row;
 	    var popupY = (window.screen.height/2)-(400/2);
 	    window.open(url,'','left='+popupX+',top='+popupY+', width=500, height=400, status=no, scrollbars=no');
 	  }
+ function message_close(){
+		window.close();
+		window.opener.location.reload(true);
+	}
  </script>
 </head>
 <body>
@@ -188,6 +192,7 @@ $number=$total_record- $start_row;
       if(isset($id)){
           
       ?>
+      <a href="#" onclick="message_close()" ><img src="../img/close.png" style="width: 30px; float: right; margin-top: 20px;"></a>
       <a href="#" onclick="message_form()" ><img src="../img/message.png" style="width: 150px; float: right; margin-top: 20px;"></a>
       
       <?php 
