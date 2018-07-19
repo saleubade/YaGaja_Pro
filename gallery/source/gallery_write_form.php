@@ -1,6 +1,9 @@
 <?php
     session_start();
     
+    include_once '../../common_lib/createLink_db.php';
+    
+    
     if(isset($_SESSION['id'])){
         $id=$_SESSION['id'];
     }
@@ -13,6 +16,8 @@
 
     
     if (isset($mode) && $mode == "modify"){
+        
+        
         $sql = "select * from $table where num=$num";
         $result = mysqli_query($con,$sql);
         $row = mysqli_fetch_array($result);
@@ -28,6 +33,9 @@
         $item_copy_file_0 = $row['file_copy_0'];
         $item_copy_file_1 = $row['file_copy_1'];
         $item_copy_file_2 = $row['file_copy_2'];
+
+        
+        
     }
     
 ?>
@@ -88,21 +96,20 @@
         </div>
         
   <?php 
-  if(isset($mode) && $mode === "modify"){
-      
-  ?> 
+  if($mode === "modify"){   
+  
+  
+      ?> 
   <form name="board_form" action="gallery_insert.php?mode=modify&num=<?=$num?>&page=<?=$page?>&table=<?=$table?>" method="post" enctype="multipart/form-data">
   <!-- 모드가 수정일때 -->
+  
+  
   <?php 
   }else{
   
   ?>
   <form name="board_form" action="gallery_insert.php?page=<?=$page?>" method="post" enctype="multipart/form-data">
   <!-- 모드가 수정이 아닌 일반 글쓰기일때 -->     
-  <?php 
-  }
-  ?>
-
   <div id="write_form_1">
   
 
@@ -110,68 +117,83 @@
   <tr>
 	<th style="background-color: gray; text-align: center;">유 형</th>
 	<td style="text-align: center;">
-	<input type="radio" id="select_from" name="radio_from" value="Asia"/>Asia
-	<input type="radio" id="select_from" name="radio_from" value="Europe"/>Europe
-	<input type="radio" id="select_from" name="radio_from" value="America"/>America
-	<input type="radio" id="select_from" name="radio_from" value="Afreeca"/>Afreeca
-	<input type="radio" id="select_from" name="radio_from" value="Oceania"/>Oceania
+	<input type="radio" id="select_from" name="radio_from" >Asia 
+	<input type="radio" id="select_from" name="radio_from" >Europe
+	<input type="radio" id="select_from" name="radio_from" >America
+	<input type="radio" id="select_from" name="radio_from" >Afreeca
+	<input type="radio" id="select_from" name="radio_from" >Oceania
 	</td>
   </tr>
   <tr>
   	<th style="background-color: gray; text-align: center;">제 목</th>
-  	<td><input type="text" name="subject" value="<?=$item_subject ?>" size="100" ></td>
+  	<td><input type="text" name="subject"  size="100"></td>
   </tr>
   <tr>
 	<th style="background-color: gray; text-align: center;">내용</th>  
-  	<td><textarea name="content" value="<?=$item_content ?>" rows="25" cols="100"></textarea></td>
+  	<td><textarea name="content" rows="25" cols="100"></textarea></td>
   </tr>
   <tr>
 	<th style="background-color: gray; text-align: center;">이미지 파일 1</th>  
-  	<td><input id="fil1_0" type="file" name="upfile[]" ></td>
+  	<td><input id="fil1_0" type="file" name="upfile[]"></td>
   </tr>
   <tr>
 	<th style="background-color: gray; text-align: center;">이미지 파일 2</th>  
-  	<td><input id="fil1_1" type="file" name="upfile[]" ></td>
+  	<td><input id="fil1_1" type="file" name="upfile[]"></td>
   </tr>
   <tr>
 	<th style="background-color: gray; text-align: center;">이미지 파일 3</th>  
-  	<td><input id="fil1_2" type="file" name="upfile[]" ></td>
+  	<td><input id="fil1_2" type="file" name="upfile[]"></td>
   </tr>
   </table>  
+  
+  <?php 
+  }
+  ?>
 
+ 
 
-
-   
 
   
     <?php 
     if($mode == "modify" && isset($item_file_name_0)) {    // 글쓰기 수정시1
    ?>
    <table border="1" id="table_good" >
-  <tr>
+   <tr>
 	<th style="background-color: gray; text-align: center;">유 형</th>
-	<td style="text-align: center;">
-	<input type="radio" id="select_from" name="radio_from" >
-	</td>
+		<td style="text-align: center;">
+			<input type="radio" id="select_from" name="radio_from" >Asia 
+			<input type="radio" id="select_from" name="radio_from" >Europe
+			<input type="radio" id="select_from" name="radio_from" >America
+			<input type="radio" id="select_from" name="radio_from" >Afreeca
+			<input type="radio" id="select_from" name="radio_from" >Oceania
+		</td>
   </tr>
   <tr>
   	<th style="background-color: gray; text-align: center;">제 목</th>
-  	<td><input type="text" name="subject" value=<?=$item_subject ?> size="100" ></td>
+  	<td><input type="text" value="<?=$item_subject ?>" name="subject" size="100" ></td>
   </tr>
   <tr>
 	<th style="background-color: gray; text-align: center;">내용</th>  
-  	<td><textarea name="content"  rows="25" cols="100" value=<?=$item_content ?>></textarea></td>
+  	<td><textarea name="content"  rows="25" cols="100"><?= $item_content?></textarea></td>
   </tr>
   <tr>
 	<th style="background-color: gray;">이미지 파일 1</th>  
-  	<td><input type="file" name="upfile[]" value="0"><?=$item_file_name_0?>파일이 등록되어 있습니다.<input type="checkbox" name="del_file[]" value="0">삭제 </td>  
+  	<td><input type="file" name="upfile[]" value="0"><?=$item_file_name_0?> 파일이 등록되어 있습니다.<input type="checkbox" name="del_file[]" value="0">삭제 </td>  
   </tr>
-   </table>
+  <tr>
+	<th style="background-color: gray; text-align: center;">이미지 파일 2</th>  
+  	<td><input id="fil1_1" type="file" name="upfile[]"></td>
+  </tr>
+  <tr>
+	<th style="background-color: gray; text-align: center;">이미지 파일 3</th>  
+  	<td><input id="fil1_2" type="file" name="upfile[]"></td>
+  </tr>
+  </table>
 
   <?php 
    }else{
 
-  /* echo "<input type='file' name='upfile[]'> </div>"; */
+    echo "<input type='file' name='upfile[]'> </div>"; 
       
    }
    ?>
