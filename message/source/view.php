@@ -50,7 +50,7 @@ function receive_message_close(){
 <br>
 <div style="text-align: center;">
 <a href="#" onclick="receive_message_close()">[확인]</a>
-<a href="./delete_message.php?item_num=<?=$num ?>">[삭제]</a>
+<a href="./message_delete.php?item_num=<?=$num ?>">[삭제]</a>
 </div>
 
 </body>

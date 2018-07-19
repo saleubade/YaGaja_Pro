@@ -42,12 +42,11 @@ include_once './common_lib/createLink_db.php';
   <li> <a href="../">항공권 등록 </a>&nbsp; |</li>
   <li> <a href="../">회원관리 </a>&nbsp; |</li>
   <li><a href="../">회원리스트 </a>&nbsp; |</li>
+  <li><a href="../../memberlist/source/memberlist.php">회원리스트 </a>&nbsp; |</li>
   <li><a href="#" onclick="message()">쪽지(&nbsp; <?= $not_read_num ?> &nbsp;) </a>&nbsp; |</li>
   <li>관리자 님 <a href="../../login/source/logout.php">(로그아웃)</a> | </li>
 <?php }elseif($id){ ?>
-  <li> <a href="../">회원정보수정 </a>&nbsp; </li>
-  <li> <a href="../">장바구니 </a>&nbsp; |</li>
-  <li> <a href="../">구매내역 </a>&nbsp; |</li>
+  <li> <a href="../">내 정보 수정 </a>&nbsp; </li>
   <li> <a href="#" onclick="message()">쪽지(&nbsp; <?= $not_read_num ?> &nbsp;) </a>&nbsp; |</li>
   <li> <?=$name?> 님<a href="../../login/source/logout.php">(로그아웃)</a> | </li>
 <?php } ?>

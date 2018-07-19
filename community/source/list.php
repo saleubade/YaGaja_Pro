@@ -137,9 +137,6 @@ $table = "community";
         //하나 레코드 가져오기
         $row=mysqli_fetch_array($result3);
         
-//         var_dump($result3);
-//         exit;
-        
         
         $item_num=$row["num"];
         $item_id=$row["id"];
@@ -150,7 +147,7 @@ $table = "community";
         $item_date=substr($item_date,0,10);
         $item_subject=str_replace(" ","&nbsp;",$row["subject"]);
       
-        $sql="select * from view_ripple where parent=$item_num";
+        $sql="select * from community_ripple where parent=$item_num";
         $result2=mysqli_query($con, $sql);
         $num_table=mysqli_num_rows($result2); 
         
@@ -165,14 +162,9 @@ $table = "community";
 
    <div id="list0_1" style="margin-top: 10px;"><?=$number ?>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<?=$item_id ?>&nbsp;&nbsp;&nbsp;|</div>
    
-   <div id="list2" style="margin-top: 10px;"><a href="view.php?table=<?=$table?>&num=<?=$item_num?>&page=<?=$page?>&continent=<?=$continent ?>" style="text-decoration: none; color: black;"><?=$item_subject?></a>
-    <?php 
-     if($num_table){
-        echo "[$num_table]";
-    } 
-    ?> 
+   <div id="list2" style="margin-top: 10px;"><a href="view.php?table=<?=$table?>&num=<?=$item_num?>&page=<?=$page?>&continent=<?=$continent ?>" style="text-decoration: none; color: black; "><?=$item_subject?></a> 
+    <div id="list_item4"><?=$item_date?>&nbsp;&nbsp;조회&nbsp;<?=$item_hit?>&nbsp;&nbsp;댓글&nbsp;<?=$num_table?></div>
     </div>  
-    <div id="list_item4" style="margin-top: 10px; margin-left: 187px;" ><?=$item_date?>&nbsp;&nbsp;조회&nbsp;<?=$item_hit?></div>
    </div>
    
    
