@@ -262,7 +262,7 @@ if (isset($_GET['mode'])) {
 
 
 
-			<div style="border: 1px solid red; width: 250px; height: 140px; float: left; margin-left: 50px; margin-top: 50px;">
+			<div style="width: 250px; height: 140px; float: left; margin-left: 50px; margin-top: 50px;">
 			   <a href="gallery_view.php?table=<?=$table?>&num=<?=$item_num?>&page=<?=$page?>&continent=<?=$continent?>">
 			   <img src="../data/<?=$main_img?>" style="width: 250px; height: 140px;">
 			    <div style="font-size: 13px;">제목 : <?=$item_subject ?></div><div style="font-size: 13px;">조회수 : <?=$item_hit ?></div></a>
