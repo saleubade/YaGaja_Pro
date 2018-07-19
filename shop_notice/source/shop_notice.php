@@ -7,9 +7,9 @@ if(isset($_SESSION['id'])){
     $id=null;
 }
 include_once '../../common_lib/createLink_db.php';
-include_once '../../common_lib/create_table_notice.php';
+include_once '../../shopping_lib/create_table_notice.php';
 
-$sql= "select * from shop_notice order by desc";
+$sql= "select * from shop_notice order by notice_no desc";
 $result= mysqli_query($con, $sql);
 $total_record= mysqli_num_rows($result);
 
@@ -51,7 +51,7 @@ $number=$total_record- $start_row;
   <link rel="stylesheet" href="../../shopping/css/cart.css?ver=1">
   <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=3">
+  <link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=4">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -81,7 +81,7 @@ $number=$total_record- $start_row;
     			<table id="notice_table2">
     				<tr id="notice_table_tr">
     					<td class="notice_table_no">No</td>
-    					<td class="notice_table_subject">Subject</td>
+    					<td class="notice_table_subject2">Subject</td>
     					<td class="notice_table_writer">Writer</td>
     					<td class="notice_table_date">Date</td>
     				</tr>
@@ -92,7 +92,20 @@ $number=$total_record- $start_row;
         			    $page_per_start = $page_per_record * ($page - 1);
         			    for($i=$page_per_start; $i<$page_per_start+$page_per_record && $i<$total_record; $i++){
         			        mysqli_data_seek($result,$i);
+        			        $row=mysqli_fetch_array($result);
+        			        $no=$row['notice_no'];
+        			        $subject=$row['notice_subject'];
+        			        $nick=$row['notice_nick'];
+        			        $regist_day=$row['regist_day'];
+        			        $regist_day=substr($regist_day,0,10);
+        			        
         			 ?>
+        			 <tr class="notice_table_tr">
+    					<td class="notice_table_no"><a href="./view.php?no=<?=$no?>"><?=$no?></a></td>
+    					<td class="notice_table_subject"><a href="./view.php?no=<?=$no?>"><?=$subject?></a></td>
+    					<td class="notice_table_writer"><?=$nick?></td>
+    					<td class="notice_table_date"><?=$regist_day?></td>
+    				</tr>	
         			 <?php 
         			    }
         			}
@@ -103,7 +116,7 @@ $number=$total_record- $start_row;
     		if(isset($id)&&$id==="admin"){
     		?>
     		<div id="write_form">
-    			<a href="./notice_write_form.php"><button class="notice_write">글쓰기</button></a>
+    			<a href="./notice_write_form.php?"><button class="notice_write">글쓰기</button></a>
     		</div>
     		<?php 
     		}

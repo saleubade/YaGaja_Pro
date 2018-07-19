@@ -12,10 +12,10 @@ while($row=mysqli_fetch_row($result)){
 if($flag !=="OK"){
     $sql = "create table shop_notice(
       notice_no int not null auto_increment,
-      notice_id char(20),
+      notice_id char(20) not null,
       notice_nick varchar(100) not null,
       notice_subject varchar(50) not null,
-      notice_content text,  
+      notice_content text not null,  
       regist_day char(20),
       hit int,
       file_name_0 varchar(40),
@@ -25,7 +25,7 @@ if($flag !=="OK"){
       file_copied_1 varchar(40),
       file_copied_2 varchar(40),
       primary key(notice_no)
-    )";
+    )CHARSET UTF8";
     if(mysqli_query($con, $sql)){
         echo "<script>
                 alert('notice 테이블 생성성공!');
