@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../../common_lib/common.php";
+include "../../common_lib/createLink_db.php";
 
 /*  글쓰기
  *  제목 내용 이미지 파일 등록insert.php?table=<?=$table?>&page=<?=$page?>
@@ -24,7 +24,7 @@ if(isset($_SESSION['id'])){
 
 //수정 시.
 if(isset($mode) && $mode == "modify"){
-    $sql = "select * from $table where num=$num";
+    $sql = "select * from $table where num='$num'";
     $result = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($result);
     
@@ -117,7 +117,7 @@ if(isset($mode) && $mode == "modify"){
   <div class="delete_ok">
   <?=$item_file0?>파일이 등록되어 있습니다.
   <input type="checkbox" name="del_file[]" value="0">삭제</div>
-  <!-- <div id="hide_file1"><input type='file' name='upfile[]'></div> -->
+  <div id="hide_file1"><input type='file' name='upfile[]'></div> 
     <div class="clear"></div>
     </div>
   <?php 

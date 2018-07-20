@@ -1,7 +1,6 @@
 @charset "UTF-8";
 #notice{
 	width: 1200px;
-	border: 1px solid red;
 	height: 170px;
 	font-size: 16px;
 	margin: auto;
@@ -15,12 +14,10 @@
 .notice_section{
 	width: 1200px;
 	margin: 10px auto;
-	border: 1px solid black;
 	text-align: center;
 }
 #notice_kind{
 	width: 1200px;
-	border: 1px solid black;		
 	margin: auto;
 	height: 40px;
 	text-align: right;
@@ -39,36 +36,96 @@
 }
 #kind_search{
 	display: inline-block;
-	border: 1px solid lightgray;
 	background-color: white;
 	width: 80px;
 }
 #notice_table{
 	width: 1200px;
-	border: 1px solid pink; 
 }
 #notice_table2{
 	width: 1200px;
 	border-top: 2px solid lightgray; 
 	border-bottom: 2px solid lightgray; 
-	border-left: none; 
-	border-right: none; 
+	border-left: 0px; 
+	border-right: 0px; 
+}
+#notice_table3{
+	width: 1200px;
+	border-top: 2px solid lightgray; 
+	border-left: 0px; 
+	border-right: 0px; 
+}
+#notice_table3{
+	width: 1200px;
+	border-top: 2px solid lightgray; 
+	border-left: 0px; 
+	border-right: 0px; 
+}
+#notice_table4{
+	width: 1200px;
+	border-top: 2px solid lightgray; 
+	border-left: 0px; 
+	border-right: 0px; 
+	text-align: left;
 }
 #notice_table_tr{
-	border: 1px solid lightgray;
+	border: 1.5px solid lightgray;
 	text-align: center;
 	height: 35px;
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 1.5px solid lightgray;
+	border-bottom: 1.5px solid lightgray;
+}
+.notice_table_tr{
+	border: 1.5px solid lightgray;
+	text-align: center;
+	height: 35px;
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 1.5px solid lightgray;
+	border-bottom: 1.5px solid lightgray;
 }
 .notice_table_no{
 	width: 60px;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
+	border-left: 0px; 
+	border-right: 0px;
+	font-size: 13px;
 }
 .notice_table_subject{
 	width: 880px;
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
+	text-align: left;
+	font-size: 12px;
+}
+.notice_table_subject2{
+	width: 880px;
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
+	text-align: center;
+}
+.notice_table_writer{
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
+}
+.notice_table_date{
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
 }
 #write_form{
 	width: 1200px;
 	height: 40px;
-	border: 1px solid black;
 	text-align: right;
 	padding-right: 15px;
 	padding-top: 5px;
@@ -130,7 +187,7 @@ a{
 	margin: auto;
 }
 .notice_input_image{
-	width: 300px;
+	width: 200px;
 }
 #notice_write_form{
 	width: 730px;
@@ -142,4 +199,54 @@ a{
 }
 button{
 	color: black;
+}
+.notice_view_table_td1{
+	width: 100px;
+	font-size: 11px;
+	border-top: 2px solid lightgray; 
+	border-bottom: 2px solid lightgray; 
+	border-left: 0px; 
+	border-right: 0px;
+}
+.notice_view_table_td2{
+	text-align: left;
+	padding-left: 80px;
+	border-top: 2px solid lightgray; 
+	border-bottom: 2px solid lightgray; 
+	border-left: 0px; 
+	border-right: 0px;
+}
+#notice_view_date1{
+	border-bottom: 0px solid white;
+}
+#notice_view_date2{
+	text-align: right;
+	border: 0px;
+	font-size: 11px;
+	padding-right: 20px;
+}
+#notice_table_tr2{
+	border: 0px solid white;
+}
+#notice_table_tr3{
+	border: 0px;
+	width: 1200px;
+}
+#notice_content_view{
+	width: 1200px;
+	margin: auto;
+}
+.notice_view_button{
+	width: 60px;
+	height: 29px;
+	background-color: white;
+	border: 1.5px solid lightgray;
+}
+#notice_table4_tr{
+	text-align: right;
+	height: 90px;
+}
+#notice_table4_tr_td{
+	text-align: right;
+	padding-bottom: 40px;
 }

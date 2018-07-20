@@ -2,7 +2,6 @@
   position:relative;
   display:inline-block;
   width: 1000px;
-  height:500px;
 
 }
 #head{
@@ -44,7 +43,7 @@ form{
 }
 
 #list{
-	float : left;
+	float : right;
 }
 
 #write{
@@ -124,14 +123,11 @@ a {
 
 
 
-
 .main1{
   position:relative;
   display:inline-table;
   width: 1000px;
-  height:500px;
   text-align: left;
-
 }
 #section1{
 	margin-top : 30px;
@@ -141,7 +137,6 @@ a {
   position:relative;
   display:inline-block;
   width: 1000px;
-  height:500px;
   text-align: left;
 
 }

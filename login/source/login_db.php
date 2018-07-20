@@ -4,6 +4,8 @@
   $id= mysqli_real_escape_string($con, $_POST['id']);
   $pw= mysqli_real_escape_string($con, $_POST['pw']);
 
+  $save_id = $_POST['save_id'];
+  
   //아이디로 membership테이블 조회
     
   $sql = "select * from membership where id='$id'";
@@ -30,6 +32,7 @@
       $id = $row['id'];
       if(isset($save_id)){
         setcookie('cookie_id', $id, time()+(86400*30),"/");
+        echo $save_id;
       }else{
         setcookie("cookie_id","",time()-3600,"/");
       }

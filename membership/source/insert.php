@@ -26,15 +26,16 @@ $gender= $_POST['gender'];
 // 우편번호
 $zip= $_POST['zip'];
 // 주소
-$address= $_POST['address1']." ".$_POST['address2'];
+$address1= $_POST['address1'];
+$address2= $_POST['address2'];
 // 연락처
 $hp= $_POST['hp1']."-".$_POST['hp2']."-".$_POST['hp3'];
 // 이메일
 $email=$_POST['email1']."@".$_POST['email2'];
 
 
-    $sql= "insert into membership (id, pass, name, birth, gender, zip, address, phone, email) ";
-    $sql.= "values ('$id', '$pass', '$name', '$birth', '$gender', '$zip', '$address', '$hp', '$email')";
+    $sql= "insert into membership (id, pass, name, birth, gender, zip, address1,address2, phone, email) ";
+    $sql.= "values ('$id', '$pass', '$name', '$birth', '$gender', '$zip', '$address1', '$address2', '$hp', '$email')";
 
     mysqli_query($con, $sql) or die(mysqli_error($con));
 

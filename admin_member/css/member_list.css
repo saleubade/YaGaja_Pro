@@ -1,0 +1,13 @@
+.main{
+  position:relative;
+  left:100px;
+  display:table-cell;
+  width: 1000px;
+  height:500px;
+}
+
+.memberlist_tr td{
+	font-size: 10pt;	
+	background-color: #a4d7b7;
+	font-weight: 800;
+}

@@ -1,7 +1,7 @@
 <script>
   function popup(){
     var popupX = (window.screen.width/2)-(1200/2);
-    var popupY = (window.screen.height/2)-(600/2);
+    var popupY = (window.screen.height/2)-(1000/2);
     window.open('./login/source/login.php','','left='+popupX+',top='+popupY+', width=1200, height=600, status=no, scrollbars=no');
   }
   function message(){
@@ -10,7 +10,19 @@
     window.open('./message/source/message.php','','left='+popupX+',top='+popupY+', width=700, height=500, status=no, scrollbars=no');
  
   }
+  function interval_good(){
+	  var i = 0;
+	  window.setInterval(function() {
+	  	window.console.log(i++);
+	  }, 10000);
+  }
+  function member_list(){
+	    var popupX = (window.screen.width/2)-(1200/2);
+	    var popupY = (window.screen.height/2)-(600/2);
+	    window.open('./admin_member/source/member_list.php','','left='+popupX+',top='+popupY+', width=1200, height=600, status=no, scrollbars=no');
+	  }
 </script>
+<body onload="interval_good()">
 <div id="topmenu">
 <a href="./index.php"><img src="./common_img/logo.png" style="width: 200px"></a>
 <ul id="login">
@@ -44,7 +56,7 @@ include_once './common_lib/createLink_db.php';
   <li> <a href="./modify/source/member_form_modify.php">항공권 등록 </a>&nbsp; |</li>
   <li> <a href="./modify/source/member_form_modify.php">회원관리 </a>&nbsp; |</li>
   <li> <a href="./modify/source/member_form_modify.php">회원정보수정 </a>&nbsp; |</li>
-  <li><a href="./memberlist/source/memberlist.php">회원리스트 </a>&nbsp; |</li>
+  <li><a href="#" onclick="member_list()">회원리스트 </a>&nbsp; |</li>
   <li><a href="#" onclick="message()">쪽지(&nbsp; <?= $not_read_num ?> &nbsp;) </a>&nbsp; |</li>
   <li>관리자 님 <a href="./login/source/logout.php">(로그아웃)</a> | </li>
 <?php }elseif($id){ ?>
@@ -54,3 +66,4 @@ include_once './common_lib/createLink_db.php';
 <?php } ?>
 </ul>
 </div>
+</body>

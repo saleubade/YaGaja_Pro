@@ -56,7 +56,7 @@ for($i=0 ; $i<2 ; $i++){
 }
 $new_hit=$item_hit+1;
 
-$sql="update $table set hit=$new_hit where num=$num";
+$sql="update $table set hit=$new_hit where num='$num'";
 mysqli_query($con, $sql);
 ?>
 
@@ -104,27 +104,29 @@ mysqli_query($con, $sql);
       <div id="view_content">
       <div id="ititit"></div></div></tr>
       </table>
-      <?php 
-      for($i=0;$i<2;$i++){
-          if($file_copied[$i]){
-             $img_name = $file_copied[$i];
-             $img_name = "../data/".$img_name;
-             $img_width = $image_width[$i];
-              
-             echo "<img src='$img_name' width='$img_width'>"."<br><br>";
-          
-              
-          }
-      }
-      
-      ?>
+  
       <br>
-      <div id="view_ti">
+      <div id="view_ti" style="display: inline-table;">
       <table id="table_12">
       <tr>
       <td>
       <?php 
-        echo $item_content;
+      
+      for($i=0;$i<2;$i++){
+          if($file_copied[$i]){
+              $img_name = $file_copied[$i];
+              $img_name = "../data/".$img_name;
+              $img_width = $image_width[$i];
+              
+              echo "<img src='$img_name' width='$img_width'>"."<br><br>";
+              
+              
+          }
+      }
+      
+      
+      
+      echo $item_content;
       ?>
       </td>
       </tr>
