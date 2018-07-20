@@ -29,7 +29,7 @@ session_start();
 <?php }elseif($id){ ?>
   <li> <a href="../">회원정보수정 </a>&nbsp; </li>
   <li> <a href="../../">구매내역 </a>&nbsp; |</li>
-  <li> <a href="../../shopping_cart/source/shopping_cart.php?11">장바구니 </a>&nbsp; |</li>
+  <li> <a href="../../shopping_cart/source/shopping_cart.php?">장바구니 </a>&nbsp; |</li>
   <li> <?=$cname?> 님<a href="../../login/source/logout.php">(로그아웃)</a> | </li>
 <?php } ?>
 </ul>

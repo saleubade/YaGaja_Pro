@@ -1,0 +1,270 @@
+@charset "UTF-8";
+#main_a{
+	color: black;
+	text-decoration: none;
+}
+#main_a:hover{
+	text-decoration: none;
+}
+
+#shop_aside{
+	width: 1200px;
+	height:160px;
+	border: 1px solid black;
+	margin: 10px auto 0px auto;
+	
+}
+
+.shop_section{
+	padding-bottom:5px;
+	width: 1200px;
+	margin: 0px auto;
+	padding-left: 10px;
+	border: 1px solid red;
+}
+
+.clear{
+	clear: both;
+}
+
+#shop_ul{
+	list-style: none;
+	text-align: left;
+}
+#shop_name{
+	font-size: 60px;
+	text-align: center;
+	height: 120px;
+}
+#shop_name_div{
+	height: 40px;
+	width: 1200px;
+	padding-top: 8px;
+}
+#shop_ul li{ 
+	width: 180px;
+	margin: 50px 5px 5px 5px;
+	display: inline;
+	margin: 15px;
+	font-size: 13px; 	
+}
+#shop_ul li a{ 
+	text-decoration: none;
+}
+li{
+	text-decoration: none;
+}
+li a:hover {
+	color: rgba(171, 171, 171,0.5); 
+}
+#list_menu a{
+	font-size: 15px;
+	
+}
+#shop_input_goods{
+
+	padding-bottom:5px;
+	width: 1200px;
+	height:700px;
+	margin: 5px auto;
+	border: 1px solid black;
+}
+
+/* weekly */
+#weekly_item{
+	padding-left: 30px;
+	padding-top: 20px;
+	width: 750px;
+	font-size: 13px;
+	float: left;
+}
+#weekly_item1{
+	font-size: 13px;
+	margin-right: 30px; 
+	float: left;
+}
+#weekly_item_ul{
+	display: inline;
+	list-style: none;
+}
+#weekly_item_ul li{
+	display: inline;
+	float: right;
+}
+#weekly_item_ul li a{
+	display: inline;
+	float: right;
+	color: rgba(171,171,171,0.6);
+	text-decoration: none;
+}
+#weekly_item_ul li a:hover{
+	color: rgba(1,1,1,1); 
+}
+.weekly_img{
+	border: 1px solid black;
+	width: 110px;
+	height: 150px;
+	float: left;
+	margin-right: 3.337px;
+	margin-top: 5px;
+}
+
+/* board */
+#board_item{
+	padding-top: 20px;
+	width: 413px;
+	float: left;
+}
+#board_item1{
+	font-size: 13px;
+	float: left;
+	
+}
+#board_item_ul{
+	display: inline;
+	list-style: none;
+	margin-left: 30px;
+}
+#board_item_ul li{
+	display: inline;
+	float: right;
+}
+#board_item_ul li a{
+	display: inline;
+	float: right;
+	color: rgba(171,171,171,0.6);
+	text-decoration: none;
+}
+#board_item_ul li a:hover{
+	color: rgba(1,1,1,1); 
+}
+#board_table{
+	border: 2px solid rgba(171,171,171,1);
+	width: 413px;
+	height: 150px;
+	float: left;
+	margin-right: 3.337px;
+	margin-top: -13px;
+}
+
+/* 신상품 목록 */
+#new_arrivals{
+	width: 1200px;
+	height: 100px;
+	font-size: 18px;
+	text-align: center;
+	float: left;
+	padding-top: 50px;
+	border: 1px solid black;
+	margin: 5px auto auto -10px;
+}
+.new_arrivals1{
+	width: 1200px;
+	height: 100px;
+	font-size: 18px;
+	text-align: center;
+	float: left;
+	padding-top: 50px;
+	border: 1px solid black;
+	margin-left: -10px;
+}
+.product{
+	width: 350px;
+	height: 500px;
+	margin: 0 12px 15px 30px;
+	display: inline-block;
+}
+.product_a:hover{
+	
+}
+.product_name{
+	margin-top: 10px;
+	font-size: 14px;
+}
+.product_price{
+	font-size: 12px;
+}
+/*	view	*/
+#view_img{
+	border: 1px solid rgba(1,1,1,0.4);
+	margin: 40px 50px auto 100px;
+	width: 500px;
+	height: 550px;
+	float: left;
+}
+.img{
+	width: 500px;
+	height: 550px;
+}
+#view_section{
+	border: 1px solid black;
+	border-top: 2px solid black;
+	margin: 40px auto;
+	width: 400px;
+	height: 500px;
+	float: right;
+	padding: 15px 5px 5px 5px;
+}
+#view_name b{
+	font-size: 20px;
+}
+#view_price{
+	font-size: 14px;
+}
+#view_size{
+	margin-top: 15px; 
+	margin-bottom: 30px; 	
+}
+#view_amount{
+	margin-top: 15px; 
+}
+#view_table{
+	width: 380px;
+	border-top: 2px solid gray;
+	border-bottom: 2px solid gray;
+
+}
+table{
+	text-align: left;
+	border-left:0px;
+	border-right:0px;	
+}
+td{
+	padding: 4px;
+	padding-left: 6px;
+	font-size: 13px;
+	border-top:1px solid gray;
+	border-bottom:1px solid gray;
+	border-left-style:none; 
+	border-right-style:none;
+}
+.td1{
+	width: 170px;
+}
+.td2{
+	width: 80px;	
+}
+.td3{
+	width: 130px;
+}
+#product_total{
+	font-size: 11px; 
+}
+#product_buy{
+	width: 380px;
+	height: 50px;
+	margin-top: 5px;
+	background-color: white;
+	border: 1px solid lightgray;
+}
+#cart_input{
+	width: 380px;
+	height: 50px;
+	margin-top: 30px;
+	background-color: orange;
+	border: 1px solid white;
+	color: white;
+}
+.number_value{
+	width: 60px;
+}

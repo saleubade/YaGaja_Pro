@@ -39,9 +39,10 @@ $start_page= (ceil($page / $pages_scale ) -1 ) * $pages_scale +1 ;
 // 현재 블럭 마지막 페이지
 $end_page= ($total_pages >= ($start_page + $pages_scale)) ? $start_page + $pages_scale-1 : $total_pages;
 
-$number=$total_record- $start_row;
-
+//리스트에 뿌려질 테이블 번호
+$number=$total_record - ($page-1) * $rows_scale;
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,15 +99,16 @@ $number=$total_record- $start_row;
         			        $nick=$row['notice_nick'];
         			        $regist_day=$row['regist_day'];
         			        $regist_day=substr($regist_day,0,10);
-        			        
+        			       
         			 ?>
         			 <tr class="notice_table_tr">
-    					<td class="notice_table_no"><a href="./view.php?no=<?=$no?>"><?=$no?></a></td>
+    					<td class="notice_table_no"><a href="./view.php?no=<?=$no?>"><?=$number?></a></td>
     					<td class="notice_table_subject"><a href="./view.php?no=<?=$no?>"><?=$subject?></a></td>
     					<td class="notice_table_writer"><?=$nick?></td>
     					<td class="notice_table_date"><?=$regist_day?></td>
     				</tr>	
         			 <?php 
+        			       $number--;
         			    }
         			}
         			 ?>

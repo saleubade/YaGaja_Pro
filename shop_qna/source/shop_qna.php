@@ -7,11 +7,19 @@ if(isset($_SESSION['id'])){
     $id=null;
 }
 include_once '../../common_lib/createLink_db.php';
-include_once '../../common_lib/create_table_qna.php';
+include_once '../../shopping_lib/create_table_qna.php';
 
-$sql= "select * from shop_qna order by desc";
+$sql= "select * from shop_qna order by qna_no desc";
 $result= mysqli_query($con, $sql);
 $total_record= mysqli_num_rows($result);
+
+$row=mysqli_fetch_array($result);
+$no=$row['qna_no'];
+$subject=$row['subject'];
+$nick=$row['qna_nick'];
+$regist_day=$row['regist_day'];
+$file_copied_0=$row['file_copied_0'];
+$regist_day=substr($regist_day,0,10);
 
 // 페이지 당 글수, 블럭당 페이지 수
 $rows_scale=10;
@@ -39,7 +47,7 @@ $start_page= (ceil($page / $pages_scale ) -1 ) * $pages_scale +1 ;
 // 현재 블럭 마지막 페이지
 $end_page= ($total_pages >= ($start_page + $pages_scale)) ? $start_page + $pages_scale-1 : $total_pages;
 
-$number=$total_record- $start_row;
+$number=$total_record - ($page-1) * $rows_scale;
 
 ?>
 <!DOCTYPE html>
@@ -47,7 +55,7 @@ $number=$total_record- $start_row;
 <head>
   <meta charset="utf-8">
   <title>야! 몰</title>
-  <link rel="stylesheet" href="../css/qna.css?ver=1">
+  <link rel="stylesheet" href="../css/qna.css?ver=5">
   <link rel="stylesheet" href="../../shopping/css/cart.css?ver=1">
   <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -81,6 +89,7 @@ $number=$total_record- $start_row;
     			<table id="qna_table2">
     				<tr id="qna_table_tr">
     					<td class="qna_table_no">No</td>
+    					<td class="qna_table_product">Product</td> 
     					<td class="qna_table_subject">Subject</td>
     					<td class="qna_table_writer">Writer</td>
     					<td class="qna_table_date">Date</td>
@@ -90,24 +99,38 @@ $number=$total_record- $start_row;
         			    $page_per_record = 10;
         			    $total_pages = ceil($total_record/$page_per_record);
         			    $page_per_start = $page_per_record * ($page - 1);
+        			    
         			    for($i=$page_per_start; $i<$page_per_start+$page_per_record && $i<$total_record; $i++){
         			        mysqli_data_seek($result,$i);
+        			        $row=mysqli_fetch_array($result);
+        			        $no=$row['qna_no'];
+        			        $subject=$row['subject'];
+        			        $nick=$row['qna_nick'];
+        			        $regist_day=$row['regist_day'];
+        			        $file_copied_0=$row['file_copied_0'];
+        			        $regist_day=substr($regist_day,0,10);
         			 ?>
+        			 <tr class="qna_table_tr">
+    					<td class="qna_table_no"><a href="./view.php?no=<?=$no?>"><?=$number?></a></td>
+    					<td class="qna_table_product2">
+        					<?php if($file_copied_0){?>
+        					<a href="./view.php?no=<?=$no?>"><img src="../upload_image/<?=$file_copied_0?>" class="qna_list_product"></a>
+        					<?php }?>
+    					</td>
+    					<td class="qna_table_subject" style="text-align: left;"><a href="./view.php?no=<?=$no?>"><?=$subject?></a></td>
+    					<td class="qna_table_writer"><?=$nick?></td>
+    					<td class="qna_table_date"><?=$regist_day?></td>
+    				 </tr>
         			 <?php 
+        			         $number--;
         			    }
         			}
         			 ?>
     			</table>
     		</div>
-    		<?php 
-    		if(isset($id)&&$id==="admin"){
-    		?>
     		<div id="write_form">
     			<a href="./qna_write_form.php"><button class="qna_write">글쓰기</button></a>
     		</div>
-    		<?php 
-    		}
-    		?>
     		<div id="page_link">
     			<table id="page_link_table">
                 	<tr>
@@ -168,7 +191,6 @@ $number=$total_record- $start_row;
                     	</td>
                     </tr>
                 </table>
-                
     		</div>
     	</div>
     </section>

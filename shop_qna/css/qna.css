@@ -1,7 +1,6 @@
 @charset "UTF-8";
 #qna{
 	width: 1200px;
-	border: 1px solid red;
 	height: 170px;
 	font-size: 16px;
 	margin: auto;
@@ -15,12 +14,10 @@
 .qna_section{
 	width: 1200px;
 	margin: 10px auto;
-	border: 1px solid black;
 	text-align: center;
 }
 #qna_kind{
 	width: 1200px;
-	border: 1px solid black;		
 	margin: auto;
 	height: 40px;
 	text-align: right;
@@ -39,36 +36,96 @@
 }
 #kind_search{
 	display: inline-block;
-	border: 1px solid lightgray;
 	background-color: white;
 	width: 80px;
 }
 #qna_table{
 	width: 1200px;
-	border: 1px solid pink; 
 }
 #qna_table2{
 	width: 1200px;
 	border-top: 2px solid lightgray; 
 	border-bottom: 2px solid lightgray; 
-	border-left: none; 
-	border-right: none; 
+	border-left: 0px; 
+	border-right: 0px; 
+}
+#qna_table3{
+	width: 1200px;
+	border-top: 2px solid lightgray; 
+	border-left: 0px; 
+	border-right: 0px; 
+}
+#qna_table3{
+	width: 1200px;
+	border-top: 2px solid lightgray; 
+	border-left: 0px; 
+	border-right: 0px; 
+}
+#qna_table4{
+	width: 1200px;
+	border-top: 2px solid lightgray; 
+	border-left: 0px; 
+	border-right: 0px; 
+	text-align: left;
 }
 #qna_table_tr{
-	border: 1px solid lightgray;
+	border: 1.5px solid lightgray;
 	text-align: center;
 	height: 35px;
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 1.5px solid lightgray;
+	border-bottom: 1.5px solid lightgray;
+}
+.qna_table_tr{
+	border: 1.5px solid lightgray;
+	text-align: center;
+	height: 35px;
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 1.5px solid lightgray;
+	border-bottom: 1.5px solid lightgray;
 }
 .qna_table_no{
 	width: 60px;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
+	border-left: 0px; 
+	border-right: 0px;
+	font-size: 13px;
 }
 .qna_table_subject{
 	width: 880px;
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
+	text-align: left;
+	font-size: 12px;
+}
+.qna_table_subject2{
+	width: 880px;
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
+	text-align: center;
+}
+.qna_table_writer{
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
+}
+.qna_table_date{
+	border-left: 0px; 
+	border-right: 0px;
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
 }
 #write_form{
 	width: 1200px;
 	height: 40px;
-	border: 1px solid black;
 	text-align: right;
 	padding-right: 15px;
 	padding-top: 5px;
@@ -130,7 +187,7 @@ a{
 	margin: auto;
 }
 .qna_input_image{
-	width: 300px;
+	width: 200px;
 }
 #qna_write_form{
 	width: 730px;
@@ -142,4 +199,78 @@ a{
 }
 button{
 	color: black;
+}
+.qna_view_table_td1{
+	width: 100px;
+	font-size: 11px;
+	border-top: 2px solid lightgray; 
+	border-bottom: 2px solid lightgray; 
+	border-left: 0px; 
+	border-right: 0px;
+}
+.qna_view_table_td2{
+	text-align: left;
+	padding-left: 80px;
+	border-top: 2px solid lightgray; 
+	border-bottom: 2px solid lightgray; 
+	border-left: 0px; 
+	border-right: 0px;
+}
+#qna_view_date1{
+	border-bottom: 0px solid white;
+}
+#qna_view_date2{
+	text-align: right;
+	border: 0px;
+	font-size: 11px;
+	padding-right: 20px;
+}
+#qna_table_tr2{
+	border: 0px solid white;
+}
+#qna_table_tr3{
+	border: 0px;
+	width: 1200px;
+}
+#qna_content_view{
+	width: 1200px;
+	margin: auto;
+}
+.qna_view_button{
+	width: 60px;
+	height: 29px;
+	background-color: white;
+	border: 1.5px solid lightgray;
+}
+#qna_table4_tr{
+	text-align: right;
+	height: 90px;
+}
+#qna_table4_tr_td{
+	text-align: right;
+	padding-bottom: 40px;
+}
+.qna_list_product{
+	width: 100px;
+	height: 120px;
+}
+.qna_table_product2{
+	border-top: 2px solid lightgray; 
+	border-bottom: 2px solid lightgray; 
+	border-left: 0px; 
+	border-right: 0px;
+}
+#avant_list_tr{
+	height: 42px;
+}
+#avant_list_td{
+	text-align: left;
+	padding-left: 20px; 
+}
+#next_list_td{
+	height: 42px;	
+}
+#next_list_td{
+	text-align: left;
+	padding-left: 20px; 
 }
