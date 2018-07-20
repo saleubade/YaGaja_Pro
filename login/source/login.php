@@ -9,6 +9,8 @@
  *   
  *   */
 
+
+
   if(isset($_POST['id'])){
     $id = $_POST['id'];
   }
@@ -57,7 +59,7 @@
                 if(isset($_COOKIE['cookie_id'])){
                   echo "<td><input type='text' name='id' size='30' value=".$_COOKIE['cookie_id']."></td>";
                 }else if(isset($id)){
-                  echo "<td><input type='text' name='id' size='30' value=$id readonly></td>";
+                  echo "<td><input type='text' name='id' size='30' value='$id' readonly></td>";
                 }else{
                   echo "<td><input type='text' name='id' size='30'></td>";
                 }

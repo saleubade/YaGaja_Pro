@@ -5,6 +5,16 @@ include_once "../../common_lib/createLink_db.php";
 include_once "./create_notice.php";
 
 $table = "notice";
+
+if(isset($_GET['mode'])){
+    $mode = $_GET['mode'];
+    $search = $_POST['search'];
+    $find = $_POST['find'];
+    $table="notice";
+}else{
+    $table="notice";
+}
+
 ?>
    
 <!DOCTYPE html>
@@ -25,7 +35,7 @@ $table = "notice";
             exit;
             
         }
-        $sql= "select * from qna where $find like '%$search%' order by num desc";
+        $sql= "select * from $table where $find like '%$search%' order by num desc";
     }else{
         
         $sql = "select * from $table order by num desc";
@@ -130,7 +140,7 @@ $table = "notice";
 
    <div id="list0_1">공지사항&nbsp;&nbsp;&nbsp;|</div>
    
-   <div id="list2"><a href="view.php?table=<?=$table?>&num=<?=$item_num?>&page=<?=$page?>"><b><?=$item_subject?></b></a>
+   <div id="list2"><a href="view.php?table=<?=$table?>&num=<?=$item_num?>&page=<?=$page?>" style="text-decoration: none; color: black;"><b><?=$item_subject?></b></a>
     <?php 
      if($num_table){
         echo "[$num_table]";
@@ -179,18 +189,18 @@ $table = "notice";
    </div>
      
      
-      <div id="list_id"><a href="exhibit.php?table=<?=$table?>&page=<?=$page?>"><img src="../img/list.png" style="float: right;"></a>
+      
       
       <?php 
       if(isset($id) && $id=="admin"){
           
       ?>
       <a href="write_form.php?table=<?=$table?>&page=<?=$page?>"><img src="../img/write.png" style="float: right;"></a>
-      
+      <div id="list"><a href="exhibit.php"><img src="../img/list.png" style="float: right; width:56px;"></a></div>
       <?php 
       }
       ?>
-      </div>
+      
               </article>
     </section>
     <footer>
