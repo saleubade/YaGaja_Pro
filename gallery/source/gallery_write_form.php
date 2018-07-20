@@ -29,8 +29,6 @@
     
     
     
-    
-    
     if ($mode == "modify"){
         
         $sql = "select * from $table where num=$num";
