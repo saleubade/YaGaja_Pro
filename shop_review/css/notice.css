@@ -1,0 +1,145 @@
+@charset "UTF-8";
+#notice{
+	width: 1200px;
+	border: 1px solid red;
+	height: 170px;
+	font-size: 16px;
+	margin: auto;
+	text-align: center;
+	padding-top: 120px; 
+}
+#notice_section{
+	width: 1200px;
+	margin: auto;
+}
+.notice_section{
+	width: 1200px;
+	margin: 10px auto;
+	border: 1px solid black;
+	text-align: center;
+}
+#notice_kind{
+	width: 1200px;
+	border: 1px solid black;		
+	margin: auto;
+	height: 40px;
+	text-align: right;
+	padding-right: 5px;
+	padding-top: 8px;
+	margin: auto;
+}
+#notice_select{
+	height: 24px;
+	display: inline-block;
+	width: 90px;
+}
+#notice_text{
+	size: 15px;
+	width: 180px;
+}
+#kind_search{
+	display: inline-block;
+	border: 1px solid lightgray;
+	background-color: white;
+	width: 80px;
+}
+#notice_table{
+	width: 1200px;
+	border: 1px solid pink; 
+}
+#notice_table2{
+	width: 1200px;
+	border-top: 2px solid lightgray; 
+	border-bottom: 2px solid lightgray; 
+	border-left: none; 
+	border-right: none; 
+}
+#notice_table_tr{
+	border: 1px solid lightgray;
+	text-align: center;
+	height: 35px;
+}
+.notice_table_no{
+	width: 60px;
+}
+.notice_table_subject{
+	width: 880px;
+}
+#write_form{
+	width: 1200px;
+	height: 40px;
+	border: 1px solid black;
+	text-align: right;
+	padding-right: 15px;
+	padding-top: 5px;
+}
+.notice_write{
+	width: 80px;
+	background-color: white;
+	border: 2px solid lightgray;
+	color: black;
+}
+
+#page_link{
+	width: 1200px;
+	height: 40px;
+}
+#page_link_table{
+	border: 1px solid lightgray;
+	font-size : 11pt;
+	margin: auto;
+}
+#page_link_table td{
+	border: 1px solid lightgray;
+	color: gray;	
+}
+#now_bluck{
+	background-color: lavender;
+	color: black;
+}
+#page_link_table td a{
+	color: gray;	
+}
+#page_link_table td a:hover{
+	text-decoration: none;
+}
+#page_num{
+	border: 1px solid black;
+	display: inline;
+}
+a{
+	list-style: none;
+}
+.notice_write_subject{
+	width: 150px;
+	background-color: lightgray;
+}
+.notice_write_content{
+	width: 580px;
+}
+#notice_input_content{
+	width: 580px;
+	height: 600px;
+}
+#notice_input_subject{
+	width: 580px;
+	text-align: left;
+}
+.notice_section_table{
+	text-align: center;
+	margin: auto;
+}
+.notice_input_image{
+	width: 300px;
+}
+#notice_write_form{
+	width: 730px;
+	height: 40px;
+	text-align: center;
+	padding-right: 15px;
+	padding-top: 5px;
+	margin: auto;
+}
+button{
+	color: black;
+}

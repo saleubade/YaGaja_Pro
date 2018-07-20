@@ -139,7 +139,7 @@ if(isset($mode) && $mode == "modify"){
   <div class="write_1_1" style="height: 36px;">이미지파일1</div>
   <div class="write_1_2">
   
-    <?php 
+  <?php 
   if((isset($mode) && $mode==="modify") && $item_file0){
   ?>
   <div class="delete_ok">
