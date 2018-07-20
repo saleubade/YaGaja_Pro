@@ -22,14 +22,14 @@ $result3= mysqli_query($con, $sql) or die(mysqli_error($con));
 $total_record=mysqli_num_rows($result3);
 
 // 페이지 당 글수, 블럭당 페이지 수
-$rows_scale=3;
+$rows_scale=5;
 $pages_scale=5;
 
 // 전체 페이지 수 ($total_page) 계산
 $total_pages= ceil($total_record/$rows_scale);
 
 if(empty($_GET['page'])){
-    $page=1;
+    $page = 1;
 }else{
     $page = $_GET['page'];
 }
@@ -60,7 +60,7 @@ $row_length=30;
 <head>
 	<meta charset=utf-8>
 	<title>야 ~ 가자!</title>
-	<link rel="stylesheet" href="../css/qna.css?ver=1" type="text/css">
+	<link rel="stylesheet" href="../css/qna.css?ver=2" type="text/css">
     <link rel="stylesheet" href="../../common_css/index_css3.css">
   
 	<script>
@@ -88,8 +88,8 @@ $row_length=30;
     			<form id="search_area" name="search_form" method="get" action="qna_list.php">
     				<input type="hidden" name="mode" value="search">
     				<select name="find">
-    					<option value="id" <?php if(isset($find) && $find==="id") echo "selected";?>>글쓴이</option>
     					<option value="subject" <?php if(isset($find) && $find==="subject") echo "selected";?>>제목</option>
+    					<option value="id" <?php if(isset($find) && $find==="id") echo "selected";?>>글쓴이</option>
     					<option value="content" <?php if(isset($find) && $find==="content") echo "selected";?>>내용</option>
     				</select> 
     				<input type="text" name="search" size="12"  autofocus <?php if(isset($search)) echo "value='$search'";?>> 
@@ -235,8 +235,8 @@ $row_length=30;
 				</table>
 				</form>
 				<div id="buttons">
-					<div id="list"><a href="qna_list.php"><img src="../img/list.png"></a></div>
 					<div id="write"><a href="qna_input_form.php?page=<?=$page?>"><img src="../img/write.png"></a></div>
+				<div id="list"><a href="qna_list.php"><img src="../img/list.png" style="width: 57px; height: 27px;"></a></div>
 					<div class="clear"></div>
 				</div>
 				<br>

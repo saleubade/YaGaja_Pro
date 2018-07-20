@@ -175,59 +175,59 @@ $row_length=87;
     			<table id="page_link_table">
                 	<tr>
                 		<td width="30">
-                	<?PHP 
-                      #----------------이전블럭 존재시 링크------------------#
-                      if( $start_page > $pages_scale ){
-                          $go_page= $start_page - $pages_scale;
-                          echo( "<a href='./shopping_cart.php?page=$go_page'> << </a>" );
-                      }else{
-                          echo( " << " );
-                      }
-                    ?>
-                    	</td>
-                		<td width="30">
-                	<?PHP 
-                      #----------------이전페이지 존재시 링크------------------#
-                      if( $pre_page ){
-                          echo( "<a href='./shopping_cart.php?page=$pre_page'> < </a>" );
-                      }else{
-                          echo( " < " );
-                      }
-                    ?>
-                    	</td>
-                    <?php 
-                      #--------------바로이동하는 페이지를 나열---------------#
-                    for( $dest_page = $start_page; $dest_page <= $end_page; $dest_page++ )
-                      if ( $dest_page == $page ){
-                          echo "<td width='30' id='now_bluck'>";
-                          echo( "&nbsp;<b>$dest_page</b>&nbsp" );
-                          echo "</td>";
-                    }else if(isset($end_page)){
-                          echo "<td width='30'>";
-                          echo( "<a href='./shopping_cart.php?page=$dest_page'>$dest_page</a>" );
-                          echo "</td>";
-                      }
-                      ?>
-                		<td width="30">
-                	<?PHP 
-                      #----------------이전페이지 존재시 링크------------------#
-                      if( $next_page ){
-                          echo( "<a href='./shopping_cart.php?page=$next_page'> > </a>" );
-                      }else{
-                          echo( " > " );
-                      }
-                    ?>
-                    	</td>
-                      	<td width="30">
-                      <?php
-                      #---------------다음페이지를 링크------------------#
-                      if( $total_pages >= $start_page+ $pages_scale){
-                          $go_page= $start_page+ $pages_scale;
-                          echo( "<a href='./shopping_cart.php?page=$go_page'> >> </a>" );
-                      }else{
-                          echo( " >> " );
-                      }
-                    ?>
+                    	<?PHP 
+                          #----------------이전블럭 존재시 링크------------------#
+                          if( $start_page > $pages_scale ){
+                              $go_page= $start_page - $pages_scale;
+                              echo( "<a href='./shopping_cart.php?page=$go_page'> << </a>" );
+                          }else{
+                              echo( " << " );
+                          }
+                        ?>
+                        	</td>
+                    		<td width="30">
+                    	<?PHP 
+                          #----------------이전페이지 존재시 링크------------------#
+                          if( $pre_page ){
+                              echo( "<a href='./shopping_cart.php?page=$pre_page'> < </a>" );
+                          }else{
+                              echo( " < " );
+                          }
+                        ?>
+                        	</td>
+                        <?php 
+                          #--------------바로이동하는 페이지를 나열---------------#
+                        for( $dest_page = $start_page; $dest_page <= $end_page; $dest_page++ )
+                          if ( $dest_page == $page ){
+                              echo "<td width='30' id='now_bluck'>";
+                              echo( "&nbsp;<b>$dest_page</b>&nbsp" );
+                              echo "</td>";
+                        }else if(isset($end_page)){
+                              echo "<td width='30'>";
+                              echo( "<a href='./shopping_cart.php?page=$dest_page'>$dest_page</a>" );
+                              echo "</td>";
+                          }
+                          ?>
+                    		<td width="30">
+                    	<?PHP 
+                          #----------------이전페이지 존재시 링크------------------#
+                          if( $next_page ){
+                              echo( "<a href='./shopping_cart.php?page=$next_page'> > </a>" );
+                          }else{
+                              echo( " > " );
+                          }
+                        ?>
+                        	</td>
+                          	<td width="30">
+                          <?php
+                          #---------------다음페이지를 링크------------------#
+                          if( $total_pages >= $start_page+ $pages_scale){
+                              $go_page= $start_page+ $pages_scale;
+                              echo( "<a href='./shopping_cart.php?page=$go_page'> >> </a>" );
+                          }else{
+                              echo( " >> " );
+                          }
+                        ?>
                     	</td>
                     </tr>
                 </table>

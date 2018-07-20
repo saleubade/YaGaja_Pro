@@ -191,9 +191,8 @@ $birth1=$birth[0]; //$birth[0] 을 $birty1변수에 저장
 $birth2=$birth[1]; //$birth[1] 을 $birty2변수에 저장
 $birth3=$birth[2]; //$birth[2] 을 $birty3변수에 저장
 
-$address=explode(" ",$row['address']);
-$address1=$address[0]; //$address[0] 을 $address1변수에 저장
-$address2=$address[1]; //$address[1] 을 $address2변수에 저장
+$address1=str_replace(" ","&nbsp;",$row["address1"]);
+$address2=str_replace(" ","&nbsp;",$row["address2"]);
 
 mysqli_close($con);
 
@@ -282,10 +281,10 @@ mysqli_close($con);
 	
 	<tr>
 		<td class=col1 rowspan=2> <font color=red><b>*</b></font> 주소 </td>
-		<td class=col2> <input type="text" id="address1" name="address1" value=<?=$address1?> placeholder="주소" readonly></td> 
+		<td class=col2> <input type="text" id="address1" name="address1" value=<?=$address1 ?> placeholder="주소" readonly></td> 
 	</tr>
 	<tr>
-		<td class=col2><input type="text" id="address2" name="address2" value=<?=$address2?> placeholder="나머지 주소"> <span id=must>* 나머지 주소를 입력하세요.</span> </td>
+		<td class=col2><input type="text" id="address2" name="address2" value=<?=$address2 ?> placeholder="나머지 주소"> <span id=must>* 나머지 주소를 입력하세요.</span> </td>
 	<tr>
     <!--  -->
 	

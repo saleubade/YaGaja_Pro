@@ -6,6 +6,7 @@
 	vertical-align: top;
 	margin-top: 110px;
 }
+
 #left_menu a{
 color: black;
 text-decoration: none;
@@ -16,7 +17,7 @@ text-decoration: none;
   width: 1000px;
   min-height:500px;
   text-align: left;
-/*   border: 1px solid blue; */
+
 
 }
 section{
@@ -24,7 +25,7 @@ section{
   	margin-top:30px;
   	text-align: center;
   	min-width: 1280px;
-/* 	border: 1px solid black; */
+
 }
 
 

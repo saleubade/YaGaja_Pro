@@ -47,7 +47,7 @@ $item_content = $row['content'];
 
 for ($i = 0; $i < 3; $i ++) {
     if (! empty($image_copy[$i])) {
-        $imageinfo = GetImageSize("./data/" . $image_copy[$i]);
+        $imageinfo = GetImageSize("../data/" . $image_copy[$i]);
         
         $image_width[$i] = $imageinfo[0];
         $image_height[$i] = $imageinfo[1];
@@ -81,7 +81,7 @@ mysqli_query($con, $sql) or die("실패원인2 : " . mysqli_error($con));
    	function check_input(){
    		
    		if(!document.ripple_form.ripple_content.value){
-   			alert("내용을 입력하세요!");
+   			alert("내용을 입력해주세요!");
    			document.ripple_form.ripple_content.focue();
    			return;
    		}

@@ -1,7 +1,11 @@
 <?php  
-  include "../../common_lib/common.php";
+  include "../../common_lib/createLink_db.php";
+  
+  $name = $_POST['name'];
+  $pnum = $_POST['pnum'];
+  
   if(isset($name) && isset($pnum)){
-    $sql = "select * from membership where name='$name' and phone='$pnum'";
+      $sql = "select * from membership where name='$name' and phone='$pnum'";
     $result = mysqli_query($con,$sql) or die("실패원인 : ".mysqli_error($con));
     if(mysqli_num_rows($result)==0){
       echo "<script>
@@ -55,20 +59,20 @@
                           <tr>
                             <td border-top width="120" id="first"></td>
                             <td><label for="name" size="30"></label></td>
-                            <td align="center"><?php echo $row['name']."님!" ?></td>
+                            <td align="center"><?= $row['name']."님!" ?></td>
                             <td width="80"></td>
                             <td width="120"></td>
                           </tr>
                           <tr>
                             <td width="120"></td>
                             <td align="left" width="80"><label for="pnum"> </label></td>
-                            <td width="180">아이디는 <?php echo $row['id']." 입니다." ?></td>
+                            <td width="180" style="text-align: center;">아이디는 <?= $row['id']." 입니다." ?></td>
                             <td></td>
                             <td width="120"></td>
                           </tr>
                           <tr height="20"></tr>
                           <tr height="20"></tr>
-                          <input type="hidden" name="id" value=<?php echo $id?>>
+                          <input type="hidden" name="id" value=<?= $id?>>
                           <tr>
                             <td colspan="5" align="center"><input type="submit" value="확인" style="width:100pt; height:30pt"></td>
                           </tr>
@@ -91,7 +95,7 @@
                   <tr>
                   </tr>
                   <tr>
-                    <td border-top width="120" id="first"></td>
+                    <td width="120" id="first"></td>
                     <td><label for="name" size="30">이름</label></td>
                     <td><input type="text" name="name" size="30"></td>
                     <td width="80"></td>

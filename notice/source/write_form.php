@@ -1,14 +1,14 @@
 <?php
 session_start();
-include "../../common_lib/common.php";
+include "../../common_lib/createLink_db.php";
 
 /*  글쓰기
  *  제목 내용 이미지 파일 등록insert.php?table=<?=$table?>&page=<?=$page?>
- *  
+ *
  *  수정시
  *  insert.php?mode=modify&num=<?=$num?>&page=<?=$page?>&table=<?=$table?>
- * 
- *   
+ *
+ *
  *   */
 
 
@@ -16,15 +16,15 @@ if(isset($_SESSION['id'])){
     $id=$_SESSION['id'];
 }
 
-    $mode = $_GET['mode'];
-    $num = $_GET["num"];
-    $table = $_GET["table"];
-    $page = $_GET["page"];
-    
+$mode = $_GET['mode'];
+$num = $_GET["num"];
+$table = $_GET["table"];
+$page = $_GET["page"];
+
 
 //수정 시.
 if(isset($mode) && $mode == "modify"){
-    $sql = "select * from $table where num=$num";
+    $sql = "select * from $table where num='$num'";
     $result = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($result);
     
