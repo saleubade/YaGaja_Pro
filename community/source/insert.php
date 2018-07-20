@@ -12,7 +12,6 @@ include "../../common_lib/createLink_db.php";
 
 if(isset($_SESSION['id'])){
     $id=$_SESSION['id'];
-    
     $name=$_SESSION['name'];
 }
 
