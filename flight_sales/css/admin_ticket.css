@@ -1,3 +1,4 @@
+
 #ticket_box0{
 	padding-left:15px;
 	width: 1000px;
@@ -9,14 +10,13 @@
 #ticket_box1{
 	padding-left:15px;
 	width: 1000px;
-	height: 900px;
+	height: 1000px;
 	margin: 0 auto;
-	}
-	
-#ticket_box12{
+}
+
+#ticket_box45{
 	padding-left:15px;
 	width: 1000px;
-	/* 900 */
 	margin: 0 auto;
 }
 
@@ -27,9 +27,9 @@
 }
 .table1{
 	border-collapse:collapse;
-	width:980px;
+	width:1150px;
 	height:50px;
-	margin-left:0px;
+	margin-left:-50px;
 	
 	
 }
@@ -134,19 +134,15 @@
 	text-align: center;
 }
 
+.button{
+border-radius: 10%;	
+}
+
+
 .seat{
 	width:30px;
 	height:30px;
 }
- 
-#box1{
-	margin-top:30px;
-	width:980px;
-	border-top: 1px solid gray;
-	border-bottom: 1px solid gray;
-	display: inline-block;
-	text-align: center;
-	padding:10px;
-	
-} 
+
+
  

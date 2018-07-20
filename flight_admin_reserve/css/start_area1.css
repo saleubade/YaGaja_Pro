@@ -1,0 +1,63 @@
+#box{
+	
+	width:730px;
+	height:360px;
+	margin:0 auto;
+}
+
+#table1{
+	margin-left:100px;
+	width:500px;
+	height:320px;
+	border-collapse: collapse;
+}
+
+.td1{
+	border: 1px solid gray;	
+	width:135px;
+	height:60px;
+	background-color: white;
+	text-align: left;
+}
+.a1{
+	color:white;
+	font-size:12pt;
+	font-weight : 600;
+	text-decoration: none;	
+}
+.a2{
+	color: #5E5E5E;
+	font-size:11pt;
+	text-decoration: none;	
+
+}
+.a1:hover{
+	text-decoration: underline;	
+}
+
+.a2:hover{
+	font-size:11.7pt;
+	text-decoration: underline;	
+}
+
+.td2{
+	border: 1px solid gray;	
+	
+	background-color: white;
+}
+#select_city{
+	margin:-120px 0 0 15px;
+	text-align: left;
+	
+}
+
+.td_div{
+	background-color: #ADADAD;
+	
+	width:125px;
+	height:40px;
+	padding-left:15px;
+	padding-top:20px;
+	vertical-align: middle;
+	/* margin:-15px 0 -15px 0; */
+}

@@ -53,7 +53,6 @@ if($result != $num){
     
     mysqli_close($con);
     
-    echo "<script>alert('좌석 예매되었습니다.')</script>";
     echo "<script> location.href='../../index.php'; </script>";
 }
 

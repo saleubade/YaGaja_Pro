@@ -63,7 +63,6 @@ if(!empty($_POST['back_check'])){
 
 <script type="text/javascript">
 function updateReserveNum(url){
-		alert('예매되었습니다.');
 		location.href=url;	
 }
 
@@ -232,9 +231,9 @@ if($fly == 'round'){    ////왕복
     ($back_flight_price*$adult_num)+($back_flight_price*0.5*$child_num)+($back_flight_price*0.3* $baby_num);
    
     
-    $total_flight_price = number_format($total_flight_price);   //콤마찍기
-    $start_flight_price =number_format($start_flight_price);
-    $back_flight_price =number_format($back_flight_price);
+    $total_flight_price1 = number_format($total_flight_price);   //콤마찍기
+    $start_flight_price1 =number_format($start_flight_price);
+    $back_flight_price1 =number_format($back_flight_price);
 
     ?>
 
@@ -248,6 +247,14 @@ $reservation_num = mt_rand(1000, 9999);
 
 $reservation_number = $reservation_str . $reservation_num;
 
+$reservation_str1 = "";
+for($i=0;$i<4;$i++) {
+    $capi = rand()%26+65;
+    $reservation_str1 .= chr($capi);
+}
+$reservation_num2 = mt_rand(1000, 9999);
+
+$reservation_number2 = $reservation_str1 . $reservation_num2;
 
 if($adult_num == "없음"){
     $adult_num = "0";
@@ -261,7 +268,7 @@ if($baby_num == "없음"){
 $rs_cnt = $adult_num + $child_num + $baby_num;
 ?>
 <br><div id="select_ticket" style="text-align:left;"><span style='font-size:15pt;'>결제 금액</span></div>
-  <div id="checked_flight1">총 결제금액 : <?= $total_flight_price?>  원
+  <div id="checked_flight1">총 결제금액 : <?= $total_flight_price1?>  원
   <span style='font-size:12pt;'>(성인 : <?= $adult_num ?> 명 + 어린이 : <?= $child_num ?> 명 + 유아 : <?= $baby_num ?> 명)<br></span>
    </div>
 
@@ -283,7 +290,7 @@ $rs_cnt = $adult_num + $child_num + $baby_num;
     <td><span style="font-size:15pt;"><?= $back ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $start_fly_back_time ?>)</span><div></td>
     </tr>
     <tr id='row_flight_tr4'>
-    <td colspan='4'><span class="low_price">항공편 운임 : <?= $start_flight_price ?> 원</span></td>
+    <td colspan='4'><span class="low_price">항공편 운임 : <?= $start_flight_price1 ?> 원</span></td>
     </tr>
     </table>
     
@@ -301,7 +308,7 @@ $rs_cnt = $adult_num + $child_num + $baby_num;
     </tr>
      </tr>
     <tr id='row_flight_tr4'>
-    <td colspan='4'><span class="low_price">항공편 운임 : <?= $back_flight_price ?> 원</span></td>
+    <td colspan='4'><span class="low_price">항공편 운임 : <?= $back_flight_price1 ?> 원</span></td>
     </tr>
     </table><br><br><br><br>
 
@@ -354,8 +361,8 @@ $rs_cnt = $adult_num + $child_num + $baby_num;
     $total_flight_price = ($start_flight_price*$adult_num)+($start_flight_price*0.5*$child_num)+($start_flight_price*0.3* $baby_num);
     $total_flight_price = floor($total_flight_price)- ($total_flight_price % 10); //1의 자리이하 절삭
     
-    $total_flight_price = number_format($total_flight_price);   //콤마찍기
-    $start_flight_price =number_format($start_flight_price);
+    $total_flight_price1 = number_format($total_flight_price);   //콤마찍기
+    $start_flight_price1 =number_format($start_flight_price);
   
     ?>
 
@@ -381,7 +388,7 @@ if($baby_num == "없음"){
 $rs_cnt = $adult_num + $child_num + $baby_num;
 ?>
 <br><div id="select_ticket" style="text-align:left;"><span style='font-size:15pt;'>결제 금액</span></div>
-  <div id="checked_flight1">총 결제금액 : <?= $total_flight_price?>  원
+  <div id="checked_flight1">총 결제금액 : <?= $total_flight_price1?>  원
   <span style='font-size:12pt;'>(성인 : <?= $adult_num ?> 명 + 어린이 : <?= $child_num ?> 명 + 유아 : <?= $baby_num ?> 명)<br></span>
    </div>
 
@@ -402,7 +409,7 @@ $rs_cnt = $adult_num + $child_num + $baby_num;
     <td><span style="font-size:15pt;"><?= $start_flight_back ?></span><br><div id="right"><span style="font-size:12pt;">(<?= $start_fly_back_time ?>)</span></div></td>
     </tr>
     <tr id='row_flight_tr4'>
-    <td colspan='4'><span class="low_price">항공편 운임 : <?= $start_flight_price ?> 원</span></td>
+    <td colspan='4'><span class="low_price">항공편 운임 : <?= $start_flight_price1 ?> 원</span></td>
     </tr>
     </table><br><br><br><br>
 

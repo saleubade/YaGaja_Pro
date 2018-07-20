@@ -148,7 +148,7 @@ function input_check(url){
 <div id="seat_1"><br>
 
 <?php
-$sql = "select * from seat_state s inner join flight_one_way f on s.flght_ap_num = f.flght_ap_num";
+$sql = "select * from seat_state s inner join flight_one_way f on s.flght_ap_num = f.flght_ap_num where s.flght_ap_num ='$bapnum' ";
 
 $result = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
 while($row = mysqli_fetch_array($result)){

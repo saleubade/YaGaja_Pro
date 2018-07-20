@@ -37,6 +37,8 @@ if(!empty($_SESSION['name'])){
 <nav id="top">
 <?php include_once '../../common_lib/main_menu2.php';?>
 </nav>
+
+<h1 style="padding-top:40px; margin:0 auto; margin-top:20px; text-align: center">FLIGHT HISTORY</h1><br>
 <div id="ticket_box4"><br><br>
 <div id='select_ticket'><span style='font-size:15pt;'>항공권 예매내역<br></span></div><br>
 <div id='select_ticket' style="text-align:right;"><span style='font-size:12pt;'> * 5개  출력</span></div>

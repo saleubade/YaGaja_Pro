@@ -57,7 +57,12 @@ if(!empty($_GET['fly'])){
 }else{
     $fly = "";
 } 
-
+if(!empty($_GET['total_price'])){
+    $total_price = $_GET['total_price'];
+}else{
+    $total_price = "";
+} 
+$current_date = date("Y-m-d");
 
 
 if($fly == 'round'){    ////왕복
@@ -167,20 +172,21 @@ var_dump($reservation_number); */
 
 
 
-if($fly= "round"){
-    $sql = "insert into reserve_info (id, start_apnum, adult_num, chlid_num, baby_num, reserve_num) values
-    ('$id','$start_flight_ap_num','$adult_num','$child_num' ,'$baby_num','$reservation_number')";
+if($fly== "round"){
+    $sql = "insert into reserve_info (id, start_apnum, adult_num, chlid_num, baby_num, reserve_num, payment_price, payment_date) values
+    ('$id','$start_flight_ap_num','$adult_num','$child_num' ,'$baby_num','$reservation_number', '$total_price', '$current_date')";
     
     mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
     
-    $sql = "insert into reserve_info (id, back_apnum, adult_num, chlid_num, baby_num, reserve_num) values
-    ('$id','$back_flight_ap_num','$adult_num','$child_num' ,'$baby_num','$reservation_number')";
+    $sql = "insert into reserve_info (id, back_apnum, adult_num, chlid_num, baby_num, reserve_num, payment_price, payment_date) values
+    ('$id','$back_flight_ap_num','$adult_num','$child_num' ,'$baby_num','$reservation_number', '$total_price', '$current_date')";
     
     
     mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
+    
 }else{
-    $sql = "insert into reserve_info (id, start_apnum, adult_num, chlid_num, baby_num, reserve_num) values
-    ('$id','$start_flight_ap_num','$adult_num','$child_num' ,'$baby_num','$reservation_number')";
+    $sql = "insert into reserve_info (id, start_apnum, adult_num, chlid_num, baby_num, reserve_num, payment_price, payment_date) values
+    ('$id','$start_flight_ap_num','$adult_num','$child_num' ,'$baby_num','$reservation_number', '$total_price', '$current_date')";
     
     mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
 }
