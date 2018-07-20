@@ -27,7 +27,7 @@ if (isset($_GET['mode'])) {
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="../css/gallery.css?ver=2" type="text/css"
+<link rel="stylesheet" href="../css/gallery.css?ver=3" type="text/css"
 	media="all">
 <link rel="stylesheet" href="../../common_css/index_css3.css?ver=2"
 	type="text/css" media="all">
@@ -115,12 +115,7 @@ if (isset($_GET['mode'])) {
       	<?php include '../../common_lib/left_menu2.php'; ?>
 		</aside>
 		<article class="main">
-			<div id="head">
-
-				<h1>Gallery</h1>
-				
-
-			</div>
+			<div id="head"><h1>Gallery</h1><div style="float: right;" id="list_search1">▷ 총 <?= $total_record ?> 개의 게시물이 있습니다.  </div></div>
 			<hr>
 			<?php 
 			
@@ -208,7 +203,7 @@ if (isset($_GET['mode'])) {
 									<option value="content">내용</option>
 								</select>
 							</div>							
-						<div style="text-align: center;" id="list_search1">▷ 총 <?= $total_record ?> 개의 게시물이 있습니다.  </div>
+						
 					</div>
 
 				</div>
