@@ -71,7 +71,7 @@ if(isset($mode) && $mode === "modify"){ //글수정
       }     
       echo "1".$del_ok[0]."2".$del_ok[1]."<br>";
   }
-  $sql = "select * from shop_notice where notice_no=$no";
+  $sql = "select * from shop_review where review_no=$no";
   $result = mysqli_query($con, $sql);
   $row = mysqli_fetch_array($result);
   
@@ -87,34 +87,32 @@ if(isset($mode) && $mode === "modify"){ //글수정
           $delete_path = "../upload_image/".$delete_name;
           echo "++11".$delete_path;
           unlink($delete_path); //data폴더에서 제거
-          $sql="update shop_notice set $field_org_name='',$field_real_name='' where notice_no=$no";
+          $sql="update shop_review set $field_org_name='',$field_real_name='' where review_no=$no";
           echo "<br>11".$sql.$i;
           mysqli_query($con, $sql);
       }else if(!empty($files["name"][$i])){
            if(!$upfile_error[$i] && isset($upfile_name[$i])){
-               $sql = "update shop_notice set $field_org_name='$upfile_name[$i]',$field_real_name='$org_real_value' where notice_no=$no";
+               $sql = "update shop_review set $field_org_name='$upfile_name[$i]',$field_real_name='$org_real_value' where review_no=$no";
                echo "<br>22".$sql;
            mysqli_query($con, $sql);
           }
        }
    }
-   $sql="update shop_notice set notice_subject='$subject',notice_content='$content' where notice_no=$no";
+   $sql="update shop_review set review_subject='$subject',review_content='$content' where review_no=$no";
    echo "33".$sql;
    mysqli_query($con, $sql);
   
   
  }else{
-  $sql="insert into shop_notice (notice_id, notice_nick, notice_subject,  notice_content,
-                              file_name_0, file_name_1, file_name_2, file_copied_0,
-                              file_copied_1, file_copied_2, hit, regist_day)";
-  $sql.=" values('$id', '$cname', '$subject', '$content', '$upfile_name[0]', '$upfile_name[1]', '$upfile_name[2]',
-               '$new_file_name[0]', '$new_file_name[1]','$new_file_name[2]', 0, '$regist_day')";
+  $sql="insert into shop_review (review_id, review_nick, review_subject,  review_content,
+                              file_name_0, file_copied_0, hit, regist_day)";
+  $sql.=" values('$id', '$cname', '$subject', '$content', '$upfile_name[0]', '$new_file_name[0]', 0, '$regist_day')";
  }
  echo "<br><br>===<br>".$sql;
     if(!mysqli_query($con,$sql)){
       echo "no DB: ".mysqli_error($con);
     }else{
-      echo "<script>location.href='./shop_notice.php?';</script>";
+      echo "<script>location.href='./shop_review.php?';</script>";
     } 
 ?>
 

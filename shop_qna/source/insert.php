@@ -29,7 +29,8 @@
   $regist_day = date("Y-m-d (H:i)");
 
   
-  
+  $file=$_FILES["upfile"];
+      echo $file;
   if(isset($_FILES["upfile"])){
       $files=$_FILES["upfile"];
       $count = count($files["name"]);
@@ -66,7 +67,7 @@
   }
   
   
-if($mode=="response"){
+if($mode === "response"){
   //부모글
   $sql="select * from shop_qna where qna_no=$no";
   $result=mysqli_query($con,$sql);
@@ -86,29 +87,12 @@ if($mode=="response"){
   $sql .= "content, regist_day, hit, file_name_0, file_copied_0) ";
   $sql .= "values($group_num, $depth, $ord, '$id', '$cname', '$subject',";
   $sql .= "'$content', '$regist_day', 0, '$upfile_name[0]', '$new_file_name[0]')";
-  
-  mysqli_query($con,$sql);  // $sql 에 저장된 명령 실행
+  echo $sql."<br>";
+
 }
 else
 {
-  $depth = 0;   // depth, ord 를 0으로 초기화
-  $ord = 0;
-  // 레코드 삽입(group_num 제외)
-  $sql = "insert into shop_qna(qna_group_num, qna_depth, qna_ord, qna_id, qna_nick, subject,";
-  $sql .= "content, regist_day, hit, file_name_0, file_copied_0) ";
-  $sql .= "values(0,$depth, $ord, '$id', '$cname', '$subject',";
-  $sql .= "'$content', '$regist_day', 0, '$upfile_name[0]', '$new_file_name[0]')";
-  mysqli_query($con,$sql);  // $sql 에 저장된 명령 실행
-  
-  // 최근 auto_increment 필드(num) 값 가져오기
-  $sql = "select last_insert_id()";
-  $result = mysqli_query($con,$sql);
-  $row = mysqli_fetch_array($result);
-  $auto_num = $row[0];
-  
-  // group_num 값 업데이트
-  $sql = "update shop_qna set qna_group_num = $auto_num where qna_no=$auto_num";
-  mysqli_query($con,$sql);
+
 }
   
 
@@ -135,11 +119,9 @@ if($mode === "modify"){ //글수정
       if(isset($del_ok) && $del_ok[$i] == "y"){
           $delete_field = "file_copied_".$i;
           $delete_name = $row[$delete_field];
-          $delete_path = "../upload_data/".$delete_name;
-          echo "++11".$delete_path;
+          $delete_path = "../upload_image/".$delete_name;
           unlink($delete_path); //data폴더에서 제거
           $sql="update shop_qna set $field_org_name='',$field_real_name='' where qna_no=$no";
-          echo "<br>11".$sql.$i;
           mysqli_query($con, $sql);
       }else if(!empty($files["name"][$i])){
            if(!$upfile_error[$i] && isset($upfile_name[$i])){
@@ -155,12 +137,11 @@ if($mode === "modify"){ //글수정
   
   
  }
- echo "<br><br>===<br>".$sql;
-    if(!mysqli_query($con,$sql)){
-      echo "no DB: ".mysqli_error($con);
-    }else{
-      echo "<script>location.href='./shop_qna.php?page=1';</script>";
-    } 
+      if(!mysqli_query($con,$sql)){
+        echo "no DB: ".mysqli_error($con);
+      }else{
+        echo "<script>location.href='./shop_qna.php?page=1';</script>";
+      } 
 ?>
 
 

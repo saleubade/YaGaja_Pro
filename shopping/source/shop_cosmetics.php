@@ -140,7 +140,7 @@ $number=$total_record- $start_row;
                       #----------------이전블럭 존재시 링크------------------#
                       if( $start_page > $pages_scale ){
                           $go_page= $start_page - $pages_scale;
-                          echo( "<a href='./shop_new_arrivals.php?page=$go_page'> << </a>" );
+                          echo( "<a href='./shop_cosmetics.php?page=$go_page'> << </a>" );
                       }else{
                           echo( " << " );
                       }
@@ -150,7 +150,7 @@ $number=$total_record- $start_row;
                 	<?PHP 
                       #----------------이전페이지 존재시 링크------------------#
                       if( $pre_page ){
-                          echo( "<a href='./shop_new_arrivals.php?page=$pre_page'> < </a>" );
+                          echo( "<a href='./shop_cosmetics.php?page=$pre_page'> < </a>" );
                       }else{
                           echo( " < " );
                       }
@@ -165,7 +165,7 @@ $number=$total_record- $start_row;
                           echo "</td>";
                     }else if(isset($end_page)){
                           echo "<td width='30'>";
-                          echo( "<a href='./shop_new_arrivals.php?page=$dest_page'>$dest_page</a>" );
+                          echo( "<a href='./shop_cosmetics.php?page=$dest_page'>$dest_page</a>" );
                           echo "</td>";
                       }
                       ?>
@@ -173,7 +173,7 @@ $number=$total_record- $start_row;
                 	<?PHP 
                       #----------------이전페이지 존재시 링크------------------#
                       if( $next_page ){
-                          echo( "<a href='./shop_new_arrivals.php?page=$next_page'> > </a>" );
+                          echo( "<a href='./shop_cosmetics.php?page=$next_page'> > </a>" );
                       }else{
                           echo( " > " );
                       }
@@ -184,7 +184,7 @@ $number=$total_record- $start_row;
                       #---------------다음페이지를 링크------------------#
                       if( $total_pages >= $start_page+ $pages_scale){
                           $go_page= $start_page+ $pages_scale;
-                          echo( "<a href='./shop_new_arrivals.php?page=$go_page'> >> </a>" );
+                          echo( "<a href='./shop_cosmetics.php?page=$go_page'> >> </a>" );
                       }else{
                           echo( " >> " );
                       }

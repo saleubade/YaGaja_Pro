@@ -8,8 +8,28 @@ if(isset($_SESSION['id'])){
 }
 include_once '../../common_lib/createLink_db.php';
 include_once '../../shopping_lib/create_table_qna.php';
-
-$sql= "select * from shop_qna order by qna_no desc";
+if(!empty($_POST["qna_text"])){
+    $search =$_POST["qna_text"];
+}
+if(!empty($_POST["qna_select"])){
+    $find =$_POST["qna_select"];
+}
+if ($mode=="search"){
+    $search=trim($search);//공백 제거
+    if(!$search){
+        echo("
+				<script>
+				 window.alert('검색할 단어를 입력해 주세요!');
+			     location.href = 'shop_qna.php';
+				</script>
+			");
+        exit;
+    }
+    $sql = "select * from shop_qna where $find like '%$search%' order by qna_no desc";
+}
+else{
+    $sql= "select * from shop_qna order by qna_group_num desc, qna_ord asc";
+}
 $result= mysqli_query($con, $sql);
 $total_record= mysqli_num_rows($result);
 
@@ -75,22 +95,24 @@ $number=$total_record - ($page-1) * $rows_scale;
     </section>
     <section>
     	<div id="qna_section">
-    		<div id="qna_kind">    			
+    		<div id="qna_kind">    
+    		<form  name="board_form" method="post" action="./shop_qna.php?mode=search">			
 				<select name="qna_select" id="qna_select">
     				<option value="null">선택</option>
     				<option value="subject">제목</option>
-    				<option value="nick">닉네임</option>
+    				<option value="qna_nick">닉네임</option>
     				<option value="content">내용</option>
     			</select>
-    			<input type="text" id="qna_text">
+    			<input type="text" id="qna_text" name="qna_text">
             	<button id="kind_search">검색</button>
+            </form>
     		</div>
     		<div id="qna_table">
     			<table id="qna_table2">
     				<tr id="qna_table_tr">
     					<td class="qna_table_no">No</td>
     					<td class="qna_table_product">Product</td> 
-    					<td class="qna_table_subject">Subject</td>
+    					<td class="qna_table_subject" style="text-align: center;">Subject</td>
     					<td class="qna_table_writer">Writer</td>
     					<td class="qna_table_date">Date</td>
     				</tr>

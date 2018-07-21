@@ -24,7 +24,7 @@ if($mode=="modify" || $mode == "response"){
     $file_copied[0]=$row['file_copied_0'];
 
     if($mode == "response"){
-        $subject="[문의]".$subject;
+        $subject="&nbsp;&nbsp;&nbsp;&nbsp;[문의]".$subject;
     }
     
 }
@@ -76,7 +76,7 @@ if($mode=="modify" || $mode == "response"){
   <?php
 	}elseif($mode == "response"){
   ?>
-	  <form  name="qna_form" method="post" action="./insert.php?mode=response&no=<?=$no?>"> 	  
+	  <form  name="qna_form" method="post" action="./insert.php?mode=response&no=<?=$no?>" enctype="multipart/form-data"> 	  
   <?php 
   }else{
   ?>
@@ -90,18 +90,35 @@ if($mode=="modify" || $mode == "response"){
             			<tr>
             				<td class="qna_write_subject">제목</td>
         				    <?php 
-                            if($mode == "modify"){
+        				    if($mode == "modify" || $mode == "response"){
                             ?>
                             <td class="qna_write_content"><input id="qna_input_subject" type="text" name="subject" value="<?=$subject?>"></td>
+            				<?php 
+                            }else{
+            				?>
+            				<td class="qna_write_content"><input id="qna_input_subject" type="text" name="subject"></td>
+            				<?php 
+                            }
+            				?>
             			</tr>
             			<tr>
             				<td class="qna_write_subject">내용</td>
             				<td class="qna_write_content_text">
+            				<?php 
+        						if($mode == "modify"){
+        					?>
             					<input id="qna_input_content" type="text" rows="10" cols="30" name="content" value="<?=$content?>">
+            				<?php 
+        						}else{
+        					?>
+        						<input id="qna_input_content" type="text" rows="10" cols="30" name="content"">
+        					<?php 
+        						}
+        					?>
             				</td>
             			</tr>
             			<tr>
-            				<td class="qna_write_subject">이미지파일1</td>
+            				<td class="qna_write_subject">이미지파일</td>
             				<td class="qna_write_content">
             					<input class="qna_input_image" type="file" name="upfile[]" value="0">
             					<div style="float: left;">
@@ -118,34 +135,7 @@ if($mode=="modify" || $mode == "response"){
             					</div>
             				</td>
             			</tr>
-            			<?php 
-                            }else{
-            			?>  
-            				<?php 
-                            if($mode == "response"){
-            			    ?>
-            				<td class="qna_write_content"><input id="qna_input_subject" type="text" name="subject" value="<?=$subject?>"></td>
-            				<?php 
-                            }else{
-            				?>
-            				<td class="qna_write_content"><input id="qna_input_subject" type="text" name="subject"></td>
-            				<?php 
-                            }
-            				?>
-            			</tr>
-            			<tr>
-            				<td class="qna_write_subject">내용</td>
-            				<td class="qna_write_content_text">
-            					<input id="qna_input_content" type="text" rows="10" cols="30" name="content">
-            				</td>
-            			</tr>
-            			<tr>
-            				<td class="qna_write_subject">이미지파일1</td>
-            				<td class="qna_write_content"><input class="qna_input_image" type="file" name="upfile[]"></td>
-            			</tr>
-            			<?php 
-                            }
-            			?>
+
             		</table>
         </form>
         </section>
