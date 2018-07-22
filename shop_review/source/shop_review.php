@@ -148,7 +148,7 @@ $number=$total_record - ($page-1) * $rows_scale;
                       #----------------이전블럭 존재시 링크------------------#
                       if( $start_page > $pages_scale ){
                           $go_page= $start_page - $pages_scale;
-                          echo( "<a href='./shop_review.php?page=$go_page'> << </a>" );
+                          echo( "<a href='./shop_review.php?page=$go_page'&mode=$mode> << </a>" );
                       }else{
                           echo( " << " );
                       }
@@ -158,7 +158,7 @@ $number=$total_record - ($page-1) * $rows_scale;
                 	<?PHP 
                       #----------------이전페이지 존재시 링크------------------#
                       if( $pre_page ){
-                          echo( "<a href='./shop_review.php?page=$pre_page'> < </a>" );
+                          echo( "<a href='./shop_review.php?page=$pre_page&mode=$mode'> < </a>" );
                       }else{
                           echo( " < " );
                       }
@@ -173,7 +173,7 @@ $number=$total_record - ($page-1) * $rows_scale;
                           echo "</td>";
                     }else if(isset($end_page)){
                           echo "<td width='30'>";
-                          echo( "<a href='./shop_review.php?page=$dest_page'>$dest_page</a>" );
+                          echo( "<a href='./shop_review.php?page=$dest_page&mode=$mode'>$dest_page</a>" );
                           echo "</td>";
                       }
                       ?>
@@ -181,7 +181,7 @@ $number=$total_record - ($page-1) * $rows_scale;
                 	<?PHP 
                       #----------------이전페이지 존재시 링크------------------#
                       if( $next_page ){
-                          echo( "<a href='./shop_review.php?page=$next_page'> > </a>" );
+                          echo( "<a href='./shop_review.php?page=$next_page&mode=$mode'> > </a>" );
                       }else{
                           echo( " > " );
                       }
@@ -192,7 +192,7 @@ $number=$total_record - ($page-1) * $rows_scale;
                       #---------------다음페이지를 링크------------------#
                       if( $total_pages >= $start_page+ $pages_scale){
                           $go_page= $start_page+ $pages_scale;
-                          echo( "<a href='./shop_review.php?page=$go_page'> >> </a>" );
+                          echo( "<a href='./shop_review.php?page=$go_page&mode=$mode'> >> </a>" );
                       }else{
                           echo( " >> " );
                       }

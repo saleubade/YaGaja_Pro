@@ -89,7 +89,7 @@ if(isset($_GET['mode']) && $mode="modify"){
             			<tr>
             				<td class="review_write_subject">내용</td>
             				<td class="review_write_content_text">
-            					<input id="review_input_content" type="text" rows="10" cols="30" name="content" value="<?=$content?>">
+            					<textarea id="review_input_content" rows="10" cols="100" name="content" value="<?=$content?>"></textarea>
             				</td>
             			</tr>
             			<tr>
@@ -136,7 +136,7 @@ if(isset($_GET['mode']) && $mode="modify"){
             			<tr>
             				<td class="review_write_subject">내용</td>
             				<td class="review_write_content_text">
-            					<input id="review_input_content" type="text" rows="10" cols="30" name="content">
+            					<textarea id="review_input_content" rows="10" cols="100" name="content"></textarea>
             				</td>
             			</tr>
             			<tr>

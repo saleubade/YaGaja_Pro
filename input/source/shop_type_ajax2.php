@@ -8,7 +8,7 @@ else
 {
     $type="";
 }
-if($type == "의류")
+if($type == "clothe")
 {
     echo    "사이즈/수량";
     

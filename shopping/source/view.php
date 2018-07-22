@@ -40,7 +40,7 @@ mysqli_query($con, $sql) or die(mysqli_error($con));
 <html>
 <head>
 <meta charset="utf-8">
-  <title>야! 가자~</title>
+  <title>야! 몰~</title>
   <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/shopping3.css?ver=133">
@@ -54,7 +54,7 @@ mysqli_query($con, $sql) or die(mysqli_error($con));
         var size = $("#choice").val();
         var value2 = $("#value2").val();
         var value = $("#value").val();
-        if(type== "의류"){
+        if(type== "clothe"){
         	if(size=="없음"){
                 alert('상품사이즈를 선택하세요!');
                 return;
@@ -67,7 +67,7 @@ mysqli_query($con, $sql) or die(mysqli_error($con));
             {
                 if(confirm("장바구니에 추가 하시겠습니까??"))
                 {   
-                	location.href="../../shopping_cart/source/shopping_cart_input.php?no=<?=$no?>&size="+size+"&value2="+value2;                	
+                	location.href="../../shopping_cart/source/shopping_cart_input.php?no=<?=$no?>&size="+size+"&value="+value2;                	
                 }
                 else
                 {
@@ -78,7 +78,7 @@ mysqli_query($con, $sql) or die(mysqli_error($con));
             {
             	if(confirm("구매하시겠습니까??"))
                 {   
-            		location.href="../../shopping_buy/source/shopping_buy.php?no=<?=$no?>&size="+size+"&value2="+value2;
+            		location.href="../../shopping_buy/source/shopping_buy.php?no=<?=$no?>&size="+size+"&value="+value2+"&mode=order&table=shop";
                 }
                 else
                 {
@@ -105,7 +105,7 @@ mysqli_query($con, $sql) or die(mysqli_error($con));
             {
             	if(confirm("구매하시겠습니까??"))
                 {   
-            		location.href="../../shopping_buy/source/shopping_buy.php?no=<?=$no?>&value="+value;
+            		location.href="../../shopping_buy/source/shopping_buy.php?no=<?=$no?>&value="+value+"&mode=order&table=shop";
                 }
                 else
                 {
@@ -133,7 +133,7 @@ mysqli_query($con, $sql) or die(mysqli_error($con));
             		<div id="view_name"><b><?=$shop_name?></b></div><br><br>
             		<div id="view_price">판매가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;￦<?=$price?></div>
         		<?php
-            		if($type == "의류")
+            		if($type == "clothe")
             		{
         		?>
             		<div id="view_size">size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -165,7 +165,7 @@ mysqli_query($con, $sql) or die(mysqli_error($con));
             					<td class="td3"><b>Total</b></td>
             				</tr>
             				<?php 
-            				if($type != "의류")
+            				if($type != "clothe")
             				{
             				?>
             				

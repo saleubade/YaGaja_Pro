@@ -107,11 +107,11 @@ if($mode=="modify" || $mode == "response"){
             				<?php 
         						if($mode == "modify"){
         					?>
-            					<input id="qna_input_content" type="text" rows="10" cols="30" name="content" value="<?=$content?>">
+            					<textarea id="qna_input_content" rows="10" cols="100" name="content" value="<?=$content?>"></textarea>
             				<?php 
         						}else{
         					?>
-        						<input id="qna_input_content" type="text" rows="10" cols="30" name="content"">
+        						<textarea id="qna_input_content" rows="10" cols="100" name="content"></textarea>
         					<?php 
         						}
         					?>

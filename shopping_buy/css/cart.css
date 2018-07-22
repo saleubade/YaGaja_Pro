@@ -1,0 +1,221 @@
+@charset "UTF-8";
+a:hover{
+	text-decoration: none;
+}
+#wish_list_section{
+	width: 1200px;
+	border: 1px solid red;
+	height: 180px;
+	margin: auto;
+	font-size: 22px;
+	text-align: center;
+	padding-top: 100px; 
+}
+#wish_list_section2{
+	width: 1200px;
+	border: 1px solid blue;
+	height: 50px;
+	margin: auto;
+	font-size: 13px;
+	text-align: center;
+	padding-top: 5px; 
+	color: lightgray;
+}
+#buy_section{
+	width: 1200px;
+	border: 1px solid black;
+	margin: auto;
+}
+#buy_list_table{
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+	width: 1200px;
+}
+tr{
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;	
+}
+td{
+	border-top: 2px solid lightgray;
+	border-bottom: 2px solid lightgray;
+	text-align: center;
+	border-left-style:none; 
+	border-right-style:none; 
+}
+td a{
+	color: black;
+}
+td a:hover{
+	text-decoration: none;
+	color: rgba(1,1,1,0.7);
+}
+.prod_check_box{
+	width: 40px;
+}
+.prod_image{
+	width: 210px;
+}
+.prod_info{
+	width: 550px;
+}
+.prod_price{
+	width: 150px;
+}
+.prod_baesong{
+	width: 150px;
+}
+.prod_total{
+	width: 100px;
+}
+
+.prod_image2{
+	width: 100px;
+	height: 110px;
+}
+#buy_delete{
+	background-color: white;
+	border: 1.5px solid lightgray;
+}
+#buy_button{
+	width: 1200px;
+	height: 120px;
+	border: 1px solid red;
+	padding: 3px;
+	margin-top: 3px;
+}
+#choice_del{
+	background-color: white;
+	border: 1.5px solid lightgray;
+	width: 100px;
+	height: 30px;
+	font-size: 12px;
+	margin-left: 2px;
+}
+#all_order{
+	background-color: black;
+	border: 1.5px solid black;
+	width: 110px;
+	height: 35px;
+	color: white;
+	font-size: 12px;
+	float: right;
+	margin-right: 5px;
+}
+#all_del{
+	background-color: gray;
+	border: 1.5px solid gray;
+	width: 120px;
+	height: 35px;
+	color: white;
+	font-size: 12px;
+	float: right;
+	margin-right: 5px;
+}
+#page_link{
+	width: 1200px;
+	border: 1px solid blue;
+	height: 40px;
+}
+#page_link_table{
+	border: 1px solid lightgray;
+	font-size : 11pt;
+	margin: auto;
+}
+#page_link_table td{
+	border: 1px solid lightgray;
+	color: gray;	
+}
+#now_bluck{
+	background-color: lavender;
+	color: black;
+}
+#page_link_table td a{
+	color: gray;	
+}
+#page_link_table td a:hover{
+	text-decoration: none;
+}
+#page_num{
+	border: 1px solid black;
+	display: inline;
+}
+#order_total{
+	border: 1px solid black;
+	width: 1070px;
+	height: 40px;
+	display: inline-block;
+	text-align: right;
+	font-size: 14px;
+	padding-top: 5px;
+	padding-right: 10px;
+}
+#total_value{
+	color: rgb(33, 189, 153);
+	font-size: 18px;
+}
+#order_list{
+	width: 1050px;
+	height: 500px;
+	margin: 20px auto;
+}
+#order_list_pay{
+	width: 280px;
+	height: 358px;
+	border: 2px solid lightgray;
+	display: inline-block;
+	margin-top: 47px;
+	padding-top: 10px;
+}
+#pay_value{
+	float: left;
+	margin-left: 30px;
+	color: rgb(33, 189, 153);
+	height: 35px;
+	padding-top: 12px;
+}
+#pay_value2{
+	float: right;
+	margin-right: 30px;
+	color: rgb(33, 189, 153);
+	font-size: 27px;
+}
+#pay_check2{
+	font-size: 13px;
+}
+#pay_button{
+	width: 270px;
+	height: 70px;
+	border: 2px solid lightgray;
+	background-color: #0000a0;
+	color: white;
+}
+#review{
+	background-color: black;
+	color: white;
+	border: 1px solid black;
+	height: 20px;
+	font-size: 12px;
+}
+#review_kind{
+	width: 1200px;
+	margin: auto;
+	height: 40px;
+	text-align: right;
+	padding-right: 5px;
+	padding-top: 8px;
+	margin: auto;
+}
+#review_select{
+	height: 24px;
+	display: inline-block;
+	width: 90px;
+}
+#review_text{
+	size: 15px;
+	width: 180px;
+}
+#kind_search{
+	display: inline-block;
+	background-color: white;
+	width: 80px;
+}

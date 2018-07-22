@@ -54,6 +54,7 @@ if($flag !=="OK"){
     <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
     <link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=11">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/input.css">
     <script>
       function check_input(){
@@ -71,7 +72,7 @@ if($flag !=="OK"){
           document.input_form.shop_price.focus();
           return;
         }
-        if(document.input_form.shop_type.value == "의류"){
+        if(document.input_form.shop_type.value == "clothe"){
         	console.log(document.input_form.shop_type.value);
             document.input_form.submit();
         }else{
@@ -141,10 +142,10 @@ if($flag !=="OK"){
             <td>
               <select name="shop_type" id="shop_type">
                 <option value="없음" selected>선택</option>
-                <option value="화장품">화장품</option>
-                <option value="악세서리">악세서리</option>
-                <option value="의류">의류</option>
-                <option value="여행용품">여행용품</option>
+                <option value="cosmetics">화장품</option>
+                <option value="acc">악세서리</option>
+                <option value="clothe">의류</option>
+                <option value="travel">여행용품</option>
               </select>
             </td>
           </tr>
