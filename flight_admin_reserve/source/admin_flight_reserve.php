@@ -26,8 +26,7 @@
 <title>TICKETING</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css?var=1">
-<link type="text/css" rel="stylesheet" href="../css/admin_ticket.css?v=6">
-<link type="text/css" rel="stylesheet" href="../css/start_area1.css?v=4">
+<link type="text/css" rel="stylesheet" href="../css/admin_ticket.css?v=7">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -195,7 +194,7 @@ if($total_record == 0){
 </form>
 
 
-</div>
+</div><br><br><br><br><br><br><br><br><br><br>
 <footer>
 <?php include_once '../../common_lib/footer2.php';?>
 </footer>

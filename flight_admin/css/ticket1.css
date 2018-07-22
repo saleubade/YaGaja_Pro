@@ -15,6 +15,7 @@
 	margin-top: 50px;
 	
 }
+
 #ticket_box2{
 	spacing : 10px;
 	width: 300px;
@@ -465,3 +466,61 @@ s
     font-size: 15pt;
 	
 }
+#ticket_box66{
+	width: 1200px;
+
+	
+	margin: 0 auto;
+	margin-top: 50px;
+	
+}
+#parent{
+	width:1200px;
+	height:600px;
+	border:1px solid black;
+}
+.sp1{
+	color:#000000;
+	font-size:19pt;
+	font-weight: 600;
+}
+
+.sp2{
+	color:#000000;
+	font-size:13pt;
+	font-weight: 550;
+}
+
+.sp3{
+	color:#000000;
+	font-size:12pt;
+	font-weight: 400;
+}
+
+.child_1{
+	spacing:5px;
+	margin:10px 5px 0 0;
+	width:189px;
+	height:450px;
+	padding-top:150px;
+	float:left;
+	text-align: center;
+	vertical-align: middle;
+	border: 2px solid gray;
+	margin-bottom:10px;
+	
+}
+
+.child_1:hover{
+	border: 4px solid gray;
+	background-color: #F2F2F2;
+}
+
+#bottom_div{
+	width:1182px;
+	height:90px;
+	border: 2px solid gray;
+	clear:both;
+}	
+
+

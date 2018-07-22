@@ -20,7 +20,7 @@ if(!empty($_SESSION['name'])){
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css">
-<link type="text/css" rel="stylesheet" href="../css/ticketing.css">
+<link type="text/css" rel="stylesheet" href="../css/ticketing.css?v=1">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -272,6 +272,7 @@ while($row = mysqli_fetch_array($result)){
 </table>
 
 </div>
+<br><br><br><br>
 <footer>
 <?php include_once '../../common_lib/footer2.php';?>
 </footer>

@@ -48,6 +48,30 @@ if(!empty($_POST['back_check'])){
 }else{
     $back_check = "?";
 }
+
+if($fly == "round"){    //왕복
+    if($start_check == "?" && $back_check == "?"){  //둘다 값을 넘겨받지 못했다면
+      echo "<script>alert('항공권을 모두 선택해주세요.');
+            history.go(-1);
+            </script>";
+    }elseif(!($start_check == "?") && $back_check == "?"){    //back_check을 못받았다면
+       echo "<script>alert('귀국편 항공권을 선택해주세요.');
+            history.go(-1);
+            </script>";
+    }elseif($start_check == "?" && !($back_check == "?")){    //start_check을 못받았다면
+        echo "<script>alert('출국편 항공권을 선택해주세요.');
+            history.go(-1);
+            </script>";
+    }
+    
+}else{  //one-way
+    if($start_check == "?"){  //start_check을 못받았다면
+        echo "<script>alert('항공권을 선택해주세요.');
+            history.go(-1);
+            </script>";
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
