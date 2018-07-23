@@ -34,12 +34,12 @@ if(isset($_FILES["upfile"])){
   {
       $upfile_error=null;
       if(!empty($files["name"][$i])){
+          echo "111<br><br>".$files["name"][$i]."<br>";
           $upfile_name[$i]=$files["name"][$i];
           $upfile_tmp_name[$i] = $files["tmp_name"][$i];
           $upfile_type[$i]=$files["type"][$i];
           $upfile_size[$i]=$files["size"][$i];
           $upfile_error[$i]=$files["error"][$i];
-
           
           $file=explode(".",$upfile_name[$i]);//.을 기점으로 배열로 나누겠다
           $file_name=$file[0];
@@ -84,23 +84,23 @@ if(isset($mode) && $mode === "modify"){ //글수정
       if(isset($del_ok) && $del_ok[$i] == "y"){
           $delete_field = "file_copied_".$i;
           $delete_name = $row[$delete_field];
-          $delete_path = "../upload_data/".$delete_name;
+          $delete_path = "../upload_image/".$delete_name;
           echo "++11".$delete_path;
           unlink($delete_path); //data폴더에서 제거
           $sql="update shop_notice set $field_org_name='',$field_real_name='' where notice_no=$no";
-          echo "<br>11".$sql;
-//             mysqli_query($con, $sql);
-       }else{
+          echo "<br>11".$sql.$i;
+          mysqli_query($con, $sql);
+      }else if(!empty($files["name"][$i])){
            if(!$upfile_error[$i] && isset($upfile_name[$i])){
                $sql = "update shop_notice set $field_org_name='$upfile_name[$i]',$field_real_name='$org_real_value' where notice_no=$no";
                echo "<br>22".$sql;
-//               mysqli_query($con, $sql);
+           mysqli_query($con, $sql);
           }
        }
    }
    $sql="update shop_notice set notice_subject='$subject',notice_content='$content' where notice_no=$no";
    echo "33".$sql;
-//    mysqli_query($con, $sql);
+   mysqli_query($con, $sql);
   
   
  }else{
@@ -111,11 +111,11 @@ if(isset($mode) && $mode === "modify"){ //글수정
                '$new_file_name[0]', '$new_file_name[1]','$new_file_name[2]', 0, '$regist_day')";
  }
  echo "<br><br>===<br>".$sql;
-//      if(!mysqli_query($con,$sql)){
-//         echo "no DB: ".mysqli_error($con);
-//       }else{
-//         echo "<script>location.href='./shop_notice.php?';</script>";
-//      } 
+    if(!mysqli_query($con,$sql)){
+      echo "no DB: ".mysqli_error($con);
+    }else{
+      echo "<script>location.href='./shop_notice.php?';</script>";
+    } 
 ?>
 
 

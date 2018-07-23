@@ -20,7 +20,6 @@ if($flag!=="OK"){
       fly_start_time char(10) not null,    
       fly_back_time char(10) not null,    
       fly_time char(10) not null,
-      seatnum int not null,
       recordNum int not null        
       )";
     if(mysqli_query($con,$sql)){

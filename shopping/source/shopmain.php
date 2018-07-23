@@ -31,7 +31,24 @@
       margin: auto;
   }
   </style>
-  
+  <script type="text/javascript">
+  $(document).ready(function(){ 
+	  $("#travel").click(function(){ 
+		var type = 'travel';
+	      if(type){
+	         $.ajax({
+   	        	type : "post",
+  				url : "./image_view.php,"
+  				data : "type="+type,
+				success : function(data){
+					$("#weekly_item_list").html(data);
+               }
+	         });
+	      }
+	   }
+	});
+ }	
+  </script>
 </head>
 <body>
     <header style="border:1px solid black;">
@@ -82,15 +99,15 @@
               </div>
             </div>
     	</section>
-	
+
 	<!-- 베스트아이템  -->
- 	<section id="weekly_item">
+<!--  	<section id="weekly_item"> 
  		<div id="weekly_item1">weekly best item
  			<ul id="weekly_item_ul">
- 				<li><a id="travel">&nbsp;&nbsp;TRAVEL&nbsp;&nbsp;</a></li>
- 				<li><a id="acc">&nbsp;&nbsp;ACC&nbsp;&nbsp;</a></li>
- 				<li><a id="tb">&nbsp;&nbsp;TOP/BOTTOM&nbsp;&nbsp;</a></li>
- 				<li><a id="cosmetics">&nbsp;&nbsp;COSMETICS&nbsp;&nbsp;</a></li>
+ 				<li><a href="#" id="travel">&nbsp;&nbsp;TRAVEL&nbsp;&nbsp;</a></li>
+ 				<li onclick="view('acc')"><a id="acc">&nbsp;&nbsp;ACC&nbsp;&nbsp;</a></li>
+ 				<li onclick="view('clothe')"><a id="tb">&nbsp;&nbsp;TOP/BOTTOM&nbsp;&nbsp;</a></li>
+ 				<li onclick="view('cosmetics')"><a href="#" id="cosmetics">&nbsp;&nbsp;COSMETICS&nbsp;&nbsp;</a></li>
  			</ul>
  			<div id="weekly_item_list">
  				<div class="weekly_img">
@@ -103,10 +120,10 @@
  				<div class="weekly_img"></div>
  			</div>
  		</div>
- 	</section>
+ 	</section>-->
 	
 	<!-- 보드판  -->
- 	<section id="board_item"> 
+<!--  	<section id="board_item">  
  		<div id="board_item1">BOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  			<ul id="board_item_ul">
  				<li><a>&nbsp;&nbsp;QNA&nbsp;&nbsp;</a></li>
@@ -115,7 +132,7 @@
  			</ul> 
  		</div> 
  		<div id="board_table"></div> 
- 	</section> 
+ 	</section>-->
     <br><br> 
     <!-- 신상품 목록 -->
     

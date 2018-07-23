@@ -8,7 +8,7 @@ else
 {
     $type="";
 }
-if($type == "의류")
+if($type == "clothe")
 {
     echo    "S :<input type='number' name='sizeS' class='size' min='0'>
              M :<input type='number' name='sizeM' class='size' min='0'>

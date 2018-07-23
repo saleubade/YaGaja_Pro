@@ -80,7 +80,7 @@ if(isset($_GET['mode']) && $mode="modify"){
             	<div class="notice_section">
             		<table class="notice_section_table">
             			<tr>
-            				<td class="notice_write_subject">제목2</td>
+            				<td class="notice_write_subject">제목</td>
         				    <?php 
                             if(isset($mode) && $mode === "modify"){
                             ?>
@@ -89,7 +89,7 @@ if(isset($_GET['mode']) && $mode="modify"){
             			<tr>
             				<td class="notice_write_subject">내용</td>
             				<td class="notice_write_content_text">
-            					<input id="notice_input_content" type="text" rows="10" cols="30" name="content" value="<?=$content?>">
+            					<textarea id="notice_input_content" rows="10" cols="100" name="content" value="<?=$content?>"></textarea>
             				</td>
             			</tr>
             			<tr>
@@ -136,7 +136,7 @@ if(isset($_GET['mode']) && $mode="modify"){
             			<tr>
             				<td class="notice_write_subject">내용</td>
             				<td class="notice_write_content_text">
-            					<input id="notice_input_content" type="text" rows="10" cols="30" name="content">
+            					<textarea id="notice_input_content" rows="10" cols="30" name="content"></textarea>
             				</td>
             			</tr>
             			<tr>
@@ -153,7 +153,7 @@ if(isset($_GET['mode']) && $mode="modify"){
             		</table>
             		<div id="notice_write_form">
             			<input type="button" class="notice_write" onclick="check_input()" value="완료">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            			<a href="./notice.php?page=1"><button class="notice_write">취소</button></a>
+            			<a href="./shop_notice.php?page=1"><button class="notice_write">취소</button></a>
             		</div>
         		</div>    
             </section>

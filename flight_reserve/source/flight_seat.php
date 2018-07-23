@@ -17,56 +17,24 @@ session_start();
     $fly = "?";
 } 
 
-if(!empty($_GET['start_check'])){
-    $start_check = $_GET['start_check'];
+if(!empty($_GET['num'])){
+    $num = $_GET['num'];
 }else{
-    $start_check = "?";
-}
-if(!empty($_GET['back_check'])){
-    $back_check = $_GET['back_check'];
-}else{
-    $back_check = "?";
-}
-if(!empty($_GET['start'])){
-    $start = $_GET['start'];
-}else{
-    $start = "?";
-}
-if(!empty($_GET['back'])){
-    $back = $_GET['back'];
-}else{
-    $back = "?";
+    $num = "?";
 }
 
-if(!empty($_GET['anum'])){
-    $anum = $_GET['anum'];
+if(!empty($_GET['sapnum'])){
+    $sapnum = $_GET['sapnum'];
 }else{
-    $anum = "?";
-}
-if(!empty($_GET['bnum'])){
-    $bnum = $_GET['bnum'];
-}else{
-    $bnum = "?";
-}
-if(!empty($_GET['cnum'])){
-    $cnum = $_GET['cnum'];
-}else{
-    $cnum = "?";
+    $sapnum = "?";
 }
 
-if(!empty($_GET['start_flight_ap_num'])){
-    $start_flight_ap_num = $_GET['start_flight_ap_num'];
+if(!empty($_GET['bapnum'])){
+    $bapnum = $_GET['bapnum'];
 }else{
-    $start_flight_ap_num = "?";
+    $bapnum = "?";
 }
 
-if(!empty($_GET['back_flight_ap_num'])){
-    $back_flight_ap_num = $_GET['back_flight_ap_num'];
-}else{
-    $back_flight_ap_num = "?";
-}
-
-$rs_cnt = $anum + $bnum +$cnum;     //총 인원
 
 ?>
 
@@ -84,12 +52,8 @@ $rs_cnt = $anum + $bnum +$cnum;     //총 인원
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <form name="reserve_form" method="post">
 <script type="text/javascript">
-var num = <?=json_encode($rs_cnt)?>;
+var num = <?=json_encode($num)?>;
 var count = 0;
-function flight_next_page(){	
-	alert('좌석배치되었습니다. 즐거운 여행 되세요');
-	location.href="reserve.php";   
-}
 
 $(document).ready(function() {
 	   $("button").click(function(){		//버튼 클릭시
@@ -97,15 +61,14 @@ $(document).ready(function() {
 	      var id = $(this).attr("id");		//id값 //value값 //class값
 	      var value = $(this).attr("value");	
 	      
-	      
-	      if(document.getElementById(id).style.backgroundColor == "white" && (count >= 0 && count <= num)){		//선택좌석이고 카운트가 0~3
+	      if(document.getElementById(id).style.backgroundColor == "skyblue" && (count >= 0 && count <= num)){		//선택좌석이고 카운트가 0~3
 	      	if(count == num){		//카운트 3이면
-	      		if(document.getElementById(id).style.backgroundColor == "white"){		//선택좌석취소, 카운트 --
-	      			document.getElementById(id).style.backgroundColor = ""; 
+	      		if(document.getElementById(id).style.backgroundColor == "skyblue"){		//선택좌석취소, 카운트 --
+	      			document.getElementById(id).style.backgroundColor = "white"; 
 	      			count--;	//카운트 0이면
 	      		}
 	      	}
-	      	document.getElementById(id).style.backgroundColor = ""; //선택해제
+	      	document.getElementById(id).style.backgroundColor = "white"; //선택해제
 	      	 $.ajax({
   	            type : "post",
   	            url : "reserve.php",
@@ -117,9 +80,9 @@ $(document).ready(function() {
 	      	if(count != 0){	//카운트가 0이 아니면 카운트 --;	==선택해제 시 카운트 감소
 	      		count--;
 	      	}
-	      }else if(document.getElementById(id).style.backgroundColor != "white" && (count >= 0 && count <= num)){	//선택좌석아니고 0~3일떄
-	      	if(count == num){return;} //3개까지만 선택하도록
-	      	document.getElementById(id).style.backgroundColor = "white"; 	//좌석선택시 색상
+	      }else if(document.getElementById(id).style.backgroundColor != "skyblue" && (count >= 0 && count <= num)){	//선택좌석아니고 0~3일떄
+	    	if(count == num){return;} //3개까지만 선택하도록
+	      	document.getElementById(id).style.backgroundColor = "skyblue"; 	//좌석선택시 색상
 	      	if(count != num){count++;} //카운트가 3아 아니면 카운트 ++; == 맨처음클릭시 선택하면서 카운트 증가
 	      	$.ajax({
                 type : "post",
@@ -141,6 +104,7 @@ function input_check(url){
     reserve_form.submit();  
 	
 }
+
 </script>
 
 </head>
@@ -151,6 +115,7 @@ function input_check(url){
 <nav id="top">
 <?php include_once '../../common_lib/main_menu2.php';?>
 </nav><br><br><br><br>
+
 <h1 style="margin:0 auto; text-align: center">FLIGHT TICKETING</h1><br>
 <div id="ticket_box3">
 <p>
@@ -171,32 +136,49 @@ function input_check(url){
 ?>
 </tr>
 </table><br>
+
 <hr id="hr1">
 <div id="select_ticket"><span style='font-size:15pt;'><br><br>좌석 배치</span>
 <div style="text-align:right;">
-<span style='font-size:12pt;'>예매불가 </span><input type='button' name='seat' value='' style='width:15pt;height:15pt;background:#2478FF'>
-<span style='font-size:12pt;'>예매가능 </span><input type='button' name='seat' value='' style='width:15pt;height:15pt;'>
-<span style='font-size:12pt;'>선택좌석 </span><input type='button' name='seat' value='' style='width:15pt;height:15pt;background:white'>&nbsp;&nbsp;
+<span style='font-size:12pt;'>예매불가 </span><input type='button' name='seat' value='' style='width:15pt;height:15pt; background: gray'>
+<span style='font-size:12pt;'>예매가능 </span><input type='button' name='seat' value='' style='width:15pt;height:15pt; background: white'>
+<span style='font-size:12pt;'>선택좌석 </span><input type='button' name='seat' value='' style='width:15pt;height:15pt; background: skyblue'>&nbsp;&nbsp;
 </div>
 </div>
 
 <img src="../image/ap_seat1.png" width='80%'>		<!-- 위  -->
 <div id="seat_1"><br>
 
-<?php 
+<?php
+$sql = "select * from seat_state s inner join flight_one_way f on s.flght_ap_num = f.flght_ap_num where s.flght_ap_num ='$sapnum' ";
 
+$result = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
+while($row = mysqli_fetch_array($result)){
+ $choice_seat = $row[choice_seat];
+ 
+ $str .= $choice_seat;      //예약된 좌석번호 누적해서 변수에 저장 ex) "/4/5/6" + "/1/2/3"+ "/65/78"
+}
+ $choice_seat = explode("/", $str);     // "/"를 기준으로 분리해서 배열에 저장 ex) $c[0]="", $c[1]="4", $c[2]="5", $c[2]="6"
+ 
+ foreach ($choice_seat as $key => $val) {
+     $seat[$val] = $val;    //배열에 원소수만큼 돌면서 $seat[4] = 4,  $seat[5] = 5, $seat[65] = 65
+ }
+ 
 for($i=1; $i<=100; $i++){
-    
-    echo "<button type='button' id='seat$i' class='seat' value='$i'>$i</button>";
+    if($seat[$i]==$i){
+        echo "<button type='button' id='seat$i' class='seat' value='$i' style='background-color:gray;' disabled>-</button>";
+    }else{
+        echo "<button type='button' id='seat$i' class='seat' value='$i' style='background-color:white; '>$i</button>";
+    }
     if($i== 13 || $i== 38 || $i== 63 || $i== 88){
         echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     }
-    
     
     if($i%50 == 0){
         echo "<br><br>";
     }
 }
+
 
 ?>
 
@@ -204,7 +186,7 @@ for($i=1; $i<=100; $i++){
 <img src="../image/ap_seat2.png" style="width:80%; float:left;"> <!-- 아래  -->
 <div id="seat_info" style="margin-top:-300px; margin-left:800px; float:none;">
 <div id="select_ticket"><span style='font-size:15pt;'>좌석 정보</span><br><br><br></div>
-<div>선택가능한 좌석수 : <?= $rs_cnt ?> 개</div>
+<div>선택가능한 좌석수 : <?= $num ?> 개</div>
 선택한 좌석 번호 : 
 <?php 
 echo "<div id='no'></div>";
@@ -212,10 +194,14 @@ echo "<div id='no'></div>";
 ?>
 </form>
 </div>
-<div style="text-align:center;">
+
+<div style="text-align:center; float:left;">
+
 
 <input type="button" id="select_ok"  style="width:100px; height:36px;" value="좌석 예약하기"
-onclick="input_check('reserve.php?num=<?=$rs_cnt?>&fly=<?=$fly?>&start=<?=$start?>&back=<?=$back?>&start_check=<?=$start_check?>&back_check=<?=$back_check?>&sapnum=<?=$start_flight_ap_num?>&bapnum=<?=$back_flight_ap_num?>')">
+onclick="input_check('reserve.php?num=<?=$num?>&fly=<?=$fly?>&sapnum=<?=$sapnum?>&bapnum=<?=$bapnum?>')">
+
+
 </div>
 </div>
 <br><br><br><br>
@@ -224,6 +210,9 @@ onclick="input_check('reserve.php?num=<?=$rs_cnt?>&fly=<?=$fly?>&start=<?=$start
 </footer>
 </body>
 </html>
+
+
+
 
 
 

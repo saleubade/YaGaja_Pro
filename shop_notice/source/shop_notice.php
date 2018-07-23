@@ -8,8 +8,28 @@ if(isset($_SESSION['id'])){
 }
 include_once '../../common_lib/createLink_db.php';
 include_once '../../shopping_lib/create_table_notice.php';
-
-$sql= "select * from shop_notice order by notice_no desc";
+if(!empty($_POST["notice_text"])){
+    $search =$_POST["notice_text"];
+}
+if(!empty($_POST["notice_select"])){
+    $find =$_POST["notice_select"];
+}
+if ($mode=="search"){
+    $search=trim($search);//공백 제거
+    if(!$search){
+        echo("
+				<script>
+				 window.alert('검색할 단어를 입력해 주세요!');
+			     location.href = 'shop_notice.php';
+				</script>
+			");
+        exit;
+    }
+    $sql = "select * from shop_notice where $find like '%$search%' order by notice_no desc";
+}
+else{
+    $sql= "select * from shop_notice order by notice_no desc";
+}
 $result= mysqli_query($con, $sql);
 $total_record= mysqli_num_rows($result);
 
@@ -39,9 +59,10 @@ $start_page= (ceil($page / $pages_scale ) -1 ) * $pages_scale +1 ;
 // 현재 블럭 마지막 페이지
 $end_page= ($total_pages >= ($start_page + $pages_scale)) ? $start_page + $pages_scale-1 : $total_pages;
 
-$number=$total_record- $start_row;
-
+//리스트에 뿌려질 테이블 번호
+$number=$total_record - ($page-1) * $rows_scale;
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,15 +88,17 @@ $number=$total_record- $start_row;
     </section>
     <section>
     	<div id="notice_section">
-    		<div id="notice_kind">    			
-				<select name="notice_select" id="notice_select">
-    				<option value="null">선택</option>
-    				<option value="subject">제목</option>
-    				<option value="nick">닉네임</option>
-    				<option value="content">내용</option>
-    			</select>
-    			<input type="text" id="notice_text">
-            	<button id="kind_search">검색</button>
+    		<div id="notice_kind">    	
+        		<form  name="board_form" method="post" action="./shop_notice.php?mode=search">		
+    				<select name="notice_select" id="notice_select">
+        				<option value="null">선택</option>
+        				<option value="notice_subject">제목</option>
+        				<option value="notice_nick">닉네임</option>
+        				<option value="notice_content">내용</option>
+        			</select>
+        			<input type="text" id="notice_text" name="notice_text">
+                	<button id="kind_search">검색</button>
+                </form>
     		</div>
     		<div id="notice_table">
     			<table id="notice_table2">
@@ -98,18 +121,19 @@ $number=$total_record- $start_row;
         			        $nick=$row['notice_nick'];
         			        $regist_day=$row['regist_day'];
         			        $regist_day=substr($regist_day,0,10);
-        			        
+        			       
         			 ?>
         			 <tr class="notice_table_tr">
-    					<td class="notice_table_no"><a href="./view.php?no=<?=$no?>"><?=$no?></a></td>
+    					<td class="notice_table_no"><a href="./view.php?no=<?=$no?>"><?=$number?></a></td>
     					<td class="notice_table_subject"><a href="./view.php?no=<?=$no?>"><?=$subject?></a></td>
     					<td class="notice_table_writer"><?=$nick?></td>
     					<td class="notice_table_date"><?=$regist_day?></td>
     				</tr>	
-        			 <?php 
+        			<?php 
+        			       $number--;
         			    }
         			}
-        			 ?>
+        			?>
     			</table>
     		</div>
     		<?php 

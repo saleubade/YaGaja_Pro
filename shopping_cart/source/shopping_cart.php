@@ -1,4 +1,3 @@
-<meta charset="UTF-8">
 <?php
 session_start();
 if(isset($_SESSION['id'])){
@@ -50,50 +49,50 @@ $row_length=87;
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>야! 몰</title>
-  <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=5">
-  <link rel="stylesheet" href="../css/cart.css?ver=3">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-        		function all_check(){
-        			if($("#checkall").is(':checked')){
-        			      $("input[name='cart_list_check[]']").prop("checked",true);
-        			   }else{
-        			      $("input[name='cart_list_check[]']").prop("checked",false);
-        			}
-        		}
-        		function choice_delete(){
-        			var res = confirm('삭제하시겠습니까?');
-        			   
-        			   if(res){
-        			   for(i=0 ; i<$("cart_list_check").length ; i++){
-        			      if($("cart_list_check")[i].checked == false){
-        			         $("cart_list_check")[i].disabled = true;
-        			      }
-        			      
-        			   }
-        			   document.cart_choice_delete.action="./shopping_cart_delete.php?mode=choice&id=<?=$id?>";
-        			   document.cart_choice_delete.submit();
-        // 			   location.href=;
-        			   }
-        		}
-        		function all_delete() {
-        			document.cart_choice_delete.action="shopping_cart_delete.php?mode=all&id=<?=$id?>";
-        			document.cart_choice_delete.submit();
-        		}
-        		function single_delete(s) {
-        			document.cart_choice_delete.action="shopping_cart_delete.php?mode=single&id=<?=$id?>&cart_no="+s;
-        			document.cart_choice_delete.submit();
-        		}
-        		function all_order(){
-        			document.cart_choice_delete.action="../../shopping_buy/source/shopping_buy.php?id=<?=$id?>;
-        			document.cart_choice_delete.submit();
-            	}
-          </script>
+<meta charset="utf-8">
+<title>야! 몰</title>
+<link rel="stylesheet" href="../../common_css/shop_index_css3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=5">
+<link rel="stylesheet" href="../css/cart.css?ver=3">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function all_check(){
+		if($("#checkall").is(':checked')){
+		      $("input[name='cart_list_check[]']").prop("checked",true);
+		   }else{
+		      $("input[name='cart_list_check[]']").prop("checked",false);
+		}
+	}
+	function choice_delete(){
+		var res = confirm('삭제하시겠습니까?');
+		   if(res){
+		   for(i=0 ; i<$("cart_list_check").length ; i++){
+		      if($("cart_list_check")[i].checked == false){
+		         $("cart_list_check")[i].disabled = true;
+		      }
+		   }
+		   document.cart_choice_delete.action="./shopping_cart_delete.php?mode=choice&id=<?=$id?>";
+		   document.cart_choice_delete.submit();
+		   }
+	}
+	function all_delete() {
+		document.cart_choice_delete.action="shopping_cart_delete.php?mode=all&id=<?=$id?>";
+		document.cart_choice_delete.submit();
+	}
+	function single_delete(s) {
+		document.cart_choice_delete.action="shopping_cart_delete.php?mode=single&id=<?=$id?>&cart_num="+s;
+		document.cart_choice_delete.submit();
+	}
+	function order(){
+		var res = confirm('구매하시겠습니까?');
+		if(res){
+			document.cart_choice_delete.action="../../shopping_buy/source/shopping_buy.php?mode=allorder&table=cart";
+			document.cart_choice_delete.submit();
+		}
+	}
+</script>
 </head>
 <body>
     <header style="border:1px solid black;">
@@ -146,7 +145,7 @@ $row_length=87;
         				<td class="prod_image"><a href="../../shopping/source/view.php?no=<?=$cart_no?>"><img class="prod_image2" src="../../input/upload_image/<?=$cart_image?>"></a></td>
         				<td class="prod_info"><a href="../../shopping/source/view.php?no=<?=$cart_no?>"><b><?=$cart_name?></b><br>[옵션 : 
         				<?php 
-        				if($cart_type == '의류')
+        				if($cart_type == 'clothe')
         				{
         				?>(<?=$cart_size?>)/
         				<?php 
@@ -156,7 +155,7 @@ $row_length=87;
         				<td class="prod_baesong">배송비<br>3000원</td>
         				<td class="prod_total"><?=$cart_total?>,000원</td>
         				<td class="prod_choice">
-        					<button id="cart_delete" onclick="single_delete(<?=$cart_no?>)">삭제하기</button>
+        					<button id="cart_delete" onclick="single_delete(<?=$cart_num?>)">삭제하기</button>
         				</td>
         			</tr>
         			<?php 
@@ -167,8 +166,8 @@ $row_length=87;
     		
     		<div id="cart_button">
     			<button id="choice_del" onclick="choice_delete()">선택삭제</button>
-    			<button id="all_order" onclick="all_order()">전체상품주문</button>
-    			<button id="all_del" onclick="all_delete()">장바구니비우기</button>
+    			<button id="all_order" onclick="order()">전체상품주문</button>
+    			<button id="all_del" onclick="all_delete()"">장바구니비우기</button>
     		</div>
     	</form>	
     		<div id="page_link">

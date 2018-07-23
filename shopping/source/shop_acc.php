@@ -11,7 +11,7 @@ include_once '../../common_lib/createLink_db.php';
 include_once '../../shopping_lib/create_table_cart.php';
 include_once '../../shopping_lib/create_table_shop_goods.php';
 
-$sql= "select * from shop_goods where shop_type='악세서리' order by regist_day desc";
+$sql= "select * from shop_goods where shop_type='acc' order by regist_day desc";
 $result= mysqli_query($con, $sql);
 $total_record= mysqli_num_rows($result);
 
@@ -69,7 +69,7 @@ $number=$total_record- $start_row;
     	</section>
     	<section>    
             <?php 
-                $sql = "select * from shop_goods where shop_type='악세서리' order by hit desc";
+                $sql = "select * from shop_goods where shop_type='acc' order by hit desc";
                 $result = mysqli_query($con, $sql) or die(mysqli_error($con));
         
         
@@ -104,7 +104,7 @@ $number=$total_record- $start_row;
 			<hr style="border: 2px solid lightgray; width: 1160px;">
   	    	<div style="height: 70px;"></div> 
             <?php 
-                $sql = "select * from shop_goods where shop_type='악세서리' order by regist_day desc";
+                $sql = "select * from shop_goods where shop_type='acc' order by regist_day desc";
                 $result = mysqli_query($con, $sql) or die(mysqli_error($con));
                 $total_record=mysqli_num_rows($result);
                 if($total_record){
@@ -141,7 +141,7 @@ $number=$total_record- $start_row;
                       #----------------이전블럭 존재시 링크------------------#
                       if( $start_page > $pages_scale ){
                           $go_page= $start_page - $pages_scale;
-                          echo( "<a href='./shop_new_arrivals.php?page=$go_page'> << </a>" );
+                          echo( "<a href='./shop_acc.php?page=$go_page'> << </a>" );
                       }else{
                           echo( " << " );
                       }
@@ -151,7 +151,7 @@ $number=$total_record- $start_row;
                 	<?PHP 
                       #----------------이전페이지 존재시 링크------------------#
                       if( $pre_page ){
-                          echo( "<a href='./shop_new_arrivals.php?page=$pre_page'> < </a>" );
+                          echo( "<a href='./shop_acc.php?page=$pre_page'> < </a>" );
                       }else{
                           echo( " < " );
                       }
@@ -166,7 +166,7 @@ $number=$total_record- $start_row;
                           echo "</td>";
                     }else if(isset($end_page)){
                           echo "<td width='30'>";
-                          echo( "<a href='./shop_new_arrivals.php?page=$dest_page'>$dest_page</a>" );
+                          echo( "<a href='./shop_acc.php?page=$dest_page'>$dest_page</a>" );
                           echo "</td>";
                       }
                       ?>
@@ -174,7 +174,7 @@ $number=$total_record- $start_row;
                 	<?PHP 
                       #----------------이전페이지 존재시 링크------------------#
                       if( $next_page ){
-                          echo( "<a href='./shop_new_arrivals.php?page=$next_page'> > </a>" );
+                          echo( "<a href='./shop_acc.php?page=$next_page'> > </a>" );
                       }else{
                           echo( " > " );
                       }
@@ -185,7 +185,7 @@ $number=$total_record- $start_row;
                       #---------------다음페이지를 링크------------------#
                       if( $total_pages >= $start_page+ $pages_scale){
                           $go_page= $start_page+ $pages_scale;
-                          echo( "<a href='./shop_new_arrivals.php?page=$go_page'> >> </a>" );
+                          echo( "<a href='./shop_acc.php?page=$go_page'> >> </a>" );
                       }else{
                           echo( " >> " );
                       }

@@ -12,35 +12,12 @@ if(!empty($_GET['num'])){
 }else{
     $num = "?";
 }
-if(!empty($_GET['start'])){
-    $start = $_GET['start'];
-}else{
-    $start = "?";
-}
-if(!empty($_GET['back'])){
-    $back = $_GET['back'];
-}else{
-    $back = "?";
-}
-
-if(!empty($_GET['start_check'])){
-    $start_check = $_GET['start_check'];
-}else{
-    $start_check = "?";
-}
-
-if(!empty($_GET['back_check'])){
-    $back_check = $_GET['back_check'];
-}else{
-    $back_check = "?";
-}
 
 if(!empty($_GET['fly'])){
     $fly = $_GET['fly'];
 }else{
     $fly = "";
 } 
-
 
 if(!empty($_GET['sapnum'])){
     $sapnum = $_GET['sapnum'];
@@ -60,7 +37,6 @@ if(!empty($_POST['choice_seat'])){
     $choice_seat = "";
 }
 
-
 foreach($choice_seat as $value) {
  $seat = $seat."/".$value;
 }
@@ -74,11 +50,14 @@ if($result != $num){
     $sql.= "values ('$id','$sapnum','$seat')";
     
     mysqli_query($con, $sql) or die(mysqli_error($con));
+   
     
-    mysqli_close($con);
-    
-    echo "<script>alert('좌석 예매되었습니다.')</script>";
-    echo "<script> location.href='../../index.php'; </script>";
+    if($fly == "round"){
+        echo "<script> location.href='flight_seat_back.php?fly=$fly&num=$num&sapnum=$sapnum&bapnum=$bapnum'; </script>";
+    }else{
+        echo "<script> location.href='../../index.php'; </script>";
+    }
+   
 }
 
 
