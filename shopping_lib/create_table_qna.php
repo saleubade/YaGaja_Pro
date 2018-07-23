@@ -1,6 +1,6 @@
 <?php
 $flag="NO";
-$sql = "show tables from yagajadb";
+$sql = "show tables from yagaja_db";
 $result = mysqli_query($con, $sql) or die("실패원인1:".mysqli_error($con));
 while($row=mysqli_fetch_row($result)){
     if($row[0]===shop_qna){

@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <?php
 $flag = "NO";
-$sql = "show tables from yagajaDB";
+$sql = "show tables from yagaja_DB";
 $result = mysqli_query($con, $sql) or die("실패원인:".mysqli_error($con));
 while($row=mysqli_fetch_row($result)){
     if($row[0]==="shop_goods"){
