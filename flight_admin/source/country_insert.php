@@ -29,6 +29,6 @@ if(!empty($_POST['city'])){
     mysqli_close($con);
 
 echo "<script>alert('취항지가 등록되었습니다.')</script>";
-echo "<script>location.href='../../index.php'; </script>";
+echo "<script>location.href='admin_country_insert.php'; </script>";
 
 ?>

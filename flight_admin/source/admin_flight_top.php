@@ -10,7 +10,7 @@ session_start();
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css?var=1">
-<link type="text/css" rel="stylesheet" href="../css/ticket1.css?var=3">
+<link type="text/css" rel="stylesheet" href="../css/ticket1.css?var=4">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -34,8 +34,8 @@ function page_move(url){
 <div id="ticket_box66">
 <div style="text-align: center; font-size:15pt; font-weight: bold">CLICK what you want :D</div>
 <div class="child_1" onclick="page_move('admin_country_insert.php')">
-<p class="sp1">취항지 등록</p><br>
-<span class="sp2"> - 항공권 선택시 대륙/취항지 도시 DB 등록</span><br><br>
+<p class="sp1">취항지 등록/<br>취항지 관리</p><br>
+<span class="sp2"> - 항공권 선택시 대륙/취항지 도시 DB 등록 및 수정/삭제</span><br><br>
 <span class="sp3">  ex)유럽 - 바르셀로나(BCN)</span><br>
 </div>
 

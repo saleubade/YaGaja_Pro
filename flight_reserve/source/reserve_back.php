@@ -51,6 +51,9 @@ if($result != $num){
     
     mysqli_query($con, $sql) or die(mysqli_error($con));
     
+    $sql= "DELETE FROM seat_state WHERE flght_ap_num = '' AND choice_seat =''";
+    mysqli_query($con, $sql) or die(mysqli_error($con));
+    
     mysqli_close($con);
     
     echo "<script> location.href='../../index.php'; </script>";
