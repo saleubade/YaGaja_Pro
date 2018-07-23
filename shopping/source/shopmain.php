@@ -20,7 +20,7 @@
   <title>야! 몰</title>
   <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/shopping3.css?ver=3">
+  <link rel="stylesheet" href="../css/shopping3.css?ver=4">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
@@ -31,27 +31,27 @@
       margin: auto;
   }
   </style>
-  <script type="text/javascript">
-  $(document).ready(function(){ 
-	  $("#travel").click(function(){ 
-		var type = 'travel';
-	      if(type){
-	         $.ajax({
-   	        	type : "post",
-  				url : "./image_view.php,"
-  				data : "type="+type,
-				success : function(data){
-					$("#weekly_item_list").html(data);
-               }
-	         });
-	      }
-	   }
-	});
- }	
+<!--   <script type="text/javascript"> 
+//   $(document).ready(function(){ 
+// 	  $("#travel").click(function(){ 
+// 		var type = 'travel';
+// 	      if(type){
+// 	         $.ajax({
+//    	        	type : "post",
+//   				url : "./image_view.php,"
+//   				data : "type="+type,
+// 				success : function(data){
+// 					$("#weekly_item_list").html(data);
+//                }
+// 	         });
+// 	      }
+// 	   }
+// 	});
+//  }	-->
   </script>
 </head>
 <body>
-    <header style="border:1px solid black;">
+    <header>
    		<?php include_once '../../shopping_lib/top_login3.php';?>
     </header>
     <nav id="shop_aside">
@@ -169,7 +169,7 @@
     	</section>
     </div>
     <div class="clear"></div>
-	<footer style="border:1px solid black;">
+	<footer style="border-top: 2px solid black;">
  		<?php include_once '../../common_lib/footer2.php';?>
   	</footer>
 </body>

@@ -77,7 +77,7 @@ function payment(){
 	        alert(msg);
 	        
 	    }
-	   if(msg != "결제가 완료되었습니다."){
+	   if( rsp.success){
 		   alert('1');
 		   if(mode == "order"){
 				location.href="./insert.php?no="+'<?=$no?>'+"&value="+'<?=$value?>'+"&mode="+'<?=$mode?>';

@@ -4,7 +4,6 @@ a:hover{
 }
 #wish_list_section{
 	width: 1200px;
-	border: 1px solid red;
 	height: 180px;
 	margin: auto;
 	font-size: 22px;
@@ -22,7 +21,6 @@ a:hover{
 }
 #cart_section{
 	width: 1200px;
-	border: 1px solid black;
 	margin: auto;
 }
 #cart_list_table{
@@ -80,7 +78,6 @@ td a:hover{
 #cart_button{
 	width: 1200px;
 	height: 50px;
-	border: 1px solid red;
 	padding: 3px;
 	margin-top: 3px;
 }

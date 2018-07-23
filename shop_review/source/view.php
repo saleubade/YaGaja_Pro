@@ -45,7 +45,7 @@ $file_copied[1]=$row['file_copied_1'];
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <header style="border:1px solid black;">
+    <header>
    		<?php include_once '../../shopping_lib/top_login3.php';?>
     </header>
     <nav id="shop_aside">
@@ -125,9 +125,9 @@ $file_copied[1]=$row['file_copied_1'];
                 ?>	
     		</table>
     	</div>
-    </section>
+    </section><br><br>
     <div class="clear"></div><div class="clear"></div><div class="clear"></div>
-	<footer>
+	<footer style="border-top: 2px solid black;">
  		<?php include_once '../../common_lib/footer2.php';?>
   	</footer>
 </body>

@@ -34,7 +34,6 @@ if(isset($_FILES["upfile"])){
   {
       $upfile_error=null;
       if(!empty($files["name"][$i])){
-          echo "111<br><br>".$files["name"][$i]."<br>";
           $upfile_name[$i]=$files["name"][$i];
           $upfile_tmp_name[$i] = $files["tmp_name"][$i];
           $upfile_type[$i]=$files["type"][$i];
@@ -69,7 +68,6 @@ if(isset($mode) && $mode === "modify"){ //글수정
           $index = $position[$i];
           $del_ok[$index]="y";
       }     
-      echo "1".$del_ok[0]."2".$del_ok[1]."<br>";
   }
   $sql = "select * from shop_review where review_no=$no";
   $result = mysqli_query($con, $sql);
@@ -85,21 +83,17 @@ if(isset($mode) && $mode === "modify"){ //글수정
           $delete_field = "file_copied_".$i;
           $delete_name = $row[$delete_field];
           $delete_path = "../upload_image/".$delete_name;
-          echo "++11".$delete_path;
           unlink($delete_path); //data폴더에서 제거
           $sql="update shop_review set $field_org_name='',$field_real_name='' where review_no=$no";
-          echo "<br>11".$sql.$i;
           mysqli_query($con, $sql);
       }else if(!empty($files["name"][$i])){
            if(!$upfile_error[$i] && isset($upfile_name[$i])){
                $sql = "update shop_review set $field_org_name='$upfile_name[$i]',$field_real_name='$org_real_value' where review_no=$no";
-               echo "<br>22".$sql;
            mysqli_query($con, $sql);
           }
        }
    }
    $sql="update shop_review set review_subject='$subject',review_content='$content' where review_no=$no";
-   echo "33".$sql;
    mysqli_query($con, $sql);
   
   
@@ -108,7 +102,6 @@ if(isset($mode) && $mode === "modify"){ //글수정
                               file_name_0, file_copied_0, hit, regist_day)";
   $sql.=" values('$id', '$cname', '$subject', '$content', '$upfile_name[0]', '$new_file_name[0]', 0, '$regist_day')";
  }
- echo "<br><br>===<br>".$sql;
     if(!mysqli_query($con,$sql)){
       echo "no DB: ".mysqli_error($con);
     }else{
