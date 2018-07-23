@@ -111,7 +111,7 @@ mysqli_query($con, $sql);
         </div>
         <hr>
           	<table  id="table_11"><tr>
-      <div id="view_title2"><td id="td_1"><b><?=$item_subject?></b></td> <td id="td_2"> | <?=$item_regist_day?></td><td id="td_3">| 조회 : <?=$item_hit?> | </td></div>
+      <div id="view_title2"><td id="td_1"><b><?=$item_subject?></b></td> <td id="td_2"><?=$item_id ?> | <?=$item_regist_day?></td><td id="td_3">| 조회 : <?=$item_hit?> | </td></div>
       <div id="view_content">
       <div id="ititit"></div></div></tr>
       </table>
