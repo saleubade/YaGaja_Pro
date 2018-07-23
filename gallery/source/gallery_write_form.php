@@ -65,7 +65,9 @@
 	type="text/css" media="all">
    <link rel="stylesheet" href="../css/write_form.css?ver=1">
   <script>
-      function check_insert(){
+      
+	 //일반 글쓰기할때 유형검사
+  	 function check_insert(){
 
     	 if(!document.board_form.radio_from.value){
             alert("유형을 선택해주세요!");
@@ -84,22 +86,52 @@
             return;
          }
 
-    	 if(document.board_form.very_good.value == "modify"){
-			alert("수정되었습니다.");	
-    	 }else{
-    		 if(!document.board_form.file_0.value && !document.board_form.file_1.value && !document.board_form.file_2.value){
+   		 if(!document.board_form.file_0.value && !document.board_form.file_1.value && !document.board_form.file_2.value){
  	            alert("이미지를 꼭 첨부해주세요!");
  	            return;
  	         }
-    	 }
-    	 
-    	 
-    	 
     
          document.board_form.submit();
       }
      
- 
+      
+      // 수정할때 유형검사
+      function check_insert2(){
+
+     	 if(!document.board_form.radio_from.value){
+             alert("유형을 선택해주세요!");
+             return;
+          }
+     	 
+     	 if(!document.board_form.subject.value){
+             alert("제목을 입력해주세요!");
+             document.board_form.subject.focus();
+             return;
+          }
+          
+     	 if(!document.board_form.content.value){
+             alert("내용을 입력해주세요!");
+             document.board_form.content.focus();
+             return;
+          }
+
+    
+     	 if(document.board_form.very_good.value == "modify"){
+     		alert("수정되었습니다!");
+     	 }else{
+     		 if(!document.board_form.file_0.value && !document.board_form.file_1.value && !document.board_form.file_2.value){
+  	            alert("이미지를 꼭 첨부해주세요!");
+  	            return;
+  	         }
+     	 }
+     	 
+   
+   
+          document.board_form.submit();
+       }
+
+      
+      
   </script> 
 
   </head>
@@ -329,8 +361,21 @@ if($mode === "modify" && isset($item_continent)){
  </table>  
  
   
- 
-<div id="write_button"><a href="#"><img src="../img/ok.png" onclick="check_insert()"></a>
+ <?php 
+ if($mode == "modify"){
+     ?>
+     <!-- 수정일때  -->
+     <div id="write_button"><a href="#"><img src="../img/ok.png" onclick="check_insert2()"></a>
+ 	<?php
+ 	
+    }else{
+        
+    ?>
+    <!-- 일반 글쓰기일때  -->	
+	<div id="write_button"><a href="#"><img src="../img/ok.png" onclick="check_insert()"></a>
+<?php 
+    } 
+?>
 <a href="gallery_list.php?table=<?=$table ?>&page=<?=$page ?>&continent=<?=$continent ?>"><img src="../img/list.png"></a></div>
  
     </form>
