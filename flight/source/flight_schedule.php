@@ -61,20 +61,6 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript">
-function next_page(href2){	//항공권 선택 유효성 검사 && 선택한 티켓전달
-
-	if($('input:radio[name=start_check]').is(':checked') && $('input:radio[name=back_check]').is(':checked')){
-		var start = $('input:radio[name=start_check]:checked').val();
-		var back = $('input:radio[name=back_check]:checked').val();
-		
-		location.href= href2;
-		
-	}else{
-		alert('항공권을 선택해주세요.');
-		return;
-	}
-}
-
 function back_page(){
 	location.href= "flight.php";
 }
@@ -171,6 +157,7 @@ if($fly == 'round'){
         $flight_ap_num = $row[flght_ap_num];
         $record_num = $row[recordNum];
      
+        $flight_price = number_format($flight_price);   //콤마찍기
         
      $i=0;
      $select_start = 'start'.$record_num;
@@ -231,6 +218,7 @@ $sql = "select * from flight_one_way where flight_start = '$back' and flight_bac
             $fly_time = $row[fly_time];
             $flight_ap_num = $row[flght_ap_num];
             $record_num = $row[recordNum];
+            $flight_price = number_format($flight_price);  
             
             $i=0;
             $select_back = 'back'.$record_num;
@@ -262,10 +250,11 @@ $sql = "select * from flight_one_way where flight_start = '$back' and flight_bac
 }else{      //fly != round
     
 ?>
-
+	<form name="select_ticket" method="post" action="flight_ok.php?fly=<?= $fly ?>&start=<?= $start ?>&back=<?= $back ?>
+    &adult_num=<?= $adult_num ?>&child_num=<?= $child_num ?>&baby_num=<?= $baby_num ?>">
      <table id="row_flight2">
     <tr id="row_flight2_tr1">
-    <td width="370" height="40">귀 국 편</td>
+    <td width="370" height="40">출 국 편</td>
     <td width="100" height="40">항공 번호</td>
     <td width="120" height="40">날 짜</td>
     <td width="120" height="40">시 간</td>
@@ -274,7 +263,7 @@ $sql = "select * from flight_one_way where flight_start = '$back' and flight_bac
     <td width="80" height="40">선 택</td>
     </tr>
     <?php 
-    $sql = "select * from flight_one_way where flight_start = '$back' and flight_back = '$start' and fly_start_date >= '$start_day6' and fly_start_date <= '$start_day7' order by recordnum desc";
+    $sql = "select * from flight_one_way where flight_start = '$start' and flight_back = '$back' and fly_start_date >= '$start_day6' and fly_start_date <= '$start_day7' order by recordnum desc";
     
     $result = mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
     $total_record = mysqli_num_rows($result);
@@ -307,7 +296,7 @@ $sql = "select * from flight_one_way where flight_start = '$back' and flight_bac
             $fly_time = $row[fly_time];
             $flight_ap_num = $row[flght_ap_num];
             $record_num = $row[recordNum];
-            
+            $flight_price = number_format($flight_price);  
             $i=0;
             $select_back = 'back'.$record_num;
             echo "<tr>

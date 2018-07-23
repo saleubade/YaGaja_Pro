@@ -65,12 +65,6 @@ function bbb(a,b,c,d,e,f){
 	$("#sp6-1").text(f);
 }
 
-function aa(data){
-	document.click_form.submit();
-	
-	document.click_form.reservenum.text(data);
-}
-
 </script>
 
 </head>
@@ -103,11 +97,7 @@ while($row = mysqli_fetch_array($result)){
 echo "<span style='font-size:15pt; font-weight:550'>[$id]"."님 예약번호 : </span>";
 for($i=0; $i < count($array); $i++){
     if($array[$i] != $array[$i+1] ){
-        echo "
-        <form method='post' action='flight_reserve_check.php?rsnum=$rsnum' name='click_form'>
-        <a href='#'><span style='font-size:14pt; font-weight:550' onclick='aa(\"$rsnum\")'>$array[$i]&nbsp;</span></a>
-        </form>
-        ";
+        echo "<a href='#'><span style='font-size:14pt; font-weight:550'>$array[$i]&nbsp;</span></a>";
     }
 }
 

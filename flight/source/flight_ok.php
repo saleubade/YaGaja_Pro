@@ -49,7 +49,10 @@ if(!empty($_POST['back_check'])){
     $back_check = "?";
 }
 
+
+//항공권 올바르게 선택됬는지 유효성 검사
 if($fly == "round"){    //왕복
+    
     if($start_check == "?" && $back_check == "?"){  //둘다 값을 넘겨받지 못했다면
       echo "<script>alert('항공권을 모두 선택해주세요.');
             history.go(-1);
@@ -63,9 +66,8 @@ if($fly == "round"){    //왕복
             history.go(-1);
             </script>";
     }
-    
 }else{  //one-way
-    if($start_check == "?"){  //start_check을 못받았다면
+    if($back_check == "?"){  //start_check을 못받았다면
         echo "<script>alert('항공권을 선택해주세요.');
             history.go(-1);
             </script>";
@@ -77,7 +79,7 @@ if($fly == "round"){    //왕복
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TICKETING</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css?var=1">
 <link type="text/css" rel="stylesheet" href="../css/ticket1.css?var=1">
@@ -86,7 +88,7 @@ if($fly == "round"){    //왕복
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
-function updateReserveNum(url){
+function updateReserveNum(url){		//다음 php파일로 이동
 		location.href=url;	
 }
 
@@ -98,22 +100,25 @@ function flight_back_page(){
 </head>
 <body>
 <header>
-<?php include_once '../../common_lib/top_login2.php';?>
+	<?php include_once '../../common_lib/top_login2.php';?>
 </header>
 <nav id="top">
-<?php include_once '../../common_lib/main_menu2.php';?>
+	<?php include_once '../../common_lib/main_menu2.php';?>
 </nav><br><br><br><br>
+
 <h1 style="margin:0 auto; text-align: center">FLIGHT TICKETING</h1><br>
 <div id="ticket_box6">
+
 <p>
-<br><hr id="hr3"><br><br>
-&nbsp;1. 여정 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-2. 항공편 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-3. 결과 조회  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-4. 좌석 확인  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <br><hr id="hr3"><br><br>
+    &nbsp;1. 여정 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    2. 항공편 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    3. 결과 조회  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    4. 좌석 확인  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <p>
+
 <table width='550' border='0' height='18' cellspacing='5' cellpadding='0'>
-<tr>
+	<tr>
 <?php
    echo "
         <td width='25%' bgcolor= '#dddddd'></td>
@@ -121,20 +126,18 @@ function flight_back_page(){
         <td width='25%' bgcolor='gray' height=5></td>
         <td width='25%' bgcolor='#dddddd' height=5></td>";
 ?>
-</tr>
+	</tr>
 </table><br>
+
 <hr id="hr3">
-<?php 
-/* $round_total_price = $start_flight_price + $back_flight_price; */
-?>
+
 <?php 
 
 if($fly == 'round'){    ////왕복
     
-    if($start_check == "low_price_start" && $back_check == "low_price_back"){
-        //최저가 티켓
+    if($start_check == "low_price_start" && $back_check == "low_price_back"){   //출발 : 최저가 //도착 : 최저가 선택시
         $sql = "select * from flight_one_way where flight_price =
-(select min(flight_price) from flight_one_way where flight_start = '$start' and flight_back = '$back')";
+                (select min(flight_price) from flight_one_way where flight_start = '$start' and flight_back = '$back')";
         $result1 = mysqli_query($con,$sql) or die("실패원인1 : ".mysqli_error($con));
         $row = mysqli_fetch_array($result1);
         $start_flight_price = $row[flight_price];
@@ -147,7 +150,7 @@ if($fly == 'round'){    ////왕복
         $start_flight_ap_num = $row[flght_ap_num];
         
         $sql = "select * from flight_one_way where flight_price =
-(select min(flight_price) from flight_one_way where flight_start = '$back' and flight_back = '$start')";
+                (select min(flight_price) from flight_one_way where flight_start = '$back' and flight_back = '$start')";
         $result2 = mysqli_query($con,$sql) or die("실패원인2 : ".mysqli_error($con));
         $row = mysqli_fetch_array($result2);
         $back_flight_price = $row[flight_price];
@@ -158,10 +161,11 @@ if($fly == 'round'){    ////왕복
         $back_fly_back_time = $row[fly_back_time];
         $back_fly_time = $row[fly_time];
         $back_flight_ap_num = $row[flght_ap_num];
-    }else if($start_check == "low_price_start" && $back_check != "low_price_back"){
+        
+    }else if($start_check == "low_price_start" && $back_check != "low_price_back"){     //출발 : 최저가 //도착 : 최저가 미선택시
         //최저가 티켓
         $sql = "select * from flight_one_way where flight_price =
-(select min(flight_price) from flight_one_way where flight_start = '$start' and flight_back = '$back')";
+                (select min(flight_price) from flight_one_way where flight_start = '$start' and flight_back = '$back')";
         $result1 = mysqli_query($con,$sql) or die("실패원인3 : ".mysqli_error($con));
         $row = mysqli_fetch_array($result1);
         $start_flight_price = $row[flight_price];
@@ -172,8 +176,8 @@ if($fly == 'round'){    ////왕복
         $start_fly_back_time = $row[fly_back_time];
         $start_fly_time = $row[fly_time];
         $start_flight_ap_num = $row[flght_ap_num];
-        //-----------------------------------------------------------------
-        $back_recordnum = substr($back_check, 4);      //귀국편 선택한 티켓 번호
+        //--------------------------------------------------------------------------
+        $back_recordnum = substr($back_check, 4);      //귀국편 선택한 티켓 번호(라디오버튼 value값에서 번호만 추출)
         
         $sql = "select * from flight_one_way where flight_start = '$back' and flight_back = '$start' and recordNum = '$back_recordnum' ";
         
@@ -187,7 +191,9 @@ if($fly == 'round'){    ////왕복
         $back_fly_back_time = $row[fly_back_time];
         $back_fly_time = $row[fly_time];
         $back_flight_ap_num = $row[flght_ap_num];
-    }else if($start_check != "low_price_start" && $back_check == "low_price_back"){
+        
+    }else if($start_check != "low_price_start" && $back_check == "low_price_back"){ //출발 : 최저가 미선택 //도착 : 최저가 선택시
+        
         $start_recordnum = substr($start_check, 5);      //출국편 선택한 티켓 번호
         
         $sql = "select * from flight_one_way where flight_start= '$start' and flight_back='$back' and recordNum = '$start_recordnum' ";
@@ -205,7 +211,7 @@ if($fly == 'round'){    ////왕복
         $start_flight_ap_num = $row[flght_ap_num];
         //-----------------------------------------------------------------
         $sql = "select * from flight_one_way where flight_price =
-(select min(flight_price) from flight_one_way where flight_start = '$back' and flight_back = '$start')";
+                (select min(flight_price) from flight_one_way where flight_start = '$back' and flight_back = '$start')";
         $result2 = mysqli_query($con,$sql) or die("실패원인6 : ".mysqli_error($con));
         $row = mysqli_fetch_array($result2);
         $back_flight_price = $row[flight_price];
@@ -217,7 +223,7 @@ if($fly == 'round'){    ////왕복
         $back_fly_time = $row[fly_time];
         $back_flight_ap_num = $row[flght_ap_num];
         
-    }else{
+    }else{                                               //출발 : 최저가 미선택 //도착 : 최저가 미선택시
         $start_recordnum = substr($start_check, 5);      //출국편 선택한 티켓 번호
         
         $sql = "select * from flight_one_way where flight_start= '$start' and flight_back='$back' and recordNum = '$start_recordnum' ";
@@ -253,43 +259,43 @@ if($fly == 'round'){    ////왕복
     
     $total_flight_price = ($start_flight_price*$adult_num)+($start_flight_price*0.5*$child_num)+($start_flight_price*0.3* $baby_num)+
     ($back_flight_price*$adult_num)+($back_flight_price*0.5*$child_num)+($back_flight_price*0.3* $baby_num);
-   
+    //전체 결제 금액 산출식
+    //성인 100%
+    //어린이 50%
+    //유아 30%
     
     $total_flight_price1 = number_format($total_flight_price);   //콤마찍기
     $start_flight_price1 =number_format($start_flight_price);
     $back_flight_price1 =number_format($back_flight_price);
+//-----------------------------------------------------------------------------------예약번호 추출식 
+$reservation_str = "";          //초기화
 
-    ?>
-
-<?php
-$reservation_str = "";
-for($i=0;$i<4;$i++) { 
-    $capi = rand()%26+65;
-    $reservation_str .= chr($capi);
-}
-$reservation_num = mt_rand(1000, 9999);
-
-$reservation_number = $reservation_str . $reservation_num;
-
+    for($i=0;$i<4;$i++) {       //4자리
+        $capi = rand()%26+65;   //알파벳대문자 A~Z
+        $reservation_str .= chr($capi); //str에 문자로 누적
+    }
+    
+$reservation_num = mt_rand(1000, 9999);     //4자리 숫자 1000~9999 랜덤수 추출
+$reservation_number = $reservation_str . $reservation_num;  //알파벳4문자 + 숫자4자리 = 예약번호 생성
+//-----------------------------------------------------------------------------------
 $reservation_str1 = "";
-for($i=0;$i<4;$i++) {
-    $capi = rand()%26+65;
-    $reservation_str1 .= chr($capi);
-}
-$reservation_num2 = mt_rand(1000, 9999);
 
+    for($i=0;$i<4;$i++) {
+        $capi = rand()%26+65;
+        $reservation_str1 .= chr($capi);
+    }
+$reservation_num2 = mt_rand(1000, 9999);
 $reservation_number2 = $reservation_str1 . $reservation_num2;
 
-if($adult_num == "없음"){
-    $adult_num = "0";
-}
-if($child_num == "없음" ){
-    $child_num = "0";
-}
-if($baby_num == "없음"){
-    $baby_num ="0";
-}
-$rs_cnt = $adult_num + $child_num + $baby_num;
+    if($adult_num == "없음"){
+        $adult_num = "0";
+    }
+    if($child_num == "없음" ){
+        $child_num = "0";
+    }
+    if($baby_num == "없음"){
+        $baby_num ="0";
+    }
 ?>
 <br><div id="select_ticket" style="text-align:left;"><span style='font-size:15pt;'>결제 금액</span></div>
   <div id="checked_flight1">총 결제금액 : <?= $total_flight_price1?>  원
@@ -409,7 +415,6 @@ if($child_num == "없음" ){
 if($baby_num == "없음"){
     $baby_num ="0";
 }
-$rs_cnt = $adult_num + $child_num + $baby_num;
 ?>
 <br><div id="select_ticket" style="text-align:left;"><span style='font-size:15pt;'>결제 금액</span></div>
   <div id="checked_flight1">총 결제금액 : <?= $total_flight_price1?>  원
