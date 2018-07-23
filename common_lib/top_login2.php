@@ -52,9 +52,8 @@ include_once './common_lib/createLink_db.php';
 <?php }elseif(isset($id)&&$id==="admin"){?>
   <li><a href="../">항공권 관리 </a>&nbsp; </li>
   <li> <a href="../">항공권 등록 </a>&nbsp; |</li>
-  <li> <a href="../">회원관리 </a>&nbsp; |</li>
-  <li><a href="../../admin_member/source/member_list.php">회원리스트 </a>&nbsp; |</li>
   <li><a href="#" onclick="member_list()">회원리스트 </a>&nbsp; |</li>
+  <li><a href="../../modify/source/member_form_modify.php">내 정보 수정 </a>&nbsp; |</li>
   <li><a href="#" onclick="message()">쪽지(&nbsp; <?= $not_read_num ?> &nbsp;) </a>&nbsp; |</li>
   <li>관리자 님 <a href="../../login/source/logout.php">(로그아웃)</a> | </li>
 <?php }elseif($id){ ?>
