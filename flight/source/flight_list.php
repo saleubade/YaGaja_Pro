@@ -79,7 +79,7 @@ function aab(a){
     
 } */
 $sql = "select * from membership m inner join reserve_info r on m.id = r.id
-  inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id'";  
+  inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id' order by r.reserve_num";  
 /* $sql = "select * from flight_one_way f inner join reserve_info r on f.flght_ap_num = r.start_apnum"; */
 
 $result = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
@@ -138,7 +138,7 @@ while($row = mysqli_fetch_array($result)){
     </tr>
  <?php   
  $sql = "select * from membership m inner join reserve_info r on m.id = r.id
-  inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id'"; 
+  inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id' order by r.reserve_num"; 
 
 $result = mysqli_query($con,$sql) or die("실패원인2: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);
@@ -201,7 +201,7 @@ while($row = mysqli_fetch_array($result)){
     </tr>
 <?php   
 $sql = "select * from membership m inner join reserve_info r on m.id = r.id
-  inner join flight_one_way f on f.flght_ap_num = r.back_apnum where m.id = '$id' ";     
+  inner join flight_one_way f on f.flght_ap_num = r.back_apnum where m.id = '$id' order by r.reserve_num";     
 /* $sql = "select * from flight_one_way f inner join reserve_info r on f.flght_ap_num = r.back_apnum"; */
 
 $result = mysqli_query($con,$sql) or die("실패원인3: ".mysqli_error($con));
@@ -258,7 +258,7 @@ while($row = mysqli_fetch_array($result)){
     </tr>
  <?php   
  $sql = "select * from membership m inner join reserve_info r on m.id = r.id
-  inner join flight_one_way f on f.flght_ap_num = r.back_apnum where m.id = '$id'";     
+  inner join flight_one_way f on f.flght_ap_num = r.back_apnum where m.id = '$id' order by r.reserve_num";     
 
 $result = mysqli_query($con,$sql) or die("실패원인4: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);

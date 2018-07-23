@@ -1,5 +1,10 @@
  <?php 
  include '../../common_lib/createLink_db.php';
+ include './create_country.php';
+ include './create_flight_one_way.php';
+ include './create_reserve_info.php';
+ include '../../flight_reserve/source/create_seat_state.php';
+ 
  session_start();
  if(!empty($_SESSION['id'])){
      $id = $_SESSION['id'];

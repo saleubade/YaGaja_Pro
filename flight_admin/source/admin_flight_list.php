@@ -142,14 +142,15 @@ if($ten == 1){ //10, 11, 12
 	<td style="width:110;">수정/삭제</td>
 	</tr>
 	<?php 
+	
 	if($modi_number =="1"){
 	    $sql = "select * from flight_one_way where flight_start='$start' and flight_back = '$back'";
 	}else{
 	    $sql = "select * from flight_one_way where flght_ap_num='$modi_number'";
 	}
 	
-	$result = mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
-	$total_record = mysqli_num_rows($result);
+	$result_1 = mysqli_query($con,$sql) or die("실패원인123123123: ".mysqli_error($con));
+	$total_record = mysqli_num_rows($result_1);
 	
     $rows_scale=15;
 	$pages_scale=1;
@@ -190,7 +191,7 @@ if($total_record == 0){
 for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
     //가져올 레코드 위치 이동
     mysqli_data_seek($result, $i);
-    $row = mysqli_fetch_array($result);
+    $row = mysqli_fetch_array($result_1);
 
     $flight_price = $row[flight_price];
     $flight_start = $row[flight_start];
@@ -202,7 +203,7 @@ for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
     $start_flight_ap_num = $row[flght_ap_num];
   
     $j = $i+2;  //form번호 지정
-    
+   
     if(!($start_flight_ap_num == $modi_number)){      //같지 않음
        
         echo "<tr>
@@ -222,7 +223,7 @@ for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
         <td>
         <button type='submit' class='button' id='form$j'>수정 </button>
         <a href='admin_delete_flight_list.php?start_flight_ap_num=\"$start_flight_ap_num\"'>
-        <button class='button'>삭제 </button></a>
+        <button type='button' class='button'>삭제 </button></a>
         </form>
         </td>
         </tr>";
@@ -240,7 +241,7 @@ for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
         <td><input size='8' type='text' name='flight_price' value='$flight_price'></td>
         <td>
         <button type='submit' class='button' id='form$j' >완료</button>
-        <a href='admin_delete_flight_list.php?start_flight_ap_num=$start_flight_ap_num'><button type='button'>삭제</button></a>
+        <a href='admin_delete_flight_list.php?start_flight_ap_num=$start_flight_ap_num'><button type='button' class='button'>삭제 </button></a>
         </td>
         </form>
         </tr>";

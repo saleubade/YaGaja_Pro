@@ -55,8 +55,14 @@ if($result != $num){
     if($fly == "round"){
         echo "<script> location.href='flight_seat_back.php?fly=$fly&num=$num&sapnum=$sapnum&bapnum=$bapnum'; </script>";
     }else{
+        $sql= "DELETE FROM seat_state WHERE flght_ap_num = '' AND choice_seat =''";
+        mysqli_query($con, $sql) or die(mysqli_error($con));
+        
         echo "<script> location.href='../../index.php'; </script>";
+        
     }
+    
+
    
 }
 

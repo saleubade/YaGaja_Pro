@@ -54,6 +54,8 @@ if(!empty($_POST['recordnum'])){
 }else{
     $keynum = "";
 }
+$keynum = (int)$keynum;
+
 //----------------------------------------------------
     $sql= "insert into flight_one_way (flight_price, flight_start, flight_back, flght_ap_num, fly_start_date, fly_start_time, fly_back_time, fly_time, recordNum) ";
     $sql.= "values ('$price', '$start', '$back', '$apnum', '$start_day', '$start_time', '$back_time', '$time', '$keynum')";

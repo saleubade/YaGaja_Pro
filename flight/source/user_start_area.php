@@ -1,27 +1,7 @@
 <?php
 include_once '../../common_lib/createLink_db.php';
 
-$flag = "NO";
-$sql = "show tables from yagajaDB";
-$result = mysqli_query($con, $sql) or die("실패원인:".mysqli_error($con));
-while($row=mysqli_fetch_row($result)){
-    if($row[0]==="country"){
-        $flag ="OK";
-        break;
-    }
-}
-if($flag!=="OK"){
-    $sql= "create table country (
-      countryNum int not null auto_increment primary key,
-      area char(15) not null,
-      city char(30) not null
-      )";
-    if(mysqli_query($con,$sql)){
-        echo "<script>alert('country 테이블이 생성되었습니다.')</script>";
-    }else{
-        echo "실패원인:".mysqli_query($con);
-    }
-}
+
 ?>
  
 <!DOCTYPE html>
@@ -54,11 +34,13 @@ function trs(url){
 <td rowspan="6" class="td2">
 <div id="select_city"><p style="font-weight: 800">해당 도시 취항지 검색</p>
 <?php 
-$country  = $_GET['country'];
-if($country){
-    $sql = "select * from country where area='$country'";
+if($_GET['country']){
+    $country  = $_GET['country'];
+}else{
+    $country = "대한민국";
 }
 
+$sql = "select * from country where area='$country'";
 $result = mysqli_query($con,$sql) or die("실패원인 : ".mysqli_error($con));
 $i=0;
 while($row = mysqli_fetch_array($result)){

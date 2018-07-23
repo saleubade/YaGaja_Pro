@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once "../../common_lib/createLink_db.php";
 
 $num = $_GET['num'];
 $page = $_GET["page"];
@@ -13,7 +14,7 @@ if(isset($_SESSION['id'])){
     $name=$_SESSION['name'];
 }
 
-include_once "../../common_lib/createLink_db.php";
+
 if(empty($id)){
     echo ("
     <script>
