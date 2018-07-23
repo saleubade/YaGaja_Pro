@@ -68,6 +68,3 @@ include_once './common_lib/createLink_db.php';
 </div>
 </body>
 
-<?php 
-mysqli_close($con);
-?>
