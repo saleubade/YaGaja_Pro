@@ -262,7 +262,8 @@ $sql = "select * from flight_one_way where flight_start = '$back' and flight_bac
 }else{      //fly != round
     
 ?>
-
+	<form name="select_ticket" method="post" action="flight_ok.php?fly=<?= $fly ?>&start=<?= $start ?>&back=<?= $back ?>
+    &adult_num=<?= $adult_num ?>&child_num=<?= $child_num ?>&baby_num=<?= $baby_num ?>">
      <table id="row_flight2">
     <tr id="row_flight2_tr1">
     <td width="370" height="40">귀 국 편</td>

@@ -151,6 +151,7 @@ if($total_record == 0){
     </table>
     <?php 
 }
+$start_total=0;
 while($row = mysqli_fetch_array($result)){
     $name = $row[name];
     $total_price = $row[total_price];
@@ -183,6 +184,10 @@ while($row = mysqli_fetch_array($result)){
         <td>유아 : $bnum 명</td>
         <td>$start_flight_price1 원</td>
         </tr>";
+    
+  $start_total = $start_total + $start_flight_price;
+  
+    
 }
 
 ?>    
@@ -271,6 +276,7 @@ if($total_record == 0){
     </table>
     <?php 
 }
+$back_total=0;
 while($row = mysqli_fetch_array($result)){
     $name = $row[name];
     $total_price = $row[total_price];
@@ -303,6 +309,8 @@ while($row = mysqli_fetch_array($result)){
         <td>유아 : $bnum 명</td>
         <td>$back_flight_price1 원</td>
         </tr>";
+    $back_total = $back_total + $back_flight_price;
+    
 }
 
 ?>    
@@ -319,7 +327,7 @@ if(!isset($back_flight_price1)){
 }
 
 
-$total = $start_flight_price +  $back_flight_price;
+$total = $start_total +  $back_total;
 
 ?>
 <script>
