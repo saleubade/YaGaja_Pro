@@ -1,4 +1,10 @@
 <?php
+/* 1, 첨부파일 3개까지 등록 가능
+ * 2, 이미지 미 첨부시 게시글 등록 불가능
+ * 3, 게시글 수정 삭제 가능
+ * 4, 첨부파일 순서에 따라 썸네일 자동 생성
+ * */
+
     session_start();
     
     include_once '../../common_lib/createLink_db.php';
@@ -77,17 +83,22 @@
             document.board_form.content.focus();
             return;
          }
-    	 
-    	 if(!document.board_form.file_0.value && !document.board_form.file_1.value && !document.board_form.file_2.value){
-             alert("이미지를 꼭 첨부해주세요!");
-             return;
-         }
+
+    	 if(document.board_form.very_good.value == "modify"){
+			alert("수정되었습니다.");	
+    	 }else{
+    		 if(!document.board_form.file_0.value && !document.board_form.file_1.value && !document.board_form.file_2.value){
+ 	            alert("이미지를 꼭 첨부해주세요!");
+ 	            return;
+ 	         }
+    	 }
     	 
     	 
     	 
     
          document.board_form.submit();
       }
+     
  
   </script> 
 
@@ -107,13 +118,16 @@
         </div>
         
   <?php 
-  if($mode === "modify"){   
-  
-  
-      ?> 
+  if($mode === "modify"){
+      
+  ?> 
   <form name="board_form" action="gallery_insert.php?mode=modify&num=<?=$num?>&page=<?=$page?>&table=<?=$table?>" method="post" enctype="multipart/form-data">
   <!-- 모드가 수정일때 -->
   
+  
+  
+  <!-- modify라는 값을 숨겨놓고 스크립트 문에서 불러옴 -->
+  <input type="hidden" name="very_good" value="modify">
   
   <?php 
   }else{
@@ -208,7 +222,7 @@ if($mode === "modify" && isset($item_continent)){
 			
 			<?php 
 			}
-        }
+        } // end of if
 			?>
 		</td>
   </tr>
@@ -224,16 +238,18 @@ if($mode === "modify" && isset($item_continent)){
   
   
   
+  
   <?php 
    if(empty($item_file_name_0)){
    ?>
   <tr>
 	<th style="background-color: gray; text-align: center;">이미지 파일 1</th>  
-  	<td><input id="file_0" type="file" name="upfile[]"></td>
+  	<td><input id="file_0" type="file" name="upfile[]" ></td>
   </tr>
   <?php 
   }
   ?>
+  
   
   
   
@@ -243,11 +259,12 @@ if($mode === "modify" && isset($item_continent)){
   ?>
   <tr>
 	<th style="background-color: gray; text-align: center;">이미지 파일 1</th>  
-  	<td><input id="file_0" type="file" name="upfile[]" value=""><?=$item_file_name_0?> 파일이 등록되어 있습니다.<input type="checkbox" name="del_file[]" value="0">삭제 </td>
+  	<td><input id="file_0" type="file" name="upfile[]" /> <?=$item_file_name_0?> 파일이 등록되어 있습니다.<input type="checkbox" name="del_file[]" value="0">삭제 </td>
   </tr>
   <?php 
    }
   ?>
+  
   
   
   
@@ -262,6 +279,7 @@ if($mode === "modify" && isset($item_continent)){
   <?php 
   }
   ?>
+  
   
   
   
@@ -297,7 +315,6 @@ if($mode === "modify" && isset($item_continent)){
   
   
   
-  
    <?php 
    if($mode == "modify" && !empty($item_file_name_2)){
   ?>
@@ -314,7 +331,7 @@ if($mode === "modify" && isset($item_continent)){
   
  
 <div id="write_button"><a href="#"><img src="../img/ok.png" onclick="check_insert()"></a>
-<a href="gallery_list.php?table=<?=$table?>&page=<?=$page?>&continent=<?=$continent ?>"><img src="../img/list.png"></a></div>
+<a href="gallery_list.php?table=<?=$table ?>&page=<?=$page ?>&continent=<?=$continent ?>"><img src="../img/list.png"></a></div>
  
     </form>
       </article>

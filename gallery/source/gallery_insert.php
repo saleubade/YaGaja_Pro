@@ -40,17 +40,17 @@ if(!empty($_SESSION['name'])){
 
 
 $regist_day = date("Y-m-d(H:i)");
-if(isset($_FILES["upfile"])){
+if(isset($_FILES["upfile"])){   // 첨부파일 보내는 형식 = $_FILES
     $files=$_FILES["upfile"];
     
     $count = count($files["name"]);
     if($count == 0 ){
         check_file_good();
     }
-    $upload_dir = '../data/';
+    $upload_dir = '../data/';   // 파일이 업로드 되는 경로
     for($i=0;$i<$count;$i++){
         $upfile_error = null;
-        
+        if(!empty($files["name"][$i])){
             $upfile_name[$i]=$files["name"][$i];
             $upfile_tmp_name[$i] = $files["tmp_name"][$i];
             $upfile_type[$i]=$files["type"][$i];
@@ -62,13 +62,14 @@ if(isset($_FILES["upfile"])){
             $file_ext=$file[1];
             if(!$upfile_error[$i]) {
                 $new_file_name=date("Y_m_d_h_i_s");
+                // 업로드 될때 date(인자값)을 기준으로 나눈다
                 $new_file_name=$new_file_name."_".$i;
                 $copy_file_name[$i]=$new_file_name.".".$file_ext;
                 $upload_file[$i]=$upload_dir.$copy_file_name[$i];
-                if($upfile_size[$i]>30000000){
+                if($upfile_size[$i]>2000000){
                     echo ("
             <script>
-            alert('업로드 파일 크기가 지정된 용량(30MB)을 초과합니다! \\n파일크기를  확인해주세요!')
+            alert('업로드 파일 크기가 지정된 용량(20MB)을 초과합니다! \\n파일크기를  확인해주세요!')
             history.go(-1)
             </script>
 ");
@@ -96,7 +97,7 @@ if(isset($_FILES["upfile"])){
                 }
                 
             }
-        
+        }
     }
 }else{
     $file_name="";
@@ -104,38 +105,35 @@ if(isset($_FILES["upfile"])){
 }
 if(isset($mode) && $mode === "modify"){ //글수정
     if(isset($_POST["del_file"])){ //그림을 삭제하려고 체크
-        $num_checked = count($_POST["del_file"]); //체크한 개수
+        $num_checked=count($_POST["del_file"]); //체크한 개수
         $position=$_POST["del_file"]; //체크된것들이 배열형태로 저장
-        
-        
         for($i=0 ; $i<$num_checked ; $i++){
             $index = $position[$i];
             $del_ok[$index]="y";
         }
         
     }
-    $sql = "select * from $table where num=$num";
+    $sql = "select * from gallery where num=$num";
     $result = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($result);
     
-    for($i=0; $i<$count; $i++){ //파일전체개수 만큼 반복
+    for($i=0; $i<$count ; $i++){ //파일전체개수 만큼 반복
         $field_org_name="file_name_".$i;
         $field_real_name="file_copy_".$i;
         
-        if(!empty($copy_file_name[$i]) && !empty($upfile_name[$i])){
-            $org_real_value = $copy_file_name[$i];
-            $org_name_value = $upfile_name[$i];
+        if(!empty($copy_file_name[$i])){
+            $org_real_value=$copy_file_name[$i];
         }
         if(isset($del_ok) && $del_ok[$i] == "y"){
-            $delete_field = "file_copy_".$i; // 저장되는 이미지를 새로운 변수에 저장
-            $delete_name = $row[$delete_field]; // 삭제할 파일명
-            $delete_path = "../data/".$delete_name; // 삭제 경로
+            $delete_field = "file_copy_".$i;
+            $delete_name = $row[$delete_field];
+            $delete_path = "../data/".$delete_name;
             unlink($delete_path); //data폴더에서 제거
-            $sql="update $table set $field_org_name = '$org_name_value', $field_real_name = '$org_real_value' where num=$num";
+            $sql="update gallery set $field_org_name='',$field_real_name='' where num=$num";
             mysqli_query($con, $sql) or die("실패원인1 : ".mysqli_error($con));
         }else{
             if(!$upfile_error[$i] && isset($upfile_name[$i])){
-                $sql = "update $table set $field_org_name = '$org_name_value',$field_real_name = '$org_real_value' where num=$num";
+                $sql = "update gallery set $field_org_name='$upfile_name[$i]',$field_real_name='$org_real_value' where num=$num";
                 mysqli_query($con, $sql) or die("실패원인2 : ".mysqli_error($con));
             }
         }
@@ -172,7 +170,7 @@ if(isset($mode) && $mode === "modify"){ //글수정
     
     
     
-
+    
     mysqli_query($con, $sql) or die("실패원인4 : ".mysqli_error($con));
 }
 mysqli_close($con);
