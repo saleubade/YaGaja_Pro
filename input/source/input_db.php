@@ -28,7 +28,49 @@
     $data = htmlspecialchars($data);
     return $data;
   }
-  $regist_day = date("Y-m-d (H:i)");
+  $regist_day = date("Y-m-d (H:i:s)");
+  
+  if($mode === "modify"){ //글수정
+      if(isset($_POST["del_file"])){ //그림을 삭제하려고 체크
+          $num_checked=count($_POST["del_file"]); //체크한 개수
+          $position=$_POST["del_file"]; //체크된것들이 배열형태로 저장
+          for($i=0 ; $i<$num_checked ; $i++){
+              $index = $position[$i];
+              $del_ok[$index]="y";
+          }
+          echo "1".$del_ok[0]."2".$del_ok[1]."<br>";
+      }
+      $sql = "select * from shop_qna where qna_no=$no";
+      $result = mysqli_query($con, $sql);
+      $row = mysqli_fetch_array($result);
+      
+      for($i=0; $i<2; $i++){ //파일전체개수 만큼 반복
+          $field_org_name="file_name_".$i;
+          $field_real_name="file_copied_".$i;
+          if(!empty($new_file_name[$i])){
+              $org_real_value=$new_file_name[$i];
+          }
+          if(isset($del_ok) && $del_ok[$i] == "y"){
+              $delete_field = "file_copied_".$i;
+              $delete_name = $row[$delete_field];
+              $delete_path = "../upload_image/".$delete_name;
+              unlink($delete_path); //data폴더에서 제거
+              $sql="update shop_qna set $field_org_name='',$field_real_name='' where qna_no=$no";
+              mysqli_query($con, $sql);
+          }else if(!empty($files["name"][$i])){
+              if(!$upfile_error[$i] && isset($upfile_name[$i])){
+                  $sql = "update shop_qna set $field_org_name='$upfile_name[$i]',$field_real_name='$org_real_value' where qna_no=$no";
+                  echo "<br>22".$sql;
+                  mysqli_query($con, $sql);
+              }
+          }
+      }
+      $sql="update shop_qna set subject='$subject',content='$content' where qna_no=$no";
+      echo "33".$sql;
+      mysqli_query($con, $sql);
+      
+      
+  }
   
   for($i=1; $i<=4; $i++)
   {

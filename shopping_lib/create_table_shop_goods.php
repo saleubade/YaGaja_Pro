@@ -30,6 +30,7 @@ if($flag !=="OK"){
       shop_image_change_name4 char(40),
       shop_introduce text,
       regist_day char(20),
+      hit int,
       primary key(shop_no)
     )";
     if(mysqli_query($con, $sql)){

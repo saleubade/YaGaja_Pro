@@ -20,7 +20,7 @@ if(!empty($_SESSION['name'])){
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css">
-<link type="text/css" rel="stylesheet" href="../css/ticketing.css">
+<link type="text/css" rel="stylesheet" href="../css/ticketing.css?v=1">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -37,6 +37,8 @@ if(!empty($_SESSION['name'])){
 <nav id="top">
 <?php include_once '../../common_lib/main_menu2.php';?>
 </nav>
+
+<h1 style="padding-top:40px; margin:0 auto; margin-top:20px; text-align: center">FLIGHT HISTORY</h1><br>
 <div id="ticket_box4"><br><br>
 <div id='select_ticket'><span style='font-size:15pt;'>항공권 예매내역<br></span></div><br>
 <div id='select_ticket' style="text-align:right;"><span style='font-size:12pt;'> * 5개  출력</span></div>
@@ -270,6 +272,7 @@ while($row = mysqli_fetch_array($result)){
 </table>
 
 </div>
+<br><br><br><br>
 <footer>
 <?php include_once '../../common_lib/footer2.php';?>
 </footer>

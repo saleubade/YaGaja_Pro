@@ -50,7 +50,7 @@ function trs(url){
 
 <table id="table1">
 <tr>
-<td class="td1"><a class="a1" href="list_start_area.php?country=대한민국"><div class="td_div" onclick="trs('list_back_area.php?country=대한민국')">대한민국</div></a></td>
+<td class="td1"><a class="a1" href="list_back_area.php?country=대한민국"><div class="td_div" onclick="trs('list_back_area.php?country=대한민국')">대한민국</div></a></td>
 <td rowspan="6" class="td2">
 <div id="select_city"><p style="font-weight: 800">해당 도시 취항지 검색</p>
 <?php 

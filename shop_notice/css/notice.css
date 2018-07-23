@@ -250,3 +250,37 @@ button{
 	text-align: right;
 	padding-bottom: 40px;
 }
+#avant_list_tr{
+	height: 42px;
+}
+#avant_list_td{
+	text-align: left;
+	padding-left: 20px; 
+}
+#next_list_td{
+	height: 42px;	
+}
+#next_list_td{
+	text-align: left;
+	padding-left: 20px; 
+}
+.review_box_img{
+	width: 250px;
+	height: 150px;
+	border: 1px solid black;
+}
+.review_box_product{
+	width: 250px;
+	height: 25px;
+	border: 1px solid blue;
+	text-align: left;
+	font-size: 12px; 
+}
+.review_box_regist{
+	width: 250px;
+	height: 25px;
+	border: 1px solid red;
+	text-align: left;
+	font-size: 10px; 
+	color: lightgray;
+}

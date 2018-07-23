@@ -2,7 +2,6 @@
 #ticket_box0{
 	padding-left:15px;
 	width: 1000px;
-	height: 750px;
 	margin: 0 auto;
 	
 }
@@ -36,6 +35,12 @@
 	font-weight: bolder;
 	text-align:center;
 }
+
+#table2_header{
+	font-size: 15px;
+	/* font-weight: bolder; */
+	text-align:center;
+}
 .table1 tr td{
 	border-collapse:collapse;
 	border: 2px solid gray;
@@ -50,6 +55,33 @@
 
 .table2{
 	margin-left:230px;
+}
+
+.table3{
+	border-collapse:collapse;
+	width:500px;
+	height:50px;
+	margin-left:-50px;
+}
+
+.table3 tr{
+	width:230px;
+}
+#table3_header{
+	font-size: 15px;
+	font-weight: bolder;
+	text-align:center;
+}
+.table3 tr td{
+	border-collapse:collapse;
+	border: 2px solid gray;
+	border-left : none;	
+	border-right : none;	
+	width:30px;
+	height:40px;
+	padding-top: 10px;
+	padding-bottom:10px;
+	padding-left:25px;
 }
 
 .div_none{
@@ -71,8 +103,8 @@
 	/* background-color : white; */
 /* 	border: 1px solid gray; */
 	margin:30px;
-	width: 120px;
-	height: 50px;
+	width: 90px;
+	height: 30px;
 }
 
 #form_select{
@@ -133,7 +165,22 @@ border-radius: 10%;
 }
 
 
+.seat{
+	width:30px;
+	height:30px;
+}
 
 
+#form_select{
+	margin-right:4px;
+	float: left;
+}
+#form_search2{
+}
+
+#form_search1{
+	margin-right:4px;
+	float: left;
+}
 
  

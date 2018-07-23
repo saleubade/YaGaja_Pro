@@ -39,25 +39,33 @@ if(isset($_FILES["upfile"])){
                 $copied_file_name[$i]=$new_file_name.".".$file_ext;
                 $upload_file[$i]=$upload_dir.$copied_file_name[$i];
 
+<<<<<<< HEAD
 
                 
+=======
+                                
+>>>>>>> 89e446f62f3153c8816386a9ec6c1e815c773510
                 if($upfile_size[$i]>500000){
                     echo ("
             <script>
             alert('업로드 파일 크기가 지정된 용량(500KB)을 초과합니다!<br> 파일크기를  확인해주세요');
             history.go(-1);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 89e446f62f3153c8816386a9ec6c1e815c773510
             </script>
-");
-                    exit();
-                }
+            ");
+            exit();
+            }               
+
                 if(!move_uploaded_file($upfile_tmp_name[$i],$upload_file[$i])){
                     echo ("
                <script>
                 alert('파일을 지정한 디렉토리에 복사하는데 실패했습니다.');
                 history.go(-1);
                </script>
-");
+                ");
                     exit();
                 }
                 

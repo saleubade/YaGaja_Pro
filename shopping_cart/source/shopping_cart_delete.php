@@ -6,6 +6,9 @@ if(isset($_GET['mode'])){
 if(isset($_GET['id'])){
     $id=$_GET['id'];
 }
+if(isset($_GET['buy'])){
+    $buy=$_GET['buy'];
+}
 if(isset($_GET['cart_num'])){
     $num=$_GET['cart_num'];
 }
@@ -28,7 +31,7 @@ if($mode=='all'){
         echo mysqli_error($con);
     }
 }else if($mode=='single'){
-    $sql="delete from cart_goods where cart_id='$id' and cart_no=$no";
+    $sql="delete from cart_goods where cart_id='$id' and cart_num=$num";
     if(mysqli_query($con, $sql)){
         echo "<script> alert('삭제되었습니다.'); location.href='shopping_cart.php?page=1'; </script>";
     }else{
@@ -40,7 +43,10 @@ if($mode=='all'){
         $sql="delete from cart_goods where cart_id='$id' and cart_num= '$del_table_num[$i]'";
         mysqli_query($con, $sql);
     }
-    echo "<script> alert('삭제되었습니다.'); location.href='shopping_cart.php?page=1'; </script>";
+    if($buy =='y')
+        echo "<script> alert('삭제되었습니다.'); location.href='../../shopping_buy/source/shopping_buy.php?mode=allorder&table=cart'; </script>";
+    else   
+        echo "<script> alert('삭제되었습니다.'); location.href='shopping_cart.php?page=1'; </script>";
 }
 
 

@@ -18,7 +18,8 @@ if($flag!=="OK"){
       birth char(10) not null,
       gender char(5) not null,
       zip char(7) not null,
-      address char(50) not null,
+      address1 char(50) not null,
+      address2 char(50) not null,
       phone char(13) not null,
       email char(30) not null
       )";

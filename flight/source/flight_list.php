@@ -52,6 +52,7 @@ function aab(a){
 <nav id="top">
 <?php include_once '../../common_lib/main_menu2.php';?>
 </nav>
+<h1 style="padding-top:40px; margin:0 auto; margin-top:20px; text-align: center">FLIGHT HISTORY</h1><br>
 <div id="ticket_box4"><br><br>
 <div id='select_ticket'><span style='font-size:15pt;'>항공권 예매내역<br></span></div><br><br>
 
@@ -74,11 +75,12 @@ function aab(a){
    
     </tr>
 <?php 
+/* if(){
+    
+} */
 $sql = "select * from membership m inner join reserve_info r on m.id = r.id
   inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id'";  
 /* $sql = "select * from flight_one_way f inner join reserve_info r on f.flght_ap_num = r.start_apnum"; */
- mysqli_query($con,$sql) or die("실패원인12312: ".mysqli_error($con));
- 
 
 $result = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);
@@ -102,7 +104,8 @@ while($row = mysqli_fetch_array($result)){
     $fly_back_time = $row[fly_back_time];
     $fly_time = $row[fly_time];
     $start_flight_ap_num = $row[flght_ap_num];
-  
+   
+    $flight_price = number_format($flight_price);   //콤마찍기
 
     echo "<tr>
     <td>$flight_start - $flight_back</td>
@@ -123,11 +126,11 @@ while($row = mysqli_fetch_array($result)){
 <br>
  <table id='row_flight2'>
     <tr id='row_flight2_tr1'>
-    <td width='100' height='40'>예약 번호</td>
+    <td width='100' height='40'>좌석 번호</td>
     <td width='400' height='40'>출 국 편</td>
     <td width='120' height='40'>이 름</td>
     <td width='120' height='40'>인 원</td>
-    <td width='120' height='40'>인 원</td>
+    <td width='140' height='40'>인 원</td>
     <td width='120' height='40'>인 원</td>
     <td width='150' height='40'>총 운 임</td>
    
@@ -135,7 +138,7 @@ while($row = mysqli_fetch_array($result)){
     </tr>
  <?php   
  $sql = "select * from membership m inner join reserve_info r on m.id = r.id
-  inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id'";     
+  inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id'"; 
 
 $result = mysqli_query($con,$sql) or die("실패원인2: ".mysqli_error($con));
 $total_record = mysqli_num_rows($result);
@@ -166,7 +169,7 @@ while($row = mysqli_fetch_array($result)){
     $fly_back_time = $row[fly_back_time];
     $fly_time = $row[fly_time];
     $back_flight_ap_num = $row[flght_ap_num];
-    
+
     
     $start_flight_price = ($flight_price*$anum)+($flight_price*0.5*$cnum)+($flight_price*0.3* $bnum);
     $start_flight_price1 = number_format($start_flight_price);   //콤마찍기
@@ -223,7 +226,7 @@ while($row = mysqli_fetch_array($result)){
     $fly_time = $row[fly_time];
     $back_flight_ap_num = $row[flght_ap_num];
     $record_num = $row[recordNum];
-    
+    $flight_price = number_format($flight_price);   //콤마찍기
    
   
     echo "<tr>
@@ -243,7 +246,7 @@ while($row = mysqli_fetch_array($result)){
 
 <table id='row_flight2'>
     <tr id='row_flight2_tr1'>
-     <td width='100' height='40'>예약 번호</td>
+     <td width='100' height='40'>좌석 번호</td>
     <td width='400' height='40'>귀 국 편</td>
     <td width='120' height='40'>이 름</td>
     <td width='120' height='40'>인 원</td>
@@ -320,7 +323,9 @@ $total = $start_flight_price +  $back_flight_price;
 
 ?>
 <script>
-
+<?php 
+$total = number_format($total);
+?>
 aab('<?=$total?>');
 </script>
 
