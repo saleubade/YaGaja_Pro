@@ -36,11 +36,11 @@ if($mode=="modify" || $mode == "response"){
 <head>
   <meta charset="utf-8">
   <title>야! 몰</title>
-  <link rel="stylesheet" href="../css/qna.css?ver=44">
-  <link rel="stylesheet" href="../../shopping/css/cart.css?ver=1">
+  <link rel="stylesheet" href="../css/qna.css?ver=6">
+  <link rel="stylesheet" href="../../shopping/css/cart.css?ver=6">
   <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=3">
+  <link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=6">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
@@ -60,7 +60,7 @@ if($mode=="modify" || $mode == "response"){
   </script>
 </head>
 <body>
-    <header style="border:1px solid black;">
+    <header>
    		<?php include_once '../../shopping_lib/top_login3.php';?>
     </header>
     <nav id="shop_aside">
@@ -139,14 +139,14 @@ if($mode=="modify" || $mode == "response"){
             		</table>
         </form>
         </section>
-            		<div id="qna_write_form">
-            			<input type="button" class="qna_write" onclick="check_input()" value="완료">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            			<a href="./shop_qna.php?page=1"><button class="qna_write">취소</button></a>
-            		</div>
-        		</div>    
+		<div id="qna_write_form">
+			<input type="button" class="qna_write" onclick="check_input()" value="완료">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="./shop_qna.php?page=1"><button class="qna_write">취소</button></a>
+		</div>
+	</div>    
             
 	<div class="clear"></div><div class="clear"></div><div class="clear"></div>
-	<footer style="border:1px solid black;">
+	<footer style="border-top:2px solid black;">
  		<?php include_once '../../common_lib/footer2.php';?>
   	</footer>
 </body>

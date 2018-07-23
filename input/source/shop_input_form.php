@@ -4,7 +4,7 @@ session_start();
 include "../../common_lib/createLink_db.php";
 
 $flag = "NO";
-$sql = "show tables from yagajaDB";
+$sql = "show tables from yagaja_DB";
 $result = mysqli_query($con, $sql) or die("실패원인:".mysqli_error($con));
 while($row=mysqli_fetch_row($result)){
     if($row[0]==="shop_goods"){
@@ -52,7 +52,7 @@ if($flag !=="OK"){
     <meta charset="utf-8">
     <title>상품등록</title>
     <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
-    <link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=11">
+    <link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=13">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/input.css">
@@ -123,7 +123,7 @@ if($flag !=="OK"){
     </script>
   </head>
   <body>
-    <header style="border:1px solid black;">
+    <header>
         <!-- 로그인  -->
    		<?php include_once '../../shopping_lib/top_login3.php';?>
     </header>
@@ -136,7 +136,7 @@ if($flag !=="OK"){
         <h1>상품등록</h1>
         <hr>
 <form name="input_form" action="./input_db.php" method="post" enctype="multipart/form-data">
-        <table style="border: 1px solid black;">
+        <table>
           <tr>
             <td class="label"><label for="shop_type">상품타입</label></td>
             <td>

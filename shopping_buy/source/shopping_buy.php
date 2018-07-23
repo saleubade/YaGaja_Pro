@@ -70,8 +70,8 @@ $row_length=87;
   <title>야! 몰</title>
   <link rel="stylesheet" href="../../common_css/shop_index_css3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=5">
-  <link rel="stylesheet" href="../css/cart.css?ver=5">
+  <link rel="stylesheet" href="../../shopping/css/shopping3.css?ver=6">
+  <link rel="stylesheet" href="../css/cart.css?ver=6">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="../css/member.css?ver=3" rel="stylesheet">
@@ -223,7 +223,7 @@ $row_length=87;
 	<!-- end of 우편번호 검색API -->
 </head>
 <body>
-    <header style="border:1px solid black;">
+    <header>
    		<?php include_once '../../shopping_lib/top_login3.php';?>
     </header>
     <nav id="shop_aside">
@@ -315,10 +315,8 @@ $row_length=87;
         		  $phone2=$phone[1];
         		  $phone3=$phone[2];
         		  
-        		  $address=$row['address'];
-        		  $address=explode("/", $address);
-        		  $address1=$address[0];
-        		  $address2=$address[1];
+        		  $address1=$row['address1'];
+        		  $address2=$row['address2'];
         		  
         		  $email=explode("@", $email);
         		  $email_e=$email[0];
@@ -382,7 +380,7 @@ $row_length=87;
     	</div>
     </section>
     <div class="clear"></div>
-	<footer style="border:1px solid black;">
+	<footer style="border-top:2px solid black;">
  		<?php include_once '../../common_lib/footer2.php';?>
   	</footer>
 </body>

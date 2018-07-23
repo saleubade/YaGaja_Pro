@@ -126,7 +126,7 @@ mysqli_query($con, $sql) or die("실패원인2 : " . mysqli_error($con));
         <hr>
           	<table  id="table_11"><tr>
           	
-      <div id="view_title2"><td id="td_1"><b><?=$item_subject?></b></td> <td id="td_2"> | <?=$item_regist_day?></td><td id="td_3">| 조회 : <?=$item_hit?> | </td> <td id="td_4">아이디 : <?=$item_id ?> | </td></div>
+      <div id="view_title2"><td id="td_1"><b><?=$item_subject?></b></td> <td id="td_2" style="width: 150px;"> <?=$item_regist_day?></td><td id="td_3"> 조회 : <?=$item_hit?> </td> <td id="td_4">아이디 : <?=$item_id ?></td></div>
       <div id="view_content">
       <div id="ititit"></div></div></tr>
       </table>

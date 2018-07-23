@@ -34,7 +34,6 @@ if(isset($_FILES["upfile"])){
   {
       $upfile_error=null;
       if(!empty($files["name"][$i])){
-          echo "111<br><br>".$files["name"][$i]."<br>";
           $upfile_name[$i]=$files["name"][$i];
           $upfile_tmp_name[$i] = $files["tmp_name"][$i];
           $upfile_type[$i]=$files["type"][$i];
@@ -69,7 +68,6 @@ if(isset($mode) && $mode === "modify"){ //글수정
           $index = $position[$i];
           $del_ok[$index]="y";
       }     
-      echo "1".$del_ok[0]."2".$del_ok[1]."<br>";
   }
   $sql = "select * from shop_notice where notice_no=$no";
   $result = mysqli_query($con, $sql);
@@ -85,21 +83,17 @@ if(isset($mode) && $mode === "modify"){ //글수정
           $delete_field = "file_copied_".$i;
           $delete_name = $row[$delete_field];
           $delete_path = "../upload_image/".$delete_name;
-          echo "++11".$delete_path;
           unlink($delete_path); //data폴더에서 제거
           $sql="update shop_notice set $field_org_name='',$field_real_name='' where notice_no=$no";
-          echo "<br>11".$sql.$i;
           mysqli_query($con, $sql);
       }else if(!empty($files["name"][$i])){
            if(!$upfile_error[$i] && isset($upfile_name[$i])){
                $sql = "update shop_notice set $field_org_name='$upfile_name[$i]',$field_real_name='$org_real_value' where notice_no=$no";
-               echo "<br>22".$sql;
            mysqli_query($con, $sql);
           }
        }
    }
    $sql="update shop_notice set notice_subject='$subject',notice_content='$content' where notice_no=$no";
-   echo "33".$sql;
    mysqli_query($con, $sql);
   
   

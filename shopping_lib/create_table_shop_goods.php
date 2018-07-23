@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <?php
 $flag = "NO";
-$sql = "show tables from yagajaDB";
+$sql = "show tables from yagaja_DB";
 $result = mysqli_query($con, $sql) or die("실패원인:".mysqli_error($con));
 while($row=mysqli_fetch_row($result)){
     if($row[0]==="shop_goods"){
@@ -29,7 +29,7 @@ if($flag !=="OK"){
       shop_image_change_name3 char(40),
       shop_image_change_name4 char(40),
       shop_introduce text,
-      regist_day char(20),
+      regist_day char(30),
       hit int,
       primary key(shop_no)
     )";
