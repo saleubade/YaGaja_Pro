@@ -41,6 +41,8 @@ $regist_day=$row['regist_day'];
 $file_copied_0=$row['file_copied_0'];
 $regist_day=substr($regist_day,0,10);
 
+
+
 // 페이지 당 글수, 블럭당 페이지 수
 $rows_scale=10;
 $pages_scale=5;

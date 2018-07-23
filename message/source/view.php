@@ -45,7 +45,7 @@ function receive_message_close(){
 <?=$send_name."님"?>&nbsp<?="( ".$send_id." ) 이 보낸 메세지 "?> <br> <textarea name="message_content" rows="10" cols="57" readonly style="margin-top: 5px;"><?= $message_cont?></textarea>
 </div>
 <div style="text-align: right;">
-<a href="./message_from.php?send_id=<?= $send_id?>">[답장 보내기]</a> 
+<a href="./message_form.php?send_id=<?= $send_id?>">[답장 보내기]</a> 
 </div>
 <br>
 <div style="text-align: center;">

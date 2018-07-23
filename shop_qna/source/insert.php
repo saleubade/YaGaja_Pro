@@ -10,6 +10,7 @@
       $mode = $_GET['mode'];
       $no = $_GET["no"];
   }
+    
   
   include "../../common_lib/createLink_db.php";
   
@@ -30,7 +31,6 @@
 
   
   $file=$_FILES["upfile"];
-      echo $file;
   if(isset($_FILES["upfile"])){
       $files=$_FILES["upfile"];
       $count = count($files["name"]);
@@ -38,7 +38,6 @@
       {
           $upfile_error=null;
           if(!empty($files["name"][$i])){
-              echo "111<br><br>".$files["name"][$i]."<br>";
               $upfile_name[$i]=$files["name"][$i];
               $upfile_tmp_name[$i] = $files["tmp_name"][$i];
               $upfile_type[$i]=$files["type"][$i];
@@ -70,6 +69,8 @@
 if($mode === "response"){
   //부모글
   $sql="select * from shop_qna where qna_no=$no";
+  
+  
   $result=mysqli_query($con,$sql);
   $row=mysqli_fetch_array($result);
   //부모글로 부터 group_num,depth,ord 값 설정
@@ -79,7 +80,7 @@ if($mode === "response"){
   
   // 해당 그룹에서 ord 가 부모글의 ord($row[ord]) 보다 큰 경우엔
   // ord 값 1 증가 시킴
-  $sql = "update shop_qna set qna_ord = qna_ord + 1 where qna_group_num = $row[qna_group_num] and qna_ord > $row[qna_ord]";
+  $sql = "update shop_qna set qna_ord = qna_ord + 1 where qna_group_num = '$row[qna_group_num]' and qna_ord > '$row[qna_ord]'";
   mysqli_query($con,$sql);
   
   // 레코드 삽입
@@ -87,15 +88,31 @@ if($mode === "response"){
   $sql .= "content, regist_day, hit, file_name_0, file_copied_0) ";
   $sql .= "values($group_num, $depth, $ord, '$id', '$cname', '$subject',";
   $sql .= "'$content', '$regist_day', 0, '$upfile_name[0]', '$new_file_name[0]')";
-  echo $sql."<br>";
+  
+  
+  
+}else{
+    $depth = 0;   // depth, ord 를 0으로 초기화
+    $ord = 0;
+    // 레코드 삽입
+    $sql = "insert into shop_qna (qna_group_num, qna_depth, qna_ord, qna_id, qna_nick, subject,";
+    $sql .= "content, regist_day, hit, file_name_0, file_copied_0) ";
+    $sql .= "values(0, $depth, $ord, '$id', '$cname', '$subject',";
+    $sql .= "'$content', '$regist_day', 0, '$upfile_name[0]', '$new_file_name[0]')";
+    mysqli_query($con,$sql); 
 
-}
-else
-{
-
+    // 최근 auto_increment 필드(num) 값 가져오기
+    $sql = "select * from shop_qna";
+    $result = mysqli_query($con,$sql);
+    $row = mysqli_fetch_array($result);
+    $auto_num = $row[0];
+    $no = $row['qna_no'];
+      
+    // group_num 값 업데이트
+    $sql = "update shop_qna set qna_group_num = $auto_num where qna_no='$no'";
+    
 }
   
-
 if($mode === "modify"){ //글수정
   if(isset($_POST["del_file"])){ //그림을 삭제하려고 체크
       $num_checked=count($_POST["del_file"]); //체크한 개수
@@ -104,7 +121,6 @@ if($mode === "modify"){ //글수정
           $index = $position[$i];
           $del_ok[$index]="y";
       }     
-      echo "1".$del_ok[0]."2".$del_ok[1]."<br>";
   }
   $sql = "select * from shop_qna where qna_no=$no";
   $result = mysqli_query($con, $sql);
@@ -126,24 +142,21 @@ if($mode === "modify"){ //글수정
       }else if(!empty($files["name"][$i])){
            if(!$upfile_error[$i] && isset($upfile_name[$i])){
                $sql = "update shop_qna set $field_org_name='$upfile_name[$i]',$field_real_name='$org_real_value' where qna_no=$no";
-               echo "<br>22".$sql;
            mysqli_query($con, $sql);
           }
        }
    }
    $sql="update shop_qna set subject='$subject',content='$content' where qna_no=$no";
-   echo "33".$sql;
-   mysqli_query($con, $sql);
   
-  
- }
+}
+
       if(!mysqli_query($con,$sql)){
-        echo "no DB: ".mysqli_error($con);
+          
+        echo "no DB: 여기냐 ?".mysqli_error($con);
       }else{
         echo "<script>location.href='./shop_qna.php?page=1';</script>";
       } 
 ?>
-
 
 
 

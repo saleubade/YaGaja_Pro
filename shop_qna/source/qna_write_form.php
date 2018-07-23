@@ -7,6 +7,7 @@ if(isset($_SESSION['id'])){
 if(isset($_GET['mode'])){
     $mode = $_GET['mode'];
     $no = $_GET["no"];
+
 }
 
 include_once '../../common_lib/createLink_db.php';
