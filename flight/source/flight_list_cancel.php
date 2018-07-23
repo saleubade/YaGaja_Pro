@@ -21,12 +21,14 @@ if(!empty($_POST['back_check'])){
 $start_check = substr($start_check,6,7);
 $back_check = substr($back_check,5,6);
 
+
 if($start_check && $back_check){      //출국 and 귀국 삭제
-    $sql = "select start_apnum from reserve_info where no = '$start_check'";
+    $sql = "select start_apnum,reserve_num from reserve_info where no = '$start_check'";
     $result1 = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
     $row = mysqli_fetch_array($result1);
     $sapnum = $row[start_apnum];
-   
+    $reservenum = $row[reserve_num];
+
     $sql = "select * from reserve_info where no = '$back_check'";
     $result2 = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
     $row = mysqli_fetch_array($result2);
@@ -36,22 +38,25 @@ if($start_check && $back_check){      //출국 and 귀국 삭제
     $result3 = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
     while($row = mysqli_fetch_array($result3)){
         $apnum = $row[flght_ap_num];
-       
+        
         $sql = "delete from reserve_info where no = '$start_check' or no = '$back_check'";
         mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
         
-        $sql = "delete from seat_state where flght_ap_num = '$apnum'";
+        $sql = "delete from seat_state where flght_ap_num = '$apnum' and id = '$id'";
         mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
+            
     }
+    
     
 }else if($start_check && !$back_check){ //출국만 삭제
     
-    $sql = "select start_apnum from reserve_info where no = '$start_check'";
+    $sql = "select start_apnum,reserve_num from reserve_info where no = '$start_check'";
     $result1 = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
     $row = mysqli_fetch_array($result1);
     $sapnum = $row[start_apnum];
+    $reservenum = $row[reserve_num];
     
-    $sql = "select * from seat_state where flght_ap_num = '$sapnum'";
+    $sql = "select * from seat_state s inner join reserve_info r on s.id = r.id where flght_ap_num = '$sapnum'";
     $result2 = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
     while($row = mysqli_fetch_array($result2)){
         $apnum = $row[flght_ap_num];
@@ -59,14 +64,15 @@ if($start_check && $back_check){      //출국 and 귀국 삭제
         $sql = "delete from reserve_info where no = '$start_check'";
         mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
        
-        $sql = "delete from seat_state where flght_ap_num = '$apnum'";
+        $sql = "delete from seat_state where flght_ap_num = '$apnum' and id = '$id'";
         mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
     }
 }else if(!$start_check && $back_check){ //귀국만 삭제
-    $sql = "select back_apnum from reserve_info where no = '$back_check'";
+    $sql = "select back_apnum,reserve_num from reserve_info where no = '$back_check'";
     $result1 = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
     $row = mysqli_fetch_array($result1);
     $bapnum = $row[back_apnum];
+    $reservenum = $row[reserve_num];
     
     $sql = "select * from seat_state where flght_ap_num = '$bapnum'";
     $result2 = mysqli_query($con,$sql) or die("실패원인1: ".mysqli_error($con));
@@ -77,7 +83,7 @@ if($start_check && $back_check){      //출국 and 귀국 삭제
         $sql = "delete from reserve_info where no = '$back_check'";
         mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
         
-        $sql = "delete from seat_state where flght_ap_num = '$apnum'";
+        $sql = "delete from seat_state where flght_ap_num = '$apnum' and id='$id'";
         mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
     }
 }
