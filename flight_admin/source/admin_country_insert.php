@@ -43,6 +43,12 @@
      $page = $_GET['page'];
  }
  
+ if(!empty($_POST['area'])){
+     $area = $_POST['area'];
+ }else{
+     $area = "";
+ }
+ 
  ?>
 <head>
 <meta charset="UTF-8">
@@ -82,6 +88,7 @@ function check_input(){
 
 if(empty($search)){   //검색결과에 따라서 쿼리문 실행
     $sql = "select * from country order by countrynum desc";
+  
 }else if($find == "area"){
     $sql= "select * from country where area like '%$search%' order by area";
 }else if($find == "city"){
@@ -119,8 +126,8 @@ if(empty($search)){   //검색결과에 따라서 쿼리문 실행
         }*/
 
     
-    $result =mysqli_query($con, $sql);
-    $total_record = mysqli_num_rows($result); //전체 레코드 수 
+$result_area =mysqli_query($con, $sql) or die("실패원인 123: ".mysqli_error($con));
+$total_record = mysqli_num_rows($result_area); //전체 레코드 수 
   
     $rows_scale=15;
     $pages_scale=1;
@@ -205,11 +212,12 @@ if(empty($search)){   //검색결과에 따라서 쿼리문 실행
 for($i=$start_row; ($i<$start_row+$rows_scale) && ($i< $total_record); $i++){
     //가져올 레코드 위치 이동
     mysqli_data_seek($result, $i);
-    $row = mysqli_fetch_array($result);
+    $row = mysqli_fetch_array($result_area);
     
     $area = $row[area];
     $city = $row[city];
     
+   
     $j = $i+2;  //form번호 지정
     
     if(!($city == $modi_city)){      //같지 않음
