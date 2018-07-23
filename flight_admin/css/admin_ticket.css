@@ -35,6 +35,12 @@
 	font-weight: bolder;
 	text-align:center;
 }
+
+#table2_header{
+	font-size: 15px;
+	/* font-weight: bolder; */
+	text-align:center;
+}
 .table1 tr td{
 	border-collapse:collapse;
 	border: 2px solid gray;
@@ -53,7 +59,7 @@
 
 .table3{
 	border-collapse:collapse;
-	width:400px;
+	width:500px;
 	height:50px;
 	margin-left:-50px;
 }
