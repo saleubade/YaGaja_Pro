@@ -1,17 +1,42 @@
 <meta charset="UTF-8">
 <?php  
   session_start();
-  include "../../common_lib/createLink_db.php";
+  include_once "../../common_lib/createLink_db.php";
   
   $shop_no = $_POST['shop_no'];
   $shop_name = $_POST['shop_name'];
   $shop_price = $_POST['shop_price'];
   $shop_type = $_POST['shop_type'];
   $shop_amount = $_POST['shop_amount'];
-  $shop_sizeS = $_POST['sizeS'];
-  $shop_sizeM = $_POST['sizeM'];
-  $shop_sizeL = $_POST['sizeL'];
-  $shop_sizeXL = $_POST['sizeXL'];
+  
+  if(!empty($_POST['sizeS']) ){
+      (int)$shop_sizeS = $_POST['sizeS'];
+  }else{
+      (int)$shop_sizeS ="0";
+  }
+  
+  if(!empty($_POST['sizeM']) ){
+      (int)$shop_sizeM = $_POST['sizeM'];
+  }else{
+      (int)$shop_sizeM ="0";
+  }
+  if(!empty($_POST['sizeL']) ){
+      (int)$shop_sizeL = $_POST['sizeL'];
+  }else{
+      (int)$shop_sizeL ="0";
+  }
+  if(!empty($_POST['sizeXL']) ){
+      (int)$shop_sizeXL = $_POST['sizeXL'];
+  }else{
+      (int)$shop_sizeXL ="0";
+  }
+  
+  
+//   $shop_sizeM = $_POST['sizeM'];
+//   $shop_sizeL = $_POST['sizeL'];
+//   $shop_sizeXL = $_POST['sizeXL'];
+
+  
   $shop_introduce = $_POST['shop_introduce'];
 
   if($_SERVER['REQUEST_METHOD']){//보안검사
@@ -96,17 +121,23 @@
       }
   }
   
-  $sql="insert into shop_goods (shop_no, shop_name, shop_price, shop_amount,  shop_type,
+  
+  
+  
+  $sql="insert into shop_goods (shop_name, shop_amount, shop_price, shop_type,
                                 shop_sizeS, shop_sizeM, shop_sizeL, shop_sizeXL, shop_image_name1,
                                 shop_image_name2, shop_image_name3, shop_image_name4,
                                 shop_image_change_name1, shop_image_change_name2, shop_image_change_name3,
                                 shop_image_change_name4, shop_introduce, regist_day)";
-  $sql.=" values('$shop_no', '$shop_name', '$shop_price','$shop_amount',  '$shop_type', '$shop_sizeS', '$shop_sizeM', '$shop_sizeL', '$shop_sizeXL',
-                 '$image_name[1]', '$image_name[2]','$image_name[3]','$image_name[4]',
-                 '$new_file_name[1]', '$new_file_name[2]','$new_file_name[3]','$new_file_name[4]', '$shop_introduce', '$regist_day')";
+  $sql.=" values('$shop_name', '$shop_amount', '$shop_price', '$shop_type', $shop_sizeS, $shop_sizeM, $shop_sizeL, $shop_sizeXL,'$image_name[1]', '$image_name[2]','$image_name[3]','$image_name[4]','$new_file_name[1]','$new_file_name[2]','$new_file_name[3]','$new_file_name[4]', '$shop_introduce', '$regist_day')";
 
+  var_dump($shop_sizeS);
+  
+ echo $sql;
+  
+  
   if(!mysqli_query($con,$sql)){
-     echo "no DB: ".mysqli_error($con);
+     echo "<br>no DB ! 이게 왜 오류얌: ".mysqli_error($con);
    }else{
      echo "<script>location.href='../../shopping/source/shopmain.php';</script>";
    } 

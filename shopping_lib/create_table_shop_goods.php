@@ -29,7 +29,7 @@ if($flag !=="OK"){
       shop_image_change_name3 char(40),
       shop_image_change_name4 char(40),
       shop_introduce text,
-      regist_day char(20),
+      regist_day char(30),
       hit int,
       primary key(shop_no)
     )";

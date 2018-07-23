@@ -83,17 +83,20 @@ $row_length=30;
 	</nav>
 	<section id="section">
 		<article class="main">
-			<div id="head">
-    			<h1>Q & A</h1>
+			<div id="head" >
+    			<div style="text-align: left;"><h1>Q & A</h1></div>
+    			
     			<form id="search_area" name="search_form" method="get" action="qna_list.php">
     				<input type="hidden" name="mode" value="search">
+    				<div style="text-align: right;">
     				<select name="find">
     					<option value="subject" <?php if(isset($find) && $find==="subject") echo "selected";?>>제목</option>
     					<option value="id" <?php if(isset($find) && $find==="id") echo "selected";?>>글쓴이</option>
     					<option value="content" <?php if(isset($find) && $find==="content") echo "selected";?>>내용</option>
     				</select> 
-    				<input type="text" name="search" size="12"  autofocus <?php if(isset($search)) echo "value='$search'";?>> 
-    				<a href="#"><img src="../../community/img/list_search_button.gif" style="vertical-align: middle;" width="50" onclick="check_search()"></a>
+    				<input type="text" name="search" size="12"  autofocus <?php if(isset($search)) echo "value='$search'";?>>
+    				<a href="#"><img src="../../community/img/list_search_button.gif" style="vertical-align: middle; float: right;" width="50" onclick="check_search()"></a>
+    			</div>
     			</form>
     			<div class="clear"></div>
 			</div>
