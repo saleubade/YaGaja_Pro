@@ -1,7 +1,7 @@
 <?php
 
 $flag = "NO";
-$sql = "show tables from yagajaDB";
+$sql = "show tables from yagaja_DB";
 $result = mysqli_query($con, $sql) or die("실패원인11:".mysqli_error($con));
 while($row=mysqli_fetch_row($result)){
     if($row[0]==="reserve_info"){
@@ -20,12 +20,12 @@ if($flag!=="OK"){
       baby_num varchar(2) null,
       reserve_num char(9) null,
       payment_price int(11) null,
-      payment_date date null,
+      payment_date date null
       )";
     if(mysqli_query($con,$sql)){
         echo "<script>alert('reserve_info 테이블이 생성되었습니다.')</script>";
     }else{
-        echo "실패원인22:".mysqli_error($con);
+        echo "실패원인1232:".mysqli_error($con);
     }
 }
 ?>

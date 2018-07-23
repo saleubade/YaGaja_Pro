@@ -1,7 +1,7 @@
 <?php
 
 $flag = "NO";
-$sql = "show tables from yagajaDB";
+$sql = "show tables from yagaja_DB";
 $result = mysqli_query($con, $sql) or die("실패원인11:".mysqli_error($con));
 while($row=mysqli_fetch_row($result)){
     if($row[0]==="flight_one_way"){
@@ -25,7 +25,7 @@ if($flag!=="OK"){
     if(mysqli_query($con,$sql)){
         echo "<script>alert('flight_one_way 테이블이 생성되었습니다.')</script>";
     }else{
-        echo "실패원인22:".mysqli_error($con);
+        echo "실패원인2123:".mysqli_error($con);
     }
 }
 ?>

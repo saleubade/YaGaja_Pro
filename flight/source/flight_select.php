@@ -1,7 +1,6 @@
 <?php 
 include '../../common_lib/createLink_db.php';
-include './create_flight_one_way.php';
-include './create_reserve_info.php';
+
 session_start();
 
 if(!empty($_SESSION['id'])){
