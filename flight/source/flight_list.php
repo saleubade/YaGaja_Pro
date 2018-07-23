@@ -20,7 +20,7 @@ if(!empty($_SESSION['name'])){
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css">
-<link type="text/css" rel="stylesheet" href="../css/ticket1.css?v=1">
+<link type="text/css" rel="stylesheet" href="../css/ticket1.css?v=6">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -55,9 +55,8 @@ function aab(a){
 <h1 style="padding-top:40px; margin:0 auto; margin-top:20px; text-align: center">FLIGHT HISTORY</h1><br>
 <div id="ticket_box4"><br><br>
 <div id='select_ticket'><span style='font-size:15pt;'>항공권 예매내역<br></span></div><br><br>
-
 <span style="font-size:14pt;"><b>[ <?= $name ?> ]</b> 님의 항공권 예매 내역입니다.</span>
-<span style="font-size:15pt; float:right;">전 체 금 액  : <span  id="totalprice1"><?= $total ?></span> 원 &nbsp;&nbsp;&nbsp;</span>
+
 <br><hr id="hr1"><br><br>
 
 
@@ -76,7 +75,7 @@ function aab(a){
     </tr>
 <?php 
 /* if(){
-    
+   <span style="font-size:15pt; float:right;">전 체 금 액  : <span  id="totalprice1"><?= $total ?> </span> 원 &nbsp;&nbsp;&nbsp;</span> 
 } */
 $sql = "select * from membership m inner join reserve_info r on m.id = r.id
   inner join flight_one_way f on f.flght_ap_num = r.start_apnum where m.id = '$id' order by r.reserve_num";  

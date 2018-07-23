@@ -128,6 +128,7 @@ $dec_price = $row[0];
 if(!$dec_price){$dec_price =0;}
 }
 
+
  ?>
 <head>
 <meta charset="UTF-8">
