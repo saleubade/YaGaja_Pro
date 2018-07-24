@@ -14,6 +14,9 @@ if(!empty($_POST["notice_text"])){
 if(!empty($_POST["notice_select"])){
     $find =$_POST["notice_select"];
 }
+if(!empty($_GET['mode'])){
+    $mode = $_GET['mode'];
+}
 if ($mode=="search"){
     $search=trim($search);//공백 제거
     if(!$search){

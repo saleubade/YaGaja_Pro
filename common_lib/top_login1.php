@@ -8,7 +8,6 @@
     var popupX = (window.screen.width/2)-(800/2);
     var popupY = (window.screen.height/2)-(500/2);
     window.open('./message/source/message.php','','left='+popupX+',top='+popupY+', width=700, height=500, status=no, scrollbars=no');
- 
   }
   function interval_good(){
 	  var i = 0;
@@ -21,6 +20,17 @@
 	    var popupY = (window.screen.height/2)-(600/2);
 	    window.open('./admin_member/source/member_list.php','','left='+popupX+',top='+popupY+', width=1200, height=600, status=no, scrollbars=no');
 	  }
+  function survey(){
+	    var popupX = (window.screen.width/2)-(800/2);
+	    var popupY = (window.screen.height/2)-(500/2);
+	    window.open('./survey/source/survey.php','','left='+popupX+',top='+popupY+', width=400, height=350, status=no, scrollbars=no');
+	  }
+  function survey_result(){
+	    var popupX = (window.screen.width/2)-(800/2);
+	    var popupY = (window.screen.height/2)-(500/2);
+	    window.open("./survey/source/result.php", "", "left=200, top=200, width=500, height=450, status=no, scrollbars=no");
+	  }
+  
 </script>
 <body onload="interval_good()">
 <div id="topmenu">
@@ -52,13 +62,15 @@ include_once './common_lib/createLink_db.php';
   <li> <a href="./membership/source/join_form.php">회원가입</a>&nbsp;</li>
   <li> <a href="#" onclick="popup()">로그인</a> &nbsp;&nbsp;&nbsp;|</li>
 <?php }elseif(isset($id)&&$id==="admin"){?>
-  <li><a href="./flight_admin/source/admin_flight_top.php">항공권 관리</a>&nbsp; </li>
+  <li> <a href="#" onclick="survey_result()">설문 결과</a>&nbsp; </li>
+  <li><a href="./flight_admin/source/admin_flight_top.php">항공권 관리</a>&nbsp; |</li>
   <li><a href="#" onclick="member_list()">회원리스트 </a>&nbsp; |</li>
   <li> <a href="./modify/source/member_form_modify.php">내 정보 수정 </a>&nbsp; |</li>
   <li><a href="#" onclick="message()">쪽지(&nbsp; <?= $not_read_num ?> &nbsp;) </a>&nbsp; |</li>
   <li>관리자 님 <a href="./login/source/logout.php">(로그아웃)</a> | </li>
 <?php }elseif($id){ ?>
-  <li> <a href="./flight/source/flight_reserve_check.php">좌석 배치</a>&nbsp; </li>
+  <li> <a href="#" onclick="survey()">설문 조사</a>&nbsp; </li>
+  <li> <a href="./flight/source/flight_reserve_check.php">좌석 배치</a>&nbsp; |</li>
   <li> <a href="./flight/source/flight_read.php">항공권 조회</a>&nbsp; |</li>
   <li> <a href="./flight/source/flight_list.php">항공권 예매내역</a>&nbsp; |</li>
   <li> <a href="./modify/source/member_form_modify.php">내 정보 수정 </a>&nbsp; |</li>

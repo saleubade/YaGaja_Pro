@@ -3,6 +3,9 @@ session_start();
 
 include_once '../../common_lib/createLink_db.php';
 include_once '../../shopping_lib/create_table_buy.php';
+
+$id = $_SESSION['id'];
+
 if(!empty($_POST["review_select"])){
     $find =$_POST["review_select"];
 }

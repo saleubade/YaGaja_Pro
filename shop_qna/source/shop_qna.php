@@ -14,6 +14,9 @@ if(!empty($_POST["qna_text"])){
 if(!empty($_POST["qna_select"])){
     $find =$_POST["qna_select"];
 }
+if(!empty($_GET['mode'])){
+    $mode = $_GET['mode'];
+}
 if ($mode=="search"){
     $search=trim($search);//공백 제거
     if(!$search){
@@ -40,6 +43,8 @@ $nick=$row['qna_nick'];
 $regist_day=$row['regist_day'];
 $file_copied_0=$row['file_copied_0'];
 $regist_day=substr($regist_day,0,10);
+
+
 
 // 페이지 당 글수, 블럭당 페이지 수
 $rows_scale=10;

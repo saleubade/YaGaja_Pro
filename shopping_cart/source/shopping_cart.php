@@ -139,6 +139,9 @@ $row_length=87;
                             $cart_size=$row['cart_size'];
                             $cart_total = $cart_total + 3;
                             
+                            echo $cart_name;
+                            
+                            
                     ?>
         			<tr>
         				<td class="prod_check_box"><input type="checkbox" name="cart_list_check[]" id="cart_list_check[]" value="<?=$cart_num?>"></td>

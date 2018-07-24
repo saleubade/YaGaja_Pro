@@ -91,7 +91,7 @@
           }
       }
       $sql="update shop_qna set subject='$subject',content='$content' where qna_no=$no";
-      echo "33".$sql;
+     
       mysqli_query($con, $sql);
       
       
@@ -131,10 +131,6 @@
                                 shop_image_change_name4, shop_introduce, regist_day)";
   $sql.=" values('$shop_name', '$shop_amount', '$shop_price', '$shop_type', $shop_sizeS, $shop_sizeM, $shop_sizeL, $shop_sizeXL,'$image_name[1]', '$image_name[2]','$image_name[3]','$image_name[4]','$new_file_name[1]','$new_file_name[2]','$new_file_name[3]','$new_file_name[4]', '$shop_introduce', '$regist_day')";
 
-  var_dump($shop_sizeS);
-  
- echo $sql;
-  
   
   if(!mysqli_query($con,$sql)){
      echo "<br>no DB ! 이게 왜 오류얌: ".mysqli_error($con);

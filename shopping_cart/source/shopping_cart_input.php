@@ -4,6 +4,13 @@ session_start();
 include "../../common_lib/createLink_db.php";
 include "../../shopping_lib/create_table_cart.php";
 
+if(isset($_SESSION['id'])){
+    $id = $_SESSION['id'];
+}
+if(isset($_SESSION['name'])){
+    $cname = $_SESSION['name'];
+}
+
 if(isset($_GET['no'])){
     $no = $_GET['no'];
 }

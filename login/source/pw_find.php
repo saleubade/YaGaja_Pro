@@ -35,8 +35,10 @@
           document.login_form.pw.focus();
           return;
         }
+        
         document.login_form.submit();
       }
+       
       function cancel(){
      	 history.go(-1);
       }
@@ -47,41 +49,8 @@
       <tr height="20"></tr>
       <tr>
         <td id="main">
-          <?php  
-            if(isset($pw)){?>
-              <form name="login_form" action="login.php" method="post">
-                        <table>
-                          <tr>
-                            <td colspan="5" width="800"></td>
-                          </tr>
-                          <tr height="8"></tr>
-                          <tr>
-                            <td border-top width="120" id="first"></td>
-                            <td ><label for="name" size="30"></label></td>
-                            <td align="center"><?= $row['name']."님!" ?></td>
-                            <td width="80"></td>
-                            <td width="120"></td>
-                          </tr>
-                          <tr>
-                            <td width="120"></td>
-                            <td align="left" width="80"><label for="pnum"> </label></td>
-                            <td width="300" style="text-align: center;">비밀번호는 <?= "$pw 입니다." ?></td>
-                            <td></td>
-                            <td width="120"></td>
-                          </tr>
-                          <tr height="20"></tr>
-                          <tr height="20"></tr>
-                          <input type="hidden" name="pw" value=<?= $pw?>>
-                          <input type="hidden" name="id" value=<?= $id?>>
-                          <tr>
-                            <td colspan="5" align="center"><input type="submit" value="확인" style="width:100pt; height:30pt"></td>
-                          </tr>
-                          <tr height="20"></tr>
-                        </table>
-              </form>
-          <?php    
-            }else{?>
-              <form name="login_form" action="pw_find.php" method="post">
+   
+              <form name="login_form" action="sms_send.php" method="post">
                 <div id="guide_find_id">
                <h2>비밀번호 찾기</h2>
                <b>비밀번호</b>를 찾으시려면 <b>아이디</b>와 <b>전화번호</b>를 입력해주세요!
@@ -115,9 +84,7 @@
                   <tr height="20"></tr>
                 </table>
               </form>
-          <?php  
-            }
-          ?>
+        
         </td>
       </tr>
       <tr height="20">
