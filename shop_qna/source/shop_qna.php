@@ -14,6 +14,9 @@ if(!empty($_POST["qna_text"])){
 if(!empty($_POST["qna_select"])){
     $find =$_POST["qna_select"];
 }
+if(!empty($_GET['mode'])){
+    $mode = $_GET['mode'];
+}
 if ($mode=="search"){
     $search=trim($search);//공백 제거
     if(!$search){
