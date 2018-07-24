@@ -14,6 +14,10 @@ if(!empty($_POST["review_text"])){
 if(!empty($_POST["review_select"])){
     $find =$_POST["review_select"];
 }
+if(!empty($_GET['mode'])){
+    $mode = $_GET['mode'];
+}
+
 if ($mode=="search"){
     $search=trim($search);//공백 제거
     if(!$search){
