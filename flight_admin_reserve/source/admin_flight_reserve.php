@@ -26,7 +26,7 @@
 <title>TICKETING</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css?var=1">
-<link type="text/css" rel="stylesheet" href="../css/admin_ticket.css?v=7">
+<link type="text/css" rel="stylesheet" href="../css/admin_ticket.css?v=8">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -84,6 +84,40 @@ $("#src_rst").hide();		//자동완성숨심
 	});
 });
 
+var auto1 = "on";
+function btn_auto_action1(){		//자동완성끄기 버튼
+	if(auto1=="on"){
+		auto1= "off";			//auto =off
+		$("#src_rst1").hide();	//자동완성 창 숨김
+	}else if(auto1=="off"){		//auto 가 off 이면
+		auto1= "on";				//auto 킴
+	}
+}
+
+$(document).ready(function(){
+$("#src_rst1").hide();		//자동완성숨심
+	$("#asearch1").keyup(function(){		//검색어에 키 누르면
+		if(auto1=="on"){				//자동완성 on이면
+			var search= $("#asearch1").val();		//변수에 값저장
+		
+			if(search.length <= 0){		//검색어 길이가 0보다 작으면 
+				$("#s_r_l1").html("");		//자동완성 값 ""주고
+				$("#src_rst1").hide();		//자동완성 숨김
+			}else{						
+				$.ajax({	//ajax로 이부분만 보내겠다.
+					type : "post",		//post방식으로 
+					url : "search_result_id.php",		//search_Result.php로 이동
+					data : "search="+search+"&index=ok", //보낼값들 
+					success : function(data){		//성공하면 자동완성 보여줌.
+						$("#src_rst1").show();		
+						$("#s_r_l1").html(data);		//데이터 보여줌.
+					}
+				});
+			}
+		}
+	});
+});
+
 </script>
 
 </head>
@@ -108,15 +142,21 @@ $("#src_rst").hide();		//자동완성숨심
 			<input type="text" name="apnum" id="asearch" class="select_flight" size="15" placeholder="ex)B777-301"  autofocus autocomplete="off" >    
 			<div id="src_rst">
         		<div id="s_r_l"></div>
-            	<div id="btn_auto2" style="width : 200px; text-align: right;" onclick="btn_auto_action()"><a href='#'>자동완성 끄기</a></div>
+            	<div id="btn_auto2" style="width : 178px; text-align: right;" onclick="btn_auto_action()"><a href='#'>자동완성 끄기</a></div>
     		</div>
     	</td>
-		<td><input type="text" name="userid" class="select_flight" placeholder="ex)SOONG1298"  autofocus autocomplete="off" ></td>
+		<td>
+			<input type="text" name="userid" id="asearch1" class="select_flight" size="15" placeholder="ex)SOONG1298"  autofocus autocomplete="off" >
+			<div id="src_rst1">
+        		<div id="s_r_l1"></div>
+            	<div id="btn_auto2" style="width : 178px; text-align: right;" onclick="btn_auto_action1()"><a href='#'>자동완성 끄기</a></div>
+    		</div>
+		</td>
         <td><div id="form_search2"><input type="image" src="../image/list_search_button.gif" id="button_search"  onclick="check_input()"></div></td>
         
 	</tr>
 </table>
-
+ 
 </div>  
 </form>
 <hr id="hr1">
