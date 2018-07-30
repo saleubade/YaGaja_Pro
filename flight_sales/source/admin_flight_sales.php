@@ -91,13 +91,13 @@ $row = mysqli_fetch_array($result6);
 $jun_price = $row[0];
 if(!$jun_price){$jun_price =0;}
 
-$sql7 = "select sum(payment_price) from reserve_info where payment_date like '_____$jul%' ";
+$sql7 = "select sum(payment_price) from reserve_info where payment_date like '%$jul%' ";
 $result7 = mysqli_query($con,$sql7) or die("실패원인1: ".mysqli_error($con));
 $row = mysqli_fetch_array($result7);
 $jul_price = $row[0];
 if(!$jul_price){$jul_price =0;}
 
-$sql8 = "select sum(payment_price) from reserve_info where payment_date like '_____$aug%' ";
+$sql8 = "select sum(payment_price) from reserve_info where payment_date like '%$aug%' ";
 $result8 = mysqli_query($con,$sql8) or die("실패원인1: ".mysqli_error($con));
 $row = mysqli_fetch_array($result8);
 $aug_price = $row[0];
@@ -126,6 +126,7 @@ $result12 = mysqli_query($con,$sql12) or die("실패원인1: ".mysqli_error($con
 $row = mysqli_fetch_array($result12);
 $dec_price = $row[0];
 if(!$dec_price){$dec_price =0;}
+
 }
 
 
@@ -182,6 +183,14 @@ function drawChart() {
     
     chart.draw(data, google.charts.Line.convertOptions(options));
 }
+
+$(document).ready(function() {
+	   $("#btnExport").click(function (e) {
+	      window.open('data:application/vnd.ms-excel;chsarset=utf-8,\uFEFF' + encodeURI($('#dvData').html()));
+	       e.preventDefault();
+	   });
+
+	});
 
 </script>
 
@@ -265,10 +274,62 @@ $dec_price  = number_format($dec_price);
 <li>12 월  : <?= $dec_price ?> 원</li>
 </ul>
 <hr style="width:100px; border:2px solid gray;">
-<span style="float:right; margin:0 0px 0 0; font-size:13pt;">총액 : <?= $total ?> 원</span>
+<span style="float:right; margin:0 0px 0 0; font-size:13pt;">총액 : <?= $total ?> 원</span></div>
 
+<?php 
+//---------------------------------------------------------------------------------------------------
+//엑셀파일로 내역확인하기
+?>
+<button id="btnExport" style="float:right;">매출 내역 상세확인</button>
+
+<div id="dvData">
+<table style="visibility: hidden;border-collapse: collapse;
+   font-family: "Trebuchet MS", Helvetica, sans-serif;">
+   
+<?php
+   $sql = "select * from reserve_info";
+   $result = mysqli_query($con, $sql) or die("실패원인 : " . mysqli_error($con));
+?>
+	<tr>
+       <td style="border: 1px solid black; text-align: center;">번 호</td>
+       <td style="border: 1px solid black; text-align: center;">아 이 디</td>
+       <td style="border: 1px solid black; text-align: center;">항공권 번호</td>
+       <td style="border: 1px solid black; text-align: center;">항공권 예매번호</td>
+       <td style="border: 1px solid black; text-align: center;">예매 날짜</td>
+       <td style="border: 1px solid black; text-align: center;">결제 금액(원)</td>
+    </tr>
+<?php 
+    
+while($row = mysqli_fetch_array($result)){
+    
+    $id1 = $row['id'];
+    $start_apnum1 = $row['start_apnum'];
+    $back_apnum1 = $row['back_apnum'];
+    $reserve_num1 = $row['reserve_num'];
+    $payment_price1 = $row['payment_price'];
+    $payment_date1 = $row['payment_date'];
+    $total2 = $total2 + $payment_price1;
+?>
+  <tr>
+       <td style="border: 1px solid black; text-align: center;" ><?= $i+1 ?></td>
+       <td style="border: 1px solid black;text-align: center;"><?= $id1 ?></td>
+       <td style="border: 1px solid black;text-align: center;"><?= $start_apnum1,$back_apnum1 ?></td>
+       <td style="border: 1px solid black;text-align: center;"><?= $reserve_num1 ?></td>
+       <td style="border: 1px solid black;text-align: center;"><?= $payment_date1 ?></td>
+       <td style="border: 1px solid black;text-align: center;"><?= number_format($payment_price1) ?></td>
+  </tr>
+<?php 
+}
+?>
+    <tr>
+       <td colspan="3" style="border: 1px solid black; text-align: center;" >총 매출</td>
+       <td colspan="3"  style="border: 1px solid black;text-align: center;"><?=number_format($total2) ?>원</td>
+    </tr>
+</table>
+<?php 
+//---------------------------------------------------------------------------------------------------
+?>
 </div>
-  
 </div><!-- end of ticketbox-->
 <br><br>
 <footer>

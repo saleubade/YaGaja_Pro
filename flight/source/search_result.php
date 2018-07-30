@@ -38,12 +38,12 @@ $search = $_POST["search"];
 $sql = "select * from country where city like '%$search%' order by city asc";
 $result = mysqli_query($con, $sql) or die("실패원인12 " . mysqli_error($con));
 $total_record = mysqli_num_rows($result);
-$i=0;
+
 while ($row = mysqli_fetch_array($result)) {
     $city = $row['city'];
     
     echo "<input type='button' value='$city' class='abcd' style='padding : 5px 5px; border:0px; background-color:white;'><br>";
-    $i++;
+    
 }
 ?>
 

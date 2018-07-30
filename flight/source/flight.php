@@ -42,6 +42,7 @@ function start_area(){
 	var popupX = (window.screen.width / 2) - (800 / 2);
 	var popupY= (window.screen.height /2) - (500 / 2);
 	window.open('start_area.php', '', 'status=no, width=800, height=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	
 }
 
 function back_area(){
