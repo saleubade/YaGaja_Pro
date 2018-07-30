@@ -44,7 +44,7 @@ if(isset($_FILES["upfile"])){
                 if($upfile_size[$i]>500000){
                     echo ("
             <script>
-            alert('업로드 파일 크기가 지정된 용량(500KB)을 초과합니다!<br> 파일크기를  확인해주세요');
+            alert('업로드 파일 크기가 지정된 용량(500KB)을 초과합니다!\\n 파일크기를  확인해주세요');
             history.go(-1);
 
             </script>
