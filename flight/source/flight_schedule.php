@@ -31,7 +31,6 @@
  }else{
      $back_day = "";
  }
- 
  if(!empty($_GET['num1'])){
      $adult_num = $_GET['num1'];
  }else{
@@ -49,7 +48,7 @@
  }
  
  ?>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -61,28 +60,32 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript">
+
 function back_page(){
 	location.href= "flight.php";
 }
+
 </script>
 </head>
 <body>
 <header>
-<?php include_once '../../common_lib/top_login2.php';?>
+	<?php include_once '../../common_lib/top_login2.php';?>
 </header>
 <nav id="top">
-<?php include_once '../../common_lib/main_menu2.php';?>
-</nav>
+	<?php include_once '../../common_lib/main_menu2.php';?>
+</nav><br><br><br>
+
 <h1 style="margin:0 auto; text-align: center">FLIGHT TICKETING</h1><br>
 <div id="ticket_box0">
 <p>
-<br><hr id="hr1"><br><br>
-&nbsp;1. 여정 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-2. 항공편 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-3. 스케줄 확인  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-4. 결과 조회  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-5. 좌석 확인  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <br><hr id="hr1"><br><br>
+    &nbsp;1. 여정 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    2. 항공편 선택  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    3. 스케줄 확인  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    4. 결과 조회  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    5. 좌석 확인  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <p>
+
 <table width=700 border=0 height=18 cellspacing=5 cellpadding=0>
 <tr>
 <?php
@@ -93,55 +96,53 @@ function back_page(){
         <td width='20%' bgcolor='#dddddd' height=5></td>
         <td width='20%' bgcolor='#dddddd' height=5></td>";
    
-   $timestamp1 = strtotime("$start_day -3 days"); //-3일
-   $timestamp2 = strtotime("$start_day +7 days"); //+7일
-   $start_day4 = date('y-m-d', $timestamp1);
-   $start_day5 = date('y-m-d', $timestamp2);
+   $timestamp1 = strtotime("$start_day -3 days"); //-3일//stamptime  1532098800
+   $timestamp2 = strtotime("$start_day +7 days"); //+7일//stamptime  1532962800
+   $start_day4 = date('y-m-d', $timestamp1);      //18-07-21
+   $start_day5 = date('y-m-d', $timestamp2);      //18-07-31
    
-   $start_day6 = "20".$start_day4;
-   $start_day7 = "20".$start_day5;
-  
+   $start_day6 = "20".$start_day4;                //2018-07-21
+   $start_day7 = "20".$start_day5;                //2018-07-31
+   
 ?>
 </tr>
 </table><br>
+
 <hr id="hr1"><br>
 <div id="select_ticket"><h4>비행 스케줄</h4></div>
 <div id="select_ticket"><h6>선택한 출국 일정(<?= $start_day ?>) 3일전 부터 7일 후(<?=$start_day6?> ~ <?=$start_day7 ?>) 까지의 비행스케줄입니다.</h6></div>
 
-
 <?php
-if($fly == 'round'){
+if($fly == 'round'){        //왕복
 ?>
     <form name="select_ticket" method="post" action="flight_ok.php?fly=<?= $fly ?>&start=<?= $start ?>&back=<?= $back ?>
     &adult_num=<?= $adult_num ?>&child_num=<?= $child_num ?>&baby_num=<?= $baby_num ?>">
     <table id='row_flight2'>
-    <tr id='row_flight2_tr1'>
-    <td width='370' height='40'>출 국 편</td>
-    <td width='100' height='40'>항공 번호</td>
-    <td width='120' height='40'>날 짜</td>
-    <td width='120' height='40'>시 간</td>
-    <td width='100' height='40'>운행 시간</td>
-    <td width='150' height='40'>운 임</td>
-    <td width='80' height='40'>선 택</td>
-    </tr>
- 
+        <tr id='row_flight2_tr1'>
+            <td width='370' height='40'>출 국 편</td>
+            <td width='100' height='40'>항공 번호</td>
+            <td width='120' height='40'>날 짜</td>
+            <td width='120' height='40'>시 간</td>
+            <td width='100' height='40'>운행 시간</td>
+            <td width='150' height='40'>운 임</td>
+            <td width='80' height='40'>선 택</td>
+    	</tr>
  <?php 
-
- $sql = "select * from flight_one_way where flight_start = '$start' and flight_back = '$back' and fly_start_date >= '$start_day6' and fly_start_date <= '$start_day7' order by recordnum desc";
+    //flight 항공권에서 출발지 = 선택출발지, 도착지 = 선택도착지이고 출발일 >= (출발일-3일) 이고 출발일 <= (출발일+7일) 사이에 있는 레코드넘버로 정렬 검색
+    $sql = "select * from flight_one_way where flight_start = '$start' and flight_back = '$back' and fly_start_date >= '$start_day6' and fly_start_date <= '$start_day7' order by recordnum desc";
     $result = mysqli_query($con,$sql) or die("실패원인 : ".mysqli_error($con));
     $total_record = mysqli_num_rows($result);
    
     if($total_record == 0){
         ?>
         <tr>
-        <td colspan="7">[항목없음]</td>
+        	<td colspan="7">[항목없음]</td>
         </tr>
+        </table><br><br><br>
         
-        </table>
-        <br><br><br>
         <div id="button_div">
-       	<input type="button" id="select_ok" value="이전" onclick="back_page()">
-        </form>
+           	<input type="button" id="select_ok" value="이전" onclick="back_page()">
+            </form>
         </div>
 <?php  
     }else{  //total_Record != 0 
@@ -159,35 +160,36 @@ if($fly == 'round'){
      
         $flight_price = number_format($flight_price);   //콤마찍기
         
-     $i=0;
-     $select_start = 'start'.$record_num;
+         $i=0;
+         $select_start = 'start'.$record_num;   //라디오버튼 value값 생성
         echo "<tr>
-        <td>$flight_start - $flight_back</td>
-        <td>$flight_ap_num</td>
-        <td>$fly_start_date</td>
-        <td>$fly_start_time - $fly_back_time </td>
-        <td>$fly_time</td>
-        <td>$flight_price 원</td>
-        <td><input type='radio' value='$select_start' name='start_check' id='start_check' style='width:20px;height:20px;'></td>
-        </tr>";
+                <td>$flight_start - $flight_back</td>
+                <td>$flight_ap_num</td>
+                <td>$fly_start_date</td>
+                <td>$fly_start_time - $fly_back_time </td>
+                <td>$fly_time</td>
+                <td>$flight_price 원</td>
+                <td><input type='radio' value='$select_start' name='start_check' id='start_check' style='width:20px;height:20px;'></td>
+            </tr>";
        $i++;
     }
-  
 }//end of  ifelse __total_Record  !=0
 ?>
-    </table><br><br>
+</table><br><br>
     
-     <table id="row_flight2">
+<table id="row_flight2">
     <tr id="row_flight2_tr1">
-    <td width="370" height="40">귀 국 편</td>
-    <td width="100" height="40">항공 번호</td>
-    <td width="120" height="40">날 짜</td>
-    <td width="120" height="40">시 간</td>
-    <td width="100" height="40">운행 시간</td>
-    <td width="150" height="40">운 임</td>
-    <td width="80" height="40">선 택</td>
-    </tr>
+        <td width="370" height="40">귀 국 편</td>
+        <td width="100" height="40">항공 번호</td>
+        <td width="120" height="40">날 짜</td>
+        <td width="120" height="40">시 간</td>
+        <td width="100" height="40">운행 시간</td>
+        <td width="150" height="40">운 임</td>
+        <td width="80" height="40">선 택</td>
+    </tr>	
+    
 <?php 
+//flight 항공권에서 출발지 = 선택출발지, 도착지 = 선택도착지이고 출발일 >= (출발일-3일) 이고 출발일 <= (출발일+7일) 사이에 있는 레코드넘버로 정렬 검색(귀국편)
 $sql = "select * from flight_one_way where flight_start = '$back' and flight_back = '$start' and fly_start_date >= '$start_day6' and fly_start_date <= '$start_day7' order by recordnum desc";
     
     $result = mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
@@ -196,14 +198,13 @@ $sql = "select * from flight_one_way where flight_start = '$back' and flight_bac
     if($total_record == 0){
 ?>
         <tr>
-        <td colspan="7">[항목없음]</td>
+       	 <td colspan="7">[항목없음]</td>
         </tr>
         
-        </table>
-        <br><br><br>
+        </table><br><br><br>
         <div id="button_div">
-       	<input type="button" id="select_ok" value="이전" onclick="back_page()">
-        </form>
+           	<input type="button" id="select_ok" value="이전" onclick="back_page()">
+            </form>
         </div>
 <?php  
     }else{  //total_Record != 0 
@@ -223,67 +224,61 @@ $sql = "select * from flight_one_way where flight_start = '$back' and flight_bac
             $i=0;
             $select_back = 'back'.$record_num;
             echo "<tr>
-        <td>$flight_start - $flight_back</td>
-        <td>$flight_ap_num</td>
-        <td>$fly_start_date</td>
-        <td>$fly_start_time - $fly_back_time</td>
-        <td>$fly_time</td>
-        <td>$flight_price 원</td>
-        <td><input type='radio' value='$select_back' name='back_check' id='back_check' style='width:20px;height:20px;'></td>
-        </tr>";
+                    <td>$flight_start - $flight_back</td>
+                    <td>$flight_ap_num</td>
+                    <td>$fly_start_date</td>
+                    <td>$fly_start_time - $fly_back_time</td>
+                    <td>$fly_time</td>
+                    <td>$flight_price 원</td>
+                    <td><input type='radio' value='$select_back' name='back_check' id='back_check' style='width:20px;height:20px;'></td>
+                </tr>";
             $i++;
-            
         }//end of while
        ?>
-        </table>
-        <br><br><br>
+        </table><br><br><br>
         <div id="button_div">
-        <input type="submit" id="select_ok" value="항공권 예매" >
-        <input type="button" id="select_ok" value="이전" onclick="back_page()">
-        </form>
+            <input type="submit" id="select_ok" value="항공권 예매" >
+            <input type="button" id="select_ok" value="이전" onclick="back_page()">
+            </form>
         </div>
 <?php 
 
     }//end of ifelse
-
-  
 }else{      //fly != round
-    
 ?>
 	<form name="select_ticket" method="post" action="flight_ok.php?fly=<?= $fly ?>&start=<?= $start ?>&back=<?= $back ?>
     &adult_num=<?= $adult_num ?>&child_num=<?= $child_num ?>&baby_num=<?= $baby_num ?>">
-     <table id="row_flight2">
-    <tr id="row_flight2_tr1">
-    <td width="370" height="40">출 국 편</td>
-    <td width="100" height="40">항공 번호</td>
-    <td width="120" height="40">날 짜</td>
-    <td width="120" height="40">시 간</td>
-    <td width="100" height="40">운행 시간</td>
-    <td width="150" height="40">운 임</td>
-    <td width="80" height="40">선 택</td>
-    </tr>
-    <?php 
+    <table id="row_flight2">
+        <tr id="row_flight2_tr1">
+            <td width="370" height="40">출 국 편</td>
+            <td width="100" height="40">항공 번호</td>
+            <td width="120" height="40">날 짜</td>
+            <td width="120" height="40">시 간</td>
+            <td width="100" height="40">운행 시간</td>
+            <td width="150" height="40">운 임</td>
+            <td width="80" height="40">선 택</td>
+        </tr>
+        
+<?php 
+    //flight 항공권에서 출발지 = 선택출발지, 도착지 = 선택도착지이고 출발일 >= (출발일-3일) 이고 출발일 <= (출발일+7일) 사이에 있는 레코드넘버로 정렬 검색(출국편-편도)
     $sql = "select * from flight_one_way where flight_start = '$start' and flight_back = '$back' and fly_start_date >= '$start_day6' and fly_start_date <= '$start_day7' order by recordnum desc";
     
     $result = mysqli_query($con,$sql) or die("실패원인: ".mysqli_error($con));
     $total_record = mysqli_num_rows($result);
     
     if($total_record == 0){
-   ?>
-       
+?>
         <tr>
-        <td colspan="7">[항목없음]</td>
+        	<td colspan="7">[항목없음]</td>
         </tr>
         
-        </table>
-        <br><br><br>
+        </table><br><br><br>
         <div id="button_div">
-  		<input type="button" id="select_ok" value="이전" onclick="back_page()">
-        </form>
+      		<input type="button" id="select_ok" value="이전" onclick="back_page()">
+            </form>
         </div>
-        
     
-    <?php
+<?php
     }else{
         
         while($row = mysqli_fetch_array($result)){
@@ -297,27 +292,29 @@ $sql = "select * from flight_one_way where flight_start = '$back' and flight_bac
             $flight_ap_num = $row[flght_ap_num];
             $record_num = $row[recordNum];
             $flight_price = number_format($flight_price);  
+            
             $i=0;
             $select_back = 'back'.$record_num;
+            
             echo "<tr>
-        <td>$flight_start - $flight_back</td>
-        <td>$flight_ap_num</td>
-        <td>$fly_start_date</td>
-        <td>$fly_start_time - $fly_back_time</td>
-        <td>$fly_time</td>
-        <td>$flight_price 원</td>
-        <td><input type='radio' value='$select_back' name='back_check' id='back_check' style='width:20px;height:20px;'></td>
-        </tr>";
+                    <td>$flight_start - $flight_back</td>
+                    <td>$flight_ap_num</td>
+                    <td>$fly_start_date</td>
+                    <td>$fly_start_time - $fly_back_time</td>
+                    <td>$fly_time</td>
+                    <td>$flight_price 원</td>
+                    <td><input type='radio' value='$select_back' name='back_check' id='back_check' style='width:20px;height:20px;'></td>
+                  </tr>";
             $i++;
         }
-        ?>
-     </table>
-      <br><br><br>
-     <div id="button_div">
-     <input type="submit" id="select_ok" value="항공권 예매" >
-     <input type="button" id="select_ok" value="이전" onclick="back_page()">
-  </form>
-  </div>
+?>
+
+</table><br><br><br>
+<div id="button_div">
+    <input type="submit" id="select_ok" value="항공권 예매" >
+    <input type="button" id="select_ok" value="이전" onclick="back_page()">
+    </form>
+</div>
  <?php  
     }
    
@@ -328,6 +325,6 @@ $sql = "select * from flight_one_way where flight_start = '$back' and flight_bac
      
 </div>
 <footer>
-  <?php include_once '../../common_lib/footer2.php';?>
-  </footer>   
+	<?php include_once '../../common_lib/footer2.php';?>
+</footer>   
  

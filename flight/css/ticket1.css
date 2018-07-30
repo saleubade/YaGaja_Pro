@@ -405,14 +405,26 @@ s
 
 #src_rst{
     background-color : white;
-	width: 378px;
+	width: 353px;
+	height:30px;
 	position: absolute;
-	top : 166px;
-	left : 530px;
+	top : 105 px;
+	left : 105 px;
 	z-index: 25;
 	border : 1px solid #ddaa88;
 	font-size : 10pt;
 }
+#src_rst1{
+    background-color : white;
+	width: 353px;
+	height:30px;
+	position: absolute;
+	top : 105 px;
+	left : 105 px;
+	z-index: 25;
+	border : 1px solid #ddaa88;
+	font-size : 10pt;
+} 
 
 #btn_cancel{
 	width: 980px;
