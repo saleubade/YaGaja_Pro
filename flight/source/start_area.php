@@ -8,7 +8,7 @@ include_once '../../common_lib/createLink_db.php';
 <meta charset="UTF-8">
 <title>TICKETING</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<link type="text/css" rel="stylesheet" href="../css/start_area1.css?var=1">
+<link type="text/css" rel="stylesheet" href="../css/start_area1.css?v=3">
 <script type="text/javascript">
 function select_area(city){		
 	window.opener.ticket_form.start.value=city;	//opener 함수 start_area.php 에 부모창에 value값으로 city를 전달
@@ -29,7 +29,7 @@ function trs(url){
     <tr>
         <td class="td1"><a class="a1" href="start_area.php?country=대한민국"><div class="td_div" onclick="trs('start_area.php?country=대한민국')">대한민국</div></a></td>
         <td rowspan="6" class="td2">
-    		<div id="select_city"><p style="font-weight: 800">해당 도시 취항지 검색</p>
+    		<div id="select_city"><p style="font-weight: 800; margin-left:15px;">해당 도시 취항지 검색</p>
 <?php 
 
     if($_GET['country']){       //country 값이 없으면 기본값을 대한민국 설정

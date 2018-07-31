@@ -67,7 +67,7 @@ function back_area(){
 </nav>
 <h1 style="padding-top:40px; margin:0 auto; margin-top:20px; text-align: center">FLIGHT SELECTING</h1><br>
 <div id ="ticket_box1">
-<div id="select_ticket"><h4>항공권 관리</h4></div>
+<div id="select_ticket"><h4>항공권 검색</h4></div>
 
 <?php 
 

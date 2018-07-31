@@ -17,7 +17,8 @@
 	width:135px;
 	height:60px;
 	background-color: white;
-	text-align: left;
+	
+	
 }
 .a1{
 	color:white;
@@ -28,7 +29,9 @@
 .a2{
 	color: #5E5E5E;
 	font-size:11pt;
-	text-decoration: none;	
+	text-decoration: none;
+	margin-left:15px;
+	
 
 }
 .a1:hover{
@@ -46,9 +49,7 @@
 	background-color: white;
 }
 #select_city{
-	margin:-120px 0 0 15px;
-	text-align: left;
-	
+	margin:-140px 0 0 0px;
 }
 
 .td_div{
