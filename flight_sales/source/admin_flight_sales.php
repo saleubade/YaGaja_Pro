@@ -289,6 +289,7 @@ $dec_price  = number_format($dec_price);
 <?php
    $sql = "select * from reserve_info";
    $result = mysqli_query($con, $sql) or die("실패원인 : " . mysqli_error($con));
+ 
 ?>
 	<tr>
        <td style="border: 1px solid black; text-align: center;">번 호</td>
@@ -299,7 +300,7 @@ $dec_price  = number_format($dec_price);
        <td style="border: 1px solid black; text-align: center;">결제 금액(원)</td>
     </tr>
 <?php 
-    
+    $i=0;
 while($row = mysqli_fetch_array($result)){
     
     $id1 = $row['id'];
@@ -309,6 +310,7 @@ while($row = mysqli_fetch_array($result)){
     $payment_price1 = $row['payment_price'];
     $payment_date1 = $row['payment_date'];
     $total2 = $total2 + $payment_price1;
+    
 ?>
   <tr>
        <td style="border: 1px solid black; text-align: center;" ><?= $i+1 ?></td>
@@ -319,6 +321,7 @@ while($row = mysqli_fetch_array($result)){
        <td style="border: 1px solid black;text-align: center;"><?= number_format($payment_price1) ?></td>
   </tr>
 <?php 
+$i++;
 }
 ?>
     <tr>

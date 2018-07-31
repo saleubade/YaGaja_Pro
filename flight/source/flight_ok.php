@@ -67,7 +67,7 @@ if($fly == "round"){    //왕복
             </script>";
     }
 }else{  //one-way
-    if($back_check == "?"){  //start_check을 못받았다면
+    if($start_check == "?"){  //start_check을 못받았다면
         echo "<script>alert('항공권을 선택해주세요.');
             history.go(-1);
             </script>";
