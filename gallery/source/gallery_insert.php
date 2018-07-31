@@ -69,7 +69,7 @@ if(isset($_FILES["upfile"])){   // 첨부파일 보내는 형식 = $_FILES
                 if($upfile_size[$i]>2000000){
                     echo ("
             <script>
-            alert('업로드 파일 크기가 지정된 용량(20MB)을 초과합니다! \\n파일크기를  확인해주세요!')
+            alert('업로드 파일 크기가 지정된 용량(500KB)을 초과합니다! \\n파일크기를  확인해주세요!')
             history.go(-1)
             </script>
 ");

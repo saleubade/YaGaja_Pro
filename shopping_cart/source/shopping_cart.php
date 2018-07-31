@@ -139,7 +139,7 @@ $row_length=87;
                             $cart_size=$row['cart_size'];
                             $cart_total = $cart_total + 3;
                             
-                            echo $cart_name;
+                           
                             
                             
                     ?>

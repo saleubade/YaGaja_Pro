@@ -54,6 +54,11 @@ if(isset($mode) && $mode == "modify"){
    <link rel="stylesheet" href="../css/content1.css">
   <script>
       function check_input(){
+    	  if(!document.board_form.continent.value){
+              alert("유형을 선택해주세요!");
+              return;
+           }
+    	  
          if(!document.board_form.subject.value){
             alert("제목을 입력하세요!");
             document.board_form.subject.focus();
