@@ -27,11 +27,11 @@ $regist_day=date("y-m-d(h:i)");
 
 
 
-$sql="update membership set pass='$pass', gender='$gender', zip='$zip', address='$address',";
-$sql .="phone='$phone', email='$email' ";
+$sql="update membership set pass='$pass', gender='$gender', zip='$zip', address1='$address1', address2='$address2',";
+$sql .=" phone='$phone', email='$email' ";
 $sql .=" where id='$id' ";
 
-mysqli_query($con, $sql);
+mysqli_query($con, $sql)or die(mysqli_error($con));
 
 
 mysqli_close($con);
