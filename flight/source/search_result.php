@@ -5,7 +5,7 @@ include '../../common_lib/createLink_db.php';
 ?>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css?v=1">
-<link type="text/css" rel="stylesheet" href="../css/ticket1.css?v=5">
+<link type="text/css" rel="stylesheet" href="../css/ticket1.css?v=8">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>

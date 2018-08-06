@@ -20,7 +20,7 @@
 <title>TICKETING</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../../common_css/index_css3.css?v=1">
-<link type="text/css" rel="stylesheet" href="../css/ticket1.css?v=6">
+<link type="text/css" rel="stylesheet" href="../css/ticket1.css?v=8">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -142,7 +142,7 @@ function btn_auto_action1(){		//자동완성끄기 버튼
 $(document).ready(function(){
 $("#src_rst1").hide();		//자동완성숨심
 	$("#asearch1").keyup(function(){		//검색어에 키 누르면
-		if(auto=="on"){				//자동완성 on이면
+		if(auto1=="on"){				//자동완성 on이면
 			var search= $("#asearch1").val();		//변수에 값저장
 		
 			if(search.length <= 0){		//검색어 길이가 0보다 작으면 
@@ -213,7 +213,7 @@ $("#src_rst1").hide();		//자동완성숨심
 		    <a href="#" style="text-decoration: none;"><div id="btn_auto" style="display: inline;" onclick="start_area()"> ▼ </div></a>
 			<div id="src_rst">
         		<div id="s_r_l"></div>
-            	<div id="btn_auto2" style="width : 353px; text-align: right;" onclick="btn_auto_action()"><a href='#'>자동완성 끄기</a></div>
+            	<div id="btn_auto2" style="width : 331px; text-align: right;" onclick="btn_auto_action()"><a href='#'>자동완성 끄기</a></div>
     		</div>
     	</td>	
 		<td>
@@ -221,7 +221,7 @@ $("#src_rst1").hide();		//자동완성숨심
 		    <a href="#" style="text-decoration: none;"><div id="btn_auto" style="display: inline;" onclick="back_area()"> ▼ </div></a>
 			<div id="src_rst1">
 				<div id="s_r_l1"></div>
-            	<div id="btn_auto2" style="width : 353px; text-align: right;" onclick="btn_auto_action1()"><a href='#'>자동완성 끄기</a></div>
+            	<div id="btn_auto2" style="width : 331px; text-align: right;" onclick="btn_auto_action1()"><a href='#'>자동완성 끄기</a></div>
     		</div>
     	</td>
 	</tr>
@@ -229,8 +229,8 @@ $("#src_rst1").hide();		//자동완성숨심
 
 <table class="table2">
 	<tr>
-		<td><input type="text" id="datepicker1" class="div_none" name="start_day" placeholder="가는날(YYYY-MM-DD)"></td>
-		<td id="one-way_div"><input type="text" id="datepicker2" class="div_none" name="back_day" placeholder="오는날(YYYY-MM-DD)"></td>
+		<td><input type="text" id="datepicker1" class="div_none" name="start_day" placeholder="가는날(YYYY-MM-DD)" autocomplete="off"></td>
+		<td id="one-way_div"><input type="text" id="datepicker2" class="div_none" name="back_day" placeholder="오는날(YYYY-MM-DD)" autocomplete="off"></td>
 	</tr>	
 </table><br></div>
 
@@ -243,18 +243,18 @@ $("#src_rst1").hide();		//자동완성숨심
 	<tr>
 		<td class="count_box2">성인<br>
     		<div class="count_box1"> <img src="../image/minus.jpg" alt="" width="60" height="60" class="bt_down"/></div>
-    		<div class="count_box1"> <input type="text" class="num" id="nnum1" name="num1" value="0"></div>
+    		<div class="count_box1"> <input type="text" class="num" id="nnum1" name="num1" value="0" autocomplete="off"></div>
     		<div class="count_box1"> <img src="../image/plus.jpg" alt="" width="60" height="60" class="bt_up"/></div>
 		</td>
 		
 		<td class="count_box2">소아(만 2세~11세)<br>
     		<div class="count_box1"> <img src="../image/minus.jpg" alt="" width="60" height="60" class="bt_down"/></div>
-    		<div class="count_box1"> <input type="text" class="num" id="nnum2" name="num2" value="0"></div>
+    		<div class="count_box1"> <input type="text" class="num" id="nnum2" name="num2" value="0" autocomplete="off"></div>
     		<div class="count_box1"> <img src="../image/plus.jpg" alt="" width="60" height="60" class="bt_up"/></div>
 		</td>
 		<td class="count_box2">유아(만2세미만)<br>
     		<div class="count_box1"> <img src="../image/minus.jpg" alt="" width="60" height="60" class="bt_down"/></div>
-    		<div class="count_box1"> <input type="text" class="num" id="nnum3" name="num3" value="0"></div>
+    		<div class="count_box1"> <input type="text" class="num" id="nnum3" name="num3" value="0" autocomplete="off"></div>
     		<div class="count_box1"> <img src="../image/plus.jpg" alt="" width="60" height="60" class="bt_up"/></div>
 		</td>
 	</tr> 
